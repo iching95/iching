@@ -58,9 +58,9 @@
 	var home = "location.href='./'";
 
 	var footerHTML = "";
-	footerHTML += (idx>=64?"":('<button onclick="'+next+'" type="button">next</button>')))
-	footerHTML += (idx>=00?"":('<button onclick="'+prev+'" type="button">prev</button>')))
-	footerHTML += ('<button onclick="'+home+'" type="button">home</button>'))
+	footerHTML += (idx>=64?"":('<button onclick="'+next+'" type="button">next</button>'))
+	footerHTML += (idx>=00?"":('<button onclick="'+prev+'" type="button">prev</button>'))
+	footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
 
 	fetch('content/'+name+'.txt')
 	    .then(response => response.text())
