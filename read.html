@@ -1,7 +1,7 @@
 <script>
-  var hash = window.location.hash?window.location.hash:"qian";
-  
-  fetch('content/'+hash+'.txt')
+  var name = window.location.search?window.location.search.replace("?"):"qian";
+  console.log(name)
+  fetch('content/'+name+'.txt')
     .then(response => response.text())
     .then((data) => {
       document.write("<div class='content'>" + data + "</div>");
