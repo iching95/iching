@@ -13,9 +13,9 @@
 		margin: 24px 0px;
 	}
 	button{
-	    margin: 12px 0px 24px;
+	    margin: 12px 0px 12px;
 	    width: 100%;
-	    padding: 5%;
+	    padding: 7.5%;
 	    font-size: 200%;
 	    text-transform: uppercase;
 	}
@@ -40,7 +40,7 @@
   // console.log(name)
   var idx = nameMap.indexOf(name);
 	  
-  var insertHTML = "<div class='header'><div class='number'>"+(String.fromCharCode(19904+idx))+"</div><div class='symbol'>"+(String.fromCharCode(19904+idx))+"</div></div>"
+  var insertHTML = "<div class='header'><div class='number'>"+((1+idx))+"</div><div class='symbol'>"+(String.fromCharCode(19904+idx))+"</div></div>"
   
   fetch('content/'+name+'.txt')
     .then(response => response.text())
@@ -57,7 +57,7 @@ var next = "location.href='./read.html?"+nameMap[idx+1]+"'"
 var prev = "location.href='./read.html?"+nameMap[idx-1]+"'"
 
 idx>=64?"":document.write('<button onclick="'+next+'" type="button">next</button>')
-idx<=0?"":document.write('<button onclick="'+prev+'" type="button">prev</button>')
+idx<=0?"":document.write('<button onclick="'+ prev+'" type="button">prev</button>')
 
 </script>
 <button onclick="location.href='./'" type="button">
