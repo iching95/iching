@@ -10,20 +10,24 @@
 	</style>
   </head>
 <body>
-<div>
+<div id="content">
+	Loading...
+</div>
   <script>
   var name = window.location.search?window.location.search.replace("?",""):"qian";
   console.log(name)
+	  var insertHTML = ""
   fetch('content/'+name+'.txt')
     .then(response => response.text())
     .then((data) => {
       var content = data.split(/\r?\n/)
       content.map(stmt => {
 	stmt = stmt.replace("#np","<span class='np'/>")
-        document.write("<div class='stmt'>" + stmt + "</div>");
+        insertHTML = insertHTML + ("<div class='stmt'>" + stmt + "</div>");
       })
+      document.getElementById("#content").innerHTML = insertHTML
     })
 </script>
-</div>
+
 </body>
 </html>
