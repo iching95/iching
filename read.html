@@ -66,12 +66,13 @@
 	var next = "location.href='./read.html?"+nameMap[idx+1]+"'";
 	var prev = "location.href='./read.html?"+nameMap[idx-1]+"'";
 	var home = "location.href='./'";
+	var dic = "https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word="
 
 	var footerHTML = "";
 	footerHTML += (idx>=64?"":('<button onclick="'+next+'" type="button">next</button>'))
 	footerHTML += (idx<=0?" ":('<button onclick="'+prev+'" type="button">prev</button>'))
 	footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
-	footerHTML += ('<button onclick="'+document.getElementById("dic").innerHTML+'" type="button">lookup(<span id="dic"></span>)</button>')
+	footerHTML += ('<button onclick="'+dic+encodeURIComponent(document.getElementById("dic").innerHTML) +'" type="button">lookup(<span id="dic"></span>)</button>')
 
 	fetch('content/'+name+'.txt')
 	    .then(response => response.text())
