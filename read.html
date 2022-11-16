@@ -20,7 +20,7 @@
     .then(response => response.text())
     .then((data) => {
       var content = data.split(/\r?\n/)
-      content = content.replaceAll("#NP","<span class="np"/>")
+      content = content.replaceAll("#NP","<span class='np'/>")
       content.map(stmt => {
         document.write("<div class='stmt'>" + stmt + "</div>");
       })
