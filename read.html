@@ -34,12 +34,12 @@
 	  </script>
 </div>
   <script>
-  var nameMap = {"1":"qian","2":"kun","3":"zhun","4":"meng","5":"xu","6":"song","7":"shi","8":"bi","9":"xiao-xu","10":"lu","11":"tai","12":"pi","13":"tong-ren","14":"da-you","15":"qian1","16":"yu","17":"sui","18":"gu","19":"lin","20":"guan","21":"shi-he","22":"bi1","23":"bo","24":"fu","25":"wu-wang","26":"da-xu","27":"yi","28":"da-guo","29":"kan","30":"li","31":"xian","32":"heng","33":"dun","34":"da-zhuang","35":"jin","36":"ming-yi","37":"jia-ren","38":"kui","39":"jian","40":"jie","41":"sun","42":"yi1","43":"guai","44":"gou","45":"cui","46":"sheng","47":"kun1","48":"jing","49":"ge","50":"ding","51":"zhen","52":"gen","53":"jian1","54":"gui-mei","55":"feng","56":"lu1","57":"xun","58":"dui","59":"huan","60":"jie1","61":"zhong-fu","62":"xiao-guo","63":"ji-ji","64":"wei-ji"}
+  var nameMap = ["qian","kun","zhun","meng","xu","song","shi","bi","xiao-xu","lu","tai","pi","tong-ren","da-you","qian1","yu","sui","gu","lin","guan","shi-he","bi1","bo","fu","wu-wang","da-xu","yi","da-guo","kan","li","xian","heng","dun","da-zhuang","jin","ming-yi","jia-ren","kui","jian","jie","sun","yi1","guai","gou","cui","sheng","kun1","jing","ge","ding","zhen","gen","jian1","gui-mei","feng","lu1","xun","dui","huan","jie1","zhong-fu","xiao-guo","ji-ji","wei-ji"]
   var name = window.location.search?window.location.search.replace("?",""):"qian";
   // console.log(name)
   var idx = nameMap.indexOf(name);
 	  
-  var insertHTML = "<div class='symbol'>"+idx+"</div>"
+  var insertHTML = "<div class='symbol'>"+(idx+1)+"</div>"
   fetch('content/'+name+'.txt')
     .then(response => response.text())
     .then((data) => {
