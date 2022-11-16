@@ -11,7 +11,7 @@
 		    const range = sel.getRangeAt(0);
 		    const targetedNode = range.startContainer;
 		    const clickedLetter = targetedNode.textContent.substr(range.startOffset, 1);
-		    document.getElementById("dic").innerHTML = clickedLetter
+		    document.getElementById("dic").innerHTML = "Lookup "+clickedLetter
 		    document.getElementById("dic-btn1").onclick = function(e){
 			    location.href = dic[0] + encodeURIComponent(clickedLetter)
 		    }
@@ -55,6 +55,7 @@
 		    text-align:center;
 	    }
 		.dic{
+			font-size:24px;
 		    display:block;
 		}
 	</style>
