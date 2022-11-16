@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body {
+        background-color: #000;
+        color: #fff;
+      }
+	</style>
+  </head>
+  
+<body>
 <div>
   <script>
   var name = window.location.search?window.location.search.replace("?",""):"qian";
@@ -6,9 +20,12 @@
     .then(response => response.text())
     .then((data) => {
       var content = data.split(/\r?\n/)
+      content = content.replaceAll("#NP","<span class="np"/>")
       content.map(stmt => {
         document.write("<div class='stmt'>" + stmt + "</div>");
       })
     })
 </script>
 </div>
+</body>
+</html>
