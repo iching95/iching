@@ -4,6 +4,8 @@
   fetch('content/'+name+'.txt')
     .then(response => response.text())
     .then((data) => {
+      var content = data.split(/\r?\n/)
+      content = content.join("<br/>")
       document.write("<div class='content'>" + data + "</div>");
     })
 </script>
