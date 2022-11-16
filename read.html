@@ -15,7 +15,10 @@
   </head>
 <body>
 <div id="content">
-	Loading...
+	  <script>
+		  var name = window.location.search?window.location.search.replace("?",""):"qian";
+		  document.write("Loading "+name + " ...")
+	  </script>
 </div>
   <script>
   var name = window.location.search?window.location.search.replace("?",""):"qian";
