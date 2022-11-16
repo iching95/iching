@@ -6,6 +6,7 @@
 	body {
 		background-color: #000;
 		color: #fff;
+        	font-family: monospace;
 	}
 	.np {
 		display:block;
@@ -21,9 +22,9 @@
 	 .stmt{
 	    font-size:24px;
 	    }
-	  .symbol{
+	  .symbol, .number{
 	    font-size:64px;
-	    }
+	   }
 	</style>
   </head>
 <body>
@@ -39,7 +40,7 @@
   // console.log(name)
   var idx = nameMap.indexOf(name);
 	  
-  var insertHTML = "<div class='symbol'>"+(String.fromCharCode(19904+idx))+"</div>"
+  var insertHTML = "<div class="header"><div class='number'>"+(String.fromCharCode(19904+idx))+"</div><div class='symbol'>"+(String.fromCharCode(19904+idx))+"</div></div>"
   fetch('content/'+name+'.txt')
     .then(response => response.text())
     .then((data) => {
