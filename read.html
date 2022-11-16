@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<script>
-	var dic = "https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word="
+	var dic = ["https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=","https://ctext.org/dictionary.pl?if=gb&char="]
 	document.onclick = (evt) => {
 		const sel = getSelection();
 
@@ -13,7 +13,10 @@
 		    const clickedLetter = targetedNode.textContent.substr(range.startOffset, 1);
 		    document.getElementById("dic").innerHTML = clickedLetter
 		    document.getElementById("dic-btn").onclick = function(e){
-			    location.href = dic + encodeURIComponent(clickedLetter)
+			    location.href = dic[0] + encodeURIComponent(clickedLetter)
+		    }
+		    document.getElementById("dic-btn2").onclick = function(e){
+			    location.href = dic[1] + encodeURIComponent(clickedLetter)
 		    }
 		  }
 	};
@@ -77,8 +80,9 @@
 	footerHTML += (idx<=0?" ":('<button onclick="'+prev+'" type="button">prev</button>'))
 	footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
 	footerHTML += ('<button id="dic-btn" type="button">lookup(<span id="dic"></span>)</button>')
+	footerHTML += ('<button id="dic-btn2" type="button">lookup(<span id="dic"></span>)</button>')
 
-	fetch('content/'+name+'.txt')
+	  fetch('content/'+name+'.txt')
 	    .then(response => response.text())
 	    .then((data) => {
 	      var content = data.split(/\r?\n/)
