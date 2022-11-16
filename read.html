@@ -2,7 +2,18 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
+	<script>
+		document.onclick = (evt) => {
+  const sel = getSelection();
+  if (sel.rangeCount) {
+    const range = sel.getRangeAt(0);
+    const targetedNode = range.startContainer;
+    const clickedLetter = targetedNode.textContent.substr(range.startOffset, 1);
+    alert(clickedLetter);
+  }
+};
+
+		</script>    <style>
 	body {
 		background-color: #000;
 		color: #fff;
@@ -73,18 +84,8 @@
 	    })
 	  
 	document.write(insertHTML)
-	document.write("Loading "+name + " ...")
-
-document.onclick = (evt) => {
-  const sel = getSelection();
-  if (sel.rangeCount) {
-    const range = sel.getRangeAt(0);
-    const targetedNode = range.startContainer;
-    const clickedLetter = targetedNode.textContent.substr(range.startOffset, 1);
-    alert(clickedLetter);
-  }
-};
-	  
+	document.write("Loading "+name + " ...")	  
 	</script>
+
 </body>
 </html>
