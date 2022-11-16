@@ -74,6 +74,17 @@
 	  
 	document.write(insertHTML)
 	document.write("Loading "+name + " ...")
+
+document.onclick = (evt) => {
+  const sel = getSelection();
+  if (sel.rangeCount) {
+    const range = sel.getRangeAt(0);
+    const targetedNode = range.startContainer;
+    const clickedLetter = targetedNode.textContent.substr(range.startOffset, 1);
+    alert(clickedLetter);
+  }
+};
+	  
 	</script>
 </body>
 </html>
