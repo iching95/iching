@@ -1,7 +1,10 @@
 <script>
-fetch('content/bi.txt')
-  .then(response => response.text())
-  .then((data) => {
-    alert(data)
-  })
+if(window.location.hash){
+  var hash = window.location.hash;
+  fetch('content/'+hash+'.txt')
+    .then(response => response.text())
+    .then((data) => {
+      document.write("<div>" + data + "</div>");
+    })
+}
 </script>
