@@ -21,7 +21,7 @@
     .then((data) => {
       var content = data.split(/\r?\n/)
       content.map(stmt => {
-	stmt = stmt.replace("#NP","<span class='np'/>")
+	stmt = stmt.replace("#np","<span class='np'/>")
         document.write("<div class='stmt'>" + stmt + "</div>");
       })
     })
