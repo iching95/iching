@@ -53,9 +53,13 @@
     })
 
 var next = "location.href='./read.html?"+nameMap[idx+1]+"'"
-document.write('<button onclick="'+next+'" type="button">next</button>')
+var prev = "location.href='./read.html?"+nameMap[idx-1]+"'"
+
+idx>=64?"":document.write('<button onclick="'+next+'" type="button">next</button>')
+idx<=0?"":document.write('<button onclick="'+prev+'" type="button">prev</button>')
+
 </script>
 <button onclick="location.href='./'" type="button">
-         back</button>
+         home</button>
 </body>
 </html>
