@@ -1,5 +1,5 @@
 <script>
-  var name = window.location.search?window.location.search.replace("?"):"qian";
+  var name = window.location.search?window.location.search.replace("?",""):"qian";
   console.log(name)
   fetch('content/'+name+'.txt')
     .then(response => response.text())
