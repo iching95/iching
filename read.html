@@ -39,7 +39,6 @@
   </head>
 <body>
 <div id="content"/>
-<div id="footer"/>
 
   <script>
   var nameMap = ["qian","kun","zhun","meng","xu","song","shi","bi","xiao-xu","lu","tai","pi","tong-ren","da-you","qian1","yu","sui","gu","lin","guan","shi-he","bi1","bo","fu","wu-wang","da-xu","yi","da-guo","kan","li","xian","heng","dun","da-zhuang","jin","ming-yi","jia-ren","kui","jian","jie","sun","yi1","guai","gou","cui","sheng","kun1","jing","ge","ding","zhen","gen","jian1","gui-mei","feng","lu1","xun","dui","huan","jie1","zhong-fu","xiao-guo","ji-ji","wei-ji"]
@@ -70,8 +69,7 @@
 		stmt = stmt.replace("#np","<span class='np'/>")
 		insertHTML = insertHTML + ("<div class='stmt'>" + stmt + "</div>");
 	      })
-	      document.getElementById("content").innerHTML = insertHTML
-	      document.getElementById("footer").innerHTML  = footerHTML
+	      document.getElementById("content").innerHTML = insertHTML + footerHTML
 	    })
 	  
 	document.write(insertHTML)
