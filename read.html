@@ -12,7 +12,9 @@
 		    const targetedNode = range.startContainer;
 		    const clickedLetter = targetedNode.textContent.substr(range.startOffset, 1);
 		    document.getElementById("dic").innerHTML = clickedLetter
-		    document.getElementById("dic-btn").onclick = "location.href='" + dic + encodeURIComponent(clickedLetter) + "'"
+		    document.getElementById("dic-btn").onclick = function(e){
+			    location.href = dic + encodeURIComponent(clickedLetter)
+		    }
 		  }
 	};
 	</script>
