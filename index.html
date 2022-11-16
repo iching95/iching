@@ -65,11 +65,18 @@
 		text-decoration: none;
 	      font-weight:bold;
       }
+      .rand {
+	text-align:center;
+	font-size:64px
+      }
+      .rand span:nth-of-type(2){
+	color:#888;
+      }
 	</style>
   </head>
 <body>
   
-<div style="text-align:center;font-size:64px">
+<div class="rand">
   <script>
     document.write("<span>" + String.fromCharCode(9776 + Math.floor(Math.random() * 8)) + "</span>");
     document.write("<span>" + String.fromCharCode(9776 + Math.floor(Math.random() * 8)) + "</span>");
@@ -198,7 +205,7 @@
 </tbody>
 </table>
 
-<div style="text-align:center;font-size:64px">
+<div class="rand">
   <script>
     document.write("<span>" + String.fromCharCode(9776 + Math.floor(Math.random() * 8)) + "</span>");
     document.write("<span>" + String.fromCharCode(9776 + Math.floor(Math.random() * 8)) + "</span>");
