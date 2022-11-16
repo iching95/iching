@@ -3,10 +3,14 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-      body {
-        background-color: #000;
-        color: #fff;
-      }
+	body {
+		background-color: #000;
+		color: #fff;
+	}
+	.np {
+		display:block;
+		margin: 12px 0px;
+	}
 	</style>
   </head>
 <body>
@@ -25,7 +29,7 @@
 	stmt = stmt.replace("#np","<span class='np'/>")
         insertHTML = insertHTML + ("<div class='stmt'>" + stmt + "</div>");
       })
-      document.getElementById("#content").innerHTML = insertHTML
+      document.getElementById("content").innerHTML = insertHTML
     })
 </script>
 
