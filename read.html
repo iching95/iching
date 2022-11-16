@@ -9,7 +9,7 @@
     const range = sel.getRangeAt(0);
     const targetedNode = range.startContainer;
     const clickedLetter = targetedNode.textContent.substr(range.startOffset, 1);
-    document.getElementById("dic").innerHTML = 'lookup('+clickedLetter+")"
+    document.getElementById("dic").innerHTML = clickedLetter
   }
 };
 
@@ -71,7 +71,7 @@
 	footerHTML += (idx>=64?"":('<button onclick="'+next+'" type="button">next</button>'))
 	footerHTML += (idx<=0?" ":('<button onclick="'+prev+'" type="button">prev</button>'))
 	footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
-	footerHTML += ('<button onclick="'+home+'" type="button"><span id="dic">lookup</span></button>')
+	footerHTML += ('<button onclick="'+document.getElementById("dic").innerHTML+'" type="button">lookup(<span id="dic"></span>)</button>')
 
 	fetch('content/'+name+'.txt')
 	    .then(response => response.text())
