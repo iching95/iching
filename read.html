@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<script>
 	var dic = ["https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=","https://ctext.org/dictionary.pl?if=gb&char="]
-	document.onclick = (evt) => {
+	document.getElementById("content").onclick = (evt) => {
 		const sel = getSelection();
 
 		  if (sel.rangeCount) {
