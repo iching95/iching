@@ -90,6 +90,8 @@
 	footerHTML += ('<span id="dic"></span><button id="dic-btn1" type="button">cuhk</button>')
 	footerHTML += ('<button id="dic-btn2" type="button">ctext</button>')
 	footerHTML = '<div class="footer">' +footerHTML+ '</div>'
+	
+	var insertHTML = "";
 	  
 	  fetch('content/'+name+'.txt')
 	    .then(response => response.text())
