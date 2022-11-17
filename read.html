@@ -2,25 +2,6 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<script>
-	var dic = ["https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=","https://ctext.org/dictionary.pl?if=gb&char="]
-	document.getElementById("content").onclick = (evt) => {
-		const sel = getSelection();
-
-		  if (sel.rangeCount) {
-		    const range = sel.getRangeAt(0);
-		    const targetedNode = range.startContainer;
-		    const clickedLetter = targetedNode.textContent.substr(range.startOffset, 1);
-		    document.getElementById("dic").innerHTML = "Lookup " + clickedLetter
-		    document.getElementById("dic-btn1").onclick = function(e){
-			    location.href = dic[0] + encodeURIComponent(clickedLetter)
-		    }
-		    document.getElementById("dic-btn2").onclick = function(e){
-			    location.href = dic[1] + encodeURIComponent(clickedLetter)
-		    }
-		  }
-	};
-	</script>
 	<style>
 	body {
 		background-color: #000;
@@ -109,6 +90,25 @@
 	document.write("Loading "+name + " ...");
 	  
 	</script>
+	
+	<script>
+	var dic = ["https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=","https://ctext.org/dictionary.pl?if=gb&char="]
+	document.onclick = (evt) => {
+		const sel = getSelection();
 
+		  if (sel.rangeCount) {
+		    const range = sel.getRangeAt(0);
+		    const targetedNode = range.startContainer;
+		    const clickedLetter = targetedNode.textContent.substr(range.startOffset, 1);
+		    document.getElementById("dic").innerHTML = "Lookup " + clickedLetter
+		    document.getElementById("dic-btn1").onclick = function(e){
+			    location.href = dic[0] + encodeURIComponent(clickedLetter)
+		    }
+		    document.getElementById("dic-btn2").onclick = function(e){
+			    location.href = dic[1] + encodeURIComponent(clickedLetter)
+		    }
+		  }
+	};
+	</script>
 </body>
 </html>
