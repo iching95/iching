@@ -66,10 +66,7 @@
 	</style>
   </head>
 <body>
-		<div id="header"/>
-	<div id="content"/>
-	<div id="footer"/>
-
+	<div id="container"/>
   <script>
   var nameMap = ["qian","kun","zhun","meng","xu","song","shi","bi","xiao-xu","lu","tai","pi","tong-ren","da-you","qian1","yu","sui","gu","lin","guan","shi-he","bi1","bo","fu","wu-wang","da-xu","yi","da-guo","kan","li","xian","heng","dun","da-zhuang","jin","ming-yi","jia-ren","kui","jian","jie","sun","yi1","guai","gou","cui","sheng","kun1","jing","ge","ding","zhen","gen","jian1","gui-mei","feng","lu1","xun","dui","huan","jie1","zhong-fu","xiao-guo","ji-ji","wei-ji"]
   
@@ -80,7 +77,7 @@
   // console.log(name)
   var idx = nameMap.indexOf(name);
 	  
-  var headerHTML = "<div class='number'>"+((1+idx))+"</div><div class='symbol'>"+(String.fromCharCode(19904+idx))+"</div>"
+  var headerHTML = "<div class='header'><div class='number'>"+((1+idx))+"</div><div class='symbol'>"+(String.fromCharCode(19904+idx))+"</div></div>"
 
 	var next = "location.href='./read.html?"+nameMap[idx+1]+"'";
 	var prev = "location.href='./read.html?"+nameMap[idx-1]+"'";
@@ -92,7 +89,8 @@
 	footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
 	footerHTML += ('<span id="dic"></span><button id="dic-btn1" type="button">cuhk</button>')
 	footerHTML += ('<button id="dic-btn2" type="button">ctext</button>')
-
+	footerHTML = '<div class="footer">' +footerHTML+ '</div>'
+	  
 	  fetch('content/'+name+'.txt')
 	    .then(response => response.text())
 	    .then((data) => {
@@ -101,14 +99,13 @@
 		stmt = stmt.replace("#np","<span class='np'/>")
 		insertHTML =  insertHTML + ("<div class='stmt'>" + stmt + "</div>");
 	      })
-	      
-	      document.getElementById("footer").innerHTML  = footerHTML;
-	      document.getElementById("content").innerHTML = insertHTML;
+	      insertHTML = '<div class="content">' + insertHTML + '</div>'
+	      document.getElementById("container").innerHTML  = headerHTML + insertHTML + footerHTML;
 	    })
 	  
-	document.getElementById("header").innerHTML  = headerHTML;
-	document.getElementById("content").innerHTML = "Loading "+name + " ...";
-	
+	document.write(headerHTML);
+	document.write("Loading "+name + " ...");
+	  
 	</script>
 
 </body>
