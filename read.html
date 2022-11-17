@@ -66,7 +66,11 @@
 	</style>
   </head>
 <body>
-<div id="container"/>
+<div id="container">
+	<div id="header"/>
+	<div id="content"/>
+	<div id="footer"/>
+</div>
 
   <script>
   var nameMap = ["qian","kun","zhun","meng","xu","song","shi","bi","xiao-xu","lu","tai","pi","tong-ren","da-you","qian1","yu","sui","gu","lin","guan","shi-he","bi1","bo","fu","wu-wang","da-xu","yi","da-guo","kan","li","xian","heng","dun","da-zhuang","jin","ming-yi","jia-ren","kui","jian","jie","sun","yi1","guai","gou","cui","sheng","kun1","jing","ge","ding","zhen","gen","jian1","gui-mei","feng","lu1","xun","dui","huan","jie1","zhong-fu","xiao-guo","ji-ji","wei-ji"]
@@ -78,7 +82,7 @@
   // console.log(name)
   var idx = nameMap.indexOf(name);
 	  
-  var insertHTML = "<div class='header'><div class='number'>"+((1+idx))+"</div><div class='symbol'>"+(String.fromCharCode(19904+idx))+"</div></div>"
+  var headerHTML = "<div class='header'><div class='number'>"+((1+idx))+"</div><div class='symbol'>"+(String.fromCharCode(19904+idx))+"</div></div>"
 
 	var next = "location.href='./read.html?"+nameMap[idx+1]+"'";
 	var prev = "location.href='./read.html?"+nameMap[idx-1]+"'";
@@ -99,13 +103,14 @@
 		stmt = stmt.replace("#np","<span class='np'/>")
 		insertHTML =  insertHTML + ("<div class='stmt'>" + stmt + "</div>");
 	      })
-	      document.getElementById("container").innerHTML = "<div id='content'/>" + footerHTML;
+	      
+	      document.getElementById("footer").innerHTML  = footerHTML;
 	      document.getElementById("content").innerHTML = insertHTML;
-		  
 	    })
 	  
-	document.write(insertHTML)
-	document.write("Loading "+name + " ...")	  
+	document.getElementById("header").innerHTML  = headerHTML;
+	document.getElementById("content").innerHTML = "Loading "+name + " ...";
+	
 	</script>
 
 </body>
