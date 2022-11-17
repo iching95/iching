@@ -81,8 +81,8 @@
 	var home = "location.href='./'";
 
 	var footerHTML = "";
-	footerHTML += (idx>=64?"":('<button onclick="'+next+'" type="button">next</button>'))
-	footerHTML += (idx<=0?" ":('<button onclick="'+prev+'" type="button">prev</button>'))
+	footerHTML += (idx>64?"":('<button onclick="'+next+'" type="button">next</button>'))
+	footerHTML += (idx<=0?"":('<button onclick="'+prev+'" type="button">prev</button>'))
 	footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
 	footerHTML += ('<span id="dic"></span><button id="dic-btn1" type="button">cuhk</button>')
 	footerHTML += ('<button id="dic-btn2" type="button">ctext</button>')
