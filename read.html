@@ -101,7 +101,7 @@
 		stmt = stmt.replace("#np","<span class='np'/>")
 		insertHTML =  insertHTML + ("<div class='stmt'>" + stmt + "</div>");
 	      })
-	      insertHTML = '<div class="content">' + insertHTML + '</div>'
+	      insertHTML = '<div id="content">' + insertHTML + '</div>'
 	      document.getElementById("container").innerHTML  = headerHTML + insertHTML + footerHTML;
 	    })
 	  
