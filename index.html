@@ -84,6 +84,9 @@
       .rand span:nth-of-type(2){
 	color:#888;
       }
+      .symbol{
+	      color:#fff;
+	    }
 	</style>
   </head>
 <body>
@@ -225,7 +228,7 @@
   </script>
 </div>
 	
-<script>var s=function(s){document.write(s)}</script>
+<script>var s=function(s){document.write("<span class='symbol'>"String.fromCharCode(19904+parseInt(s))+"</span>")}</script>
 <table class="tb2" style="width:100%;">
 	<tbody>
 	  <tr>
