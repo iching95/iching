@@ -104,6 +104,14 @@
 	</script>
 	
 	<script>
+		
+	    document.getElementById("dic-btn1").onclick = function(e){
+		    location.href = dic[0] + encodeURIComponent(document.getElementById("dic-search-word").innerHTML)
+	    }
+	    document.getElementById("dic-btn2").onclick = function(e){
+		    location.href = dic[1] + encodeURIComponent(document.getElementById("dic-search-word").innerHTML)
+	    }
+		
 	var dic = ["https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=","https://ctext.org/dictionary.pl?if=gb&char="]
 	document.onclick = (evt) => {
 		  const sel = getSelection();
@@ -112,14 +120,8 @@
 			    const targetedNode = range.startContainer;
 			    const clickedLetter = targetedNode.textContent;
 			    //targetedNode.textContent.substr(range.startOffset, 1);
-			    document.getElementById("dic").innerHTML = "Lookup " + clickedLetter
+			    document.getElementById("dic").innerHTML = "Lookup " + "<span id='dic-search-word' contenteditable>" + clickedLetter + "</span>"
 			    document.getElementById("dic-ptr").innerHTML = clickedLetter
-			    document.getElementById("dic-btn1").onclick = function(e){
-				    location.href = dic[0] + encodeURIComponent(clickedLetter)
-			    }
-			    document.getElementById("dic-btn2").onclick = function(e){
-				    location.href = dic[1] + encodeURIComponent(clickedLetter)
-			    }
 		  }
 		
 	};
