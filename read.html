@@ -92,7 +92,7 @@
 	      var content = data.split(/\r?\n/)
 	      content.map(stmt => {
 		stmt = stmt.replace("#np","<span class='np'/>")
-		insertHTML =  insertHTML + ("<div class='stmt'>" + stmt + "</div>");
+		insertHTML =  insertHTML + ("<div class='stmt' contenteditable='true'>" + stmt + "</div>");
 	      })
 	      insertHTML = '<div id="content">' + insertHTML + '</div>'
 	      document.getElementById("container").innerHTML  = headerHTML + insertHTML + footerHTML;
