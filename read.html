@@ -38,9 +38,12 @@
 	    .header{
 		    width:100%;
 		    text-align:center;
-		    position: fixed;
-		    background: #000;		
 	   }
+	#dic-ptr{
+	    position: fixed;
+	    background-color: #49494c;
+	    color: #fff;
+	}
 	#dic{
 	    font-size:24px;
 	    display:block;
@@ -60,7 +63,7 @@
   // console.log(name)
   var idx = nameMap.indexOf(name);
 	  
-  var headerHTML = "<div class='header'><div class='number'>"+((1+idx))+"</div><div class='symbol'>"+(String.fromCharCode(19904+idx))+"</div></div>"
+  var headerHTML = "<div id="dic-ptr"></div><div class='header'><div class='number'>"+((1+idx))+"</div><div class='symbol'>"+(String.fromCharCode(19904+idx))+"</div></div>"
 
 	var next = "location.href='./read.html?"+nameMap[idx+1]+"'";
 	var prev = "location.href='./read.html?"+nameMap[idx-1]+"'";
@@ -70,7 +73,7 @@
 	footerHTML += (idx>64?"":('<button onclick="'+next+'" type="button">next</button>'))
 	footerHTML += (idx<=0?"":('<button onclick="'+prev+'" type="button">prev</button>'))
 	footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
-	footerHTML += ('<span id="dic"></span><button id="dic-btn1" type="button">cuhk</button>')
+	footerHTML += ('<span id="dic">D</span><button id="dic-btn1" type="button">cuhk</button>')
 	footerHTML += ('<button id="dic-btn2" type="button">ctext</button>')
 	footerHTML = '<div class="footer">' +footerHTML+ '</div>'
 	
