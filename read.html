@@ -94,16 +94,18 @@
 	<script>
 	var dic = ["https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=","https://ctext.org/dictionary.pl?if=gb&char="]
 	document.onclick = (evt) => {
-			console.log( window.getSelection().toString());
+		if(window.getSelection().toString().length > 0){
+		    console.log( window.getSelection().toString());
 		    const clickedLetter = window.getSelection().toString()
 		    document.getElementById("dic").innerHTML = "Lookup " + clickedLetter
+		    document.getElementById("dic-ptr").innerHTML = "Lookup " + clickedLetter
 		    document.getElementById("dic-btn1").onclick = function(e){
 			    location.href = dic[0] + encodeURIComponent(clickedLetter)
 		    }
 		    document.getElementById("dic-btn2").onclick = function(e){
 			    location.href = dic[1] + encodeURIComponent(clickedLetter)
 		    }
-		
+		}		
 	};
 	</script>
 </body>
