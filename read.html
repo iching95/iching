@@ -102,7 +102,9 @@
           
           stmt = stmt.replace("#np","")
           stmt.split('').forEach(function(char) {
-            line = line + "<c>" + char + "</c>"
+	    if(!char.match(/[：。，！]/)){
+		    line = line + "<c>" + char + "</c>"
+	    }
           });
           
           if(linebreak){
