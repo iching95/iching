@@ -92,10 +92,23 @@
 	  fetch('content/'+name+'.txt')
 	    .then(response => response.text())
 	    .then((data) => {
+		  
 	      var content = data.split(/\r?\n/)
 	      content.map(stmt => {
-		stmt = stmt.replace("#np","<span class='np'/>")
-		insertHTML =  insertHTML + ("<div class='stmt'>" + stmt + "</div>");
+		
+		var line = "";
+		var linebreak = stmt.search('#np') > 0;
+		
+		stmt = stmt.replace("#np","")
+		stmt.split('').forEach(function(char) {
+		  line = line + "<span class='c'>char</span>"
+		});
+		
+		if(linebreak){
+			line = line + "<span class='np'/>"
+		}
+		
+		insertHTML =  insertHTML + ("<div class='stmt'>" + line + "</div>");
 	      })
 	      insertHTML = '<div id="content">' + insertHTML + '</div>'
 		  
