@@ -1,161 +1,146 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<style>
-	body {
-		background-color: #000;
-		color: #fff;
-        	font-family: monospace;
-	}
-	.np {
-		display:block;
-		margin: 24px 0px;
-	}
-	button{
-	    margin: 8px 0px 8px;
-	    width: 100%;
-	    padding: 3.5%;
-	    font-size: 150%;
-	    text-transform: uppercase;
-	    background-color: #49494c;
-	    color: #fff;
-	    border-radius: 9px;
-	    border:0px;
-	}
-	 .stmt{
-	    font-size:24px;
-	    }
-	  .symbol, .number{
-	    font-size:64px;
-		  display:inline;
-		  padding:6px 12px;
-	   }
-	   .number{
-	    	position: relative;
-    		top: -0px;
-	   }
-	    .header{
-		    width:100%;
-		    text-align:center;
-	    }
-	#dic{
-	    font-size:24px;
-	    display:block;
-	    text-align:center;
-	}
-	#dic-ptr{
-	    position: fixed;
-	    background-color: #49494c;
-	    color: #fff;
-	    right: 8px;
-	    font-size: 24px;
-	    padding: 4px;
-	    }
-	#dic-ptr:empty{
-	    display:none;
-	}
-	#dic-search-word{
-		text-decoration:none;
-	}
-	</style>
-  </head>
+<head>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: monospace;
+    }
+    .np {
+      display:block;
+      margin: 24px 0px;
+    }
+    button{
+      margin: 8px 0px 8px;
+      width: 100%;
+      padding: 3.5%;
+      font-size: 150%;
+      text-transform: uppercase;
+      background-color: #49494c;
+      color: #fff;
+      border-radius: 9px;
+      border:0px;
+    }
+    .stmt{
+      font-size:24px;
+    }
+    .symbol, .number{
+      font-size:64px;
+      display:inline;
+      padding:6px 12px;
+    }
+    .number{
+      position: relative;
+      top: -0px;
+    }
+    .header{
+      width:100%;
+      text-align:center;
+    }
+    #dic{
+      font-size:24px;
+      display:block;
+      text-align:center;
+    }
+    #dic-ptr{
+      position: fixed;
+      background-color: #49494c;
+      color: #fff;
+      right: 8px;
+      font-size: 24px;
+      padding: 4px;
+    }
+    #dic-ptr:empty{
+      display:none;
+    }
+    #dic-search-word{
+      text-decoration:none;
+    }
+  </style>
+</head>
 <body>
-	<div id="container"/>
+  <div id="container"></div>
   <script>
-  var nameMap = ["qian","kun","zhun","meng","xu","song","shi","bi","xiao-xu","lu","tai","pi","tong-ren","da-you","qian1","yu","sui","gu","lin","guan","shi-he","bi1","bo","fu","wu-wang","da-xu","yi","da-guo","kan","li","xian","heng","dun","da-zhuang","jin","ming-yi","jia-ren","kui","jian","jie","sun","yi1","guai","gou","cui","sheng","kun1","jing","ge","ding","zhen","gen","jian1","gui-mei","feng","lu1","xun","dui","huan","jie1","zhong-fu","xiao-guo","ji-ji","wei-ji"]
-  
-  var name = window.location.search?window.location.search.replace("?",""):"qian";
-  name = parseInt(name)>0?nameMap[name-1]:name
-  name = name?name:"qian";
-
-  // console.log(name)
-  var idx = nameMap.indexOf(name);
-	  
-  var headerHTML = "<div id='dic-ptr'></div><div class='header'><div class='number'>"+((1+idx))+"</div><div class='symbol'>"+(String.fromCharCode(19904+idx))+"</div></div>"
-
-	var next = "location.href='./read.html?"+nameMap[idx+1]+"'";
-	var prev = "location.href='./read.html?"+nameMap[idx-1]+"'";
-	var home = "location.href='./'";
-
-	var footerHTML = "";
-	footerHTML += (idx>64?"":('<button onclick="'+next+'" type="button">next</button>'))
-	footerHTML += (idx<=0?"":('<button onclick="'+prev+'" type="button">prev</button>'))
-	footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
-	footerHTML += ('<span id="dic"></span><button id="dic-btn1" type="button">cuhk</button>')
-	footerHTML += ('<button id="dic-btn2" type="button">ctext</button>')
-	footerHTML = '<div class="footer">' +footerHTML+ '</div>'
+    var nameMap = ["qian","kun","zhun","meng","xu","song","shi","bi","xiao-xu","lu","tai","pi","tong-ren","da-you","qian1","yu","sui","gu","lin","guan","shi-he","bi1","bo","fu","wu-wang","da-xu","yi","da-guo","kan","li","xian","heng","dun","da-zhuang","jin","ming-yi","jia-ren","kui","jian","jie","sun","yi1","guai","gou","cui","sheng","kun1","jing","ge","ding","zhen","gen","jian1","gui-mei","feng","lu1","xun","dui","huan","jie1","zhong-fu","xiao-guo","ji-ji","wei-ji"]
+    
+    var name = window.location.search?window.location.search.replace("?",""):"qian";
+    name = parseInt(name)>0?nameMap[name-1]:name
+    name = name?name:"qian";
+    
+    // console.log(name)
+    var idx = nameMap.indexOf(name);
+    
+    var headerHTML = "<div id='dic-ptr'></div><div class='header'><div class='number'>"+((1+idx))+"</div><div class='symbol'>"+(String.fromCharCode(19904+idx))+"</div></div>"
+    
+    var next = "location.href='./read.html?"+nameMap[idx+1]+"'";
+    var prev = "location.href='./read.html?"+nameMap[idx-1]+"'";
+    var home = "location.href='./'";
+    
+    var footerHTML = "";
+    footerHTML += (idx>64?"":('<button onclick="'+next+'" type="button">next</button>'))
+    footerHTML += (idx<=0?"":('<button onclick="'+prev+'" type="button">prev</button>'))
+    footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
+    footerHTML += ('<span id="dic"></span><button id="dic-btn1" type="button">cuhk</button>')
+    footerHTML += ('<button id="dic-btn2" type="button">ctext</button>')
+    footerHTML = '<div class="footer">' +footerHTML+ '</div>'
+    
+    var insertHTML = "";
+    
+    fetch('content/'+name+'.txt')
+      .then(response => response.text())
+      .then((data) => {
+        
+        var content = data.split(/\r?\n/)
+        content.map(stmt => {
+          
+          var line = "";
+          var linebreak = stmt.search('#np') > 0;
+          
+          stmt = stmt.replace("#np","")
+          stmt.split('').forEach(function(char) {
+            line = line + "<c>" + char + "</c>"
+          });
+          
+          if(linebreak){
+            line = line + "<span class='np'/>"
+          }
+          
+          insertHTML =  insertHTML + ("<div class='stmt'>" + line + "</div>");
+          
+        })
+        insertHTML = '<div id="content">' + insertHTML + '</div>'
+        
+        document.getElementById("container").innerHTML  = headerHTML + insertHTML + footerHTML;
+	    
+	var dic = ["https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=","https://ctext.org/dictionary.pl?if=gb&char="]
 	
-	var insertHTML = "";
-	  
-	  fetch('content/'+name+'.txt')
-	    .then(response => response.text())
-	    .then((data) => {
-		  
-	      var content = data.split(/\r?\n/)
-	      content.map(stmt => {
-		
-		var line = "";
-		var linebreak = stmt.search('#np') > 0;
-		
-		stmt = stmt.replace("#np","")
-		stmt.split('').forEach(function(char) {
-		  line = line + "<c>" + char + "</c>"
-		});
-		
-		if(linebreak){
-			line = line + "<span class='np'/>"
-		}
-		
-		insertHTML =  insertHTML + ("<div class='stmt'>" + line + "</div>");
-		 
-	      })
-	      insertHTML = '<div id="content">' + insertHTML + '</div>'
-		  
-	      document.getElementById("container").innerHTML  = headerHTML + insertHTML + footerHTML;
-		    document.getElementById("dic-btn1").onclick = function(e){
-			    location.href = dic[0] + encodeURIComponent(document.getElementById("dic-search-word").innerHTML)
-		    }
-		    document.getElementById("dic-btn2").onclick = function(e){
-			    location.href = dic[1] + encodeURIComponent(document.getElementById("dic-search-word").innerHTML)
-		    }
-		  
-		var anchors = document.getElementsByTagName('c');
-		
-		for(var i = 0; i < anchors.length; i++) {
-		    var anchor = anchors[i];
-		    anchor.onclick = function(evt) {
-			    const clickedLetter = evt.target.textContent
-			    //range.endOffset - range.startOffset
-			    document.getElementById("dic").innerHTML = "Lookup " + "<span id='dic-search-word' contenteditable>" + clickedLetter + "</span>"
-			    document.getElementById("dic-ptr").innerHTML = clickedLetter
-		    }
-		}
-		
-		/*
-		var dic = ["https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=","https://ctext.org/dictionary.pl?if=gb&char="]
-		document.getElementById("content").onclick = (evt) => {
-			  const sel = getSelection();
-			  if (sel.rangeCount) {
-				    const range = sel.getRangeAt(0);
-				    const targetedNode = range.startContainer;
-				    const clickedLetter = targetedNode.textContent.substr(range.startOffset, 1);
-				  // range.endOffset - range.startOffset
-				    document.getElementById("dic").innerHTML = "Lookup " + "<span id='dic-search-word' contenteditable>" + clickedLetter + "</span>"
-				    document.getElementById("dic-ptr").innerHTML = clickedLetter
-			  }
-		};
-		*/
-		  
-	    })
-	  
-	document.write(headerHTML);
-	document.write("Loading "+name + " ...");
-	  
-	</script>
-	
-	<script>
-	</script>
+	document.getElementById("dic-btn1").onclick = function(e){
+          location.href = dic[0] + encodeURIComponent(document.getElementById("dic-search-word").innerHTML)
+        }
+        document.getElementById("dic-btn2").onclick = function(e){
+          location.href = dic[1] + encodeURIComponent(document.getElementById("dic-search-word").innerHTML)
+        }
+        
+        var anchors = document.getElementsByTagName('c');
+        
+        for(var i = 0; i < anchors.length; i++) {
+          var anchor = anchors[i];
+          anchor.onclick = function(evt) {
+            const clickedLetter = evt.target.textContent
+            //range.endOffset - range.startOffset
+            document.getElementById("dic").innerHTML = "Lookup " + "<span id='dic-search-word' contenteditable>" + clickedLetter + "</span>"
+            document.getElementById("dic-ptr").innerHTML = clickedLetter
+          }
+        }
+                
+      })
+    
+    document.write(headerHTML);
+    document.write("Loading "+name + " ...");
+    
+  </script>
 </body>
 </html>
