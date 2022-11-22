@@ -125,8 +125,8 @@
 		
 		for(var i = 0; i < anchors.length; i++) {
 		    var anchor = anchors[i];
-		    anchor.onclick = function(node) {
-			    const clickedLetter = node.textContent
+		    anchor.onclick = function(evt) {
+			    const clickedLetter = evt.target.textContent
 			    //range.endOffset - range.startOffset
 			    document.getElementById("dic").innerHTML = "Lookup " + "<span id='dic-search-word' contenteditable>" + clickedLetter + "</span>"
 			    document.getElementById("dic-ptr").innerHTML = clickedLetter
