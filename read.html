@@ -101,7 +101,7 @@
 		
 		stmt = stmt.replace("#np","")
 		stmt.split('').forEach(function(char) {
-		  line = line + "<span class='c'>" + char + "</span>"
+		  line = line + "<c>" + char + "</c>"
 		});
 		
 		if(linebreak){
@@ -109,6 +109,7 @@
 		}
 		
 		insertHTML =  insertHTML + ("<div class='stmt'>" + line + "</div>");
+		 
 	      })
 	      insertHTML = '<div id="content">' + insertHTML + '</div>'
 		  
@@ -120,6 +121,19 @@
 			    location.href = dic[1] + encodeURIComponent(document.getElementById("dic-search-word").innerHTML)
 		    }
 		  
+		var anchors = document.getElementsByTagName('c');
+		
+		for(var i = 0; i < anchors.length; i++) {
+		    var anchor = anchors[i];
+		    anchor.onclick = function(node) {
+			    const clickedLetter = node.textContent
+			    //range.endOffset - range.startOffset
+			    document.getElementById("dic").innerHTML = "Lookup " + "<span id='dic-search-word' contenteditable>" + clickedLetter + "</span>"
+			    document.getElementById("dic-ptr").innerHTML = clickedLetter
+		    }
+		}
+		
+		/*
 		var dic = ["https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=","https://ctext.org/dictionary.pl?if=gb&char="]
 		document.getElementById("content").onclick = (evt) => {
 			  const sel = getSelection();
@@ -131,8 +145,8 @@
 				    document.getElementById("dic").innerHTML = "Lookup " + "<span id='dic-search-word' contenteditable>" + clickedLetter + "</span>"
 				    document.getElementById("dic-ptr").innerHTML = clickedLetter
 			  }
-
 		};
+		*/
 		  
 	    })
 	  
