@@ -86,7 +86,7 @@
     
     var next = "location.href='./read.html?"+nameMap[idx+1]+"'";
     var prev = "location.href='./read.html?"+nameMap[idx-1]+"'";
-    var home = "location.href='./'";
+    var home = "location.href='./" + (isWatch?"?watch":"") + "'";
     
     var footerHTML = "";
     footerHTML += (idx>64?"":('<button onclick="'+next+'" type="button">next</button>'))
@@ -150,6 +150,8 @@
             //range.endOffset - range.startOffset
             document.getElementById("dic").innerHTML = "Lookup " + "<span id='dic-search-word' contenteditable>" + clickedLetter + "</span>"
             document.getElementById("dic-ptr").innerHTML = clickedLetter
+	    document.getElementById("dic-btn1").style.display = "block";
+	    document.getElementById("dic-btn2").style.display = "block";
           }
         }
                 
