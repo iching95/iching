@@ -69,6 +69,10 @@
 	<div id="footer"></div>
   </div>
   <script>
+	  
+    let cookie = document.cookie;
+    var isWatch = (cookie == "device=watch")
+	  
     var nameMap = ["qian","kun","zhun","meng","xu","song","shi","bi","xiao-xu","lu","tai","pi","tong-ren","da-you","qian1","yu","sui","gu","lin","guan","shi-he","bi1","bo","fu","wu-wang","da-xu","yi","da-guo","kan","li","xian","heng","dun","da-zhuang","jin","ming-yi","jia-ren","kui","jian","jie","sun","yi1","guai","gou","cui","sheng","kun1","jing","ge","ding","zhen","gen","jian1","gui-mei","feng","lu1","xun","dui","huan","jie1","zhong-fu","xiao-guo","ji-ji","wei-ji"]
     
     var name = window.location.search?window.location.search.replace("?",""):"qian";
@@ -88,7 +92,7 @@
     footerHTML += (idx>64?"":('<button onclick="'+next+'" type="button">next</button>'))
     footerHTML += (idx<=0?"":('<button onclick="'+prev+'" type="button">prev</button>'))
     footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
-    footerHTML += ('<span id="dic"></span><button id="dic-btn1" type="button">cuhk</button>')
+    footerHTML += isWatch?('<span id="dic"></span><button id="dic-btn1" type="button">cuhk</button>'):"";
     footerHTML += ('<button id="dic-btn2" type="button">ctext</button>')
     // footerHTML = '<div class="footer">' +footerHTML+ '</div>'
     
