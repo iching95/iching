@@ -93,7 +93,8 @@
     footerHTML += (idx<=0?"":('<button onclick="'+prev+'" type="button">prev</button>'))
     footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
     footerHTML += ('<span id="dic"></span><button hidden id="dic-btn1" type="button">cuhk</button>');
-    footerHTML += ('<button hidden id="dic-btn2" type="button">ctext</button>')
+    footerHTML += ('<button hidden id="dic-btn2" type="button">ctext</button>');
+    footerHTML += ('<button hidden id="dic-btn3" type="button">moe</button>')
     // footerHTML = '<div class="footer">' +footerHTML+ '</div>'
     
     var insertHTML = "";
@@ -132,15 +133,22 @@
 	document.getElementById("content").innerHTML = insertHTML;
 	document.getElementById("footer").innerHTML = footerHTML;
 
-	var dic = ["https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=","https://ctext.org/dictionary.pl?if=gb&char="]
+	var dic = ["https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=",
+		   "https://ctext.org/dictionary.pl?if=gb&char="],
+	    	   "https://dict.revised.moe.edu.tw/search.jsp?md=1&word="];
 	
 	document.getElementById("dic-btn1").onclick = function(e){
           location.href = dic[0] + encodeURIComponent(document.getElementById("dic-search-word").innerHTML)
         }
+	    
         document.getElementById("dic-btn2").onclick = function(e){
           location.href = dic[1] + encodeURIComponent(document.getElementById("dic-search-word").innerHTML)
         }
-        
+	    
+        document.getElementById("dic-btn3").onclick = function(e){
+          location.href = dic[2] + encodeURIComponent(document.getElementById("dic-search-word").innerHTML)
+        }
+	
         var anchors = document.getElementsByTagName('c');
         
         for(var i = 0; i < anchors.length; i++) {
@@ -152,6 +160,7 @@
             document.getElementById("dic-ptr").innerHTML = clickedLetter
 	    document.getElementById("dic-btn1").style.display = (isWatch?"none":"block");
 	    document.getElementById("dic-btn2").style.display = "block";
+	    document.getElementById("dic-btn3").style.display = "block";
           }
         }
                 
