@@ -133,9 +133,7 @@
 	document.getElementById("content").innerHTML = insertHTML;
 	document.getElementById("footer").innerHTML = footerHTML;
 
-	var dic = ["https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=",
-		   "https://ctext.org/dictionary.pl?if=gb&char="],
-	    	   "https://dict.revised.moe.edu.tw/search.jsp?md=1&word="];
+	var dic = ["https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=", "https://ctext.org/dictionary.pl?if=gb&char="], "https://dict.revised.moe.edu.tw/search.jsp?md=1&word="];
 	
 	document.getElementById("dic-btn1").onclick = function(e){
           location.href = dic[0] + encodeURIComponent(document.getElementById("dic-search-word").innerHTML)
