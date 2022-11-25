@@ -79,12 +79,14 @@
     name = parseInt(name)>0?nameMap[name-1]:name
     name = name?name:"qian";
 	  
-    document.title = `${name[0].toUpperCase()}${name.slice(1)}` + " - R's iChing"
+    var idx = nameMap.indexOf(name);
+    var symbol = String.fromCharCode(19904+idx)
+    var n = 1+idx
+    
+    document.title = n+". "+symbol + `${name[0].toUpperCase()}${name.slice(1)}` + " - R's iChing"
     
     // console.log(name)
-    var idx = nameMap.indexOf(name);
-    
-    var headerHTML = "<div id='dic-ptr'></div><div class='header'><div class='number'>"+((1+idx))+"</div><div class='symbol'>"+(String.fromCharCode(19904+idx))+"</div></div>"
+    var headerHTML = "<div id='dic-ptr'></div><div class='header'><div class='number'>"+(n)+"</div><div class='symbol'>"+(symbol)+"</div></div>"
     
     var next = "location.href='./reader.html?"+nameMap[idx+1]+"'";
     var prev = "location.href='./reader.html?"+nameMap[idx-1]+"'";
