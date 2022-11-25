@@ -103,11 +103,11 @@
       padding: 4px 0 0;
     }
     
-    .tb2 .c-hidden:after {
+    .tb2 .tb2-l a:after {
       content: '*';
     }
-    .tb2 .c-hidden {
-      visibility: hidden;
+    .tb2 tb2-l c{
+      display: none;
     }
   </style>
 </head>
@@ -245,10 +245,10 @@
     var stateHide = false;
     var switchHide = function(){
         stateHide = !stateHide;
-        var anchors = document.getElementsByTagName('c');
+        var anchors = document.getElementsByClassName('tb2-l');
         for(var i = 0; i < anchors.length; i++) {
           var anchor = anchors[i];
-          anchor.className = stateHide?"c-hidden":"";
+          anchor.className = stateHide?"tb2-l c-hidden":"tb2-l";
         }
     }
   </script>
@@ -268,147 +268,147 @@
     <tbody>
       <tr>
         <td>
-          <span>02</span><script>s(02)</script><a href='reader.html?2' >坤</a><div>為地</div></td>
+          <span>02</span><script>s(02)</script><a class="tb2-l" href='reader.html?2' >坤</a><div>為地</div></td>
         <td>
-          <span>23</span><script>s(23)</script><div>山地</div><a href='reader.html?23' ><c>剝</c></a></td>
+          <span>23</span><script>s(23)</script><div>山地</div><a class="tb2-l" href='reader.html?23' ><c>剝</c></a></td>
         <td>
-          <span>08</span><script>s(08)</script><div>水地</div><a href='reader.html?8' ><c>比</c></a></td>
+          <span>08</span><script>s(08)</script><div>水地</div><a class="tb2-l" href='reader.html?8' ><c>比</c></a></td>
         <td>
-          <span>20</span><script>s(20)</script><div>風地</div><a href='reader.html?20' ><c>觀</c></a></td>
+          <span>20</span><script>s(20)</script><div>風地</div><a class="tb2-l" href='reader.html?20' ><c>觀</c></a></td>
         <td>
-          <span>16</span><script>s(16)</script><div>雷地</div><a href='reader.html?16' ><c>豫</c></a></td>
+          <span>16</span><script>s(16)</script><div>雷地</div><a class="tb2-l" href='reader.html?16' ><c>豫</c></a></td>
         <td>
-          <span>35</span><script>s(35)</script><div>火地</div><a href='reader.html?35' ><c>晉</c></a></td>
+          <span>35</span><script>s(35)</script><div>火地</div><a class="tb2-l" href='reader.html?35' ><c>晉</c></a></td>
         <td>
-          <span>45</span><script>s(45)</script><div>澤地</div><a href='reader.html?45' ><c>萃</c></a></td>
+          <span>45</span><script>s(45)</script><div>澤地</div><a class="tb2-l" href='reader.html?45' ><c>萃</c></a></td>
         <td>
-          <span>12</span><script>s(12)</script><div>天地</div><a href='reader.html?12' ><c>否</c></a></td>
+          <span>12</span><script>s(12)</script><div>天地</div><a class="tb2-l" href='reader.html?12' ><c>否</c></a></td>
       </tr>
       <tr>
         <td>
-          <span>15</span><script>s(15)</script><div>地山</div><a href='reader.html?15' ><c>謙</c></a></td>
+          <span>15</span><script>s(15)</script><div>地山</div><a class="tb2-l" href='reader.html?15' ><c>謙</c></a></td>
         <td>
-          <span>52</span><script>s(52)</script><a href='reader.html?52' >艮</a><div>為山</div></td>
+          <span>52</span><script>s(52)</script><a class="tb2-l" href='reader.html?52' >艮</a><div>為山</div></td>
         <td>
-          <span>39</span><script>s(39)</script><div>水山</div><a href='reader.html?39' ><c>蹇</c></a></td>
+          <span>39</span><script>s(39)</script><div>水山</div><a class="tb2-l" href='reader.html?39' ><c>蹇</c></a></td>
         <td>
-          <span>53</span><script>s(53)</script><div>風山</div><a href='reader.html?53' ><c>漸</c></a></td>
+          <span>53</span><script>s(53)</script><div>風山</div><a class="tb2-l" href='reader.html?53' ><c>漸</c></a></td>
         <td>
-          <span>62</span><script>s(62)</script><div>雷山</div><a href='reader.html?62' ><c>小過</c></a></td>
+          <span>62</span><script>s(62)</script><div>雷山</div><a class="tb2-l" href='reader.html?62' ><c>小過</c></a></td>
         <td>
-          <span>56</span><script>s(56)</script><div>火山</div><a href='reader.html?56' ><c>旅</c></a></td>
+          <span>56</span><script>s(56)</script><div>火山</div><a class="tb2-l" href='reader.html?56' ><c>旅</c></a></td>
         <td>
-          <span>31</span><script>s(31)</script><div>澤山</div><a href='reader.html?31' ><c>咸</c></a></td>
+          <span>31</span><script>s(31)</script><div>澤山</div><a class="tb2-l" href='reader.html?31' ><c>咸</c></a></td>
         <td>
-          <span>33</span><script>s(33)</script><div>天山</div><a href='reader.html?33' ><c>遯</c></a></td>
+          <span>33</span><script>s(33)</script><div>天山</div><a class="tb2-l" href='reader.html?33' ><c>遯</c></a></td>
       </tr>
       <tr>
         <td>
-          <span>07</span><script>s(07)</script><div>地水</div><a href='reader.html?7' ><c>師</c></a></td>
+          <span>07</span><script>s(07)</script><div>地水</div><a class="tb2-l" href='reader.html?7' ><c>師</c></a></td>
         <td>
-          <span>04</span><script>s(04)</script><div>山水</div><a href='reader.html?4' ><c>蒙</c></a></td>
+          <span>04</span><script>s(04)</script><div>山水</div><a class="tb2-l" href='reader.html?4' ><c>蒙</c></a></td>
         <td>
-          <span>29</span><script>s(29)</script><a href='reader.html?29' >坎</a><div>為水</div></td>
+          <span>29</span><script>s(29)</script><a class="tb2-l" href='reader.html?29' >坎</a><div>為水</div></td>
         <td>
-          <span>59</span><script>s(59)</script><div>風水</div><a href='reader.html?59' ><c>渙</c></a></td>
+          <span>59</span><script>s(59)</script><div>風水</div><a class="tb2-l" href='reader.html?59' ><c>渙</c></a></td>
         <td>
-          <span>40</span><script>s(40)</script><div>雷水</div><a href='reader.html?40' ><c>解</c></a></td>
+          <span>40</span><script>s(40)</script><div>雷水</div><a class="tb2-l" href='reader.html?40' ><c>解</c></a></td>
         <td>
-          <span>64</span><script>s(64)</script><div>火水</div><a href='reader.html?64' ><c>未濟</c></a></td>
+          <span>64</span><script>s(64)</script><div>火水</div><a class="tb2-l" href='reader.html?64' ><c>未濟</c></a></td>
         <td>
-          <span>47</span><script>s(47)</script><div>澤水</div><a href='reader.html?47' ><c>困</c></a></td>
+          <span>47</span><script>s(47)</script><div>澤水</div><a class="tb2-l" href='reader.html?47' ><c>困</c></a></td>
         <td>
-          <span>06</span><script>s(06)</script><div>天水</div><a href='reader.html?6' ><c>訟</c></a></td>
+          <span>06</span><script>s(06)</script><div>天水</div><a class="tb2-l" href='reader.html?6' ><c>訟</c></a></td>
       </tr>
       <tr>
         <td>
-          <span>46</span><script>s(46)</script><div>地風</div><a href='reader.html?46' ><c>升</c></a></td>
+          <span>46</span><script>s(46)</script><div>地風</div><a class="tb2-l" href='reader.html?46' ><c>升</c></a></td>
         <td>
-          <span>18</span><script>s(18)</script><div>山風</div><a href='reader.html?18' ><c>蠱</c></a></td>
+          <span>18</span><script>s(18)</script><div>山風</div><a class="tb2-l" href='reader.html?18' ><c>蠱</c></a></td>
         <td>
-          <span>48</span><script>s(48)</script><div>水風</div><a href='reader.html?48' ><c>井</c></a></td>
+          <span>48</span><script>s(48)</script><div>水風</div><a class="tb2-l" href='reader.html?48' ><c>井</c></a></td>
         <td>
-          <span>57</span><script>s(57)</script><a href='reader.html?57' >巽</a><div>為風</div></td>
+          <span>57</span><script>s(57)</script><a class="tb2-l" href='reader.html?57' >巽</a><div>為風</div></td>
         <td>
-          <span>32</span><script>s(32)</script><div>雷風</div><a href='reader.html?32' ><c>恆</c></a></td>
+          <span>32</span><script>s(32)</script><div>雷風</div><a class="tb2-l" href='reader.html?32' ><c>恆</c></a></td>
         <td>
-          <span>50</span><script>s(50)</script><div>火風</div><a href='reader.html?50' ><c>鼎</c></a></td>
+          <span>50</span><script>s(50)</script><div>火風</div><a class="tb2-l" href='reader.html?50' ><c>鼎</c></a></td>
         <td>
-          <span>28</span><script>s(28)</script><div>澤風</div><a href='reader.html?28' ><c>大過</c></a></td>
+          <span>28</span><script>s(28)</script><div>澤風</div><a class="tb2-l" href='reader.html?28' ><c>大過</c></a></td>
         <td>
-          <span>44</span><script>s(44)</script><div>天風</div><a href='reader.html?44' ><c>姤</c></a></td>
+          <span>44</span><script>s(44)</script><div>天風</div><a class="tb2-l" href='reader.html?44' ><c>姤</c></a></td>
       </tr>
       <tr>
         <td>
-          <span>24</span><script>s(24)</script><div>地雷</div><a href='reader.html?24' ><c>復</c></a></td>
+          <span>24</span><script>s(24)</script><div>地雷</div><a class="tb2-l" href='reader.html?24' ><c>復</c></a></td>
         <td>
-          <span>27</span><script>s(27)</script><div>山雷</div><a href='reader.html?27' ><c>頤</c></a></td>
+          <span>27</span><script>s(27)</script><div>山雷</div><a class="tb2-l" href='reader.html?27' ><c>頤</c></a></td>
         <td>
-          <span>03</span><script>s(03)</script><div>水雷</div><a href='reader.html?3' ><c>屯</c></a></td>
+          <span>03</span><script>s(03)</script><div>水雷</div><a class="tb2-l" href='reader.html?3' ><c>屯</c></a></td>
         <td>
-          <span>42</span><script>s(42)</script><div>風雷</div><a href='reader.html?42' ><c>益</c></a></td>
+          <span>42</span><script>s(42)</script><div>風雷</div><a class="tb2-l" href='reader.html?42' ><c>益</c></a></td>
         <td>
-          <span>51</span><script>s(51)</script><a href='reader.html?51' >震</a><div>為雷</div></td>
+          <span>51</span><script>s(51)</script><a class="tb2-l" href='reader.html?51' >震</a><div>為雷</div></td>
         <td>
-          <span>21</span><script>s(21)</script><div>火雷</div><a href='reader.html?21' ><c>噬嗑</c></a></td>
+          <span>21</span><script>s(21)</script><div>火雷</div><a class="tb2-l" href='reader.html?21' ><c>噬嗑</c></a></td>
         <td>
-          <span>17</span><script>s(17)</script><div>澤雷</div><a href='reader.html?17' ><c>隨</c></a></td>
+          <span>17</span><script>s(17)</script><div>澤雷</div><a class="tb2-l" href='reader.html?17' ><c>隨</c></a></td>
         <td>
-          <span>25</span><script>s(25)</script><div>天雷</div><a href='reader.html?25' ><c>無妄</c></a></td>
+          <span>25</span><script>s(25)</script><div>天雷</div><a class="tb2-l" href='reader.html?25' ><c>無妄</c></a></td>
       </tr>
       <tr>
         <td>
-          <span>36</span><script>s(36)</script><div>地火</div><a href='reader.html?36' ><c>明夷</c></a></td>
+          <span>36</span><script>s(36)</script><div>地火</div><a class="tb2-l" href='reader.html?36' ><c>明夷</c></a></td>
         <td>
-          <span>22</span><script>s(22)</script><div>山火</div><a href='reader.html?22' ><c>賁</c></a></td>
+          <span>22</span><script>s(22)</script><div>山火</div><a class="tb2-l" href='reader.html?22' ><c>賁</c></a></td>
         <td>
-          <span>63</span><script>s(63)</script><div>水火</div><a href='reader.html?63' ><c>既濟</c></a></td>
+          <span>63</span><script>s(63)</script><div>水火</div><a class="tb2-l" href='reader.html?63' ><c>既濟</c></a></td>
         <td>
-          <span>37</span><script>s(37)</script><div>風火</div><a href='reader.html?37' ><c>家人</c></a></td>
+          <span>37</span><script>s(37)</script><div>風火</div><a class="tb2-l" href='reader.html?37' ><c>家人</c></a></td>
         <td>
-          <span>55</span><script>s(55)</script><div>雷火</div><a href='reader.html?55' ><c>豐</c></a></td>
+          <span>55</span><script>s(55)</script><div>雷火</div><a class="tb2-l" href='reader.html?55' ><c>豐</c></a></td>
         <td>
-          <span>30</span><script>s(30)</script><a href='reader.html?30' >離</a><div>為火</div></td>
+          <span>30</span><script>s(30)</script><a class="tb2-l" href='reader.html?30' >離</a><div>為火</div></td>
         <td>
-          <span>49</span><script>s(49)</script><div>澤火</div><a href='reader.html?49' ><c>革</c></a></td>
+          <span>49</span><script>s(49)</script><div>澤火</div><a class="tb2-l" href='reader.html?49' ><c>革</c></a></td>
         <td>
-          <span>13</span><script>s(13)</script><div>天火</div><a href='reader.html?13' ><c>同人</c></a></td>
+          <span>13</span><script>s(13)</script><div>天火</div><a class="tb2-l" href='reader.html?13' ><c>同人</c></a></td>
       </tr>
       <tr>
         <td>
-          <span>19</span><script>s(19)</script><div>地澤</div><a href='reader.html?19' ><c>臨</c></a></td>
+          <span>19</span><script>s(19)</script><div>地澤</div><a class="tb2-l" href='reader.html?19' ><c>臨</c></a></td>
         <td>
-          <span>41</span><script>s(41)</script><div>山澤</div><a href='reader.html?41' ><c>損</c></a></td>
+          <span>41</span><script>s(41)</script><div>山澤</div><a class="tb2-l" href='reader.html?41' ><c>損</c></a></td>
         <td>
-          <span>60</span><script>s(60)</script><div>水澤</div><a href='reader.html?60' ><c>節</c></a></td>
+          <span>60</span><script>s(60)</script><div>水澤</div><a class="tb2-l" href='reader.html?60' ><c>節</c></a></td>
         <td>
-          <span>61</span><script>s(61)</script><div>風澤</div><a href='reader.html?61' ><c>中孚</c></a></td>
+          <span>61</span><script>s(61)</script><div>風澤</div><a class="tb2-l" href='reader.html?61' ><c>中孚</c></a></td>
         <td>
-          <span>54</span><script>s(54)</script><div>雷澤</div><a href='reader.html?54' ><c>歸妹</c></a></td>
+          <span>54</span><script>s(54)</script><div>雷澤</div><a class="tb2-l" href='reader.html?54' ><c>歸妹</c></a></td>
         <td>
-          <span>38</span><script>s(38)</script><div>火澤</div><a href='reader.html?38' ><c>睽</c></a></td>
+          <span>38</span><script>s(38)</script><div>火澤</div><a class="tb2-l" href='reader.html?38' ><c>睽</c></a></td>
         <td>
-          <span>58</span><script>s(58)</script><a href='reader.html?58' >兌</a><div>為澤</div></td>
+          <span>58</span><script>s(58)</script><a class="tb2-l" href='reader.html?58' >兌</a><div>為澤</div></td>
         <td>
-          <span>10</span><script>s(10)</script><div>天澤</div><a href='reader.html?10' ><c>履</c></a></td>
+          <span>10</span><script>s(10)</script><div>天澤</div><a class="tb2-l" href='reader.html?10' ><c>履</c></a></td>
       </tr>
       <tr>
         <td>
-          <span>11</span><script>s(11)</script><div>地天</div><a href='reader.html?11' ><c>泰</c></a></td>
+          <span>11</span><script>s(11)</script><div>地天</div><a class="tb2-l" href='reader.html?11' ><c>泰</c></a></td>
         <td>
-          <span>26</span><script>s(26)</script><div>山天</div><a href='reader.html?26' ><c>大畜</c></a></td>
+          <span>26</span><script>s(26)</script><div>山天</div><a class="tb2-l" href='reader.html?26' ><c>大畜</c></a></td>
         <td>
-          <span>05</span><script>s(05)</script><div>水天</div><a href='reader.html?5' ><c>需</c></a></td>
+          <span>05</span><script>s(05)</script><div>水天</div><a class="tb2-l" href='reader.html?5' ><c>需</c></a></td>
         <td>
-          <span>09</span><script>s(09)</script><div>風天</div><a href='reader.html?9' ><c>小畜</c></a></td>
+          <span>09</span><script>s(09)</script><div>風天</div><a class="tb2-l" href='reader.html?9' ><c>小畜</c></a></td>
         <td>
-          <span>34</span><script>s(34)</script><div>雷天</div><a href='reader.html?34' ><c>大壯</c></a></td>
+          <span>34</span><script>s(34)</script><div>雷天</div><a class="tb2-l" href='reader.html?34' ><c>大壯</c></a></td>
         <td>
-          <span>14</span><script>s(14)</script><div>火天</div><a href='reader.html?14' ><c>大有</c></a></td>
+          <span>14</span><script>s(14)</script><div>火天</div><a class="tb2-l" href='reader.html?14' ><c>大有</c></a></td>
         <td>
-          <span>43</span><script>s(43)</script><div>澤天</div><a href='reader.html?43' ><c>夬</c></a></td>
+          <span>43</span><script>s(43)</script><div>澤天</div><a class="tb2-l" href='reader.html?43' ><c>夬</c></a></td>
         <td>
-          <span>01</span><script>s(01)</script><a href='reader.html?1' >乾</a><div>為天</div></td>
+          <span>01</span><script>s(01)</script><a class="tb2-l" href='reader.html?1' >乾</a><div>為天</div></td>
       </tr>
     </tbody>
   </table>
