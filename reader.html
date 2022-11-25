@@ -78,6 +78,8 @@
     var name = window.location.search?window.location.search.replace("?",""):"qian";
     name = parseInt(name)>0?nameMap[name-1]:name
     name = name?name:"qian";
+	  
+    document.title = `${name[0].toUpperCase()}${name.slice(1)}` + " - R's iChing"
     
     // console.log(name)
     var idx = nameMap.indexOf(name);
