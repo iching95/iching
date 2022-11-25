@@ -106,6 +106,7 @@
     .tb2 .tb2-l-hidden:after {
       content: '*';
     }
+    
     .tb2 .tb2-l-hidden c{
       display: none;
     }
@@ -243,7 +244,8 @@
   </table>
   <script>
     var stateHide = false;
-    var switchHide = function(){
+    var switchHide = function(e){
+        e.preventdefault()
         stateHide = !stateHide;
         var anchors = document.getElementsByClassName('tb2-l');
         for(var i = 0; i < anchors.length; i++) {
@@ -253,7 +255,7 @@
         }
     }
   </script>
-  <div class="rand" onclick="switchHide()">
+  <div class="rand" onclick="switchHide(this)">
     <script>
       document.write("<span>" + String.fromCharCode(9776 + Math.floor(Math.random() * 8)) + "</span>");
       document.write("<span>" + String.fromCharCode(9776 + Math.floor(Math.random() * 8)) + "</span>");
