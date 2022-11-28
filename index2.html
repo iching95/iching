@@ -132,12 +132,12 @@
           .then(response => response.text())
           .then((data) => {
             let rows = JSON.parse(data);
-            let n = 0;
-            // console.log(rows);
+            let n = 1;
+            console.log(rows);
             for (let i=1;i<=13;i++){
               document.write("<tr>");
               for (let j=1;j<=7;j++){
-                document.write(`<td><a href='reader.html?${n+1}'><span>${n+1}.</span> ${rows[n].c}</a></td>`);
+                document.write(`<td><a href='reader.html?${n}'><span>${n}.</span> ${rows[n].c}</a></td>`);
                 n++;
               }
               document.write("</tr>");
