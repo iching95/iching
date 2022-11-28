@@ -159,6 +159,7 @@
         for (let i=0;i<8;i++){
           tbodyHTML2 += ("<tr>");
           for (let j=0;j<8;j++){
+            const n = order[j];
             const row = Object.entries(rows).filter(row => (row[1].d === n || row[1].d[0] === n));
             console.log(row);
             // tbodyHTML2 += (`<td><a href='reader.html?${n}'><span>${n}.</span> ${row[n].c}</a></td>`);
