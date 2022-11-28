@@ -152,7 +152,7 @@
         }
 
         const order = [];
-        rows.entries.filter(row => (row.d.length == 1)).map(r => order.push(r.d));
+        Object.entries(rows).filter(row => (row.d.length == 1)).map(r => order.push(r.d));
         console.log(order);
 
         /*
