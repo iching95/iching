@@ -152,18 +152,15 @@
         }
 
         const order = ['天', '地', '水', '火', '雷', '山', '風', '澤'];
-        // console.log(Object.entries(rows))
-        // Object.entries(rows).filter(row => (row[1].d.length == 1)).map(r => order.push(r[1].d));
-        // console.log(order);
         let tbodyHTML2 = "";
         for (let i=0;i<8;i++){
           tbodyHTML2 += ("<tr>");
-            const row = Object.entries(rows).filter(row => (row[1].d === order[i] || row[1].d[1] === order[i]));
-            console.log(row);
-            row.map(cell=> (tbodyHTML2 += (`<td><span>07</span><script>s(07)</script><div>${cell.d}</div><a class="tb2-l" href='reader.html?7' ><c>${cell.c}</c></a></td><td>`);) )
+          const row = Object.entries(rows).filter(row => (row[1].d === order[i] || row[1].d[1] === order[i]));
+          console.log(row);
+          row.map(cell=> (tbodyHTML2 += (`<td><span>07</span><script>s(07)</script><div>${cell.d}</div><a class="tb2-l" href='reader.html?7' ><c>${cell.c}</c></a></td><td>`);) )
           tbodyHTML2 += ("</tr>");
         }
-
+        
         const tableHTML1 = "<table class='tb1' style='width:100%;'><tbody>" + tbodyHTML1 + "</tbody></table>";
         // const tableHTML2 = "<table class='tb2' style='width:100%;'><tbody>" + tbodyHTML2 + "</tbody></table>";
 
