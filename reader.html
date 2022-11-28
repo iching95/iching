@@ -72,14 +72,10 @@
 	  
     let cookie = document.cookie;
     var isWatch = (cookie == "device=watch")
-	  
-    var nameMap = ["qian","kun","zhun","meng","xu","song","shi","bi","xiao-xu","lu","tai","pi","tong-ren","da-you","qian1","yu","sui","gu","lin","guan","shi-he","bi1","bo","fu","wu-wang","da-xu","yi","da-guo","kan","li","xian","heng","dun","da-zhuang","jin","ming-yi","jia-ren","kui","jian","jie","sun","yi1","guai","gou","cui","sheng","kun1","jing","ge","ding","zhen","gen","jian1","gui-mei","feng","lu1","xun","dui","huan","jie1","zhong-fu","xiao-guo","ji-ji","wei-ji"]
     
-    var name = window.location.search?window.location.search.replace("?",""):"qian";
-    name = parseInt(name)>0?nameMap[name-1]:name
-    name = name?name:"qian";
+    var idx = window.location.search?window.location.search.replace("?",""):1;
+    idx = parseInt(idx)>0?idx:1
 	  
-    var idx = nameMap.indexOf(name);
     var symbol = String.fromCharCode(19904+idx)
     var n = 1+idx
     
@@ -104,7 +100,7 @@
     
     var insertHTML = "";
     
-    fetch('content/'+name+'.txt')
+    fetch('content/'+idx+'.txt')
       .then(response => response.text())
       .then((data) => {
         
