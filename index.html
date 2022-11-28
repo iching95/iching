@@ -162,9 +162,11 @@
             console.log(cell);
             const n = cell[0];
             const content = cell[1];
-            const html = `<td><span>${n}</span>
-              <span class='symbol'>${String.fromCharCode(19904+parseInt(n)-1)}</span>
-              <div>${content.d}</div><a class="tb2-l" href='reader.html?${n}' ><c>${content.c}</c></a></td><td>`;
+            const html = `<td>
+                <span>${n}</span>
+                <span class='symbol'>${String.fromCharCode(19904+parseInt(n)-1)}</span>
+                <div>${content.d}</div><a class="tb2-l" href='reader.html?${n}' ><c>${content.c}</c></a>
+              </td>`;
              tbodyHTML2 += html;
           })
           tbodyHTML2 += ("</tr>");
