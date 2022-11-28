@@ -125,31 +125,32 @@
     </script>
   </div>
 
-  <table class="tb1" style="width:100%;">
-    <tbody>
-      <script>
-        fetch('data.txt')
-          .then(response => response.text())
-          .then((data) => {
-            let rows = JSON.parse(data);
-            let n = 1;
-            const skip = [9,20,30,30,30,33,33,35,36,51,60,61,63];
-            console.log(rows);
-            for (let i=1;i<=13;i++){
-              document.write("<tr>");
-              for (let j=1;j<=7;j++){
-                document.write(`<td><a href='reader.html?${n}'><span>${n}.</span> ${rows[n].c}</a></td>`);
-                for (let k=0;k<((rows[n].c.length - 1) + skip.filter(x => x === n).length);k++){
-                  document.write("<td><span></span></td>");
-                }
-                n++;
-              }
-              document.write("</tr>");
+  
+    
+  <script>
+    fetch('data.txt')
+      .then(response => response.text())
+      .then((data) => {
+        let rows = JSON.parse(data);
+        let n = 1;
+        let tbodyHTML = "";
+        const skip = [9,20,30,30,30,33,33,35,36,51,60,61,63];
+        console.log(rows);
+        for (let i=1;i<=13;i++){
+          tbodyHTML += ("<tr>");
+          for (let j=1;j<=7;j++){
+            tbodyHTML += (`<td><a href='reader.html?${n}'><span>${n}.</span> ${rows[n].c}</a></td>`);
+            for (let k=0;k<((rows[n].c.length - 1) + skip.filter(x => x === n).length);k++){
+              tbodyHTML += ("<td><span></span></td>");
             }
-          })
-      </script>
-    </tbody>
-  </table>
+            n++;
+          }
+          tbodyHTML += ("</tr>");
+        }
+      })
+
+      document.write("<table class='tb1' style='width:100%;'><tbody>" + tbodyHTML + "</tbody></table>");
+  </script>
   
   <script>
     var stateHide = false;
