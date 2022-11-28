@@ -73,8 +73,10 @@
     let cookie = document.cookie;
     var isWatch = (cookie == "device=watch")
     
-    var idx = window.location.search?window.location.search.replace("?",""):1;
-    idx = parseInt(parseInt(idx)>0?idx:1)
+    var param = window.location.search.match(/(?[0-9]{1,2})([#]book)?/)
+
+    var idx = parseInt(param[1]?param[1]:1);
+    var loadBook = param[2];
 	  
     var symbol = String.fromCharCode(19904+idx)
     var n = 1+idx
@@ -100,8 +102,9 @@
     // footerHTML = '<div class="footer">' +footerHTML+ '</div>'
     
     var insertHTML = "";
-    
-    fetch('content/'+idx+'.txt')
+    var url = loadBook?"book":"content";
+
+    fetch(url+"/"+idx+'.txt')
       .then(response => response.text())
       .then((data) => {
         
