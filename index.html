@@ -158,9 +158,11 @@
         for (let i=0;i<8;i++){
           tbodyHTML2 += ("<tr>");
           const row = Object.entries(rows).filter(row => (row[1].d === order[i] || row[1].d[1] === order[i]));
-          console.log(row);
           row.map(cell => {
-            const html = `<td><span>07</span><div>${cell.d}</div><a class="tb2-l" href='reader.html?7' ><c>${cell.c}</c></a></td><td>`;
+            console.log(cell);
+            //const html = `<td><span>07</span>
+            //  <span class='symbol'>${String.fromCharCode(19904+parseInt(s)-1)}</span>
+            //  <div>${cell.d}</div><a class="tb2-l" href='reader.html?7' ><c>${cell.c}</c></a></td><td>`;
             tbodyHTML2 += html;
           })
           tbodyHTML2 += ("</tr>");
@@ -197,9 +199,6 @@
     </script>
   </div>
   
-  <script>
-    var s=function(s){document.write("<span class='symbol'>" + String.fromCharCode(19904+parseInt(s)-1) + "</span>")}
-  </script>
     
   <div class="rand" onclick="switchHide()">
     <script>
