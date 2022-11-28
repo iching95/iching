@@ -73,7 +73,7 @@
     let cookie = document.cookie;
     var isWatch = (cookie == "device=watch")
     
-    var param = window.location.search.match(/(?[0-9]{1,2})([#]book)?/)
+    var param = window.location.search.match(/([0-9]{1,2})([#]book)?/)
 
     var idx = parseInt(param[1]?param[1]:1);
     var loadBook = param[2];
@@ -81,7 +81,7 @@
     var symbol = String.fromCharCode(19904+idx)
     var n = 1+idx
     
-    document.title = n
+    document.title = n + " - iChing"
 	  // + ". " + `${name[0].toUpperCase()}${name.slice(1)}`;
 	  // + " - R's iChing"
     
