@@ -160,10 +160,12 @@
           const row = Object.entries(rows).filter(row => (row[1].d === order[i] || row[1].d[1] === order[i]));
           row.map(cell => {
             console.log(cell);
-            //const html = `<td><span>07</span>
-            //  <span class='symbol'>${String.fromCharCode(19904+parseInt(s)-1)}</span>
-            //  <div>${cell.d}</div><a class="tb2-l" href='reader.html?7' ><c>${cell.c}</c></a></td><td>`;
-            // tbodyHTML2 += html;
+            const n = cell[0];
+            const content = cell[1];
+            const html = `<td><span>${n}</span>
+              <span class='symbol'>${String.fromCharCode(19904+parseInt(n)-1)}</span>
+              <div>${content.d}</div><a class="tb2-l" href='reader.html?${n}' ><c>${content.c}</c></a></td><td>`;
+             tbodyHTML2 += html;
           })
           tbodyHTML2 += ("</tr>");
         }
