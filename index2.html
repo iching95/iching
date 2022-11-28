@@ -136,11 +136,11 @@
         let tbodyHTML = "";
         const skip = [9,20,30,30,30,33,33,35,36,51,60,61,63];
         console.log(rows);
-        for (let i=1;i<=13;i++){
+        for (let i=1;i<=12;i++){
           tbodyHTML += ("<tr>");
           for (let j=1;j<=7;j++){
-            tbodyHTML += (`<td><a href='reader.html?${n}'><span>${n}.</span> ${rows[n].c}</a></td>`);
             console.log(n);
+            tbodyHTML += (`<td><a href='reader.html?${n}'><span>${n}.</span> ${rows[n].c}</a></td>`);
             for (let k=0;k<((rows[n].c.length - 1) + skip.filter(x => x === n).length);k++){
               tbodyHTML += ("<td><span></span></td>");
             }
@@ -150,7 +150,7 @@
         }
 
         document.write("<table class='tb1' style='width:100%;'><tbody>" + tbodyHTML + "</tbody></table>");
-        
+
       })
 
   </script>
