@@ -142,7 +142,7 @@
             console.log(n);
             if(rows[n]){
               tbodyHTML += (`<td><a href='reader.html?${n}'><span>${n}.</span> ${rows[n].c}</a></td>`);
-              for (let k=0;k<((rows[n].c.length - 1) + skip.filter(x => x === n).length);k++, j++;){
+              for (let k=0; k<((rows[n].c.length - 1) + skip.filter(x => x === n).length); k++, j++){
                 tbodyHTML += ("<td><span></span></td>");
               }
               n++;
