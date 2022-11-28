@@ -140,6 +140,7 @@
           tbodyHTML += ("<tr>");
           for (let j=1;j<=7;j++){
             tbodyHTML += (`<td><a href='reader.html?${n}'><span>${n}.</span> ${rows[n].c}</a></td>`);
+            console.log(n);
             for (let k=0;k<((rows[n].c.length - 1) + skip.filter(x => x === n).length);k++){
               tbodyHTML += ("<td><span></span></td>");
             }
