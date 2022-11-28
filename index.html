@@ -174,11 +174,12 @@
         let tbodyHTML2 = "";
 
         for (let i=0;i<8;i++){
-          
+
           tbodyHTML2 += ("<tr>");
           const row = Object.entries(rows).filter(row => (row[1].d === order[i] || row[1].d[1] === order[i]));
           
           for (let j=0;j<8;i++){
+            console.log(row)
             const cell = Object.entries(row).filter(cell => (cell[1].d === order[j] || cell[1].d[1] === order[j]));
             console.log(cell);
             const n = cell[0];
