@@ -127,7 +127,8 @@
             line = line + "<span class='np'/>"
           }
           
-          insertHTML =  insertHTML + ("<div class='stmt'>" + line + "</div>");
+          var className = loadBook?" stmt-book":"";
+          insertHTML =  insertHTML + ("<div class='stmt+"+className+"+'>" + line + "</div>");
           
         })
 	   
