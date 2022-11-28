@@ -178,7 +178,7 @@
           tbodyHTML2 += ("<tr>");
           const row = Object.entries(rows).filter(row => (row[1].d === order[i] || row[1].d[1] === order[i]));
           console.log(row)
-          for (let j=0;j<8;i++){
+          for (let j=0;j<8;j++){
             const cell = row.filter(cell => (cell[1].d === order[j] || cell[1].d[1] === order[j]));
             console.log(cell);
             const n = cell[0];
