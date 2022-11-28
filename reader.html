@@ -115,13 +115,16 @@
           var linebreak = stmt.search('#np') > 0;
           
           stmt = stmt.replace("#np","")
-          stmt.split('').forEach(function(char) {
-	    if(!char.match(/[：。，！]/)){
-		line = line + "<c>" + char + "</c>"
-	    }else{
-	    	line = line + "" + char + ""
-	    }
+
+          if(!loadBook){
+            stmt.split('').forEach(function(char) {
+            if(!char.match(/[：。，！]/)){
+              line = line + "<c>" + char + "</c>"
+            }else{
+              line = line + "" + char + ""
+            }
           });
+          }
           
           if(linebreak){
             line = line + "<span class='np'/>"
