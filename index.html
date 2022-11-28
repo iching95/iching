@@ -139,7 +139,7 @@
         for (let i=1;i<=13;i++){
           tbodyHTML1 += ("<tr>");
           for (let j=1;j<=7;j++){
-            console.log(n);
+            // console.log(n);
             if(rows[n]){
               tbodyHTML1 += (`<td><a href='reader.html?${n}'><span>${n}.</span> ${rows[n].c}</a></td>`);
               for (let k=0; k<((rows[n].c.length - 1) + skip.filter(x => x === n).length); k++, j++){
@@ -152,8 +152,9 @@
         }
 
         const order = [];
-        rows.filter(row => (row.d.length == 1)).map(r => order.push(r.d));
+        rows.entries.filter(row => (row.d.length == 1)).map(r => order.push(r.d));
         console.log(order);
+
         /*
         for (let i=0;i<8;i++){
           tbodyHTML2 += ("<tr>");
