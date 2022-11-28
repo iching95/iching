@@ -158,7 +158,7 @@
           const row = Object.entries(rows).filter(row => (row[1].d === order[i] || row[1].d[1] === order[i]));
           console.log(row);
           row.map(cell => {
-            const html = `<td><span>07</span><script>s(07)</script><div>${cell.d}</div><a class="tb2-l" href='reader.html?7' ><c>${cell.c}</c></a></td><td>`;
+            const html = `<td><span>07</span><div>${cell.d}</div><a class="tb2-l" href='reader.html?7' ><c>${cell.c}</c></a></td><td>`;
             tbodyHTML2 += html;
           })
           tbodyHTML2 += ("</tr>");
