@@ -74,7 +74,7 @@
     var isWatch = (cookie == "device=watch")
     
     var idx = window.location.search?window.location.search.replace("?",""):1;
-    idx = parseInt(idx)>0?idx:1
+    idx = parseInt(parseInt(idx)>0?idx:1)
 	  
     var symbol = String.fromCharCode(19904+idx)
     var n = 1+idx
