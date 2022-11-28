@@ -94,13 +94,15 @@
     var next = "location.href='./reader.html?"+(idx+1)+"'";
     var prev = "location.href='./reader.html?"+(idx+1)+"'";
     var home = "location.href='./" + (isWatch?"?watch":"") + "'";
-    var bookSwitch = "location.href='./reader.html?"+(idx)+(loadBook?"":"#book")+"';location.reload();";
+    var bookSwitch = "location.href='./reader.html?"+(idx)+(loadBook?"#text":"#book")+"';location.reload();";
     console.log(bookSwitch)
+
     var footerHTML = "";
     footerHTML += (idx>64?"":('<button onclick="'+next+'" type="button">next</button>'))
     footerHTML += (idx<=0?"":('<button onclick="'+prev+'" type="button">prev</button>'))
     footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
     footerHTML += ('<button onclick="'+bookSwitch+'" type="button">'+(loadBook?"text":"book")+'</button>')
+
     footerHTML += ('<span id="dic"></span><button hidden id="dic-btn1" type="button">cuhk</button>');
     footerHTML += ('<button hidden id="dic-btn2" type="button">ctext</button>');
     footerHTML += ('<button hidden id="dic-btn3" type="button">moe</button>')
