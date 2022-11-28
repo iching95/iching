@@ -118,12 +118,14 @@
 
           if(!loadBook){
             stmt.split('').forEach(function(char) {
-            if(!char.match(/[：。，！]/)){
-              line = line + "<c>" + char + "</c>"
-            }else{
-              line = line + "" + char + ""
-            }
-          });
+              if(!char.match(/[：。，！]/)){
+                line = line + "<c>" + char + "</c>"
+              }else{
+                line = line + "" + char + ""
+              }
+            });
+          }else{
+            line = stmt;
           }
           
           if(linebreak){
