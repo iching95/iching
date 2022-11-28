@@ -140,11 +140,13 @@
           tbodyHTML += ("<tr>");
           for (let j=1;j<=7;j++){
             console.log(n);
-            tbodyHTML += (`<td><a href='reader.html?${n}'><span>${n}.</span> ${rows[n].c}</a></td>`);
-            for (let k=0;k<((rows[n].c.length - 1) + skip.filter(x => x === n).length);k++){
-              tbodyHTML += ("<td><span></span></td>");
+            if(rows[n]){
+              tbodyHTML += (`<td><a href='reader.html?${n}'><span>${n}.</span> ${rows[n].c}</a></td>`);
+              for (let k=0;k<((rows[n].c.length - 1) + skip.filter(x => x === n).length);k++){
+                tbodyHTML += ("<td><span></span></td>");
+              }
+              n++;
             }
-            n++;
           }
           tbodyHTML += ("</tr>");
         }
