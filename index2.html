@@ -125,37 +125,7 @@
     </script>
   </div>
 
-  
-    
-  <script>
-    fetch('data.txt')
-      .then(response => response.text())
-      .then((data) => {
-        let rows = JSON.parse(data);
-        let n = 1;
-        let tbodyHTML = "";
-        const skip = [9,20,30,30,30,33,33,35,36,51,60,61,63];
-        console.log(rows);
-        for (let i=1;i<=13;i++){
-          tbodyHTML += ("<tr>");
-          for (let j=1;j<=7;j++){
-            console.log(n);
-            if(rows[n]){
-              tbodyHTML += (`<td><a href='reader.html?${n}'><span>${n}.</span> ${rows[n].c}</a></td>`);
-              for (let k=0; k<((rows[n].c.length - 1) + skip.filter(x => x === n).length); k++, j++){
-                tbodyHTML += ("<td><span></span></td>");
-              }
-              n++;
-            }
-          }
-          tbodyHTML += ("</tr>");
-        }
-
-        document.write("<table class='tb1' style='width:100%;'><tbody>" + tbodyHTML + "</tbody></table>");
-
-      })
-
-  </script>
+  <div id="tb1-container"></div>
   
   <script>
     var stateHide = false;
@@ -339,6 +309,36 @@
       document.write("<span>" + String.fromCharCode(9856 + Math.floor(Math.random() * 6)) + "</span>");
     </script>
   </div>
+
+  <script>
+    fetch('data.txt')
+      .then(response => response.text())
+      .then((data) => {
+        let rows = JSON.parse(data);
+        let n = 1;
+        let tbodyHTML = "";
+        const skip = [9,20,30,30,30,33,33,35,36,51,60,61,63];
+        console.log(rows);
+        for (let i=1;i<=13;i++){
+          tbodyHTML += ("<tr>");
+          for (let j=1;j<=7;j++){
+            console.log(n);
+            if(rows[n]){
+              tbodyHTML += (`<td><a href='reader.html?${n}'><span>${n}.</span> ${rows[n].c}</a></td>`);
+              for (let k=0; k<((rows[n].c.length - 1) + skip.filter(x => x === n).length); k++, j++){
+                tbodyHTML += ("<td><span></span></td>");
+              }
+              n++;
+            }
+          }
+          tbodyHTML += ("</tr>");
+        }
+
+        const tableHTML = "<table class='tb1' style='width:100%;'><tbody>" + tbodyHTML + "</tbody></table>";
+        document.getElementById("tb1-container").innerHTML = tableHTML;
+      })
+
+  </script>
 
 </body>
 </html>
