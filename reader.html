@@ -81,7 +81,7 @@
 
     var idx = parseInt(param[1]?param[1]:1);
 	  
-    var symbol = String.fromCharCode(19904+idx)
+    var symbol = String.fromCharCode(19904+(idx-1))
     var n = 1+idx
     
     document.title = n + " - iChing"
@@ -95,7 +95,7 @@
     var prev = "location.href='./reader.html?"+(idx+1)+"'";
     var home = "location.href='./" + (isWatch?"?watch":"") + "'";
     var bookSwitch = "location.href='./reader.html?"+(idx)+(loadBook?"#text":"#book")+"';location.reload();";
-    console.log(bookSwitch)
+    // console.log(bookSwitch)
 
     var footerHTML = "";
     footerHTML += (idx>64?"":('<button onclick="'+next+'" type="button">next</button>'))
