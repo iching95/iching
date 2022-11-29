@@ -68,11 +68,15 @@
     }
   </style>
 </head>
+
 <body>
+
   <div id="container">
-  	<div id="header"></div>
+  <div id="header"></div>
+  <div id="toc"></div>
 	<div id="content"></div>
 	<div id="footer"></div>
+
   </div>
   <script>
 	  
@@ -113,6 +117,17 @@
     
     var insertHTML = "";
     var url = loadBook?"book":"content";
+
+    if(loadBook){
+      var tocHTML = `
+        <a href="#line1">初</a>
+        <a href="#line2">二</a>
+        <a href="#line3">三</a>
+        <a href="#line4">四</a>
+        <a href="#line5">五</a>
+        <a href="#line6">上</a>
+      `;
+    }
 
     fetch(url+"/"+idx+'.txt')
       .then(response => response.text())
@@ -195,7 +210,8 @@
         }
                 
       })
-	  
+
+  document.getElementById("toc").innerHTML = tocHTML;
 	document.getElementById("header").innerHTML = headerHTML;
 	document.getElementById("content").innerHTML = "Loading "+ idx + " ..."
     
