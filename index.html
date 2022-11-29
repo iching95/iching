@@ -117,36 +117,21 @@
 </head>
 <body>
   
-  <div class="rand">
-    <script>
-      document.write("<span>" + String.fromCharCode(9776 + Math.floor(Math.random() * 8)) + "</span>");
-      document.write("<span>" + String.fromCharCode(9776 + Math.floor(Math.random() * 8)) + "</span>");
-      document.write("<span>" + String.fromCharCode(9856 + Math.floor(Math.random() * 6)) + "</span>");
-    </script>
-  </div>
-
+  <div id="rand-1" class="rand"></div>
   <div id="tb1-container"></div>
-
-  <div class="rand" onclick="switchHide()">
-    <script>
-      document.write("<span>" + String.fromCharCode(9776 + Math.floor(Math.random() * 8)) + "</span>");
-      document.write("<span>" + String.fromCharCode(9776 + Math.floor(Math.random() * 8)) + "</span>");
-      document.write("<span>" + String.fromCharCode(9856 + Math.floor(Math.random() * 6)) + "</span>");
-    </script>
-  </div>
-
-
+  <div id="rand-2" class="rand"></div>
   <div id="tb2-container"></div>
-
-  <div class="rand" onclick="switchHide()">
-    <script>
-      document.write("<span>" + String.fromCharCode(9776 + Math.floor(Math.random() * 8)) + "</span>");
-      document.write("<span>" + String.fromCharCode(9776 + Math.floor(Math.random() * 8)) + "</span>");
-      document.write("<span>" + String.fromCharCode(9856 + Math.floor(Math.random() * 6)) + "</span>");
-    </script>
-  </div>
+  <div id="rand-3" class="rand"></div>
 
   <script>
+
+    var randLines = function(){
+      var line1 = "<span>" + String.fromCharCode(9776 + Math.floor(Math.random() * 8)) + "</span>"
+      var line2 = "<span>" + String.fromCharCode(9776 + Math.floor(Math.random() * 8)) + "</span>"
+      var dice =  "<span>" + String.fromCharCode(9856 + Math.floor(Math.random() * 6)) + "</span>"
+      // return '<div class="rand" onclick="switchHide()">' + line1 + line2 + dice + '</div>';
+    }
+
     fetch('data.txt')
       .then(response => response.text())
       .then((data) => {
@@ -203,6 +188,15 @@
 
         document.getElementById("tb1-container").innerHTML = tableHTML1;
         document.getElementById("tb2-container").innerHTML = tableHTML2;
+
+        document.getElementById("rand-1").innerHTML = randLines();
+        document.getElementById("rand-2").innerHTML = randLines();
+        document.getElementById("rand-3").innerHTML = randLines();
+
+        document.getElementById("rand-1").onclick = switchHide;
+        document.getElementById("rand-2").onclick = switchHide;
+        document.getElementById("rand-3").onclick = switchHide;
+
       })
 
   </script>
