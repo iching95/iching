@@ -281,6 +281,7 @@
           document.getElementById("pdfs").style.display = (isWatch?"none":"block");
           document.getElementById("pdf-btn").style.display = (isWatch?"none":"block");
           document.getElementById("pdf-btn").addEventListener("mousedown",function(){
+            console.log("xxx")
             var evt = event
             setTimeout(function(){
               document.getElementById("pdfs").dispatchEvent(evt)
