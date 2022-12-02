@@ -108,19 +108,10 @@
 <body>
 
   <div id="container">
-  <div id="header"></div>
-  <div id="toc"></div>
-	<div id="content"></div>
-	<div id="footer">
-    <select name="cars" id="cars">
-      <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="mercedes">Mercedes</option>
-      <option value="audi">Audi</option>
-    </select>
-  </div>
-
-  </div>
+    <div id="header"></div>
+    <div id="toc"></div>
+    <div id="content"></div>
+    <div id="footer"></div>
   <script>
 	  
     let cookie = document.cookie;
@@ -156,6 +147,8 @@
       <option value="wong">wong</option>
       <option value="so">so</option>
     </select>`;
+
+    var pdfeURL = ["pdfefile://chan.pdf#66"];
 
     var footerHTML = "";
     footerHTML += (idx>64?"":('<button onclick="'+next+'" type="button">next</button>'))
