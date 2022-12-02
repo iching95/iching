@@ -164,7 +164,7 @@
         return;
       }
 
-      fetch(url+"/pages.txt")
+      fetch("pages.txt")
       .then(response => response.json())
       .then((pages) => {
         const fname = e.value;
@@ -283,7 +283,7 @@
                 
       })
 
-      fetch(url+"/data.txt")
+      fetch("data.txt")
       .then(response => response.json())
       .then((data) => {
         document.title = (n-1)  + ". " + data[idx-1].c + " - iChing"
