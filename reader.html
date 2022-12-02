@@ -178,12 +178,15 @@
     footerHTML += (idx<=0?"":('<button onclick="'+prev+'" type="button">prev</button>'))
     footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
     footerHTML +=  loadBook?"":`${pdfLinks}<button onclick="openPdfeURL()" type="button">note</button>`;
-    footerHTML += !loadBook?"":('<button onclick="'+bookSwitch+'" type="button">'+(loadBook?"text":"book")+'</button>')
+    footerHTML += !loadBook?"":('<button hidden id="pdf-btn" onclick="'+bookSwitch+'" type="button">'+(loadBook?"text":"book")+'</button>')
     footerHTML += ('<span id="dic"></span><button hidden id="dic-btn1" type="button">cuhk</button>');
     footerHTML += ('<button hidden id="dic-btn2" type="button">ctext</button>');
     footerHTML += ('<button hidden id="dic-btn3" type="button">moe</button>')
     // footerHTML = '<div class="footer">' +footerHTML+ '</div>'
     
+    document.getElementById("pdfs").style.display = (isWatch?"none":"block");
+    document.getElementById("pdf-btn").style.display = (isWatch?"none":"block");
+
     var insertHTML = "";
     var url = loadBook?"book":"content";
 
