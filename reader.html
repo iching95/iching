@@ -166,8 +166,7 @@
 
       fetch(url+"/pages.txt")
       .then(response => response.json())
-      .then((data) => {
-        const pages = 
+      .then((pages) => {
         const fname = e.value;
         location.href='pdfefile:///iching/' + fname + '.pdf#' + ( pages[fname].page[idx - 1] + pages[fname].offset - pages[fname].page[0]);
       }
