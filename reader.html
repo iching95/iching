@@ -286,6 +286,8 @@
                 
       })
 
+      document.getElementById("header").innerHTML = headerHTML;
+
       fetch("data.txt")
       .then(response => response.json())
       .then((data) => {
@@ -294,9 +296,8 @@
 
       })
 
-  document.getElementById("toc").innerHTML = tocHTML;
-	document.getElementById("header").innerHTML = headerHTML;
-	document.getElementById("content").innerHTML = "Loading "+ idx + " ..."
+      document.getElementById("toc").innerHTML = tocHTML;
+	    document.getElementById("content").innerHTML = "Loading "+ idx + " ..."
     
   </script>
 </body>
