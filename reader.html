@@ -192,7 +192,7 @@
     footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
     footerHTML += ('<button onclick="openPdfeURL()" type="button">'+'PDF'+'</button>')
     footerHTML += (pdfLinks);
-    footerHTML += loadBook?"":('<button onclick="'+bookSwitch+'" type="button">'+(loadBook?"text":"book")+'</button>')
+    footerHTML += !loadBook?"":('<button onclick="'+bookSwitch+'" type="button">'+(loadBook?"text":"book")+'</button>')
 
     footerHTML += ('<span id="dic"></span><button hidden id="dic-btn1" type="button">cuhk</button>');
     footerHTML += ('<button hidden id="dic-btn2" type="button">ctext</button>');
