@@ -101,6 +101,12 @@
       font-size:40px;
       font-family: monospace;
     }
+
+    #pdfs{
+      padding: 2.5%;
+      width: 100%;
+      margin: auto;
+    }
     
   </style>
 </head>
@@ -141,11 +147,11 @@
 
     var pdfLinks = `
     <select name="pdfs" id="pdfs">
-      <option value="chan">chan</option>
-      <option value="li">li</option>
-      <option value="gao">gao</option>
-      <option value="wong">wong</option>
-      <option value="so">so</option>
+      <option value="chan">Chan</option>
+      <option value="li">Li</option>
+      <option value="gao">Gao</option>
+      <option value="wong">Wong</option>
+      <option value="kangxi">Kangxi</option>
     </select>`;
 
     const pages = {
@@ -160,22 +166,33 @@
       "li":{
         page:[69,74,79,84,89,94,97,101,105,109,112,116,119,122,125,128,132,135,138,140,144,148,151,155,159,163,167,171,175,179,185,189,192,196,200,203,207,210,215,218,221,224,227,231,234,238,241,244,248,251,254,257,260,263,266,271,274,279,283,285,288,292,296],
         offset: (105 - 69)
+      },
+      "wong":{
+        page:[1,9,16,23,29,35,39,45,50,55,60,66,71,76,80,83,87,91,95,99,103,107,112,116,120,124,129,133,137,143,148,152,155,159,163,168,174,178,184,187,191,195,199,204,207,211,214,219,225,228,233,238,242,246,251,256,261,264,266,270,272,276,281,284,289,291],
+        offset: 39
       }
     };
 
     function openPdfeURL(){
       var e = document.getElementById("pdfs");
+
+      if(e.value == "kangxi"){
+        bookSwitch();
+        return;
+      }
+
       var fname = e.value;
       location.href='pdfefile:///iching/' + fname + '.pdf#' + ( pages[fname].page[idx - 1] + pages[fname].offset);
+    
     }
 
     var footerHTML = "";
     footerHTML += (idx>64?"":('<button onclick="'+next+'" type="button">next</button>'))
     footerHTML += (idx<=0?"":('<button onclick="'+prev+'" type="button">prev</button>'))
     footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
-    footerHTML += ('<button onclick="'+bookSwitch+'" type="button">'+(loadBook?"text":"book")+'</button>')
     footerHTML += ('<button onclick="openPdfeURL()" type="button">'+'PDF'+'</button>')
     footerHTML += (pdfLinks);
+    footerHTML += loadBook?"":('<button onclick="'+bookSwitch+'" type="button">'+(loadBook?"text":"book")+'</button>')
 
     footerHTML += ('<span id="dic"></span><button hidden id="dic-btn1" type="button">cuhk</button>');
     footerHTML += ('<button hidden id="dic-btn2" type="button">ctext</button>');
