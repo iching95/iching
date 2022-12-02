@@ -150,12 +150,25 @@
 
     var pdfeURL = ["pdfefile://chan.pdf#66"];
 
+    pages = {
+      "chan":{
+        page:[1,34,52,62,71,81,89,96,103,112,120,128,135,143,150,159,168,175,184,192,200,209,218,226,236,245,253,261,270,277,285,294,302,309,318,325,333,341,350,258,366,375,385,394,403,410,417,426,437,447,455,465,474,485,495,506,515,522,529,536,545,554,562,571],
+        offset:22
+      }
+    };
+
+    function openPdfeURL(){
+      var e = document.getElementById("pdfs");
+      var fname = e.value;
+      location.href='pdfefile://' + fname + '#' + pages[fname][idx - 1];
+    }
+
     var footerHTML = "";
     footerHTML += (idx>64?"":('<button onclick="'+next+'" type="button">next</button>'))
     footerHTML += (idx<=0?"":('<button onclick="'+prev+'" type="button">prev</button>'))
     footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
     footerHTML += ('<button onclick="'+bookSwitch+'" type="button">'+(loadBook?"text":"book")+'</button>')
-    footerHTML += ('<button onclick="'+pdfeURL[0]+'" type="button">'+'PDF'+'</button>')
+    footerHTML += ('<button onclick="openPdfeURL()" type="button">'+'PDF'+'</button>')
     footerHTML += (pdfLinks);
 
     footerHTML += ('<span id="dic"></span><button hidden id="dic-btn1" type="button">cuhk</button>');
