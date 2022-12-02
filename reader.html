@@ -158,7 +158,7 @@
     function openPdfeURL(){
       var e = document.getElementById("pdfs");
       var fname = e.value;
-      location.href='pdfefile://' + fname + '#' + ( pages[fname].page[idx - 1] + pages[fname].offset);
+      location.href='pdfefile://' + fname + '#iching/' + ( pages[fname].page[idx - 1] + pages[fname].offset);
     }
 
     var footerHTML = "";
