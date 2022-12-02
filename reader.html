@@ -283,6 +283,12 @@
                 
       })
 
+      fetch(url+"/data.txt")
+      .then(response => response.json())
+      .then((data) => {
+        document.title = (n-1)  + ". " + data[idx-1].c + " - iChing"
+      })
+
   document.getElementById("toc").innerHTML = tocHTML;
 	document.getElementById("header").innerHTML = headerHTML;
 	document.getElementById("content").innerHTML = "Loading "+ idx + " ..."
