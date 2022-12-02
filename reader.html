@@ -157,7 +157,7 @@
 
     var pdfLinks = `
     <select onchange="openPdfeURL()" name="pdfs" id="pdfs">
-      <option disabled>NOTE</option>
+      <option >NOTE</option>
       <option value="chan">Chan</option>
       <option value="li">Li</option>
       <option value="gao">Gao</option>
@@ -168,6 +168,10 @@
     function openPdfeURL(){
       
       var e = document.getElementById("pdfs");
+
+      if(!e.value){
+        return;
+      }
 
       if(e.value == "kangxi"){
         eval(bookSwitch);
