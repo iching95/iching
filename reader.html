@@ -143,6 +143,7 @@
       <div class='symbol'>${symbol}</div>
       <div id='header-c'>・</div>
     </div>`;
+    document.getElementById("header").innerHTML = headerHTML;
     
     var next = "location.href='./reader.html?"+(idx+1)+"'";
     var prev = "location.href='./reader.html?"+(idx+1)+"'";
@@ -292,8 +293,6 @@
         }
                 
       })
-
-      document.getElementById("header").innerHTML = headerHTML;
 
       fetch("data.txt")
       .then(response => response.json())
