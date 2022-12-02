@@ -158,7 +158,7 @@
     // console.log(bookSwitch)
 
     var pdfLinks = `
-    <select name="pdfs" id="pdfs">
+    <select onchange="openPdfeURL" name="pdfs" id="pdfs">
       <option value="chan">Chan</option>
       <option value="li">Li</option>
       <option value="gao">Gao</option>
@@ -184,11 +184,15 @@
 
     }
 
+    function clickPdfSelect(){
+      document.getElementById("pdfs").click();
+    }
+
     var footerHTML = "";
     footerHTML += (idx>64?"":('<button onclick="'+next+'" type="button">next</button>'))
     footerHTML += (idx<=0?"":('<button onclick="'+prev+'" type="button">prev</button>'))
     footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
-    footerHTML +=  loadBook?"":`${pdfLinks}<button onclick="openPdfeURL()" type="button">note</button>`;
+    footerHTML +=  loadBook?"":`${pdfLinks}<button onclick="clickPdfSelect()" type="button">note</button>`;
     footerHTML += !loadBook?"":('<button hidden id="pdf-btn" onclick="'+bookSwitch+'" type="button">'+(loadBook?"text":"book")+'</button>')
     footerHTML += ('<span id="dic"></span><button hidden id="dic-btn1" type="button">cuhk</button>');
     footerHTML += ('<button hidden id="dic-btn2" type="button">ctext</button>');
