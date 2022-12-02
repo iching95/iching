@@ -169,11 +169,10 @@
       .then(response => response.json())
       .then((data) => {
         const pages = 
-        var fname = e.value;
+        const fname = e.value;
         location.href='pdfefile:///iching/' + fname + '.pdf#' + ( pages[fname].page[idx - 1] + pages[fname].offset - pages[fname].page[0]);
       }
 
-    
     }
 
     var footerHTML = "";
