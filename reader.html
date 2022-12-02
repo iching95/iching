@@ -143,8 +143,9 @@
       <div class='symbol'>${symbol}</div>
       <div id='header-c'>・</div>
     </div>`;
+
     document.getElementById("header").innerHTML = headerHTML;
-    
+
     var next = "location.href='./reader.html?"+(idx+1)+"'";
     var prev = "location.href='./reader.html?"+(idx+1)+"'";
     var home = "location.href='./" + (isWatch?"?watch":"") + "'";
@@ -255,10 +256,6 @@
           
         })
 	   
-        // insertHTML = '<div id="content">' + insertHTML + '</div>'
-        
-        // document.getElementById("container").innerHTML  = headerHTML + insertHTML + footerHTML;
-        document.getElementById("header").innerHTML = headerHTML;
         document.getElementById("content").innerHTML = insertHTML;
         document.getElementById("footer").innerHTML = footerHTML;
 
