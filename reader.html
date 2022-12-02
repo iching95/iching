@@ -111,7 +111,14 @@
   <div id="header"></div>
   <div id="toc"></div>
 	<div id="content"></div>
-	<div id="footer"></div>
+	<div id="footer">
+    <select name="cars" id="cars">
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="mercedes">Mercedes</option>
+      <option value="audi">Audi</option>
+    </select>
+  </div>
 
   </div>
   <script>
@@ -138,13 +145,25 @@
     var prev = "location.href='./reader.html?"+(idx+1)+"'";
     var home = "location.href='./" + (isWatch?"?watch":"") + "'";
     var bookSwitch = "location.href='./reader.html?"+(idx)+(loadBook?"#text":"#book")+"';location.reload();";
+
     // console.log(bookSwitch)
+
+    var pdfLinks = `
+    <select name="pdfs" id="pdfs">
+      <option value="chan">chan</option>
+      <option value="li">li</option>
+      <option value="gao">gao</option>
+      <option value="wong">wong</option>
+      <option value="so">so</option>
+    </select>`;
 
     var footerHTML = "";
     footerHTML += (idx>64?"":('<button onclick="'+next+'" type="button">next</button>'))
     footerHTML += (idx<=0?"":('<button onclick="'+prev+'" type="button">prev</button>'))
     footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
     footerHTML += ('<button onclick="'+bookSwitch+'" type="button">'+(loadBook?"text":"book")+'</button>')
+    footerHTML += ('<button onclick="'+pdfeURL[0]+'" type="button">'+'PDF'+'</button>')
+    footerHTML += (pdfLinks);
 
     footerHTML += ('<span id="dic"></span><button hidden id="dic-btn1" type="button">cuhk</button>');
     footerHTML += ('<button hidden id="dic-btn2" type="button">ctext</button>');
