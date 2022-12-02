@@ -199,10 +199,6 @@
     footerHTML += ('<button hidden id="dic-btn3" type="button">moe</button>')
     // footerHTML = '<div class="footer">' +footerHTML+ '</div>'
     
-    if(!loadBook){
-      document.getElementById("pdfs").style.display = (isWatch?"none":"block");
-      document.getElementById("pdf-btn").style.display = (isWatch?"none":"block");
-    }
 
     var insertHTML = "";
     var url = loadBook?"book":"content";
@@ -279,6 +275,11 @@
 	    
         document.getElementById("dic-btn3").onclick = function(e){
           location.href = dic[2] + encodeURIComponent(document.getElementById("dic-search-word").innerHTML)
+        }
+
+        if(!loadBook){
+          document.getElementById("pdfs").style.display = (isWatch?"none":"block");
+          document.getElementById("pdf-btn").style.display = (isWatch?"none":"block");
         }
 	
         var anchors = document.getElementsByTagName('c');
