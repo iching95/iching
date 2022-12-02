@@ -184,8 +184,10 @@
     footerHTML += ('<button hidden id="dic-btn3" type="button">moe</button>')
     // footerHTML = '<div class="footer">' +footerHTML+ '</div>'
     
-    document.getElementById("pdfs").style.display = (isWatch?"none":"block");
-    document.getElementById("pdf-btn").style.display = (isWatch?"none":"block");
+    if(loadBook){
+      document.getElementById("pdfs").style.display = (isWatch?"none":"block");
+      document.getElementById("pdf-btn").style.display = (isWatch?"none":"block");
+    }
 
     var insertHTML = "";
     var url = loadBook?"book":"content";
