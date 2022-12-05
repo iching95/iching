@@ -114,7 +114,7 @@
     .dic-no-watch{
       display: none;
     }
-    
+
   </style>
 </head>
 
@@ -298,18 +298,6 @@
 	   
         document.getElementById("content").innerHTML = insertHTML;
         document.getElementById("footer").innerHTML = footerHTML;
-   
-	      document.getElementById("dic-btn1").onclick = function(e){
-          location.href = dic[0] + encodeURIComponent(document.getElementById("dic-search-word").innerHTML)
-        }
-	    
-        document.getElementById("dic-btn2").onclick = function(e){
-          location.href = dic[1] + encodeURIComponent(document.getElementById("dic-search-word").innerHTML)
-        }
-	    
-        document.getElementById("dic-btn3").onclick = function(e){
-          location.href = dic[2] + encodeURIComponent(document.getElementById("dic-search-word").innerHTML)
-        }
 
         if(!loadBook){
           document.getElementById("pdfs").style.display = (isWatch?"none":"block");
@@ -322,9 +310,6 @@
               //range.endOffset - range.startOffset
               document.getElementById("dic").innerHTML = "Lookup " + "<span id='dic-search-word' contenteditable>" + clickedLetter + "</span>"
               document.getElementById("dic-ptr").innerHTML = clickedLetter
-              document.getElementById("dic-btn1").style.display = (isWatch?"none":"block");
-              document.getElementById("dic-btn2").style.display = "block";
-              document.getElementById("dic-btn3").style.display = (isWatch?"none":"block");
         }
 
         for(var i = 0; i < anchors.length; i++) {
