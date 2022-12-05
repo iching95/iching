@@ -170,7 +170,7 @@
     </select>`;
 
     var dicLinks = `
-    <select onchange="openDicURL()" name="dics" id="dics">
+    <select hidden onchange="openDicURL()" name="dics" id="dics">
       <option >DICT</option>
       <option id='dic-opt-ctext' value="ctext">ctext</option>
       <option id='dic-opt-cuhk' value="cuhk">cuhk</option>
@@ -304,7 +304,7 @@
           document.getElementById("pdfs").style.display = (isWatch?"none":"block");
           // document.getElementById("pdf-btn").style.display = (isWatch?"none":"block");
         }
-        
+
         document.getElementById("dic-opt-cuhk").style.display = (isWatch?"none":"block");
         document.getElementById("dic-opt-moe").style.display = (isWatch?"none":"block");
 
@@ -314,6 +314,7 @@
               //range.endOffset - range.startOffset
               document.getElementById("dic").innerHTML = "Lookup " + "<span id='dic-search-word' contenteditable>" + clickedLetter + "</span>"
               document.getElementById("dic-ptr").innerHTML = clickedLetter;
+              document.getElementById("dics").style.display = "block";
         }
 
         for(var i = 0; i < anchors.length; i++) {
