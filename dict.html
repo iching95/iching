@@ -19,7 +19,6 @@
     }
 
     .np, .stmt-dic-group{
-      display:block;
       margin: 24px 0px;
     }
 
@@ -170,12 +169,16 @@
             var defs = heteronym.definitions;
             var lastType = null;
             var groupHTML = "";
+            var n = 1;
             defs.map(def => {
 
                 if(lastType !== def.type && lastType){
-                    insertHTML =  insertHTML + ("<ol class='stmt-dic-type-gp'>" + groupHTML + "</ol>");
+                    const tag = n>0?"ol":"li";
+                    insertHTML =  insertHTML + (`<${tag} class='stmt-dic-type-gp'>${groupHTML}</${tag}>`);
                     groupHTML = "";
+                    n=0;
                 }
+                n++;
 
                 var line = "";
                 const quote = def.quote
