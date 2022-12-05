@@ -170,7 +170,7 @@
     </select>`;
 
     var dicLinks = `
-    <select hidden onchange="openDicURL()" name="dics" id="dics">
+    <select hidden onclick="openDicURL()" name="dics" id="dics">
       <option >DICT</option>
       <option id='dic-opt-ctext' value="ctext">ctext</option>
       <option id='dic-opt-cuhk' value="cuhk">cuhk</option>
@@ -215,7 +215,7 @@
 
     }
 
-    async function openDicURL(){
+    function openDicURL(){
       
       var e = document.getElementById("dics");
 
@@ -223,14 +223,8 @@
         return;
       }
 
-      const goto = dic[e.value].url.replace("{w}",encodeURIComponent(document.getElementById("dic-search-word").innerHTML));
-      const win = window.open('about:blank', '_blank');
-      const { url } = await $ajax.post('/redirects', {
-        data: {
-          url: goto
-        }
-      });
-      win.location.href = url;
+      const url = dic[e.value].url.replace("{w}",encodeURIComponent(document.getElementById("dic-search-word").innerHTML));
+      window.open(url, '_blank');
 
     }
 
