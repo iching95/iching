@@ -178,15 +178,15 @@
 
     var dic = {
           'cuhk':{
-            cuhk:https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=
+            url:'https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=',
             watch:true
           },
           'ctext':{
-            url:https://ctext.org/dictionary.pl?if=gb&char=
+            url:'https://ctext.org/dictionary.pl?if=gb&char=',
             watch:false
           },
           'moe':{
-            url:https://dict.revised.moe.edu.tw/search.jsp?md=1&word=
+            url:'https://dict.revised.moe.edu.tw/search.jsp?md=1&word=',
             watch:false
           }
         }
@@ -309,7 +309,7 @@
               const clickedLetter = evt.target.textContent
               //range.endOffset - range.startOffset
               document.getElementById("dic").innerHTML = "Lookup " + "<span id='dic-search-word' contenteditable>" + clickedLetter + "</span>"
-              document.getElementById("dic-ptr").innerHTML = clickedLetter
+              document.getElementById("dic-ptr").innerHTML = clickedLetter;
         }
 
         for(var i = 0; i < anchors.length; i++) {
