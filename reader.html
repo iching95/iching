@@ -158,11 +158,19 @@
     var pdfLinks = `
     <select onchange="openPdfeURL()" name="pdfs" id="pdfs">
       <option >NOTE</option>
-      <option value="chan">Chan</option>
-      <option value="li">Li</option>
-      <option value="gao">Gao</option>
-      <option value="wong">Wong</option>
-      <option value="kangxi">Kangxi</option>
+      <option value="chan">chan</option>
+      <option value="li">li</option>
+      <option value="gao">gao</option>
+      <option value="wong">wong</option>
+      <option value="kangxi">kangxi</option>
+    </select>`;
+
+    var dicLinks = `
+    <select onchange="openDicURL()" name="dics" id="dics">
+      <option >DICT</option>
+      <option value="ctext">ctext</option>
+      <option value="cuhk">cuhk</option>
+      <option value="moe">moe</option>
     </select>`;
 
     function openPdfeURL(){
@@ -192,17 +200,14 @@
     }
 
     var footerHTML = "";
+    footerHTML += !loadBook?"":('<button onclick="'+bookSwitch+'" type="button">'+(loadBook?"text":"book")+'</button>')
     footerHTML += (idx>64?"":('<button onclick="'+next+'" type="button">next</button>'))
     footerHTML += (idx<=0?"":('<button onclick="'+prev+'" type="button">prev</button>'))
     footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
-    footerHTML +=  loadBook?"":`${pdfLinks}<button hidden id="pdf-btn" onclick="clickPdfSelect()" type="button">note</button>`;
-    footerHTML += !loadBook?"":('<button onclick="'+bookSwitch+'" type="button">'+(loadBook?"text":"book")+'</button>')
-    footerHTML += ('<span id="dic"></span><button hidden id="dic-btn1" type="button">cuhk</button>');
-    footerHTML += ('<button hidden id="dic-btn2" type="button">ctext</button>');
-    footerHTML += ('<button hidden id="dic-btn3" type="button">moe</button>')
+    footerHTML +=  loadBook?"":`${pdfLinks}`;
+    footerHTML +=  loadBook?"":`${dicLinks}`;
     // footerHTML = '<div class="footer">' +footerHTML+ '</div>'
     
-
     var insertHTML = "";
     var url = loadBook?"book":"content";
 
