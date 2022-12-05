@@ -172,9 +172,9 @@
     var dicLinks = `
     <select onchange="openDicURL()" name="dics" id="dics">
       <option >DICT</option>
-      <option value="ctext">ctext</option>
-      <option class='dic-no-watch' value="cuhk">cuhk</option>
-      <option class='dic-no-watch' value="moe">moe</option>
+      <option id='dic-opt-ctext' value="ctext">ctext</option>
+      <option id='dic-opt-cuhk' value="cuhk">cuhk</option>
+      <option id='dic-opt-moe' value="moe">moe</option>
     </select>`;
 
     var dic = {
@@ -304,7 +304,10 @@
           document.getElementById("pdfs").style.display = (isWatch?"none":"block");
           // document.getElementById("pdf-btn").style.display = (isWatch?"none":"block");
         }
-	
+        
+        document.getElementById("dic-opt-cuhk").style.display = (isWatch?"none":"block");
+        document.getElementById("dic-opt-moe").style.display = (isWatch?"none":"block");
+
         var anchors = document.getElementsByTagName('c');
         var onclickAction = function(evt) {
               const clickedLetter = evt.target.textContent
