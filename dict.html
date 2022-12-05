@@ -158,9 +158,20 @@
     fetch(tranUrl)
       .then(response => response.json())
       .then((data) => {
-        const stmt = data.translation.English.join(", ");
+        var tranHTML = "";
+
+        data.translation.English.map(tran=>{
+            tranHTML =  tranHTML + ("<li class='stmt-dic-group'>" + tran + "</li>");
+        })
+
         console.log(stmt);
-        document.getElementById("translation").innerHTML = `<div class='stmt stmt-dic-tran'><span class='stmt-dic-type'>英：</span>${stmt}</div>`;
+        const tag = data.translation.English.length>1?"ol":"ul";
+
+        document.getElementById("translation").innerHTML = `
+            <div class='stmt stmt-dic-tran'>
+                <div class='stmt-dic-type'>英</div>
+                <${tag} class='stmt-dic-type-gp'>${tranHTML}</${tag}>
+            </div>`;
       })
 
     fetch(url)
