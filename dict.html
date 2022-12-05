@@ -197,14 +197,15 @@
 
         document.getElementById("content").innerHTML = insertHTML;
 
-        var footerHTML = "";
-        footerHTML += ('<button onclick="history.back()" type="button">back</button>')
-        document.getElementById("footer").innerHTML = footerHTML;
 
       })
 
-    document.getElementById("content").innerHTML = "Loading "+ query[1] + " / " + decodeURI(query[1]) + " ..."
-    
+    document.getElementById("content").innerHTML = "Loading "+ query[1] + " / " + decodeURI(query[1]) + " ...";
+
+    var footerHTML = "";
+    footerHTML += ('<button onclick="history.back()" type="button">back</button>')
+    document.getElementById("footer").innerHTML = footerHTML;
+
   </script>
 </body>
 </html>
