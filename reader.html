@@ -170,11 +170,11 @@
     </select>`;
 
     var dicLinks = `
-    <select hidden onchange="openDicURL()" onchange="openDicURL('click')" name="dics" id="dics">
+    <select hidden onchange="openDicURL()" name="dics" id="dics">
       <option >DICT</option>
       <option id='dic-opt-ctext' value="ctext">ctext</option>
-      <option id='dic-opt-cuhk' value="cuhk">cuhk</option>
       <option id='dic-opt-moe' value="moe">moe</option>
+      <option id='dic-opt-cuhk' value="cuhk" ${isWatch?"disabled":""}>cuhk</option>
     </select>`;
 
     var dic = {
@@ -221,11 +221,6 @@
     function openDicURL(evt){
       
       var e = document.getElementById("dics");
-
-      if(evt=="click" && isWatch){
-        const url = dic[watchDic].url.replace("{w}",encodeURIComponent(document.getElementById("dic-search-word").innerHTML));
-        location.href = url
-      }
 
       if(!e.value){
         return;
