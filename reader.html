@@ -215,7 +215,7 @@
 
     }
 
-    function openDicURL(){
+    async function openDicURL(){
       
       var e = document.getElementById("dics");
 
@@ -224,9 +224,13 @@
       }
 
       const url = dic[e.value].url.replace("{w}",encodeURIComponent(document.getElementById("dic-search-word").innerHTML));
-      setTimeout(() => {
-        window.open(url, '_blank');
-      })
+      const win = window.open('about:blank', '_blank');
+      const { url } = await $ajax.post('/redirects', {
+        data: {
+          url: "myurl.com/route/to/go/to"
+        }
+      });
+      win.location.href = url;
 
     }
 
