@@ -219,7 +219,7 @@
     const watchDic = 'ctext';
 
     function openDicURL(evt){
-      const url = "./dict.html?q=${w}".replace("{w}",encodeURIComponent(document.getElementById("dic-search-word").innerHTML));
+      const url = "./dict.html?q={w}".replace("{w}",encodeURIComponent(document.getElementById("dic-search-word").innerHTML));
       location.href = url
     }
 
