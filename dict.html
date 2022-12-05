@@ -174,7 +174,10 @@
 
                 if(lastType !== def.type && lastType){
                     const tag = n>0?"ol":"li";
-                    insertHTML =  insertHTML + (`<${tag} class='stmt-dic-type-gp'>${groupHTML}</${tag}>`);
+                    insertHTML =  insertHTML + (`
+                    <div class='stmt-dic-type'>${def.type}</div>
+                    <${tag} class='stmt-dic-type-gp'>${groupHTML}</${tag}>
+                    `);
                     groupHTML = "";
                     n=0;
                 }
@@ -184,7 +187,7 @@
                 const quote = def.quote
                 // var linebreak = stmt.search('#np') > 0;
                 
-                line = line + `<div class='stmt stmt-dic-def'>${def.def} <span class='stmt-dic-type'>${def.type}</span></div>`
+                line = line + `<div class='stmt stmt-dic-def'>${def.def}</div>`
 
                 def.example?def.example.map(stmt=>{
                     line = line + `<div class='stmt stmt-dic-example'>${stmt}</div>`
