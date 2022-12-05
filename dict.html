@@ -154,17 +154,17 @@
             
             line = line + `<div class='stmt stmt-dic-def'>${def.def} [${def.def}]</div>`
 
-            def.example.map(stmt=>{
+            def.example?def.example.map(stmt=>{
                 line = line + `<div class='stmt stmt-dic-example'>${stmt}</div>`
-            })
+            }):null;
 
-            def.quote.map(stmt=>{
+            def.quote?def.quote.map(stmt=>{
                 line = line + `<div class='stmt stmt-dic-quote'>${stmt}</div>`
-            })
+            }):null;
 
-            def.link.map(stmt=>{
+            def.link?def.link.map(stmt=>{
                 line = line + `<div class='stmt stmt-dic-link'>${stmt}</div>`
-            })
+            }):null;
             
             insertHTML =  insertHTML + ("<div class='stmt-dic-group'>" + line + "</div>");
             
