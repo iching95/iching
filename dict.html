@@ -126,6 +126,15 @@
     .stmt-dic-type{
         background-color: #49494c;
     }
+    ol {
+        list-style-type: none;
+        counter-reset: ol-counter;
+    }
+    ol li:before {
+        font-size:50px;
+        content: counter(ol-counter);
+        counter-increment: ol-counter;
+    }
 
   </style>
 </head>
