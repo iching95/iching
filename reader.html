@@ -178,15 +178,15 @@
 
     var dic = {
           'cuhk':{
-            url:'https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=',
+            url:'https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word={w}',
             watch:true
           },
           'ctext':{
-            url:'https://ctext.org/dictionary.pl?if=gb&char=',
+            url:'https://ctext.org/dictionary.pl?if=gb&char={w}',
             watch:false
           },
           'moe':{
-            url:'https://dict.revised.moe.edu.tw/search.jsp?md=1&word=',
+            url:'https://dict.revised.moe.edu.tw/search.jsp?md=1&word={w}',
             watch:false
           }
         }
@@ -222,7 +222,7 @@
         return;
       }
 
-      location.href = dic[e.value].url + encodeURIComponent(document.getElementById("dic-search-word").innerHTML)
+      location.href = dic[e.value].url.replace("{w}",encodeURIComponent(document.getElementById("dic-search-word").innerHTML))
 
     }
 
