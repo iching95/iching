@@ -168,28 +168,35 @@
         data.heteronyms.map(heteronym => {
 
             var defs = heteronym.definitions;
+            var lastType = null;
 
             defs.map(def => {
-            
-            var line = "";
-            const quote = def.quote
-            // var linebreak = stmt.search('#np') > 0;
-            
-            line = line + `<div class='stmt stmt-dic-def'>${def.def} <span class='stmt-dic-type'>${def.type}</span></div>`
 
-            def.example?def.example.map(stmt=>{
-                line = line + `<div class='stmt stmt-dic-example'>${stmt}</div>`
-            }):null;
+                var line = "";
+                const quote = def.quote
+                // var linebreak = stmt.search('#np') > 0;
+                
+                line = line + `<div class='stmt stmt-dic-def'>${def.def} <span class='stmt-dic-type'>${def.type}</span></div>`
 
-            def.quote?def.quote.map(stmt=>{
-                line = line + `<div class='stmt stmt-dic-quote'>${stmt}</div>`
-            }):null;
+                def.example?def.example.map(stmt=>{
+                    line = line + `<div class='stmt stmt-dic-example'>${stmt}</div>`
+                }):null;
 
-            def.link?def.link.map(stmt=>{
-                line = line + `<div class='stmt stmt-dic-link'>${stmt}</div>`
-            }):null;
-            
-            insertHTML =  insertHTML + ("<div class='stmt-dic-group'>" + line + "</div>");
+                def.quote?def.quote.map(stmt=>{
+                    line = line + `<div class='stmt stmt-dic-quote'>${stmt}</div>`
+                }):null;
+
+                def.link?def.link.map(stmt=>{
+                    line = line + `<div class='stmt stmt-dic-link'>${stmt}</div>`
+                }):null;
+                
+                insertHTML =  insertHTML + ("<li class='stmt-dic-group'>" + line + "</li>");
+
+                if(lastType !== def.type && lastType){
+                    insertHTML =  insertHTML + ("<ol class='stmt-dic-type-gp'>" + line + "</ol>");
+                }
+
+                lastType = def.type
             
             })
 
