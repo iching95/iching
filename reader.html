@@ -170,7 +170,7 @@
     </select>`;
 
     var dicLinks = `
-    <select hidden onclick="openDicURL()" name="dics" id="dics">
+    <select hidden onchange="openDicURL()" name="dics" id="dics">
       <option >DICT</option>
       <option id='dic-opt-ctext' value="ctext">ctext</option>
       <option id='dic-opt-cuhk' value="cuhk">cuhk</option>
@@ -210,7 +210,8 @@
       .then(response => response.json())
       .then((pages) => {
         const fname = e.value;
-        location.href='pdfefile:///iching/' + fname + '.pdf#' + ( pages[fname].page[idx - 1] + pages[fname].offset - pages[fname].page[0]);
+        const url = 'pdfefile:///iching/' + fname + '.pdf#' + ( pages[fname].page[idx - 1] + pages[fname].offset - pages[fname].page[0]);
+        location.href = url
       })
 
     }
@@ -223,9 +224,12 @@
         return;
       }
 
-      const url = dic[e.value].url.replace("{w}",encodeURIComponent(document.getElementById("dic-search-word").innerHTML));
-      window.open(url, '_blank');
-
+      fetch("pages.txt?v3")
+      .then(response => response.json())
+      .then((pages) => {
+        const url = dic[e.value].url.replace("{w}",encodeURIComponent(document.getElementById("dic-search-word").innerHTML));
+        window.open(url,'_blank');
+      })   
     }
 
 
