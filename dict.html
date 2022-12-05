@@ -172,21 +172,22 @@
 
         data.heteronyms.map(heteronym => {
 
-            var defs = heteronym.definitions;
+            var defs = [...heteronym.definitions,null];
             var lastType = null;
             var groupHTML = "";
             var n = 1;
             defs.map(def => {
 
-                if(lastType !== def.type && lastType){
+                if(!def || lastType !== def.type && lastType){
                     const tag = n>1?"ol":"ul";
                     insertHTML =  insertHTML + (`
-                    <div class='stmt-dic-type'>${def.type}</div>
+                    <div class='stmt-dic-type'>${lastType}</div>
                     <${tag} class='stmt-dic-type-gp'>${groupHTML}</${tag}>
                     `);
                     groupHTML = "";
                     n=0;
                 }
+                
                 n++;
 
                 var line = "";
