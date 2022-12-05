@@ -170,7 +170,7 @@
     </select>`;
 
     var dicLinks = `
-    <select hidden onchange="openDicURL()" name="dics" id="dics">
+    <select hidden onchange="openMoreDicURL()" name="dics" id="dics">
       <option >DICT</option>
       <option id='dic-opt-ctext' value="ctext">ctext</option>
       <option id='dic-opt-moe' value="moe">moe</option>
@@ -219,6 +219,11 @@
     const watchDic = 'ctext';
 
     function openDicURL(evt){
+      const url = "./dict.html?q=${w}".replace("{w}",encodeURIComponent(document.getElementById("dic-search-word").innerHTML));
+      location.href = url
+    }
+
+    function openMoreDicURL(evt){
       
       var e = document.getElementById("dics");
 
@@ -237,7 +242,10 @@
     footerHTML += (idx<=0?"":('<button onclick="'+prev+'" type="button">prev</button>'))
     footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
     footerHTML +=  loadBook?"":`${pdfLinks}`;
-    footerHTML +=  loadBook?"":`<div id='dic'></div>${dicLinks}`;
+    footerHTML +=  loadBook?"":`<div id='dic'></div>
+    <button id='dic-btn' onclick="openDicURL()" type="button">dict</button>
+    ${dicLinks}`;
+    
     // footerHTML = '<div class="footer">' +footerHTML+ '</div>'
     
     var insertHTML = "";
