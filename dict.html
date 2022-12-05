@@ -148,6 +148,7 @@
       .then(response => response.json())
       .then((data) => {
 
+        var insertHTML = "";
         console.log(data);
 
         data.heteronyms.map(heteronym => {
