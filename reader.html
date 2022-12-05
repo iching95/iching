@@ -107,8 +107,12 @@
       font-family: monospace;
     }
 
-    #pdfs{
+    #pdfs, #dics{
       -webkit-appearance: none;
+    }
+    
+    .dic-no-watch{
+      display: none;
     }
     
   </style>
@@ -151,7 +155,6 @@
     var next = "location.href='./reader.html?"+(idx+1)+"'";
     var prev = "location.href='./reader.html?"+(idx+1)+"'";
     var home = "location.href='./" + (isWatch?"?watch":"") + "'";
-    var bookSwitch = "location.href='./reader.html?"+(idx)+(loadBook?"#text":"#book")+"';location.reload();";
 
     // console.log(bookSwitch)
 
@@ -169,13 +172,29 @@
     <select onchange="openDicURL()" name="dics" id="dics">
       <option >DICT</option>
       <option value="ctext">ctext</option>
-      <option value="cuhk">cuhk</option>
-      <option value="moe">moe</option>
+      <option class='dic-no-watch' value="cuhk">cuhk</option>
+      <option class='dic-no-watch' value="moe">moe</option>
     </select>`;
+
+    var dic = {
+          'cuhk':{
+            cuhk:https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=
+            watch:true
+          },
+          'ctext':{
+            url:https://ctext.org/dictionary.pl?if=gb&char=
+            watch:false
+          },
+          'moe':{
+            url:https://dict.revised.moe.edu.tw/search.jsp?md=1&word=
+            watch:false
+          }
+        }
 
     function openPdfeURL(){
       
       var e = document.getElementById("pdfs");
+      var bookSwitch = "location.href='./reader.html?"+(idx)+(loadBook?"#text":"#book")+"';location.reload();";
 
       if(!e.value){
         return;
@@ -195,9 +214,18 @@
 
     }
 
-    function clickPdfSelect(){
-      document.getElementById("pdfs").click();
+    function openDicURL(){
+      
+      var e = document.getElementById("dics");
+
+      if(!e.value){
+        return;
+      }
+
+      location.href = dic[e.value].url + encodeURIComponent(document.getElementById("dic-search-word").innerHTML)
+
     }
+
 
     var footerHTML = "";
     footerHTML += !loadBook?"":('<button onclick="'+bookSwitch+'" type="button">'+(loadBook?"text":"book")+'</button>')
@@ -270,9 +298,7 @@
 	   
         document.getElementById("content").innerHTML = insertHTML;
         document.getElementById("footer").innerHTML = footerHTML;
-
-        var dic = ["https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=", "https://ctext.org/dictionary.pl?if=gb&char=", "https://dict.revised.moe.edu.tw/search.jsp?md=1&word="];
-	
+   
 	      document.getElementById("dic-btn1").onclick = function(e){
           location.href = dic[0] + encodeURIComponent(document.getElementById("dic-search-word").innerHTML)
         }
