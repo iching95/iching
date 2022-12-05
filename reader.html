@@ -223,11 +223,11 @@
         return;
       }
 
-      const url = dic[e.value].url.replace("{w}",encodeURIComponent(document.getElementById("dic-search-word").innerHTML));
+      const goto = dic[e.value].url.replace("{w}",encodeURIComponent(document.getElementById("dic-search-word").innerHTML));
       const win = window.open('about:blank', '_blank');
       const { url } = await $ajax.post('/redirects', {
         data: {
-          url: "myurl.com/route/to/go/to"
+          url: goto
         }
       });
       win.location.href = url;
