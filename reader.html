@@ -224,13 +224,9 @@
         return;
       }
 
-      fetch("pages.txt?v3")
-      .then(response => response.json())
-      .then((pages) => {
-        const url = dic[e.value].url.replace("{w}",encodeURIComponent(document.getElementById("dic-search-word").innerHTML));
-        // window.open(url,'_blank');
-        location.href = url
-      })   
+      const url = dic[e.value].url.replace("{w}",encodeURIComponent(document.getElementById("dic-search-word").innerHTML));
+      // window.open(url,'_blank');
+      location.href = url
     }
 
 
