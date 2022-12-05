@@ -155,7 +155,7 @@
       .then((data) => {
         const stmt = data.translation.English.join(", ");
         console.log(stmt);
-        document.getElementById("translation").innerHTML = `<div class='stmt stmt-dic-tran'>${stmt}</div>`;
+        document.getElementById("translation").innerHTML = `<div class='stmt stmt-dic-tran'>英：${stmt}</div>`;
       })
 
     fetch(url)
