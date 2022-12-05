@@ -141,35 +141,40 @@
       .then((data) => {
 
         console.log(data);
-        var defs = data.heteronyms.definitions;
 
-        defs.map(def => {
-          
-          var line = "";
-          const quote = def.quote
-          var linebreak = stmt.search('#np') > 0;
-          
-          line = line + `<div class='stmt stmt-dic-def'>${def.def} [${def.def}]</div>`
+        data.heteronyms.map(heteronym => {
 
-          def.example.map(stmt=>{
-            line = line + `<div class='stmt stmt-dic-example'>${stmt}</div>`
-          })
+            var defs = heteronym.definitions;
 
-          def.quote.map(stmt=>{
-            line = line + `<div class='stmt stmt-dic-quote'>${stmt}</div>`
-          })
+            defs.map(def => {
+            
+            var line = "";
+            const quote = def.quote
+            var linebreak = stmt.search('#np') > 0;
+            
+            line = line + `<div class='stmt stmt-dic-def'>${def.def} [${def.def}]</div>`
 
-          def.link.map(stmt=>{
-            line = line + `<div class='stmt stmt-dic-link'>${stmt}</div>`
-          })
-          
-          insertHTML =  insertHTML + ("<div class='stmt-dic-group'>" + line + "</div>");
-          
+            def.example.map(stmt=>{
+                line = line + `<div class='stmt stmt-dic-example'>${stmt}</div>`
+            })
+
+            def.quote.map(stmt=>{
+                line = line + `<div class='stmt stmt-dic-quote'>${stmt}</div>`
+            })
+
+            def.link.map(stmt=>{
+                line = line + `<div class='stmt stmt-dic-link'>${stmt}</div>`
+            })
+            
+            insertHTML =  insertHTML + ("<div class='stmt-dic-group'>" + line + "</div>");
+            
+            })
+            
         })
 
       })
 
-      document.getElementById("content").innerHTML = "Loading "+ query[1] + " ..."
+      document.getElementById("content").innerHTML = "Loading "+ query[1] + " / " + decodeURI(query[1]) + " ..."
     
   </script>
 </body>
