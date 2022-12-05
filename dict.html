@@ -131,7 +131,7 @@
     let cookie = document.cookie;
     var isWatch = (cookie == "device=watch")
     
-    var query = window.location.search.match(/(?q=[.])/)
+    var query = window.location.search.match(/q=([.]+)$/);
     const url = "https://www.moedict.tw/pua/{w}".replace("{w}", query);
 
     fetch(url)
