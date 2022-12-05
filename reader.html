@@ -308,7 +308,9 @@
           // document.getElementById("pdf-btn").style.display = (isWatch?"none":"block");
         }
 
-        document.getElementById("dic-opt-cuhk").style.display = (isWatch?"none":"block");
+        if(isWatch){
+          document.getElementById("dic-opt-cuhk").outerHTML = "";
+        }
 
         var anchors = document.getElementsByTagName('c');
         var onclickAction = function(evt) {
