@@ -169,7 +169,7 @@
 
             var defs = heteronym.definitions;
             var lastType = null;
-
+            var groupHTML = "";
             defs.map(def => {
 
                 var line = "";
@@ -190,10 +190,11 @@
                     line = line + `<div class='stmt stmt-dic-link'>${stmt}</div>`
                 }):null;
                 
-                insertHTML =  insertHTML + ("<li class='stmt-dic-group'>" + line + "</li>");
+                groupHTML =  groupHTML + ("<li class='stmt-dic-group'>" + line + "</li>");
 
                 if(lastType !== def.type && lastType){
-                    insertHTML =  insertHTML + ("<ol class='stmt-dic-type-gp'>" + line + "</ol>");
+                    insertHTML =  insertHTML + ("<ol class='stmt-dic-type-gp'>" + groupHTML + "</ol>");
+                    groupHTML = "";
                 }
 
                 lastType = def.type
