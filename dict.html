@@ -172,6 +172,11 @@
             var groupHTML = "";
             defs.map(def => {
 
+                if(lastType !== def.type && lastType){
+                    insertHTML =  insertHTML + ("<ol class='stmt-dic-type-gp'>" + groupHTML + "</ol>");
+                    groupHTML = "";
+                }
+
                 var line = "";
                 const quote = def.quote
                 // var linebreak = stmt.search('#np') > 0;
@@ -191,12 +196,6 @@
                 }):null;
                 
                 groupHTML =  groupHTML + ("<li class='stmt-dic-group'>" + line + "</li>");
-
-                if(lastType !== def.type && lastType){
-                    insertHTML =  insertHTML + ("<ol class='stmt-dic-type-gp'>" + groupHTML + "</ol>");
-                    groupHTML = "";
-                }
-
                 lastType = def.type
             
             })
