@@ -133,6 +133,7 @@
     <div id="header"></div>
     <div id="toc"></div>
     <div id="content"></div>
+    <div id="translation"></div>
     <div id="footer"></div>
   <script>
 	  
@@ -150,6 +151,7 @@
       .then((data) => {
         const stmt = data.translation.English.join(", ");
         console.log(stmt);
+        document.getElementById("translation").innerHTML = stmt;
       })
 
     fetch(url)
@@ -169,7 +171,7 @@
             const quote = def.quote
             // var linebreak = stmt.search('#np') > 0;
             
-            line = line + `<div class='stmt stmt-dic-def'>${def.def} [${def.def}]</div>`
+            line = line + `<div class='stmt stmt-dic-def'>${def.def} [${def.type}]</div>`
 
             def.example?def.example.map(stmt=>{
                 line = line + `<div class='stmt stmt-dic-example'>${stmt}</div>`
