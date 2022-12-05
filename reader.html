@@ -192,10 +192,10 @@
           }
         }
 
+    const bookSwitch = "location.href='./reader.html?"+(idx)+(loadBook?"#text":"#book")+"';location.reload();";
     function openPdfeURL(){
       
       var e = document.getElementById("pdfs");
-      var bookSwitch = "location.href='./reader.html?"+(idx)+(loadBook?"#text":"#book")+"';location.reload();";
 
       if(!e.value){
         return;
