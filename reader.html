@@ -171,7 +171,7 @@
 
     var dicLinks = `
     <select hidden onchange="openMoreDicURL()" name="dics" id="dics">
-      <option >DICT</option>
+      <option >MORE DICT...</option>
       <option id='dic-opt-ctext' value="ctext">ctext</option>
       <option id='dic-opt-moe' value="moe">moe</option>
       <option id='dic-opt-cuhk' value="cuhk" ${isWatch?"disabled":""}>cuhk</option>
@@ -187,7 +187,7 @@
             watch:false
           },
           'moe':{
-            url:'https://www.moedict.tw/{w}',
+            url:'https://dict.revised.moe.edu.tw/search.jsp?md=1&word={w}',
             watch:false
           }
         }
