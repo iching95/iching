@@ -224,7 +224,9 @@
       }
 
       const url = dic[e.value].url.replace("{w}",encodeURIComponent(document.getElementById("dic-search-word").innerHTML));
-      window.open(url, '_blank');
+      setTimeout(() => {
+        window.open(url, '_blank');
+      })
 
     }
 
