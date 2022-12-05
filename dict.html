@@ -179,7 +179,7 @@
             defs.map(def => {
 
                 if(lastType !== def.type && lastType){
-                    const tag = n>0?"ol":"li";
+                    const tag = n>1?"ol":"li";
                     insertHTML =  insertHTML + (`
                     <div class='stmt-dic-type'>${def.type}</div>
                     <${tag} class='stmt-dic-type-gp'>${groupHTML}</${tag}>
