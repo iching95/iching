@@ -124,6 +124,10 @@
       display: none;
     }
 
+    .stmt-dic-type{
+        background-color: #49494c;
+    }
+
   </style>
 </head>
 
@@ -151,7 +155,7 @@
       .then((data) => {
         const stmt = data.translation.English.join(", ");
         console.log(stmt);
-        document.getElementById("translation").innerHTML = stmt;
+        document.getElementById("translation").innerHTML = `<div class='stmt stmt-dic-tran'>${stmt}</div>`;
       })
 
     fetch(url)
@@ -171,7 +175,7 @@
             const quote = def.quote
             // var linebreak = stmt.search('#np') > 0;
             
-            line = line + `<div class='stmt stmt-dic-def'>${def.def} [${def.type}]</div>`
+            line = line + `<div class='stmt stmt-dic-def'>${def.def} <span class='stmt-dic-type'>[${def.type}]</span></div>`
 
             def.example?def.example.map(stmt=>{
                 line = line + `<div class='stmt stmt-dic-example'>${stmt}</div>`
