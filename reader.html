@@ -234,7 +234,7 @@
     footerHTML += (idx<=0?"":('<button onclick="'+prev+'" type="button">prev</button>'))
     footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
     footerHTML +=  loadBook?"":`${pdfLinks}`;
-    footerHTML +=  loadBook?"":`${dicLinks}`;
+    footerHTML +=  loadBook?"":`<div id='dic'></div>${dicLinks}`;
     // footerHTML = '<div class="footer">' +footerHTML+ '</div>'
     
     var insertHTML = "";
