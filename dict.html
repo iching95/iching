@@ -142,7 +142,15 @@
     var query = window.location.search.match(/q=([%A-Z0-9]+)$/);
     console.log(window.location.search);
     console.log(query);
-    const url = "https://www.moedict.tw/pua/{w}".replace("{w}", query[1]);
+    const url  = "https://www.moedict.tw/pua/{w}".replace("{w}", query[1]);
+    const tranUrl = "https://www.moedict.tw/a/{w}.json".replace("{w}", query[1]);
+
+    fetch(tranUrl)
+      .then(response => response.json())
+      .then((data) => {
+        const stmt = data.translation.English.join(", ");
+        console.log(stmt);
+      })
 
     fetch(url)
       .then(response => response.json())
@@ -185,7 +193,7 @@
 
       })
 
-      document.getElementById("content").innerHTML = "Loading "+ query[1] + " / " + decodeURI(query[1]) + " ..."
+    document.getElementById("content").innerHTML = "Loading "+ query[1] + " / " + decodeURI(query[1]) + " ..."
     
   </script>
 </body>
