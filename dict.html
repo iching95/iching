@@ -139,7 +139,8 @@
     fetch(url)
       .then(response => response.json())
       .then((data) => {
-        console.log(data)
+
+        console.log(data);
         var defs = data.heteronyms.definitions;
 
         defs.map(def => {
