@@ -139,7 +139,7 @@
     fetch(url)
       .then(response => response.json())
       .then((data) => {
-        
+        console.log(data)
         var defs = data.heteronyms.definitions;
 
         defs.map(def => {
@@ -168,7 +168,7 @@
 
       })
 
-      document.getElementById("content").innerHTML = "Loading "+ query + " ..."
+      document.getElementById("content").innerHTML = "Loading "+ query[1] + " ..."
     
   </script>
 </body>
