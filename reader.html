@@ -235,11 +235,11 @@
       location.href = url
     }
 
-    function markLine(line){
-
+    function markLine(line, lineEle){
+      createBookmark(line, lineEle.parentElement.innerText)
     }
 
-    function createBookmark(){
+    function createBookmark(line, text){
 
       const char = document.getElementById("header-c").innerHTML;
 
@@ -247,8 +247,8 @@
       let body = {
         bookmark: {
           "symbol": `${idx+1} ${symbol} ${char}`,
-          "line" : 1,
-          "text" : "testing",
+          "line" : line,
+          "text" : text,
           "created": new Date().getTime() / 1000
         }
       }
@@ -319,12 +319,12 @@
             var prefix      = match?match[1]:"";
             var stmtContent = match?match[2]:stmt;
 
-            prefix = prefix.replace(/^(初[九六])/,"<strong onclick='markLine(1)' mark-data-id='line1'>$1</strong>");
-            prefix = prefix.replace(/^([六九]二)/,"<strong onclick='markLine(2)' mark-data-id='line2'>$1</strong>");
-            prefix = prefix.replace(/^([六九]三)/,"<strong onclick='markLine(3)' mark-data-id='line3'>$1</strong>");
-            prefix = prefix.replace(/^([六九]四)/,"<strong onclick='markLine(4)' mark-data-id='line4'>$1</strong>");
-            prefix = prefix.replace(/^([六九]五)/,"<strong onclick='markLine(5)' mark-data-id='line5'>$1</strong>");
-            prefix = prefix.replace(/^(上[九六])/,"<strong onclick='markLine(6)' mark-data-id='line6'>$1</strong>");
+            prefix = prefix.replace(/^(初[九六])/,"<strong onclick='markLine(1,this)' mark-data-id='line1'>$1</strong>");
+            prefix = prefix.replace(/^([六九]二)/,"<strong onclick='markLine(2,this)' mark-data-id='line2'>$1</strong>");
+            prefix = prefix.replace(/^([六九]三)/,"<strong onclick='markLine(3,this)' mark-data-id='line3'>$1</strong>");
+            prefix = prefix.replace(/^([六九]四)/,"<strong onclick='markLine(4,this)' mark-data-id='line4'>$1</strong>");
+            prefix = prefix.replace(/^([六九]五)/,"<strong onclick='markLine(5,this)' mark-data-id='line5'>$1</strong>");
+            prefix = prefix.replace(/^(上[九六])/,"<strong onclick='markLine(6,this)' mark-data-id='line6'>$1</strong>");
 
             stmtContent.split('').forEach(function(char) {
               if(!char.match(/[：。，！]/)){
@@ -333,8 +333,6 @@
                 line = line + "" + char + ""
               }
             });
-
-            line = prefix + "" + line + "";
 
           }else{
 
