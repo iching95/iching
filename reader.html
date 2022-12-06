@@ -246,8 +246,9 @@
 
     function createBookmark(){
 
-      if(!document.getElementById("bookmark-btn-line").innerHTML.match([123456])){
-        // return;
+      if(!document.getElementById("bookmark-btn-line").innerHTML.match(/[123456]/)){
+        document.getElementById("bookmark-btn-line").innerHTML = "*"
+        return;
       }
 
       const char = document.getElementById("header-c").innerHTML;
@@ -262,6 +263,8 @@
         }
       }
 
+      document.getElementById("bookmark-btn-line").innerHTML = "…";
+
       fetch(url, {
         method: 'POST',
         headers: {
@@ -273,11 +276,8 @@
       .then((response) => response.json())
       .then(json => {
         console.log(json.bookmark);
-        document.getElementById("bookmark-btn-line").innerHTML = "✔";
+        document.getElementById("bookmark-btn-line").innerHTML = "✓";
       });
-
-
-
 
     }
 
