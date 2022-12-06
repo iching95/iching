@@ -246,6 +246,10 @@
 
     function createBookmark(){
 
+      if(!document.getElementById("bookmark-btn-line").innerHTML.match([123456])){
+        return;
+      }
+
       const char = document.getElementById("header-c").innerHTML;
 
       let url = 'https://api.sheety.co/fbef00d31d82a522981a0887af24b0a8/iching/bookmark';
@@ -253,7 +257,7 @@
         bookmark: {
           "symbol": `${idx+1} ${symbol} ${char}`,
           "line" : bookmarkLine,
-          "text" : _lineEle,
+          "text" : bookmarkText,
           "created": new Date().getTime() / 1000
         }
       }
@@ -269,7 +273,12 @@
       .then((response) => response.json())
       .then(json => {
         console.log(json.bookmark);
+        document.getElementById("bookmark-btn-line").innerHTML = "✔";
       });
+
+
+
+
     }
 
 
