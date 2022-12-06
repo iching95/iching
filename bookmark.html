@@ -1,0 +1,29 @@
+<script>
+    const insertAPI = "https://sheets.googleapis.com/v4/spreadsheets/{spreadsheetId}/values/{range}:append?key={key}";
+    const spreadsheetId = "19kfH58ZczyzTjEO453Kb0P_N1AAwcAhAaU6uJO-89ww";
+    const range = "A1";
+    const apiKey = "AIzaSyDPixQkKKYDc_pJbAxTYACILo8xdGG-NyU";
+
+    let values = [
+        [
+        1,2,3
+        ]
+    ];
+
+    var callURL = insertAPI.replace("{spreadsheetId}",spreadsheetId);
+    callURL = callURL.replace("{range}",range);
+    callURL = callURL.replace("{apiKey}",apiKey);
+
+    console.log(callURL);
+
+    fetch(callURL, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+    body: JSON.stringify({values:values})
+    }).then(res => res.json())
+    .then(res => console.log(res));
+    
+</script>
