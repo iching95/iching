@@ -1,9 +1,9 @@
 <script>
-    const insertAPI = "https://sheets.googleapis.com/v4/spreadsheets/{spreadsheetId}/values/{range}:append?key={key}";
+    const insertAPI = "https://sheets.googleapis.com/v4/spreadsheets/{spreadsheetId}/values/{range}:append?key={key}&clientId={clientId}";
     const spreadsheetId = "19kfH58ZczyzTjEO453Kb0P_N1AAwcAhAaU6uJO-89ww";
     const range = "A1";
     const apiKey = "AIzaSyDPixQkKKYDc_pJbAxTYACILo8xdGG-NyU";
-
+    const clientId = "4/0AfgeXvvBSGv62IUCNUWgeC-68yvwKgH5j_CawraghnEku-MwAlhlZOIiY9adVFAvacY8WA";
     let values = [
         [
         1,2,3
@@ -13,6 +13,7 @@
     var callURL = insertAPI.replace("{spreadsheetId}",spreadsheetId);
     callURL = callURL.replace("{range}",range);
     callURL = callURL.replace("{key}",apiKey);
+    callURL = callURL.replace("{clientId}",clientId);
 
     console.log(callURL);
 
