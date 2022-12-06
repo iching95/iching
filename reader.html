@@ -308,20 +308,27 @@
 
           if(!loadBook){
 
-            stmt = stmt.replace(/^(初[九六])/,"<strong id='line1'>$1</strong>");
-            stmt = stmt.replace(/^([六九]二)/,"<strong id='line2'>$1</strong>");
-            stmt = stmt.replace(/^([六九]三)/,"<strong id='line3'>$1</strong>");
-            stmt = stmt.replace(/^([六九]四)/,"<strong id='line4'>$1</strong>");
-            stmt = stmt.replace(/^([六九]五)/,"<strong id='line5'>$1</strong>");
-            stmt = stmt.replace(/^(上[九六])/,"<strong id='line6'>$1</strong>");
-            
-            stmt.split('').forEach(function(char) {
+            const match = stmt.match(/^([上初]?[九六][二三四五]?)(.+)$/);
+
+            var prefix = match[1];
+            var stmtContent = match[2];
+
+            prefix = prefix.replace(/^(初[九六])/,"<strong id='line1'>$1</strong>");
+            prefix = prefix.replace(/^([六九]二)/,"<strong id='line2'>$1</strong>");
+            prefix = prefix.replace(/^([六九]三)/,"<strong id='line3'>$1</strong>");
+            prefix = prefix.replace(/^([六九]四)/,"<strong id='line4'>$1</strong>");
+            prefix = prefix.replace(/^([六九]五)/,"<strong id='line5'>$1</strong>");
+            prefix = prefix.replace(/^(上[九六])/,"<strong id='line6'>$1</strong>");
+
+            stmtContent.split('').forEach(function(char) {
               if(!char.match(/[：。，！]/)){
                 line = line + "<c>" + char + "</c>"
               }else{
                 line = line + "" + char + ""
               }
             });
+
+            line = prefix + "" + line + "";
 
           }else{
 
