@@ -236,10 +236,15 @@
     }
 
     function createBookmark(){
+
+      const char = document.getElementById("header-c").innerHTML =  data[idx].c;
+
       let url = 'https://api.sheety.co/fbef00d31d82a522981a0887af24b0a8/iching/bookmark';
       let body = {
         bookmark: {
-          "a":"b"
+          "image": `${idx+1} ${symbol} ${char}`,
+          "line" : 1,
+          "text" : "testing",
         }
       }
 
