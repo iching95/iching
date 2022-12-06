@@ -12,7 +12,7 @@
 
     var callURL = insertAPI.replace("{spreadsheetId}",spreadsheetId);
     callURL = callURL.replace("{range}",range);
-    callURL = callURL.replace("{apiKey}",apiKey);
+    callURL = callURL.replace("{key}",apiKey);
 
     console.log(callURL);
 
@@ -25,5 +25,5 @@
     body: JSON.stringify({values:values})
     }).then(res => res.json())
     .then(res => console.log(res));
-    
+
 </script>
