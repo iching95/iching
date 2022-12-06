@@ -193,6 +193,7 @@
         }
 
     const bookSwitch = "location.href='./reader.html?"+(idx)+(loadBook?"#text":"#book")+"';location.reload();";
+    // todo: window.history.pushState({}, '', url);
     function openPdfeURL(){
       
       var e = document.getElementById("pdfs");
