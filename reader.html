@@ -309,9 +309,11 @@
           if(!loadBook){
 
             const match = stmt.match(/^([上初]?[九六][二三四五]?)(.+)$/);
+            
+            console.log(match)
 
-            var prefix = match[1];
-            var stmtContent = match[2];
+            var prefix      = match?match[1]:stmt;
+            var stmtContent = match?match[2]:stmt;
 
             prefix = prefix.replace(/^(初[九六])/,"<strong id='line1'>$1</strong>");
             prefix = prefix.replace(/^([六九]二)/,"<strong id='line2'>$1</strong>");
