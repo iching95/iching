@@ -235,11 +235,29 @@
       location.href = url
     }
 
+    function createBookmark(){
+      let url = 'https://api.sheety.co/fbef00d31d82a522981a0887af24b0a8/iching/bookmark';
+      let body = {
+        bookmark: {
+          1,1
+        }
+      }
+      fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(body)
+      })
+      .then((response) => response.json())
+      .then(json => {
+        console.log(json.bookmark);
+      });
+    }
+
 
     var footerHTML = "";
     footerHTML += !loadBook?"":('<button onclick="'+bookSwitch+'" type="button">'+(loadBook?"text":"book")+'</button>')
-    footerHTML += (idx>64?"":('<button onclick="'+next+'" type="button">next</button>'))
-    footerHTML += (idx<=0?"":('<button onclick="'+prev+'" type="button">prev</button>'))
+    footerHTML += (idx>=64?"":('<button onclick="'+next+'" type="button">next</button>'));
+    footerHTML += (idx<=0?"":('<button onclick="'+prev+'" type="button">prev</button>'));
+    footerHTML += ('<button onclick="createBookmark()" type="button">bookmark</button>')
     footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
     footerHTML +=  loadBook?"":`${pdfLinks}`;
     footerHTML +=  loadBook?"":`<div id='dic'></div>
