@@ -235,11 +235,16 @@
       location.href = url
     }
 
-    function markLine(line, lineEle){
-      createBookmark(line, lineEle.parentElement.innerText)
+    var bookmarkLine = 0;
+    var bookmarkText = "";
+
+    function markLine(_line, _lineEle){
+      document.getElementById("bookmark-btn-line").innerHTML = _line;
+      bookmarkLine = _line;
+      bookmarkText = _lineEle.parentElement.innerText;
     }
 
-    function createBookmark(line, text){
+    function createBookmark(){
 
       const char = document.getElementById("header-c").innerHTML;
 
@@ -247,8 +252,8 @@
       let body = {
         bookmark: {
           "symbol": `${idx+1} ${symbol} ${char}`,
-          "line" : line,
-          "text" : text,
+          "line" : bookmarkLine,
+          "text" : _lineEle,
           "created": new Date().getTime() / 1000
         }
       }
@@ -272,7 +277,7 @@
     footerHTML += !loadBook?"":('<button onclick="'+bookSwitch+'" type="button">'+(loadBook?"text":"book")+'</button>')
     footerHTML += (idx>=64?"":('<button onclick="'+next+'" type="button">next</button>'));
     footerHTML += (idx<=0?"":('<button onclick="'+prev+'" type="button">prev</button>'));
-    footerHTML += ('<button onclick="createBookmark()" type="button">bookmark</button>')
+    footerHTML += ('<button onclick="createBookmark()" type="button">bookmark <span id="bookmark-btn-line"></span></button>')
     footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
     footerHTML +=  loadBook?"":`${pdfLinks}`;
     footerHTML +=  loadBook?"":`<div id='dic'></div>
