@@ -177,6 +177,7 @@
       <option id='dic-opt-ctext' value="ctext">ctext</option>
       <option id='dic-opt-moe' value="moe">moe</option>
       <option id='dic-opt-hanziyuan' value="hanziyuan">hanziyuan</option>
+      <option id='dic-opt-ephhk' value="ephhk">ephhk</option>
       <option id='dic-opt-cuhk' value="cuhk" ${isWatch?"disabled":""}>cuhk</option>
     </select>`;
 
@@ -438,7 +439,7 @@
 	    document.getElementById("content").innerHTML = "Loading "+ idx + " ..."
     
   </script>
-  <form id="ephhk-form" action="https://ephpth.ephhk.com/resource/tools/lcprichi/search/show_word.php" method="get" accept="BIG5" accept-charset="BIG5">
+  <form style="display:none" id="ephhk-form" action="https://ephpth.ephhk.com/resource/tools/lcprichi/search/show_word.php" method="get" accept="BIG5" accept-charset="BIG5">
     <input type="hidden" id="ephhk-form-input" name="input_word">
   </form>
 </body>
