@@ -191,9 +191,8 @@
             watch:false
           }
         }
-
-    const bookSwitch = "location.href='./reader.html?"+(idx)+(loadBook?"#text":"#book")+"';location.reload();";
-    // todo: window.history.pushState({}, '', url);
+    
+    const bookSwitch = "window.history.pushState({}, '', './reader.html?"+(idx)+(loadBook?"#text":"#book")+"');location.reload();";
     function openPdfeURL(){
       
       var e = document.getElementById("pdfs");
