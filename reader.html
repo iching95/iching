@@ -128,11 +128,11 @@
     <div id="footer"></div>
   <script>
 	  
-    var perfEntries = performance.getEntriesByType("navigation");
-
-    if (perfEntries[0].type === "back_forward") {
-        location.reload(true);
+    console.log(performance.navigation.type);
+    if(performance.navigation.type == 2){
+      location.reload(true);
     }
+
     
     let cookie = document.cookie;
     var isWatch = (cookie == "device=watch")
