@@ -324,7 +324,7 @@
     footerHTML += (idx<=0?"":('<button onclick="'+prev+'" type="button">prev</button>'));
     footerHTML += ('<button onclick="'+home+'" type="button">home</button>');
     footerHTML +=  loadBook?"":`
-    <div class='footer-group' id='footer-group-note' hidden>
+    <div class='footer-group' id='footer-group-note'>
       <span class='footer-group-hr'></span>
       ${pdfLinks}
     </div>
@@ -341,7 +341,7 @@
     footerHTML += (`
     <div class='footer-group' id='footer-group-bookmark' hidden>
       <span class='footer-group-hr'></span>
-      <button onclick="createBookmark()" type="button" id="bookmark-btn" hidden>
+      <button onclick="createBookmark()" type="button" id="bookmark-btn">
         bookmark <span id="bookmark-btn-line"></span>
       </button>
     </div>
