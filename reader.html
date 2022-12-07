@@ -163,7 +163,7 @@
 
     var pdfLinks = `
     <select onchange="openPdfeURL()" name="pdfs" id="pdfs">
-      <option >NOTE</option>
+      <option value="0">NOTE</option>
       <option value="chan">chan</option>
       <option value="li">li</option>
       <option value="gao">gao</option>
@@ -175,7 +175,7 @@
 
     var dicLinks = `
     <select hidden onchange="openMoreDicURL()" name="dics" id="dics">
-      <option id='dic-opt-default' >MORE DICT...</option>
+      <option id='dic-opt-default' value="0">MORE DICT...</option>
       <option id='dic-opt-ctext' value="ctext">ctext</option>
       <option id='dic-opt-cuhk' value="cuhk" ${isWatch?"disabled":""}>cuhk</option>
       <option id='dic-opt-moe' value="moe">moe</option>
