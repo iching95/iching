@@ -326,7 +326,7 @@
     footerHTML +=  loadBook?"":`${pdfLinks}`;
 
     footerHTML +=  loadBook?"":`
-    <div class='footer-group footer-group-dic' hidden>
+    <div class='footer-group' id='footer-group-dic' hidden>
       <span class='footer-group-hr'></span>
       <div id='dic'></div>
       <button id='dic-btn' onclick="openDicURL()" type="button">dict</button>
@@ -334,7 +334,7 @@
     </div>`;
 
     footerHTML += (`
-    <div class='footer-group footer-group-bookmark' hidden>
+    <div class='footer-group' id='footer-group-bookmark' hidden>
       <span class='footer-group-hr'></span>
       <button onclick="createBookmark()" type="button" id="bookmark-btn" hidden>
         bookmark <span id="bookmark-btn-line"></span>
