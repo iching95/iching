@@ -150,7 +150,7 @@
           for (let j=1;j<=7;j++){
             // console.log(n);
             if(rows[n]){
-              tbodyHTML1 += (`<td><a href='reader.html?${n}'><span>${n}.</span> ${rows[n].c}</a></td>`);
+              tbodyHTML1 += (`<td><a href='reader.html?i=${n}'><span>${n}.</span> ${rows[n].c}</a></td>`);
               for (let k=0; k<((rows[n].c.length - 1) + skip.filter(x => x === n).length); k++, j++){
                 tbodyHTML1 += ("<td><span></span></td>");
               }
@@ -174,9 +174,9 @@
             const n = cell[0][0];
             const content = cell[0][1];
             const html = `<td><span class='symbol'>${String.fromCharCode(19904+parseInt(n)-1)}</span>` + (content.d.length==2?`
-                <div>${content.d}</div><a class="tb2-l" href='reader.html?${n}' ><c>${content.c}</c></a>
+                <div>${content.d}</div><a class="tb2-l" href='reader.html?i=${n}' ><c>${content.c}</c></a>
               `:`
-                <span class="tb-char-double"><a class="tb2-l" href='reader.html?${n}'><c>${content.c}</c></a></span><div>為${content.d}</div>`) + '</td>'
+                <span class="tb-char-double"><a class="tb2-l" href='reader.html?i=${n}'><c>${content.c}</c></a></span><div>為${content.d}</div>`) + '</td>'
              tbodyHTML2 += html;
           }
 
