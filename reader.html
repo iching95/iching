@@ -116,10 +116,10 @@
       display: none;
     }
 
-    .footer-group::before{
+    .footer-group-hr::before{
       content: '•' !important;
       display: block;
-    }    
+    }
 
   </style>
 </head>
@@ -179,7 +179,7 @@
     </select>`;
 
     var dicLinks = `
-    <select hidden onchange="openMoreDicURL()" name="dics" id="dics">
+    <select onchange="openMoreDicURL()" name="dics" id="dics">
       <option id='dic-opt-default' value="0">MORE DICT...</option>
       <option id='dic-opt-ctext' value="ctext">ctext</option>
       <option id='dic-opt-cuhk' value="cuhk" ${isWatch?"disabled":""}>cuhk</option>
@@ -276,7 +276,7 @@
       document.getElementById("bookmark-btn-line").innerHTML = _line;
       bookmarkLine = _line;
       bookmarkText = _lineEle.parentElement.innerText;
-      document.getElementById("bookmark-btn").style.display = "block"
+      document.getElementById("footer-group-bookmark").style.display = "block"
     }
 
     function createBookmark(){
@@ -325,14 +325,16 @@
     footerHTML +=  loadBook?"":`${pdfLinks}`;
 
     footerHTML +=  loadBook?"":`
-    <div class='footer-group'>
+    <div class='footer-group footer-group-dic' hidden>
+      <span class='footer-group-hr'></span>
       <div id='dic'></div>
       <button id='dic-btn' onclick="openDicURL()" type="button">dict</button>
       ${dicLinks}
     </div>`;
 
     footerHTML += (`
-    <div class='footer-group'>
+    <div class='footer-group footer-group-bookmark' hidden>
+      <span class='footer-group-hr'></span>
       <button onclick="createBookmark()" type="button" id="bookmark-btn" hidden>
         bookmark <span id="bookmark-btn-line"></span>
       </button>
@@ -437,9 +439,8 @@
               //range.endOffset - range.startOffset
               document.getElementById("dic").innerHTML = "Lookup " + "<span id='dic-search-word' contenteditable>" + clickedLetter + "</span>"
               document.getElementById("dic-ptr").innerHTML = clickedLetter;
-              document.getElementById("dics").style.display = "block";
               document.getElementById("dic-opt-default").selected = 'selected';
-              
+              document.getElementById("footer-group-dic").style.display = "block";
         }
 
         for(var i = 0; i < anchors.length; i++) {
