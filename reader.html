@@ -199,12 +199,13 @@
           }
         }
     
-    const bookSwitchQuery = {
+    const query = {
       t:loadBook?"text":"book",
       i:idx
     }
+    const url = './reader.html?' + (new URLSearchParams(query).toString());
+    const bookSwitch = `location.href='${url}';window.history.pushState('','','${url}'`;
 
-    const bookSwitch = "window.history.pushState(" + JSON.stringify(bookSwitchQuery) + ", '', './reader.html');location.reload();";
     function openPdfeURL(){
       
       var e = document.getElementById("pdfs");
