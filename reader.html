@@ -136,7 +136,7 @@
     });
 
     var idx = parseInt(params.i?params.i:1);
-    var loadBook = params.t.match(/book/);
+    var loadBook = params.t?params.t.match(/book/):false;
 	  
     var symbol = String.fromCharCode(19904+(idx-1))
     var n = 1+idx
