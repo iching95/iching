@@ -173,6 +173,12 @@
                 <${tag} class='stmt-dic-type-gp'>${tranHTML}</${tag}>
             </div>`;
       })
+      .catch(error => {
+        document.getElementById("translation").innerHTML = `
+            <div class='stmt stmt-dic-tran'>
+                <div class='stmt-dic-type'>英</div>404
+            </div>`;
+      });
 
     fetch(url)
       .then(response => response.json())
@@ -233,7 +239,9 @@
         document.getElementById("content").innerHTML = insertHTML;
 
 
-      })
+      }).catch(error => {
+        document.getElementById("content").innerHTML = "404";
+      });
 
     document.getElementById("content").innerHTML = "Loading "+ query[1] + " / " + decodeURI(query[1]) + " ...";
 
