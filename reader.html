@@ -204,7 +204,7 @@
       i:idx
     }
     const destURL = './reader.html?' + (new URLSearchParams(query).toString());
-    const bookSwitch = `location.href='${destURL}';window.history.pushState('','','${destURL}'`;
+    const bookSwitch = `location.href='${destURL}';window.history.pushState('','','${destURL}')`;
 
     function openPdfeURL(){
       
