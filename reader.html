@@ -180,6 +180,7 @@
       <option >MORE DICT...</option>
       <option id='dic-opt-ctext' value="ctext">ctext</option>
       <option id='dic-opt-moe' value="moe">moe</option>
+      <option id='dic-opt-hanziyuan' value="moe">hanziyuan</option>
       <option id='dic-opt-cuhk' value="cuhk" ${isWatch?"disabled":""}>cuhk</option>
     </select>`;
 
@@ -194,7 +195,11 @@
           },
           'moe':{
             url:'https://dict.revised.moe.edu.tw/search.jsp?md=1&word={w}',
-            watch:false
+            watch:true
+          },
+          "":{
+            url:'https://hanziyuan.net/#{w}',
+            watch:true
           }
         }
     
