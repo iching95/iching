@@ -116,7 +116,7 @@
       display: none;
     }
 
-    #dic-btn::before{
+    .footer-group::before{
       content: '•' !important;
       display: block;
     }    
@@ -323,12 +323,21 @@
     footerHTML += (idx<=0?"":('<button onclick="'+prev+'" type="button">prev</button>'));
     footerHTML += ('<button onclick="'+home+'" type="button">home</button>');
     footerHTML +=  loadBook?"":`${pdfLinks}`;
-    footerHTML +=  loadBook?"":`<div id='dic'></div>
-    <button id='dic-btn' onclick="openDicURL()" type="button">dict</button>
-    ${dicLinks}`;
 
+    footerHTML +=  loadBook?"":`
+    <div class='footer-group'>
+      <div id='dic'></div>
+      <button id='dic-btn' onclick="openDicURL()" type="button">dict</button>
+      ${dicLinks}
+    </div>`;
 
-    footerHTML += ('<button onclick="createBookmark()" type="button" id="bookmark-btn" hidden>bookmark <span id="bookmark-btn-line"></span></button>')
+    footerHTML += (`
+    <div class='footer-group'>
+      <button onclick="createBookmark()" type="button" id="bookmark-btn" hidden>
+        bookmark <span id="bookmark-btn-line"></span>
+      </button>
+    </div>
+    `)
 
     
     // footerHTML = '<div class="footer">' +footerHTML+ '</div>'
