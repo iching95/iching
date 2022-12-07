@@ -196,6 +196,10 @@
           "hanziyuan":{
             url:'https://hanziyuan.net/#{w}',
             watch:true
+          },
+          "ephhk":{
+            url: null,
+            watch:true
           }
         }
     
@@ -245,8 +249,15 @@
       if(!e.value){
         return;
       }
+      const word = document.getElementById("dic-search-word").innerHTML;
 
-      const url = dic[e.value].url.replace("{w}",encodeURIComponent(document.getElementById("dic-search-word").innerHTML));
+      if(e.value == "ephhk"){
+        document.getElementById("ephhk-form-input").value = word;
+        document.getElementById("ephhk-form").submit();
+        return;
+      }
+
+      const url = dic[e.value].url.replace("{w}",encodeURIComponent(word));
       location.href = url
     }
 
@@ -427,6 +438,8 @@
 	    document.getElementById("content").innerHTML = "Loading "+ idx + " ..."
     
   </script>
-  <form id="ephhk-from" action="https://ephpth.ephhk.com/resource/tools/lcprichi/search/show_word.php" method="get" accept="BIG5" accept-charset="BIG5">
+  <form id="ephhk-form" action="https://ephpth.ephhk.com/resource/tools/lcprichi/search/show_word.php" method="get" accept="BIG5" accept-charset="BIG5">
+    <input type="hidden" id="ephhk-form-input" name="input_word">
+  </form>
 </body>
 </html>
