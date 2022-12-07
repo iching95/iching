@@ -203,8 +203,8 @@
       t:loadBook?"text":"book",
       i:idx
     }
-    const url = './reader.html?' + (new URLSearchParams(query).toString());
-    const bookSwitch = `location.href='${url}';window.history.pushState('','','${url}'`;
+    const destURL = './reader.html?' + (new URLSearchParams(query).toString());
+    const bookSwitch = `location.href='${destURL}';window.history.pushState('','','${destURL}'`;
 
     function openPdfeURL(){
       
