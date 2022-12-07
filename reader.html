@@ -316,12 +316,13 @@
     footerHTML += !loadBook?"":('<button onclick="'+bookSwitch+'" type="button">'+(loadBook?"text":"book")+'</button>')
     footerHTML += (idx>=64?"":('<button onclick="'+next+'" type="button">next</button>'));
     footerHTML += (idx<=0?"":('<button onclick="'+prev+'" type="button">prev</button>'));
-    footerHTML += ('<button onclick="createBookmark()" type="button" id="bookmark-btn" hidden>bookmark <span id="bookmark-btn-line"></span></button>')
     footerHTML += ('<button onclick="'+home+'" type="button">home</button>')
     footerHTML +=  loadBook?"":`${pdfLinks}`;
     footerHTML +=  loadBook?"":`<div id='dic'></div>
     <button id='dic-btn' onclick="openDicURL()" type="button">dict</button>
     ${dicLinks}`;
+    footerHTML += ('<button onclick="createBookmark()" type="button" id="bookmark-btn" hidden>bookmark <span id="bookmark-btn-line"></span></button>')
+
     
     // footerHTML = '<div class="footer">' +footerHTML+ '</div>'
     
