@@ -133,7 +133,7 @@
         
         const page = ( pages[fname].page[idx - 1] + pages[fname].offset - pages[fname].page[0]);
         
-        let path = (device=="desktop")?`D:\Users\dev\Documents\iching\{fname}.pdf#page={page}`:'pdfefile:///iching/{fname}.pdf#{page}'
+        let path = (device=="desktop")?`D:/Users/dev/Documents/iching/{fname}.pdf#page={page}`:'pdfefile:///iching/{fname}.pdf#{page}'
         path = path.replace("{fname}",fname);
         path = path.replace("{page}",page);
 
