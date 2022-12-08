@@ -17,7 +17,7 @@
   <script>
 
     if(document.cookie){
-      let cookie = JSON.parse(document.cookie.replace("params=",""));
+      let cookie = JSON.parse(document.cookie.replace("prefs=",""));
       const isWatch = cookie.device == "watch";
       const theme = cookie.theme;
       document.getElementsByTagName("body").classList.add(`theme-${theme}`);
