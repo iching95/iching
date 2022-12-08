@@ -20,7 +20,7 @@
       let cookie = JSON.parse(document.cookie.replace("prefs=",""));
       const isWatch = cookie.device == "watch";
       const theme = cookie.theme;
-      document.getElementsByTagName("body").classList.add(`theme-${theme}`);
+      document.body.classList.add(`theme-${theme}`);
     }
 
     const params = new Proxy(new URLSearchParams(window.location.search), {
