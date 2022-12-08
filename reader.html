@@ -138,7 +138,8 @@
         path = path.replace("{page}",page);
 
         if(device=="desktop"){
-          window.open(path);
+          // window.open(path);
+          location.href = path;
         }else{
           location.href = path;
         }
