@@ -13,11 +13,14 @@
     <div id="toc"></div>
     <div id="content"></div>
     <div id="footer"></div>
+
   <script>
 
-    let cookie = document.cookie;
-    var isWatch = (cookie == "device=watch")
-    
+    let cookie = JSON.parse(cookie);
+    const isWatch = cookie.params.device == "watch";
+    const theme = cookie.params.theme;
+    document.getElementsByTagName("body").classList.add(`theme-${theme}`);
+
     const params = new Proxy(new URLSearchParams(window.location.search), {
       get: (searchParams, prop) => searchParams.get(prop),
     });

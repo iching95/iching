@@ -26,8 +26,10 @@
     <div id="footer"></div>
   <script>
 	  
-    let cookie = document.cookie;
-    var isWatch = (cookie == "device=watch")
+    let cookie = JSON.parse(cookie);
+    const isWatch = cookie.params.device == "watch";
+    const theme = cookie.params.theme;
+    document.getElementsByTagName("body").classList.add(`theme-${theme}`);
     
     var query = window.location.search.match(/q=([%A-Z0-9]+)$/);
     console.log(window.location.search);
