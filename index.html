@@ -9,19 +9,19 @@
 
     let device = deviceCookMatch?deviceCookMatch[1]:"phone";
     let theme  = themeCookMatch ?themeCookMatch[1] :"dark";
-
+    
     if(document.cookie){
       let cookie = JSON.parse(document.cookie.replace("prefs=",""));
-      isWatch = cookie.device == "watch";
+      device = cookie.device;
       theme = cookie.theme;
     }
-    
-    const isWatch = (device == "watch");
 
     document.cookie = "prefs=" +JSON.stringify({
         device:device,
         theme :theme,
     })
+
+    const isWatch = (device == "watch");
 
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
