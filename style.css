@@ -9,6 +9,10 @@ body.theme-sepia  {
     font-family: monospace;
 }
 
+body.theme-sepia  a{
+    color: #fff;
+}
+
   a{
     color: #fff;
     text-decoration: none;
