@@ -139,7 +139,7 @@
 
         if(device=="desktop"){
           // window.open(path);
-          var win = window.open();
+          var win = window.open(path);
           win.document.body.innerHTML = `<a href='${path}'>${path}</a>`;
         }else{
           location.href = path;
