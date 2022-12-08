@@ -4,17 +4,17 @@
   <title>iChing</title>
   <script>
 
-    const deviceCook = window.location.search.match(/device=([^&]+)/);
-    const themeCook  = window.location.search.match(/theme=([^&]+)+/)
+    const deviceCookMatch = window.location.search.match(/device=([^&]+)/);
+    const themeCookMatch  = window.location.search.match(/theme=([^&]+)+/)
+    const device = deviceCook?deviceCook[1]:"phone";
+    const theme = themeCook?themeCook[1]:"dark";
+    const isWatch = (device == "watch");
 
     document.cookie = "prefs=" +JSON.stringify({
-        device:deviceCook?deviceCook[1]:"phone",
-        theme :themeCook?themeCook[1]:"dark",
+        device:device,
+        theme :theme,
     })
 
-    const isWatch = deviceCook == "watch";
-
-    
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
