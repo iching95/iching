@@ -128,8 +128,15 @@
       .then(response => response.json())
       .then((pages) => {
         const fname = e.value;
-        const url = 'pdfefile:///iching/' + fname + '.pdf#' + ( pages[fname].page[idx - 1] + pages[fname].offset - pages[fname].page[0]);
-        location.href = url
+        
+        const page = ( pages[fname].page[idx - 1] + pages[fname].offset - pages[fname].page[0]);
+        const path = (device=="desktop")?`D:\Users\dev\Documents\iching\{fname}.pdf#page={page}`:'pdfefile:///iching/{fname}.pdf#{page}'
+        
+        path = path.replace("{fname}",fname);
+        path = path.replace("{page}",page);
+        
+        location.href = url;
+
       })
 
     }
