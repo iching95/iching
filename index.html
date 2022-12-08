@@ -7,7 +7,7 @@
     const deviceCookMatch = window.location.search.match(/device=([^&]+)/);
     const themeCookMatch  = window.location.search.match(/theme=([^&]+)+/)
     const device = deviceCookMatch?deviceCookMatch[1]:"phone";
-    const theme = themeCookMatch?themeCookMatch[1]:"dark";
+    const theme  = themeCookMatch ?themeCookMatch[1] :"dark";
     const isWatch = (device == "watch");
 
     document.cookie = "prefs=" +JSON.stringify({
