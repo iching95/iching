@@ -32,9 +32,11 @@
 
     if(document.cookie){
       let cookie = JSON.parse(document.cookie.replace("prefs=",""));
-      isWatch = cookie.device == "watch";
+      device = device.theme;
       theme = cookie.theme;
+      isWatch = cookie.device == "watch";
     }
+
 
     document.body.classList.add(`theme-${theme}`);
     
