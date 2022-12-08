@@ -13,7 +13,6 @@
     })
 
     const isWatch = deviceCook == "watch";
-    document.body.classList.add(`theme-${theme}`);
 
     
   </script>
@@ -29,6 +28,8 @@
   <div id="rand-3" class="rand"></div>
 
   <script>
+
+    document.body.classList.add(`theme-${theme}`);
 
     var randLines = function(){
       var line1 = "<span>" + String.fromCharCode(9776 + Math.floor(Math.random() * 8)) + "</span>"
