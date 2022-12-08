@@ -2,7 +2,12 @@ body {
     background-color: #000;
     color: #fff;
     font-family: monospace;
-  }
+}
+body.theme-sepia  {
+    background-color: #FBF0D9;
+    color: #5F4B32;
+    font-family: monospace;
+}
 
   a{
     color: #fff;
@@ -225,7 +230,7 @@ body {
 
   /* dict */
   
-  .stmt-dic-type{
+.stmt-dic-type{
     background-color: #49494c;
     display: inline;
     font-size: 52px;
