@@ -134,8 +134,12 @@
         
         path = path.replace("{fname}",fname);
         path = path.replace("{page}",page);
-        
-        location.href = url;
+
+        if(device=="desktop"){
+          window.open(path);
+        }else{
+          location.href = path;
+        }
 
       })
 
