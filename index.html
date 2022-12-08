@@ -8,8 +8,8 @@
     const themeCook  = window.location.search.match(/theme=([^&]+)+/)
 
     document.cookie = "prefs=" +JSON.stringify({
-        device:deviceCook[1],
-        theme :themeCook[1]
+        device:deviceCook?deviceCook[1]:"phone",
+        theme :themeCook?themeCook[1]:"dark",
     })
 
     const isWatch = deviceCook == "watch";
