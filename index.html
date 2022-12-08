@@ -7,11 +7,9 @@
     const deviceCook = window.location.search.match(/device=([^&]+)/);
     const themeCook  = window.location.search.match(/theme=([^&]+)+/)
 
-    document.cookie = JSON.stringify({
-      params:{
+    document.cookie = "params=" +JSON.stringify({
         device:deviceCook,
         theme :themeCook
-      }
     })
 
     let cookie = JSON.parse(document.cookie);

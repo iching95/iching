@@ -26,10 +26,12 @@
     <div id="footer"></div>
   <script>
 	  
-    let cookie = JSON.parse(document.cookie);
-    const isWatch = cookie.params.device == "watch";
-    const theme = cookie.params.theme;
-    document.getElementsByTagName("body").classList.add(`theme-${theme}`);
+    if(document.cookie){
+      let cookie = JSON.parse(document.cookie.replace("params=",""));
+      const isWatch = cookie.device == "watch";
+      const theme = cookie.theme;
+      document.getElementsByTagName("body").classList.add(`theme-${theme}`);
+    }
     
     var query = window.location.search.match(/q=([%A-Z0-9]+)$/);
     console.log(window.location.search);
