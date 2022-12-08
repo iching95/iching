@@ -153,8 +153,15 @@
     const watchDic = 'ctext';
 
     function openDicURL(evt){
-      const url = "./dict.html?q={w}".replace("{w}",encodeURIComponent(document.getElementById("dic-search-word").innerHTML));
-      location.href = url
+      const path = "./dict.html?q={w}".replace("{w}",encodeURIComponent(document.getElementById("dic-search-word").innerHTML));
+
+      if(device=="desktop"){
+          // window.open(path);
+          var win = window.open(path);
+        }else{
+          location.href = path;
+        }
+      
     }
 
     function openMoreDicURL(evt){
@@ -172,8 +179,15 @@
         return;
       }
 
-      const url = dic[e.value].url.replace("{w}",encodeURIComponent(word));
-      location.href = url
+      const path = dic[e.value].url.replace("{w}",encodeURIComponent(word));
+
+      if(device=="desktop"){
+          // window.open(path);
+          var win = window.open(path);
+        }else{
+          location.href = path;
+        }
+        
     }
 
     var bookmarkLine = 0;
