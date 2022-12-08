@@ -31,8 +31,12 @@
 
     if(document.cookie){
       let cookie = JSON.parse(document.cookie.replace("prefs=",""));
-      document.body.classList.add(`theme-${theme}`);
+      const isWatch = cookie.device == "watch";
+      const theme = cookie.theme;
+      
     }
+
+    document.body.classList.add(`theme-${theme}`);
     
     var query = window.location.search.match(/q=([%A-Z0-9]+)$/);
     console.log(window.location.search);

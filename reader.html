@@ -21,9 +21,13 @@
 
     if(document.cookie){
       let cookie = JSON.parse(document.cookie.replace("prefs=",""));
-      document.body.classList.add(`theme-${theme}`);
+      const isWatch = cookie.device == "watch";
+      const theme = cookie.theme;
+      
     }
 
+    document.body.classList.add(`theme-${theme}`);
+    
     const params = new Proxy(new URLSearchParams(window.location.search), {
       get: (searchParams, prop) => searchParams.get(prop),
     });
