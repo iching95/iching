@@ -14,6 +14,10 @@
       }
     })
 
+    let cookie = JSON.parse(document.cookie);
+    const isWatch = deviceCook == "watch";
+    document.getElementsByTagName("body").classList.add(`theme-${themeCook}`);
+    
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">

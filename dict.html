@@ -26,7 +26,7 @@
     <div id="footer"></div>
   <script>
 	  
-    let cookie = JSON.parse(cookie);
+    let cookie = JSON.parse(document.cookie);
     const isWatch = cookie.params.device == "watch";
     const theme = cookie.params.theme;
     document.getElementsByTagName("body").classList.add(`theme-${theme}`);
