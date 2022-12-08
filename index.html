@@ -6,8 +6,16 @@
 
     const deviceCookMatch = window.location.search.match(/device=([^&]+)/);
     const themeCookMatch  = window.location.search.match(/theme=([^&]+)+/)
-    const device = deviceCookMatch?deviceCookMatch[1]:"phone";
-    const theme  = themeCookMatch ?themeCookMatch[1] :"dark";
+
+    let device = deviceCookMatch?deviceCookMatch[1]:"phone";
+    let theme  = themeCookMatch ?themeCookMatch[1] :"dark";
+
+    if(document.cookie){
+      let cookie = JSON.parse(document.cookie.replace("prefs=",""));
+      isWatch = cookie.device == "watch";
+      theme = cookie.theme;
+    }
+    
     const isWatch = (device == "watch");
 
     document.cookie = "prefs=" +JSON.stringify({
