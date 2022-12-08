@@ -3,10 +3,18 @@ body {
     color: #fff;
     font-family: monospace;
 }
+
 body.theme-sepia  {
     background-color: #FBF0D9;
     color: #5F4B32;
-    font-family: monospace;
+}
+
+body.theme-desktop  {
+  zoom: 55%;
+  width: 360px;
+  padding: 0px 12px;
+  background-color: #FBF0D9;
+  color: #5F4B32;
 }
 
 body.theme-sepia a{
