@@ -32,8 +32,8 @@
 
     if(document.cookie){
       let cookie = JSON.parse(document.cookie.replace("prefs=",""));
-      device = device.theme;
-      theme = cookie.theme;
+      device  = cookie.device;
+      theme   = cookie.theme;
       isWatch = cookie.device == "watch";
     }
 
