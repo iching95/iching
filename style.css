@@ -4,7 +4,7 @@ body {
     font-family: monospace;
 }
 
-body.theme-sepia  {
+body.theme-sepia, body.theme-desk{
     background-color: #FBF0D9;
     color: #5F4B32;
 }
@@ -13,11 +13,9 @@ body.theme-desk  {
   zoom: 55%;
   width: 360px;
   padding: 0px 12px;
-  background-color: #FBF0D9;
-  color: #5F4B32;
 }
 
-body.theme-sepia a{
+body.theme-sepia a, body.theme-desk a{
     color: #5F4B32;
 }
 
