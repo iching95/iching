@@ -31,10 +31,8 @@
 
     if(document.cookie){
       let cookie = JSON.parse(document.cookie.replace("prefs=",""));
-      console.log(cookie)
-      const isWatch = cookie.device == "watch";
-      const theme = cookie.theme;
-      
+      isWatch = cookie.device == "watch";
+      theme = cookie.theme;
     }
 
     document.body.classList.add(`theme-${theme}`);

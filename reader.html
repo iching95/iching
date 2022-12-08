@@ -21,10 +21,8 @@
 
     if(document.cookie){
       let cookie = JSON.parse(document.cookie.replace("prefs=",""));
-      console.log(cookie)
-      const isWatch = cookie.device == "watch";
-      const theme = cookie.theme;
-      
+      isWatch = cookie.device == "watch";
+      theme = cookie.theme;
     }
 
     document.body.classList.add(`theme-${theme}`);
@@ -274,8 +272,6 @@
           if(!loadBook){
 
             const match = stmt.match(/^([上初]?[九六][二三四五]?)(.+)$/);
-            
-            console.log(match);
 
             var prefix      = match?match[1]:"";
             var stmtContent = match?match[2]:stmt;
