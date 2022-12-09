@@ -16,14 +16,15 @@
 
   <script>
 
-    let isWatch = false;
+let isWatch = false;
     let theme = "dark";
     let device = "phone";
-
-    if(document.cookie){
-      let cookie = JSON.parse(document.cookie.replace("prefs=",""));
-      device  = cookie.device;
-      theme   = cookie.theme;
+    
+    const cookMatch = document.cookie?document.cookie.match(/prefs=([^;]+)/):false
+    if(cookMatch){
+      let cookie = JSON.parse(cookMatch[1]);
+      device = cookie.device;
+      theme = cookie.theme;
       isWatch = cookie.device == "watch";
     }
 

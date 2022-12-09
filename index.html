@@ -7,24 +7,28 @@
     const deviceCookMatch = window.location.search.match(/device=([^&]+)/);
     const themeCookMatch  = window.location.search.match(/theme=([^&]+)+/)
 
+    let isWatch = false;
     let theme = "dark";
     let device = "phone";
-
-    if(document.cookie){
-      let cookie = JSON.parse(document.cookie.replace("prefs=",""));
+    
+    const cookMatch = document.cookie?document.cookie.match(/prefs=([^;]+)/):false
+    if(cookMatch){
+      let cookie = JSON.parse(cookMatch[1]);
       device = cookie.device;
       theme = cookie.theme;
+      isWatch = cookie.device == "watch";
     }
 
     device = deviceCookMatch?deviceCookMatch[1]:device
     theme =  themeCookMatch?themeCookMatch[1]:theme
 
+    var expires = (new Date(Date.now()+ 86400*1000)).toUTCString();
     document.cookie = "prefs=" +JSON.stringify({
         device:device,
         theme :theme,
-    })
+    }) + "; expires=" + expires + ";path=/;"
 
-    const isWatch = (device == "watch");
+    isWatch = (device == "watch");
 
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
