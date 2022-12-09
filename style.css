@@ -113,8 +113,8 @@ td {
 .tb2 td > .symbol{
   display:block;
   font-size:32px;
-  transform: scale(1, 1.5);
-  padding: 4px 0 0;
+  transform: scale(1, 1.8);
+  padding: 4px 0 4px;
 }
 
 .tb2 tr:last-of-type .tb2-l-hidden:after, .-tb-char-double .tb2-l-hidden:after {
