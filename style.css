@@ -114,7 +114,7 @@ td {
   display:block;
   font-size:32px;
   transform: scale(1, 1.8);
-  padding: 4px 0 4px;
+  padding: 4px 0 0px;
 }
 
 .tb2 tr:last-of-type .tb2-l-hidden:after, .-tb-char-double .tb2-l-hidden:after {
