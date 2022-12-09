@@ -159,6 +159,7 @@ button, select{
   border-radius: 9px;
   border:0px;
   text-align: center;
+  cursor: pointer;
 }
 
 .stmt{
