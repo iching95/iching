@@ -4,9 +4,14 @@ body {
     font-family: monospace;
 }
 
-body.theme-sepia, body.theme-desk{
+body.theme-sepia{
     background-color: #FBF0D9;
     color: #5F4B32;
+}
+
+body.theme-desk{
+  background-color: #fff;
+  color: rgb(87, 96, 106);
 }
 
 body.theme-desk  {
@@ -15,8 +20,11 @@ body.theme-desk  {
   padding: 0px 12px;
 }
 
-body.theme-sepia a, body.theme-desk a{
+body.theme-sepia a{
     color: #5F4B32;
+}
+body.theme-desk a{
+  color: #24292f;
 }
 
 body.theme-desk .header {
@@ -114,7 +122,7 @@ td {
   display:block;
   font-size:32px;
   transform: scale(1, 1.8);
-  padding: 4px 0 0px;
+  padding: 4px 0 2px;
 }
 
 .tb2 tr:last-of-type .tb2-l-hidden:after, .-tb-char-double .tb2-l-hidden:after {
