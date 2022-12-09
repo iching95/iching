@@ -16,7 +16,11 @@
 
   <script>
 
-let isWatch = false;
+    var idx = parseInt(params.i?params.i:1);
+    var loadBook = params.t?params.t.match(/book/):false;
+
+
+    let isWatch = false;
     let theme = "dark";
     let device = "phone";
     
@@ -30,14 +34,19 @@ let isWatch = false;
       isWatch = cookie.device == "watch";
     }
 
+    var expires = (new Date(Date.now()+ 86400*1000)).toUTCString();
+    document.cookie = "prefs=" +JSON.stringify({
+        device:device,
+        theme :theme,
+        last:idx
+    }) + "; expires=" + expires + ";path=/;"
+
     document.body.classList.add(`theme-${theme}`);
 
     const params = new Proxy(new URLSearchParams(window.location.search), {
       get: (searchParams, prop) => searchParams.get(prop),
     });
 
-    var idx = parseInt(params.i?params.i:1);
-    var loadBook = params.t?params.t.match(/book/):false;
 	  
     var symbol = String.fromCharCode(19904+(idx-1))
     var n = 1+idx
@@ -244,7 +253,7 @@ let isWatch = false;
     var footerHTML = "";
     footerHTML += !loadBook?"":('<button onclick="'+bookSwitch+'" type="button">'+(loadBook?"text":"book")+'</button>')
     footerHTML += (idx>=64?"":('<button onclick="'+next+'" type="button">next</button>'));
-    footerHTML += (idx<=0?"":('<button onclick="'+prev+'" type="button">prev</button>'));
+    footerHTML += (idx<=1?"":('<button onclick="'+prev+'" type="button">prev</button>'));
     footerHTML += ('<button onclick="'+home+'" type="button">home</button>');
     footerHTML +=  loadBook?"":`
     <div class='footer-group' id='footer-group-note'>

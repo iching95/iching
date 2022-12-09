@@ -10,12 +10,14 @@
     let isWatch = false;
     let theme = "dark";
     let device = "phone";
-    
+    let last = 0;
+
     const cookMatch = document.cookie?document.cookie.match(/prefs=(.+)/):false;
     if(cookMatch){
       let cookie = JSON.parse(cookMatch[1]);
       device = cookie.device;
       theme = cookie.theme;
+      last = cookie.last;
       isWatch = cookie.device == "watch";
     }
 
@@ -36,6 +38,7 @@
 </head>
 
 <body>
+  <div id="last-go-btn"></div>
   <div id="rand-1" class="rand"></div>
   <div id="tb1-container"></div>
   <div id="rand-2" class="rand"></div>
@@ -100,6 +103,13 @@
           tbodyHTML2 += ("</tr>");
         }
 
+        if(last){
+          document.getElementById("last-go-bthn").innerHTML = `
+          <button onclick="location.href='reader.html?i=${last}'" type="button">last read</button>
+          `;
+        }
+
+
         const tableHTML1 = "<table class='tb1' style='width:100%;'><tbody>" + tbodyHTML1 + "</tbody></table>";
         const tableHTML2 = "<table class='tb2' style='width:100%;'><tbody>" + tbodyHTML2 + "</tbody></table>";
 
@@ -116,6 +126,7 @@
       })
 
       document.getElementById("rand-1").innerHTML = randLines();
+
       
   </script>
 
