@@ -19,6 +19,7 @@
     var idx = parseInt(params.i?params.i:1);
     var loadBook = params.t?params.t.match(/book/):false;
 
+    idx = (idx >= 1 && idx <= 64)?idx:1;
 
     let isWatch = false;
     let theme = "dark";
