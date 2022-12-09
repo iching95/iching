@@ -30,7 +30,7 @@
     let theme = "dark";
     let device = "phone";
     
-    const cookMatch = document.cookie?document.cookie.match(/prefs=([^;]+)/):false
+    const cookMatch = document.cookie?document.cookie.match(/prefs=(.+);/):false;
     if(cookMatch){
       let cookie = JSON.parse(cookMatch[1]);
       device = cookie.device;
