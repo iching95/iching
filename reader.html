@@ -20,7 +20,7 @@ let isWatch = false;
     let theme = "dark";
     let device = "phone";
     
-    const cookMatch = document.cookie?document.cookie.match(/prefs=(.+);/):false;
+    const cookMatch = document.cookie?document.cookie.match(/prefs=(.+)/):false;
     console.log(document.cookie);
     console.log(cookMatch);
     if(cookMatch){
