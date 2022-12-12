@@ -4,8 +4,6 @@
   <title>iChing</title>
   <script>
 
-    // https://instant-cell-9492.iching.workers.dev/?i=1&d=w
-
     const deviceCookMatch = window.location.search.match(/device=([^&]+)/);
     const themeCookMatch  = window.location.search.match(/theme=([^&]+)+/);
 
@@ -86,7 +84,7 @@
           for (let j=1;j<=7;j++){
             // console.log(n);
             if(rows[n]){
-              tbodyHTML1 += (`<td><a href='reader.html?i=${n}'><span>${n}.</span> ${rows[n].c}</a></td>`);
+              tbodyHTML1 += (`<td><a href='reader.html?i=${n}'><span>${n}</span> ${rows[n].c}</a></td>`);
               for (let k=0; k<((rows[n].c.length - 1) + skip.filter(x => x === n).length); k++, j++){
                 tbodyHTML1 += ("<td><span></span></td>");
               }
