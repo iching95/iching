@@ -4,8 +4,10 @@
   <title>iChing</title>
   <script>
 
+    // https://instant-cell-9492.iching.workers.dev/?i=1&d=w
+
     const deviceCookMatch = window.location.search.match(/device=([^&]+)/);
-    const themeCookMatch  = window.location.search.match(/theme=([^&]+)+/)
+    const themeCookMatch  = window.location.search.match(/theme=([^&]+)+/);
 
     let isWatch = false;
     let theme = "dark";
@@ -13,23 +15,25 @@
     let last = 0;
 
     const cookMatch = document.cookie?document.cookie.match(/prefs=(.+)/):false;
+    
     if(cookMatch){
       let cookie = JSON.parse(cookMatch[1]);
       device = cookie.device;
       theme = cookie.theme;
       last = cookie.last;
-      isWatch = cookie.device == "watch";
+      isWatch = (cookie.device == "watch");
     }
 
-    device = deviceCookMatch?deviceCookMatch[1]:device
-    theme =  themeCookMatch?themeCookMatch[1]:theme
+    device = deviceCookMatch?deviceCookMatch[1]:device;
+    theme =  themeCookMatch?themeCookMatch[1]:theme;
 
-    var expires = (new Date(Date.now()+ 86400*1000)).toUTCString();
+    var expires = (new Date(Date.now() + 86400 * 1000)).toUTCString();
+
     document.cookie = "prefs=" +JSON.stringify({
         device:device,
         theme :theme,
         last:last
-    }) + "; expires=" + expires + ";path=/;"
+    }) + "; expires=" + expires + ";path=/;";
 
     isWatch = (device == "watch");
 
@@ -56,6 +60,18 @@
       var dice =  "<span>" + String.fromCharCode(9856 + Math.floor(Math.random() * 6)) + "</span>"
       return line1 + line2 + dice ;
     }
+
+    fetch(`https://instant-cell-9492.iching.workers.dev/`)
+      .then((response) => response.json())
+      .then(json => {
+        console.log(json);
+        if(json.idx){
+          const last = json.idx;
+          document.getElementById("last-go-btn").innerHTML = `
+          <button onclick="location.href='reader.html?i=${last}'" type="button">last read (${last})</button>
+          `;
+        }
+    });
 
     fetch('data.txt')
       .then(response => response.text())
@@ -105,10 +121,12 @@
         }
 
         if(last){
+          /*
           console.log(last)
           document.getElementById("last-go-btn").innerHTML = `
           <button onclick="location.href='reader.html?i=${last}'" type="button">last read (${last})</button>
           `;
+          */
         }
 
         const tableHTML1 = "<table class='tb1' style='width:100%;'><tbody>" + tbodyHTML1 + "</tbody></table>";

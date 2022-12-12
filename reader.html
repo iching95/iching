@@ -29,6 +29,7 @@
     let device = "phone";
     
     const cookMatch = document.cookie?document.cookie.match(/prefs=(.+)/):false;
+
     if(cookMatch){
       let cookie = JSON.parse(cookMatch[1]);
       device = cookie.device;
@@ -37,11 +38,18 @@
     }
 
     var expires = (new Date(Date.now()+ 86400*1000)).toUTCString();
+
     document.cookie = "prefs=" +JSON.stringify({
         device:device,
         theme :theme,
         last:idx
     }) + "; expires=" + expires + ";path=/;"
+
+    fetch(`https://instant-cell-9492.iching.workers.dev/?i=${idx}&d=${device}`)
+      .then((response) => response.json())
+      .then(json => {
+        console.log(json);
+    });
 
     document.body.classList.add(`theme-${theme}`);
 
