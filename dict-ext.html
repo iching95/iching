@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     .content-ctext th{
-    width:10%;
+    }
+    .content-ctext td{
+      width:auto;
     }
   </style>
 
@@ -47,8 +49,10 @@
       .then(response => response.text())
       .then((data) => {
 
+        data = data.replace("顯示全文","");
         document.getElementById("content").innerHTML = data;
         document.getElementById("content").classList.add("content-ctext");
+
 
       }).catch(error => {
         document.getElementById("content").innerHTML = "<div class='stmt stmt-dic-type'>404</div>";
