@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  </style>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <div id="container">
+    <div id="header"></div>
+    <div id="toc"></div>
+    <div id="content"></div>
+    <div id="translation"></div>
+    <div id="footer"></div>
+  <script>
+	  
+    let isWatch = false;
+    let theme = "dark";
+    let device = "phone";
+    
+    const cookMatch = document.cookie?document.cookie.match(/prefs=(.+)/):false;
+    if(cookMatch){
+      let cookie = JSON.parse(cookMatch[1]);
+      device = cookie.device;
+      theme = cookie.theme;
+      isWatch = cookie.device == "watch";
+    }
+
+
+    document.body.classList.add(`theme-${theme}`);
+    
+    var query = window.location.search.match(/q=([%A-Z0-9]+)$/);
+    console.log(window.location.search);
+    console.log(query);
+    const url  = "https://sweet-grass-f265.iching.workers.dev/?q={w}".replace("{w}", query[1]);
+    
+    fetch(url)
+      .then(response => response.json())
+      .then((data) => {
+        
+        document.getElementById("content").innerHTML = data;
+
+      }).catch(error => {
+        document.getElementById("content").innerHTML = "<div class='stmt stmt-dic-type'>404</div>";
+      });
+
+    document.getElementById("content").innerHTML = "Loading "+ query[1] + " / " + decodeURI(query[1]) + " ...";
+
+    var footerHTML = "";
+    footerHTML += ('<button onclick="history.back()" type="button">back</button>')
+    document.getElementById("footer").innerHTML = footerHTML;
+
+    const word = decodeURI(query[1]);
+    const headerHTML = `<div id='dic-ptr'>${word}</div>
+    <div class='header'>
+      <div id='header-c'>${word}</div>
+    </div>`;
+    
+    document.getElementById("header").innerHTML = headerHTML;
+    document.title = word + " - iChing Dict"
+    
+  </script>
+</body>
+</html>
+
