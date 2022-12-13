@@ -187,12 +187,15 @@
 
     var findPair = function(n){
       const m = n + 1;
-      const pair = (n%2)?(m+1):(m-1);
+      const pair = (n%2==0)?(m+1):(m-1);
       console.log(n + ", " + pair);
 
-      document.getElementsByClassName(`symbol-hightlight`).map(ele=>{
-        ele.className = "symbol";
-      })
+      const active = document.getElementsByClassName(`symbol-hightlight`);
+      if(active.length){
+        document.getElementsByClassName(`symbol-hightlight`).map(ele=>{
+          ele.className = "symbol";
+        })
+      }
 
       document.getElementById(`symbol-tb2-${m}`).className    = "symbol symbol-hightlight";
       document.getElementById(`symbol-tb2-${pair}`).className = "symbol symbol-hightlight"; 
