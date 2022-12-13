@@ -149,7 +149,7 @@ table:has(.symbol-hightlight) tr {
 }
 
 table:has(.symbol-hightlight) td {
-  opacity: .5;
+  opacity: .33;
 }
 
 table:has(.symbol-hightlight) tr:has(.symbol-hightlight) {
