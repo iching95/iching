@@ -186,7 +186,7 @@
     }
 
     var findPair = function(n){
-      const pair = (n%2==0)?(n+1):(n-1);
+      const pair = (n%2>0)?(n+1):(n-1);
       console.log(n + ", " + pair);
 
       Array.from(document.getElementsByClassName(`symbol-hightlight`)).map(ele=>{
