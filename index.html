@@ -186,9 +186,10 @@
     }
 
     var findPair = function(n){
-      const pair = n%0?(n+1):(n-1);
+      const m = n + 1;
+      const pair = n%0?(m+1):(m-1);
       console.log(n + ", " + pair);
-      document.getElementById(`symbol-tb2-${n}`).className    = "symbol symbol-hightlight";
+      document.getElementById(`symbol-tb2-${m}`).className    = "symbol symbol-hightlight";
       document.getElementById(`symbol-tb2-${pair}`).className = "symbol symbol-hightlight"; 
     }
 
