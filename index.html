@@ -110,11 +110,9 @@
             const n = cell[0][0];
             const content = cell[0][1];
             const html = `<td>
-              <a href="findPair(${parseInt(n)})">
-                <span class='symbol' id='symbol-tb2-${parseInt(n)}'>
+                <span onclick="findPair(${parseInt(n)})" class='symbol' id='symbol-tb2-${parseInt(n)}'>
                   ${String.fromCharCode(19904+parseInt(n)-1)}
                 </span>
-              </a>
               ` + (content.d.length==2?`
                 <div>${content.d}</div><a class="tb2-l" href='reader.html?i=${n}' ><c>${content.c}</c></a>
               `:`
