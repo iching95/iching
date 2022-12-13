@@ -118,7 +118,8 @@ td {
   color:#888;
 }
 
-.tb2 td > .symbol, .tb3 td > .symbol{
+/*.tb2 td > .symbol, .tb3 td > .symbol*/
+td > .symbol {
   display:block;
   font-size:32px;
   transform: scale(1, 1.8);
