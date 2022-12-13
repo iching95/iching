@@ -191,7 +191,11 @@
       console.log(m + ", " + pair);
 
       const active = document.getElementsByClassName(`symbol-hightlight`);
-      console.log(active)
+      if(active.length){
+        active.getElementsByClassName(`symbol-hightlight`).map(ele=>{
+          ele.className = "symbol";
+        })
+      }
 
       document.getElementById(`symbol-tb2-${m}`).className    = "symbol symbol-hightlight";
       document.getElementById(`symbol-tb2-${pair}`).className = "symbol symbol-hightlight"; 
