@@ -188,14 +188,11 @@
     var findPair = function(n){
       const m = n + 1;
       const pair = (n%2==0)?(m+1):(m-1);
-      console.log(m + ", " + pair);
+      console.log(n + ", " + pair);
 
-      const active = document.getElementsByClassName(`symbol-hightlight`);
-      if(active.length){
-        active.map(ele=>{
-          ele.className = "symbol";
-        })
-      }
+      Array.from(document.getElementsByClassName(`symbol-hightlight`)).map(ele=>{
+        ele.className = "symbol";
+      })
 
       document.getElementById(`symbol-tb2-${m}`).className    = "symbol symbol-hightlight";
       document.getElementById(`symbol-tb2-${pair}`).className = "symbol symbol-hightlight"; 
