@@ -186,11 +186,12 @@
     }
 
     var findPair = function(n){
-      console.log(n)
       const pair = n%0?++n:--n;
+      console.log(n + ", " + pair);
       document.getElementById(`symbol-tb2-${n}`).className    = "symbol symbol-hightlight";
       document.getElementById(`symbol-tb2-${pair}`).className = "symbol symbol-hightlight"; 
     }
+
   </script>
 
 </body>
