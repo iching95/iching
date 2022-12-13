@@ -145,7 +145,7 @@ td > .symbol-hightlight {
 }
 
 table:has(.symbol-hightlight) tr {
-  display: :none;
+  display: none;
 }
 
 table:has(.symbol-hightlight) td {
