@@ -47,6 +47,7 @@
   <div id="rand-2" class="rand"></div>
   <div id="tb2-container"></div>
   <div id="rand-3" class="rand"></div>
+  <div id="tb3-container"></div>
 
   <script>
 
@@ -136,8 +137,15 @@
             // console.log(n);
             if(rows[months[ i*6 + j ]]){
 
-              const html = `<td><span class='symbol'>${String.fromCharCode(19904+parseInt(n)-1)}</span>` + (content.d.length==2?`
-              <div>${content.d}</div><a class="tb2-l" href='reader.html?i=${n}' ><c>${content.c}</c></a></td>`;
+              const html = `
+              <td>
+                <span class='symbol'>${String.fromCharCode(19904+parseInt(n)-1)}</span>
+                <div>${content.d}</div>
+                <a class="tb2-l" href='reader.html?i=${n}' >
+                  <c>${content.c}</c>
+                </a>
+              </td>`;
+
               tbodyHTML3 += html;
 
             }
