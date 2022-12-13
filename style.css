@@ -23,6 +23,7 @@ body.theme-desk  {
 body.theme-sepia a{
     color: #5F4B32;
 }
+
 body.theme-desk a{
   color: #24292f;
 }
@@ -62,6 +63,11 @@ td {
   text-align:center;
   font-size: 28px;
 }
+
+.tb3 td{
+  width: 16.6%;
+}
+
 .tb2 td div, .tb3 td div{
   width: 28px;
   margin:auto;
