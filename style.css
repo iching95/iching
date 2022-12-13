@@ -144,6 +144,24 @@ td > .symbol-hightlight {
   color:#fff;
 }
 
+table:has(.symbol-hightlight) tr {
+  display: :none;
+}
+
+table:has(.symbol-hightlight) td {
+  opacity: .5;
+}
+
+table:has(.symbol-hightlight) tr:has(.symbol-hightlight) {
+  display: table-row;
+}
+
+table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
+  opacity: 1;
+}
+
+
+
 .tb2 tr:last-of-type .tb2-l-hidden:after, .-tb-char-double .tb2-l-hidden:after {
   content: '＊' !important;
 }
