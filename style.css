@@ -132,6 +132,14 @@ td > .symbol {
   padding: 4px 0 2px;
 }
 
+body.theme-sepia td > .symbol-hightlight{
+  color: #5F4B32;
+}
+
+body.theme-desk td > .symbol-hightlight{
+color: #24292f;
+}
+
 td > .symbol-hightlight {
   color:#fff;
 }
