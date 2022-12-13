@@ -135,7 +135,8 @@
           tbodyHTML3 += ("<tr>");
           for (let j=0;j<6;j++){
             // console.log(n);
-            const content = rows[months[ i*6 + j ]];
+            const n = months[ i*6 + j ];
+            const content = rows[n];
             const html = `
             <td>
               <span class='symbol'>${String.fromCharCode(19904+parseInt(n)-1)}</span>

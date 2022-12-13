@@ -54,7 +54,7 @@ td {
   text-align:center;
 }
 
-.tb2 td {
+.tb2 td, .tb3 td{
   vertical-align: top;
   padding: 0px 0px 12px;
   width: 12.5%;
@@ -62,7 +62,7 @@ td {
   text-align:center;
   font-size: 28px;
 }
-.tb2 td div {
+.tb2 td div, .tb3 td div{
   width: 28px;
   margin:auto;
 }
@@ -77,7 +77,7 @@ td {
   display: block;
 }
 
-.tb2 a > span {
+.tb2 a > span, .tb3 a > span{
   font-size:22px;
   color:#888;
 }
@@ -95,7 +95,7 @@ td {
   color:#888;
 }
 
-.tb2 a{
+.tb2 a, .tb3 a{
   display:block;
   font-weight:bold;
 }
@@ -118,7 +118,7 @@ td {
   color:#888;
 }
 
-.tb2 td > .symbol{
+.tb2 td > .symbol, .tb3 td > .symbol{
   display:block;
   font-size:32px;
   transform: scale(1, 1.8);
