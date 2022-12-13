@@ -135,20 +135,16 @@
           tbodyHTML3 += ("<tr>");
           for (let j=0;j<6;j++){
             // console.log(n);
-            if(rows[months[ i*6 + j ]]){
-
-              const html = `
-              <td>
-                <span class='symbol'>${String.fromCharCode(19904+parseInt(n)-1)}</span>
-                <div>${content.d}</div>
-                <a class="tb2-l" href='reader.html?i=${n}' >
-                  <c>${content.c}</c>
-                </a>
-              </td>`;
-
-              tbodyHTML3 += html;
-
-            }
+            const content = rows[months[ i*6 + j ]];
+            const html = `
+            <td>
+              <span class='symbol'>${String.fromCharCode(19904+parseInt(n)-1)}</span>
+              <div>${content.d}</div>
+              <a class="tb2-l" href='reader.html?i=${n}' >
+                <c>${content.c}</c>
+              </a>
+            </td>`;
+            tbodyHTML3 += html;
           }
           tbodyHTML3 += ("</tr>");
         }
