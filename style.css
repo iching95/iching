@@ -132,6 +132,10 @@ td > .symbol {
   padding: 4px 0 2px;
 }
 
+td > .symbol-hightlight {
+  color:#fff;
+}
+
 .tb2 tr:last-of-type .tb2-l-hidden:after, .-tb-char-double .tb2-l-hidden:after {
   content: '＊' !important;
 }
