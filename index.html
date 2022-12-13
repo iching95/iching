@@ -127,11 +127,31 @@
           */
         }
 
+        const months = [24,19,11,34,43,1,44,33,12,20,23,2];
+        let tbodyHTML3 = "";
+
+        for (let i=0;i<2;i++){
+          tbodyHTML3 += ("<tr>");
+          for (let j=0;j<6;j++){
+            // console.log(n);
+            if(rows[months[ i*6 + j ]]){
+
+              const html = `<td><span class='symbol'>${String.fromCharCode(19904+parseInt(n)-1)}</span>` + (content.d.length==2?`
+              <div>${content.d}</div><a class="tb2-l" href='reader.html?i=${n}' ><c>${content.c}</c></a></td>`;
+              tbodyHTML3 += html;
+
+            }
+          }
+          tbodyHTML3 += ("</tr>");
+        }
+
         const tableHTML1 = "<table class='tb1' style='width:100%;'><tbody>" + tbodyHTML1 + "</tbody></table>";
         const tableHTML2 = "<table class='tb2' style='width:100%;'><tbody>" + tbodyHTML2 + "</tbody></table>";
+        const tableHTML3 = "<table class='tb3' style='width:100%;'><tbody>" + tbodyHTML3 + "</tbody></table>";
 
         document.getElementById("tb1-container").innerHTML = tableHTML1;
         document.getElementById("tb2-container").innerHTML = tableHTML2;
+        document.getElementById("tb3-container").innerHTML = tableHTML3;
 
         document.getElementById("rand-2").innerHTML = randLines();
         document.getElementById("rand-3").innerHTML = randLines();
