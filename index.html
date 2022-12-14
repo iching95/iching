@@ -209,7 +209,7 @@
       console.log(n + ", " + pair);
       console.log(cross)
 
-      if(cross){
+      if(cross.length){
         
         const crossIdx = cross[0][0];
         console.log(crossIdx);
@@ -217,7 +217,7 @@
         if(crossIdx != pair){
           document.getElementById(`symbol-tb2-${crossIdx}`).className = "symbol symbol-hightlight";
         }
-        
+
       }
 
       document.getElementById(`symbol-tb2-${n}`).className    = "symbol symbol-hightlight";
