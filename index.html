@@ -205,11 +205,11 @@
 
       resetSymbol();
 
-      const cross = Object.entries(rows).filter(row => (row[1].d[0] === rows[n].d[1] && row[1].d[1] === rows[n].d[0]));
       const pair = (n%2>0)?(n+1):(n-1);
+      document.getElementById(`symbol-tb2-${n}`).className    = "symbol symbol-hightlight symbol-selected";
+      document.getElementById(`symbol-tb2-${pair}`).className = "symbol symbol-hightlight";
 
-      console.log(n + ", " + pair);
-      console.log(cross);
+      const cross = Object.entries(rows).filter(row => (row[1].d[0] === rows[n].d[1] && row[1].d[1] === rows[n].d[0]));
 
       if(cross.length){
         
@@ -222,8 +222,6 @@
 
       }
 
-      document.getElementById(`symbol-tb2-${n}`).className    = "symbol symbol-hightlight";
-      document.getElementById(`symbol-tb2-${pair}`).className = "symbol symbol-hightlight";
       document.getElementById("tb2-container").scrollIntoView();
     }
 
