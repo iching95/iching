@@ -164,9 +164,9 @@
         document.getElementById("rand-2").innerHTML = randLines();
         document.getElementById("rand-3").innerHTML = randLines();
 
-        document.getElementById("rand-1").onclick = switchHide;
-        document.getElementById("rand-2").onclick = switchHide;
-        document.getElementById("rand-3").onclick = switchHide;
+        document.getElementById("rand-1").onclick = function(){ switchHide(); resetSymbol(); }
+        document.getElementById("rand-2").onclick = function(){ switchHide(); resetSymbol(); }
+        document.getElementById("rand-3").onclick = function(){ switchHide(); resetSymbol(); }
 
       })
 
@@ -185,9 +185,7 @@
 
     var stateHide = false;
     var switchHide = function(){
-
-      resetSymbol();
-
+      
       stateHide = !stateHide;
       var anchors = document.getElementsByClassName('tb2-l');
       for(var i = 0; i < anchors.length; i++) {
