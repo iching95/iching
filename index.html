@@ -146,7 +146,7 @@
             const n = months[k];
             const content = rows[n];
             const mth = (11+k-1)%12;
-            const mthString = new Date(0,mth,0).toLocaleString('en-US', { month: 'short', });
+            const mthString = new Date(0,mth+1,0).toLocaleString('en-US', { month: 'short', });
             console.log(mth);
             const html = `<td><span class='${((mth)==new Date().getMonth())?'mth-current':'mth'}'>${mthString}</span><span class='symbol'>${String.fromCharCode(19904+parseInt(n)-1)}</span>` + (content.d.length==2?`
                 <div>${content.d}</div><a class="tb2-l" href='reader.html?i=${n}' ><c>${content.c}</c></a>
