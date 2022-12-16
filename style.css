@@ -141,7 +141,7 @@ color: #24292f;
 }
 
 td > .symbol-hightlight-selected:before {
-  content: '＊' !important;
+  content: '▼' !important;
 }
 
 td > .symbol-hightlight, .mth-current {
