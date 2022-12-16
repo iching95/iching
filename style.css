@@ -140,7 +140,7 @@ body.theme-desk td  > .symbol-hightlight, body.theme-desk .mth-current{
 color: #24292f;
 }
 
-td > .symbol-selected:before {
+td:has(.symbol-selected) > span:first-of-type {
   content: '▼' !important;
 }
 
