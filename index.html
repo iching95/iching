@@ -145,7 +145,7 @@
             const k = i*6 + j;
             const n = months[k];
             const content = rows[n];
-            const monString = new Date(0,(11+k)%12+1,0).toLocaleString('en-US', { month: 'short', });
+            const monString = new Date(0,(11+k)%12,0).toLocaleString('en-US', { month: 'short', });
 
             const html = `<td><span>${monString}</span><span class='symbol'>${String.fromCharCode(19904+parseInt(n)-1)}</span>` + (content.d.length==2?`
                 <div>${content.d}</div><a class="tb2-l" href='reader.html?i=${n}' ><c>${content.c}</c></a>
