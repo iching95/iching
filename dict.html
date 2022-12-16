@@ -137,7 +137,7 @@
     document.getElementById("content").innerHTML = "Loading "+ query[1] + " / " + decodeURI(query[1]) + " ...";
 
     var footerHTML = "";
-    footerHTML += ('<button onclick="history.back()" type="button">back</button>')
+    footerHTML += (`<button onclick="history.length?history.back():window.close()" type="button">X${history.length?"BACK":"CLOSE"}</button>`)
     document.getElementById("footer").innerHTML = footerHTML;
 
     const word = decodeURI(query[1]);
@@ -147,7 +147,8 @@
     </div>`;
     
     document.getElementById("header").innerHTML = headerHTML;
-    document.title = word + " - iChing Dict"
+    document.title = word + " - iChing Dict";
+    
     
   </script>
 </body>
