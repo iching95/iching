@@ -37,7 +37,7 @@
 
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css?v8">
+  <link rel="stylesheet" href="style.css?v9">
 </head>
 
 <body>
@@ -145,9 +145,10 @@
             const k = i*6 + j;
             const n = months[k];
             const content = rows[n];
-            const mthString = new Date(0,(11+k)%12,0).toLocaleString('en-US', { month: 'short', });
+            const mth = (11+k)%12;
+            const mthString = new Date(0,mth,0).toLocaleString('en-US', { month: 'short', });
 
-            const html = `<td><span class='mth'>${mthString}</span><span class='symbol'>${String.fromCharCode(19904+parseInt(n)-1)}</span>` + (content.d.length==2?`
+            const html = `<td><span class='${(mth==new Date().getMonth())?'mth-current':'mth'}'>${mthString}</span><span class='symbol'>${String.fromCharCode(19904+parseInt(n)-1)}</span>` + (content.d.length==2?`
                 <div>${content.d}</div><a class="tb2-l" href='reader.html?i=${n}' ><c>${content.c}</c></a>
               `:`
                 <span class="tb-char-double"><a class="tb2-l" href='reader.html?i=${n}'><c>${content.c}</c></a></span><div>為${content.d}</div>`) + '</td>'
