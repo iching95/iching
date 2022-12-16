@@ -175,7 +175,8 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
 }
 
 .tb3 td > span:first-of-type, .mth{
-  font-size: 12px;
+  text-transform: uppercase;
+  font-size: 18px;
 }
 
 /* reader */
