@@ -132,11 +132,11 @@ td > .symbol {
   padding: 4px 0 2px;
 }
 
-body.theme-sepia td > .symbol-hightlight, .mth-current{
+body.theme-sepia td > .symbol-hightlight, body.theme-sepia .mth-current{
   color: #5F4B32;
 }
 
-body.theme-desk td > .symbol-hightlight, .mth-current{
+body.theme-desk td  > .symbol-hightlight, body.theme-desk .mth-current{
 color: #24292f;
 }
 
