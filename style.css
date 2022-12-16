@@ -132,6 +132,10 @@ td > .symbol {
   padding: 4px 0 2px;
 }
 
+.tb2 .symbol {
+  cursor: pointer;
+}
+
 body.theme-sepia td > .symbol-hightlight, body.theme-sepia .mth-current{
   color: #5F4B32;
 }
