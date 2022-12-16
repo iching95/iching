@@ -144,7 +144,9 @@
             // console.log(n);
             const n = months[ i*6 + j ];
             const content = rows[n];
-            const html = `<td><span>${n}</span><span class='symbol'>${String.fromCharCode(19904+parseInt(n)-1)}</span>` + (content.d.length==2?`
+            const monString = new Date().setMonth(n - 1).toLocaleString('en-US', { month: 'short', });
+
+            const html = `<td><span>${monString}</span><span class='symbol'>${String.fromCharCode(19904+parseInt(n)-1)}</span>` + (content.d.length==2?`
                 <div>${content.d}</div><a class="tb2-l" href='reader.html?i=${n}' ><c>${content.c}</c></a>
               `:`
                 <span class="tb-char-double"><a class="tb2-l" href='reader.html?i=${n}'><c>${content.c}</c></a></span><div>為${content.d}</div>`) + '</td>'
