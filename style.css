@@ -174,7 +174,7 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
   display: none;
 }
 
-.tb3 > span:first-of-type{
+.tb3 td > span:first-of-type, .mth{
   font-size: 12px;
 }
 
