@@ -137,7 +137,7 @@
     document.getElementById("content").innerHTML = "Loading "+ query[1] + " / " + decodeURI(query[1]) + " ...";
 
     var footerHTML = "";
-    footerHTML += (`<button onclick="(history.length<=1)?history.back():window.close()" type="button">${(history.length<=1)?"BACK":"CLOSE"}</button>`)
+    footerHTML += (`<button onclick="(history.length>1)?history.back():window.close()" type="button">${(history.length>1)?"BACK":"CLOSE"}</button>`)
     document.getElementById("footer").innerHTML = footerHTML;
 
     const word = decodeURI(query[1]);
