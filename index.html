@@ -74,7 +74,7 @@
             console.log(rows)
             img = rows[_img];
             top = order.indexOf(img.d[0]);
-            low = img.d.length?order.indexOf(img.d[1]):top;
+            low = img.d[1]?order.indexOf(img.d[1]):top;
           }
 
           var line1 = "<span>" + (img?String.fromCharCode(9776 + top):"・") + "</span>"
