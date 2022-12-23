@@ -55,12 +55,15 @@
     const rpcObj = {"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest", false],"id":1};
 
     const rand = [];
+    
     var randLines = function(){
-          var line1 = "<span>" + (rand[0]?String.fromCharCode(9776 + Math.floor(rand[0] % 8)):"－") + "</span>"
-          var line2 = "<span>" + (rand[0]?String.fromCharCode(9776 + Math.floor(rand[1] % 8)):"－") + "</span>"
-          var dice =  "<span>" + (rand[0]?String.fromCharCode(9856 + Math.floor(rand[2] % 6)):"－") + "</span>"
+          var line1 = "<span>" + (rand[0]?String.fromCharCode(9776 + Math.floor(rand[0] % 8)):"・") + "</span>"
+          var line2 = "<span>" + (rand[0]?String.fromCharCode(9776 + Math.floor(rand[1] % 8)):"・") + "</span>"
+          var dice =  "<span>" + (rand[0]?String.fromCharCode(9856 + Math.floor(rand[2] % 6)):"・") + "</span>"
           return line1 + line2 + dice ;
         }
+
+    document.getElementById("rand-1").innerHTML = randLines();
 
     fetch(rpc,{
         method: 'POST',
@@ -84,11 +87,6 @@
         document.getElementById("rand-3").innerHTML = randLines();
         
     });
-
-
-    document.getElementById("rand-1").innerHTML = randLines();
-    // document.getElementById("rand-2").innerHTML = randLines();
-    // document.getElementById("rand-3").innerHTML = randLines();
 
     document.body.classList.add(`theme-${theme}`);
 
