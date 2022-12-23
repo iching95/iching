@@ -64,9 +64,9 @@
         console.log(json);
         const seed = parseInt(json.result.hash.replace(/^0x/,""));
         console.log(seed);
-        const rand = [seed * 9776 % 9856];
+        const rand = [seed];
+        rand.push(rand[0] * 9776 % 9856);
         rand.push(rand[1] * 9776 % 9856);
-        rand.push(rand[2] * 9776 % 9856);
         console.log(rand);
     });
 
