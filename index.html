@@ -68,16 +68,21 @@
         rand.push(rand[0] * 9776 % 9856);
         rand.push(rand[1] * 9776 % 9856);
         console.log(rand);
+
+        var randLines = function(){
+          var line1 = "<span>" + String.fromCharCode(9776 + Math.floor(rand[0] % 8)) + "</span>"
+          var line2 = "<span>" + String.fromCharCode(9776 + Math.floor(rand[1] % 8)) + "</span>"
+          var dice =  "<span>" + String.fromCharCode(9856 + Math.floor(rand[2] % 6)) + "</span>"
+          return line1 + line2 + dice ;
+        }
+
+        document.getElementById("rand-1").innerHTML = randLines();
+        document.getElementById("rand-2").innerHTML = randLines();
+        document.getElementById("rand-3").innerHTML = randLines();
+        
     });
 
     document.body.classList.add(`theme-${theme}`);
-
-    var randLines = function(){
-      var line1 = "<span>" + String.fromCharCode(9776 + Math.floor(Math.random() * 8)) + "</span>"
-      var line2 = "<span>" + String.fromCharCode(9776 + Math.floor(Math.random() * 8)) + "</span>"
-      var dice =  "<span>" + String.fromCharCode(9856 + Math.floor(Math.random() * 6)) + "</span>"
-      return line1 + line2 + dice ;
-    }
 
     fetch(`https://instant-cell-9492.iching.workers.dev/`)
       .then((response) => response.json())
@@ -185,16 +190,12 @@
         document.getElementById("tb2-container").innerHTML = tableHTML2;
         document.getElementById("tb3-container").innerHTML = tableHTML3;
 
-        document.getElementById("rand-2").innerHTML = randLines();
-        document.getElementById("rand-3").innerHTML = randLines();
-
         document.getElementById("rand-1").onclick = function(){ switchHide(); resetSymbol(); }
         document.getElementById("rand-2").onclick = function(){ switchHide(); resetSymbol(); }
         document.getElementById("rand-3").onclick = function(){ switchHide(); resetSymbol(); }
 
       })
 
-      document.getElementById("rand-1").innerHTML = randLines();
 
       
   </script>
