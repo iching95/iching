@@ -49,6 +49,7 @@
   <div id="rand-3" class="rand"></div>
   <div id="tb1-container"></div>
   <div id="block"></div>
+  <div id="regen-rand-btn"></div>
 
   <script>
 
@@ -66,7 +67,9 @@
 
     document.getElementById("rand-1").innerHTML = randLines();
 
-    fetch(rpc,{
+    const reseed = (){
+
+      fetch(rpc,{
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(rpcObj)
@@ -88,10 +91,17 @@
         document.getElementById("rand-1").innerHTML = randLines();
         document.getElementById("rand-2").innerHTML = randLines();
         document.getElementById("rand-3").innerHTML = randLines();
-        
+
         document.getElementById("block").innerHTML = `<span>${blockInfo}</span><span>${blockNo}</span>`;
-        
-    });
+
+        document.getElementById("regen-rand-btn").innerHTML = `
+          <button onclick="reseed();" type="button">reseed</button>
+          `;
+      });
+
+    }
+
+    reseed();
 
     document.body.classList.add(`theme-${theme}`);
 
