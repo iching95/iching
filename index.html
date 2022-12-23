@@ -54,7 +54,7 @@
     const rpc = "https://rpc.ankr.com/eth";
     const rpcObj = {"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest", false],"id":1};
 
-    fetch(`rpc`,{
+    fetch(rpc,{
         method: 'POST',
         headers: {
           'Accept': 'application/json',
