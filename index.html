@@ -62,11 +62,13 @@
       .then((response) => response.json())
       .then(json => {
         console.log(json);
-        const seed = parseInt(json.result.hash.replace(/^0x/,""));
+        const seed = parseInt(json.result.hash.substring(0,14));
+        
         console.log(seed);
         const rand = [seed];
         rand.push(rand[0] * 9776 % 9856);
         rand.push(rand[1] * 9776 % 9856);
+
         console.log(rand);
 
         var randLines = function(){
