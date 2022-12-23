@@ -58,8 +58,13 @@
     const rpcObj = {"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest", false],"id":1};
 
     let rand = null;
-    
-    var randLines = function(){
+    let rows = null;
+
+    var randLines = function(_img, _line){
+
+          const img = rows[_img];
+          console.log(img);
+
           var line1 = "<span>" + (rand?String.fromCharCode(9776 + Math.floor(rand[0] % 8)):"") + "</span>"
           var line2 = "<span>" + (rand?String.fromCharCode(9776 + Math.floor(rand[1] % 8)):"・") + "</span>"
           var dice =  "<span>" + (rand?String.fromCharCode(9856 + Math.floor(rand[2] % 6)):"") + "</span>"
@@ -92,9 +97,12 @@
         rand.push(rand[1] * 16807 % 2147483647);
 
         console.log(rand);
-        
+
+        const randImg = rand[1] % 64 + 1;
+        const randLine = rand[1] % 6;
+
         Array.from(document.getElementsByClassName("rand")).map( ele =>{
-          ele.innerHTML = randLines();
+          ele.innerHTML = randLines(randImg, randLine);
         })
 
         document.getElementById("block").innerHTML = `<span>${blockInfo}</span><span>${blockNo}</span>`;
@@ -121,9 +129,6 @@
           `;
         }
     });
-
-
-    let rows = null;
 
     fetch('data.txt')
       .then(response => response.text())
