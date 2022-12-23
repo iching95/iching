@@ -48,6 +48,7 @@
   <div id="tb3-container"></div>
   <div id="rand-3" class="rand"></div>
   <div id="tb1-container"></div>
+  <div id="block"></div>
 
   <script>
 
@@ -57,9 +58,9 @@
     let rand = null;
     
     var randLines = function(){
-          var line1 = "<span>" + (rand?String.fromCharCode(9776 + Math.floor(rand[0] % 8)):"・") + "</span>"
+          var line1 = "<span>" + (rand?String.fromCharCode(9776 + Math.floor(rand[0] % 8)):"") + "</span>"
           var line2 = "<span>" + (rand?String.fromCharCode(9776 + Math.floor(rand[1] % 8)):"・") + "</span>"
-          var dice =  "<span>" + (rand?String.fromCharCode(9856 + Math.floor(rand[2] % 6)):"・") + "</span>"
+          var dice =  "<span>" + (rand?String.fromCharCode(9856 + Math.floor(rand[2] % 6)):"") + "</span>"
           return line1 + line2 + dice ;
         }
 
@@ -73,7 +74,8 @@
       .then((response) => response.json())
       .then(json => {
         console.log(json);
-        const seed = parseInt(json.result.hash.substring(0,14));
+        const blockInfo = json.result.hash.substring(0,14);
+        const seed = parseInt(blockInfo);
         
         console.log(seed);
         rand = [seed];
@@ -85,6 +87,7 @@
         document.getElementById("rand-1").innerHTML = randLines();
         document.getElementById("rand-2").innerHTML = randLines();
         document.getElementById("rand-3").innerHTML = randLines();
+        document.getElementById("hash").innerHTML = blockInfo;
         
     });
 
