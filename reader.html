@@ -21,6 +21,8 @@
     });
 
     var idx = parseInt(params.i?params.i:1);
+    var matchIdx = parseInt(params.m?params.m:false);
+    var matchLine = parseInt(params.l?params.l:false);
 
     idx = (idx >= 1 && idx <= 64)?idx:1;
 
@@ -64,6 +66,7 @@
     // console.log(name)
     const headerHTML = `<a href="#" onclick="openDicURL()"><div id='dic-ptr'></div></a>
     <div class='header'>
+      ${matchIdx?"*":""}
       <div class='number'>${idx}</div>
       <div class='symbol'>${symbol}</div>
       <div id='header-c'>・</div>
@@ -371,6 +374,11 @@
 	   
         document.getElementById("content").innerHTML = insertHTML;
         document.getElementById("footer").innerHTML = footerHTML;
+
+        if(matchLine){
+          document.getElementById("line"+matchLine).className = "line-matched";
+        }
+
 
         if(!loadBook){
           document.getElementById("footer-group-note").style.display = (isWatch?"none":"block");
