@@ -212,6 +212,10 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
 .line-matched:before {
   content: '＊';
 }
+.star {
+  font-size: 52px;
+  display: inline;
+}
 
 .np{
   display:block;
