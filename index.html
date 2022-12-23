@@ -64,13 +64,13 @@
     let rand = null;
     let rows = null;
 
-    var randLines = function(_img, _line){
+    var randLines = function(_img, _line, loadImg = false){
 
           let img = null;
           let top = null;
           let low = null;
 
-          if(rows && rows[_img]){
+          if(rows && rows[_img] && loadImg){
             img = rows[_img];
             top = order.indexOf(img.d[0]);
             low = img.d[1]?order.indexOf(img.d[1]):top;
@@ -155,7 +155,7 @@
         const skip = [9,20,30,30,30,33,33,35,51,60,61,63];
         
         Array.from(document.getElementsByClassName("rand")).map( ele =>{
-          ele.innerHTML = randLines(ele.getAttribute("img"), ele.getAttribute("line"));
+          ele.innerHTML = randLines(ele.getAttribute("img"), ele.getAttribute("line"), true);
         })
         
         for (let i=1;i<=13;i++){
