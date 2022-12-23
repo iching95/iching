@@ -54,6 +54,14 @@
     const rpc = "https://rpc.ankr.com/eth";
     const rpcObj = {"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest", false],"id":1};
 
+    const rand = [];
+    var randLines = function(){
+          var line1 = "<span>" + (rand[0]?String.fromCharCode(9776 + Math.floor(rand[0] % 8)):"－") + "</span>"
+          var line2 = "<span>" + (rand[0]?String.fromCharCode(9776 + Math.floor(rand[1] % 8)):"－") + "</span>"
+          var dice =  "<span>" + (rand[0]?String.fromCharCode(9856 + Math.floor(rand[2] % 6)):"－") + "</span>"
+          return line1 + line2 + dice ;
+        }
+
     fetch(rpc,{
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -65,24 +73,22 @@
         const seed = parseInt(json.result.hash.substring(0,14));
         
         console.log(seed);
-        const rand = [seed];
+        rand = [seed];
         rand.push(rand[0] * 9776 % 9856);
         rand.push(rand[1] * 9776 % 9856);
 
         console.log(rand);
-
-        var randLines = function(){
-          var line1 = "<span>" + String.fromCharCode(9776 + Math.floor(rand[0] % 8)) + "</span>"
-          var line2 = "<span>" + String.fromCharCode(9776 + Math.floor(rand[1] % 8)) + "</span>"
-          var dice =  "<span>" + String.fromCharCode(9856 + Math.floor(rand[2] % 6)) + "</span>"
-          return line1 + line2 + dice ;
-        }
 
         document.getElementById("rand-1").innerHTML = randLines();
         document.getElementById("rand-2").innerHTML = randLines();
         document.getElementById("rand-3").innerHTML = randLines();
         
     });
+
+
+    document.getElementById("rand-1").innerHTML = randLines();
+    document.getElementById("rand-2").innerHTML = randLines();
+    document.getElementById("rand-3").innerHTML = randLines();
 
     document.body.classList.add(`theme-${theme}`);
 
