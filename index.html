@@ -62,12 +62,17 @@
 
     var randLines = function(_img, _line){
 
-          const img = rows[_img];
-          console.log(img);
+          let img = null;
 
-          var line1 = "<span>" + (rand?String.fromCharCode(9776 + Math.floor(rand[0] % 8)):"") + "</span>"
-          var line2 = "<span>" + (rand?String.fromCharCode(9776 + Math.floor(rand[1] % 8)):"・") + "</span>"
-          var dice =  "<span>" + (rand?String.fromCharCode(9856 + Math.floor(rand[2] % 6)):"") + "</span>"
+          if(rows){
+            img = rows[_img];
+            console.log(img);
+          }
+
+          var line1 = "<span>" + (img?String.fromCharCode(9776 + Math.floor(rand[0] % 8)):"・") + "</span>"
+          var line2 = "<span>" + (img?String.fromCharCode(9776 + Math.floor(rand[1] % 8)):_img) + "</span>"
+          var dice =  "<span>" + (img?String.fromCharCode(9856 + Math.floor(rand[2] % 6)):"・") + "</span>"
+          
           return line1 + line2 + dice ;
         }
 
@@ -114,7 +119,7 @@
 
     }
 
-    
+    reseed();
 
     document.body.classList.add(`theme-${theme}`);
 
@@ -134,11 +139,13 @@
       .then(response => response.text())
       .then((data) => {
         rows = JSON.parse(data);
-        reseed();
-
         let n = 1;
         let tbodyHTML1 = "";
         const skip = [9,20,30,30,30,33,33,35,51,60,61,63];
+        
+        Array.from(document.getElementsByClassName("rand")).map( ele =>{
+          ele.innerHTML = randLines(randImg, randLine);
+        })
         
         for (let i=1;i<=13;i++){
           tbodyHTML1 += ("<tr>");
