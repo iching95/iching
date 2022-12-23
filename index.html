@@ -109,6 +109,8 @@
         const randLine = rand[1] % 6;
 
         Array.from(document.getElementsByClassName("rand")).map( ele =>{
+          ele.setAttribute("img", randImg)
+          ele.setAttribute("line", randLine)
           ele.innerHTML = randLines(randImg, randLine);
         })
 
@@ -146,7 +148,7 @@
         const skip = [9,20,30,30,30,33,33,35,51,60,61,63];
         
         Array.from(document.getElementsByClassName("rand")).map( ele =>{
-          ele.innerHTML = randLines(randImg, randLine);
+          ele.innerHTML = randLines(ele.getAttribute("img"), ele.getAttribute("line"));
         })
         
         for (let i=1;i<=13;i++){
