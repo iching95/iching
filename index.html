@@ -120,6 +120,8 @@
           ele.setAttribute("line", randLine)
           ele.innerHTML = randLines(randImg, randLine, rows!==null);
         })
+        
+        updateImgMatchLink();
 
         document.getElementById("block").innerHTML = `<span>${blockInfo}</span><span>${blockNo}</span><span>・${timestamp}</span>`;
 
@@ -128,6 +130,14 @@
           `;
       });
 
+    }
+
+    const updateImgMatchLink = function(){
+      if(randImg){
+        const ele = document.getElementsById(`symbol-tb2-${parseInt(randImg)}-link`);
+        const href = ele.getAttribute("href");
+        ele.setAttribute("href",`${href}&m=1&l=${randLine}`);
+      }
     }
 
     reseed();
@@ -191,7 +201,7 @@
                   ${String.fromCharCode(19904+parseInt(n)-1)}
                 </span>
               ` + (content.d.length==2?`
-                <div>${content.d}</div><a class="tb2-l" href='reader.html?i=${n}${(parseInt(n)==randImg)?("&m=1&l="+randLine):""}' ><c>${content.c}</c></a>
+                <div>${content.d}</div><a class="tb2-l" id='symbol-tb2-${parseInt(n)}-link' href='reader.html?i=${n}' ><c>${content.c}</c></a>
               `:`
                 <span class="tb-char-double"><a class="tb2-l" href='reader.html?i=${n}'><c>${content.c}</c></a></span><div>為${content.d}</div>`) + '</td>'
              tbodyHTML2 += html;
@@ -242,6 +252,8 @@
         document.getElementById("rand-1").onclick = function(){ switchHide(); resetSymbol(); }
         document.getElementById("rand-2").onclick = function(){ switchHide(); resetSymbol(); }
         document.getElementById("rand-3").onclick = function(){ switchHide(); resetSymbol(); }
+
+        updateImgMatchLink();
 
       })
 
