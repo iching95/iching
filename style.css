@@ -198,7 +198,6 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
   text-align: center;
   font-size: 22px;
   color: #888;
-  display: block;
 }
 
 /* reader */

@@ -57,21 +57,30 @@
     const rpc = "https://cloudflare-eth.com";
     const rpcObj = {"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest", false],"id":1};
 
+    const order = "天澤火雷風水山地";
+
     let rand = null;
     let rows = null;
 
     var randLines = function(_img, _line){
 
           let img = null;
+          let top = null;
+          let low = null;
 
           if(rows){
             img = rows[_img];
-            console.log(img);
+            top = order.indexOf(img.d[0]);
+            low = img.d.length?order.indexOf(img.d[1]):top;
           }
 
-          var line1 = "<span>" + (img?String.fromCharCode(9776 + Math.floor(rand[0] % 8)):"・") + "</span>"
-          var line2 = "<span>" + (img?String.fromCharCode(9776 + Math.floor(rand[1] % 8)):_img) + "</span>"
-          var dice =  "<span>" + (img?String.fromCharCode(9856 + Math.floor(rand[2] % 6)):"・") + "</span>"
+          var line1 = "<span>" + (img?String.fromCharCode(9776 + top):"・") + "</span>"
+          var line2 = "<span>" + (img?String.fromCharCode(9776 + low):"・") + "</span>"
+          var dice =  "<span>" + (String.fromCharCode(9856 + _line)) + "</span>"
+
+          // var line1 = "<span>" + (img?String.fromCharCode(9776 + Math.floor(rand[0] % 8)):"・") + "</span>"
+          // var line2 = "<span>" + (img?String.fromCharCode(9776 + Math.floor(rand[1] % 8)):_img) + "</span>"
+          // var dice =  "<span>" + (img?String.fromCharCode(9856 + Math.floor(rand[2] % 6)):"・") + "</span>"
           
           return line1 + line2 + dice ;
         }
@@ -165,8 +174,6 @@
           }
           tbodyHTML1 += ("</tr>");
         }
-
-        const order = "天澤火雷風水山地";
 
         let tbodyHTML2 = "";
 
