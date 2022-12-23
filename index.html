@@ -57,9 +57,9 @@
     let rand = null;
     
     var randLines = function(){
-          var line1 = "<span>" + (rand[0]?String.fromCharCode(9776 + Math.floor(rand[0] % 8)):"・") + "</span>"
-          var line2 = "<span>" + (rand[0]?String.fromCharCode(9776 + Math.floor(rand[1] % 8)):"・") + "</span>"
-          var dice =  "<span>" + (rand[0]?String.fromCharCode(9856 + Math.floor(rand[2] % 6)):"・") + "</span>"
+          var line1 = "<span>" + (rand?String.fromCharCode(9776 + Math.floor(rand[0] % 8)):"・") + "</span>"
+          var line2 = "<span>" + (rand?String.fromCharCode(9776 + Math.floor(rand[1] % 8)):"・") + "</span>"
+          var dice =  "<span>" + (rand?String.fromCharCode(9856 + Math.floor(rand[2] % 6)):"・") + "</span>"
           return line1 + line2 + dice ;
         }
 
