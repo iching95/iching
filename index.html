@@ -118,7 +118,7 @@
         Array.from(document.getElementsByClassName("rand")).map( ele =>{
           ele.setAttribute("img", randImg)
           ele.setAttribute("line", randLine)
-          ele.innerHTML = randLines(randImg, randLine);
+          ele.innerHTML = randLines(randImg, randLine, rows!==null);
         })
 
         document.getElementById("block").innerHTML = `<span>${blockInfo}</span><span>${blockNo}</span><span>・${timestamp}</span>`;
