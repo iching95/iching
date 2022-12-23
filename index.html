@@ -64,9 +64,9 @@
         console.log(json);
         const seed = parseInt(json.result.hash.replace(/^0x/,""));
         console.log(seed);
-        const rand = [seed * 95 % 65];
-        rand.push(rand[1] * 95 % 65);
-        rand.push(rand[2] * 95 % 65);
+        const rand = [seed * 9776 % 9856];
+        rand.push(rand[1] * 9776 % 9856);
+        rand.push(rand[2] * 9776 % 9856);
         console.log(rand);
     });
 
