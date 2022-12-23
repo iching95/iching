@@ -73,12 +73,12 @@
       })
       .then((response) => response.json())
       .then(json => {
-        console.log(json);
+        // console.log(json);
         const blockInfo = json.result.hash.substring(0,14);
         const blockNo = parseInt(json.result.number)
         const seed = parseInt(blockInfo);
         
-        console.log(seed);
+        // console.log(seed);
         rand = [seed];
         rand.push(rand[0] * 9776 % 9856);
         rand.push(rand[1] * 9776 % 9856);
