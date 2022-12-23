@@ -194,6 +194,13 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
   padding:0px 0px 4px;
 }
 
+#block span{
+  text-align: center;
+  font-size: 22px;
+  color: #888;
+  display: block;
+}
+
 /* reader */
 
 .np{

@@ -75,6 +75,7 @@
       .then(json => {
         console.log(json);
         const blockInfo = json.result.hash.substring(0,14);
+        const blockNo = parseInt(json.result.number)
         const seed = parseInt(blockInfo);
         
         console.log(seed);
@@ -87,7 +88,7 @@
         document.getElementById("rand-1").innerHTML = randLines();
         document.getElementById("rand-2").innerHTML = randLines();
         document.getElementById("rand-3").innerHTML = randLines();
-        document.getElementById("block").innerHTML = `<span>${blockInfo}</span>`;
+        document.getElementById("block").innerHTML = `<span>${blockInfo}</span><span>${blockNo}</span>`;
         
     });
 
