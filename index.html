@@ -130,7 +130,7 @@
 
     }
 
-    reseed();
+    // reseed();
 
     document.body.classList.add(`theme-${theme}`);
 
@@ -149,6 +149,9 @@
     fetch('data.txt')
       .then(response => response.text())
       .then((data) => {
+        
+        reseed();
+        
         rows = JSON.parse(data);
         let n = 1;
         let tbodyHTML1 = "";
