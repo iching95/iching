@@ -194,6 +194,10 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
   padding:0px 0px 4px;
 }
 
+#block span:first-of-type{
+  display: block;
+}
+
 #block span{
   text-align: center;
   font-size: 22px;
