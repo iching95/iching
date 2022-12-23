@@ -48,6 +48,7 @@
   <div id="tb3-container"></div>
   <div id="rand-3" class="rand"></div>
   <div id="tb1-container"></div>
+  <div id="rand-4" class="rand"></div>
   <div id="block"></div>
   <div id="regen-rand-btn"></div>
 
@@ -92,9 +93,9 @@
 
         console.log(rand);
         
-        document.getElementById("rand-1").innerHTML = randLines();
-        document.getElementById("rand-2").innerHTML = randLines();
-        document.getElementById("rand-3").innerHTML = randLines();
+        Array.from(document.getElementsByClassName("rand")).map( ele =>{
+          ele.innerHTML = randLines();
+        })
 
         document.getElementById("block").innerHTML = `<span>${blockInfo}</span><span>${blockNo}</span>`;
 
