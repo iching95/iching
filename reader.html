@@ -66,7 +66,7 @@
     // console.log(name)
     const headerHTML = `<a href="#" onclick="openDicURL()"><div id='dic-ptr'></div></a>
     <div class='header'>
-      ${matchIdx?"*":""}
+      ${matchIdx?`<div class='star'>*</div>`:""}
       <div class='number'>${idx}</div>
       <div class='symbol'>${symbol}</div>
       <div id='header-c'>・</div>
