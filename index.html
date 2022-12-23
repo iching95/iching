@@ -134,7 +134,7 @@
 
     const updateImgMatchLink = function(){
       if(randImg){
-        const ele = document.getElementsById(`symbol-tb2-${parseInt(randImg)}-link`);
+        const ele = document.getElementById(`symbol-tb2-${parseInt(randImg)}-link`);
         const href = ele.getAttribute("href");
         ele.setAttribute("href",`${href}&m=1&l=${randLine}`);
       }
