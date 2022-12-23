@@ -93,7 +93,9 @@
       .then(json => {
         // console.log(json);
         const blockInfo = json.result.hash.substring(0,14);
-        const blockNo = parseInt(json.result.number)
+        const blockNo = parseInt(json.result.number);
+        const timestamp = new Date(parseInt(json.result.timestamp) * 1000).toTimeString().split(' ')[0];
+
         const seed = parseInt(blockInfo);
         
         // console.log(seed);
@@ -110,7 +112,7 @@
           ele.innerHTML = randLines(randImg, randLine);
         })
 
-        document.getElementById("block").innerHTML = `<span>${blockInfo}</span><span>${blockNo}</span>`;
+        document.getElementById("block").innerHTML = `<span>${blockInfo}</span><span>${blockNo}</span><span>${timestamp}</span>`;
 
         document.getElementById("regen-rand-btn").innerHTML = `
           <button onclick="reseed();" type="button">reseed</button>
