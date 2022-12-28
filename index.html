@@ -77,7 +77,7 @@
 
       var line1 = "<span>" + (img?String.fromCharCode(9776 + top):"⚊") + "</span>";
       var line2 = "<span>" + (img?String.fromCharCode(9776 + low):"⚋") + "</span>";
-      var dice =  "<span>" + ((_line!==null)?String.fromCharCode(9856 + parseInt(_line)):"☯") + "</span>"; 
+      var dice =  "<span>" + ((_line!==null)?String.fromCharCode(9856 + parseInt(_line)):"☯") + "</span>";
 
       return line1 + line2 + dice;
 
@@ -332,12 +332,17 @@
     var switchHide = function(){
       
       stateHide = !stateHide;
-      var anchors = document.getElementsByClassName('tb2-l');
-      for(var i = 0; i < anchors.length; i++) {
-        var anchor = anchors[i];
-        anchor.className = stateHide?"tb2-l tb2-l-hidden":"tb2-l";
-        anchor.onclick = stateHide?switchHide:null;
-      }
+
+      Array.from(document.getElementsByClassName(`tb2-l`)).map(el=>{
+        el.className = stateHide?"tb2-l tb2-l-hidden":"tb2-l";
+        el.onclick = stateHide?switchHide:null;
+      })
+
+      Array.from(document.getElementsByClassName(`tb1-l`)).map(el=>{
+        el.className = stateHide?"tb1-l tb1-l-hidden":"tb1-l";
+        el.onclick = stateHide?switchHide:null;
+      })
+
       return false;
       
     }
