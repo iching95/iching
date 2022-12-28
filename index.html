@@ -135,11 +135,10 @@
       _randImg = _randImg?_randImg:randImg;
 
       if(_randImg){
-        const ele = document.getElementById(`symbol-tb2-${parseInt(randImg)}-link`);
-        if(ele){
+        Array.from(document.getElementsByClassName(`symbol-tb-${parseInt(randImg)}-link`)).map(ele=>{
           const href = ele.getAttribute("href");
           ele.setAttribute("href",`${href}&m=1&l=${_randImg+1}`);
-        }
+        })
       }
     }
 
