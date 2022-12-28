@@ -179,8 +179,8 @@
             c:double.indexOf(n)?"．":"．<br>．"
           };
 
-          const img = rows?String.fromCharCode(19904+parseInt(n)-1):String.fromCharCode(19904+parseInt(1)-1)
-          const num = rows?parseInt(n):0;
+          const img = String.fromCharCode(19904+parseInt(n)-1);
+          const num = parseInt(n);
 
           const html = `<td>
           <span>${num}</span>
