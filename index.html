@@ -87,9 +87,7 @@
 
     const reseed = () => {
 
-      document.getElementById("block").innerHTML = `
-          ...
-          `;
+      document.getElementById("block").innerHTML = `<span>...</span><span>...</span><span>・...</span>`;
       
       return fetch(rpc,{
         method: 'POST',
