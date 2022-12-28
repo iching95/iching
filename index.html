@@ -84,6 +84,10 @@
     }
 
     document.getElementById("rand-1").innerHTML = randLines();
+    document.body.classList.add(`theme-${theme}`);
+    document.getElementById("last-go-btn").innerHTML = `
+    <button type="button">last read (...)</button>
+    `;
 
     const reseed = () => {
 
@@ -157,11 +161,6 @@
       }
 
     }
-
-    document.body.classList.add(`theme-${theme}`);
-    document.getElementById("last-go-btn").innerHTML = `
-    <button type="button">last read (...)</button>
-    `;
 
     const pData = fetch('data.txt')
       .then(response => response.text())
