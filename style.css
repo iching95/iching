@@ -105,6 +105,10 @@ td {
 }
 
 .tb2 td > span {
+  font-size:14px;
+}
+
+.tb2 td > span {
 }
 
 .tb1 a, .tb2 a, .tb3 a{
