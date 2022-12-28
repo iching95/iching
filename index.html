@@ -196,15 +196,15 @@
               const content = rows[n];
               const html = `<td>
               <span>${parseInt(n)}</span>
-              <span onclick="findPair(${parseInt(n)})" class='symbol' id='symbol-tb2-${parseInt(n)}'>
+              <span onclick="findPair(${parseInt(n)})" class='symbol' id='symbol-tb1-${parseInt(n)}'>
                 ${String.fromCharCode(19904+parseInt(n)-1)}
               </span>
               ` + (content.d.length==2?`
                 <div>${content.d}</div>
-                <a class="tb2-l symbol-tb-${parseInt(n)}-link" id='symbol-tb2-${parseInt(n)}-link' href='reader.html?i=${n}' ><c>${content.c}</c></a>
+                <a class="tb1-l symbol-tb-${parseInt(n)}-link" id='symbol-tb1-${parseInt(n)}-link' href='reader.html?i=${n}' ><c>${content.c}</c></a>
               `:`
                 <span class="tb-char-double">
-                <a class="tb2-l symbol-tb-${parseInt(n)}-link" id='symbol-tb2-${parseInt(n)}-link' href='reader.html?i=${n}'><c>${content.c}</c></a>
+                <a class="tb1-l symbol-tb-${parseInt(n)}-link" id='symbol-tb1-${parseInt(n)}-link' href='reader.html?i=${n}'><c>${content.c}</c></a>
                 </span>
                 <div>為${content.d}</div>
               `) + '</td>';
@@ -342,6 +342,8 @@
       const pair = (n%2>0)?(n+1):(n-1);
       document.getElementById(`symbol-tb2-${n}`).className    = "symbol symbol-hightlight symbol-selected";
       document.getElementById(`symbol-tb2-${pair}`).className = "symbol symbol-hightlight";
+      document.getElementById(`symbol-tb1-${n}`).className    = "symbol symbol-hightlight symbol-selected";
+      document.getElementById(`symbol-tb1-${pair}`).className = "symbol symbol-hightlight";
 
       const cross = Object.entries(rows).filter(row => (row[1].d[0] === rows[n].d[1] && row[1].d[1] === rows[n].d[0]));
 
@@ -352,6 +354,7 @@
 
         if(crossIdx != pair){
           document.getElementById(`symbol-tb2-${crossIdx}`).className = "symbol symbol-hightlight";
+          document.getElementById(`symbol-tb1-${crossIdx}`).className = "symbol symbol-hightlight";
         }
 
       }
