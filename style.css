@@ -93,7 +93,7 @@ td {
 
 */
 
-.tb1 td > span:before {
+.tb1 td > span:empty:before {
   content: "・";
   color:#888;
 }
