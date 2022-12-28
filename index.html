@@ -126,7 +126,6 @@
 
     }
 
-
     const updateImgForRandLines = function(){
       Array.from(document.getElementsByClassName("rand")).map( el =>{
         el.setAttribute("img", randImg)
@@ -160,25 +159,9 @@
     }
 
     document.body.classList.add(`theme-${theme}`);
-
-    fetch(`https://instant-cell-9492.iching.workers.dev/`)
-      .then((response) => response.json())
-      .then(json => {
-        console.log(json);
-        if(json.idx){
-          const last = json.idx;
-          document.getElementById("last-go-btn").innerHTML = `
-          <button onclick="location.href='reader.html?i=${last}'" type="button">last read (${last})</button>
-          `;
-        }
-    });
-
     document.getElementById("last-go-btn").innerHTML = `
     <button type="button">last read (...)</button>
     `;
-
-
-    const pRand = reseed();
 
     const pData = fetch('data.txt')
       .then(response => response.text())
@@ -313,10 +296,22 @@
 
       })
 
-      Promise.all([pData, pRand]).then((res) => {
+      Promise.all([pData, reseed()]).then((res) => {
         updateImgMatchLink();
         updateImgForRandLines(randImg, randLine, true);
       })
+
+      fetch(`https://instant-cell-9492.iching.workers.dev/`)
+      .then((response) => response.json())
+      .then(json => {
+        console.log(json);
+        if(json.idx){
+          const last = json.idx;
+          document.getElementById("last-go-btn").innerHTML = `
+          <button onclick="location.href='reader.html?i=${last}'" type="button">last read (${last})</button>
+          `;
+        }
+    });
       
   </script>
 
