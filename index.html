@@ -132,7 +132,7 @@
 
     }
 
-    const updateImgMatchLink = function(_randImg){
+    const updateImgMatchLink = function(){
 
       if(randImg){
 
@@ -148,6 +148,7 @@
           ele.setAttribute("href",`${href.replace(append,"")+append}`);
           ele.className = ele.className + "symbol-tb-link-matched";
         })
+
       }
 
     }
@@ -278,7 +279,7 @@
       })
 
       Promise.all([pData, pRand]).then((res) => {
-        updateImgMatchLink(randImg);
+        updateImgMatchLink();
       })
       
   </script>
