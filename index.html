@@ -187,7 +187,7 @@
           <span onclick="findPair(${parseInt(n)})" class='symbol' id='symbol-tb1-${parseInt(n)}'>
             ${img}
           </span>
-          ` + (content.d.length==2?`
+          ` + (content.d.length>=2?`
             <div>${content.d}</div>
             <a class="tb1-l symbol-tb-${parseInt(n)}-link" id='symbol-tb1-${parseInt(n)}-link' href='reader.html?i=${n}' ><c>${content.c}</c></a>
           `:`
