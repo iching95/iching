@@ -143,8 +143,6 @@
 
       if(randImg){
 
-        console.log("updateImgMatchLink:" + randImg)
-
         Array.from(document.getElementsByClassName(`symbol-tb-link-matched`)).map(el=>{
           const href = el.getAttribute("href");
           el.setAttribute("href",href.replace(/&m=1&l=[0-9]/,""));
