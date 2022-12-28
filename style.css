@@ -117,10 +117,9 @@ td {
   font-weight:bold;
 }
 
-.rand:empty{
+.rand{
   height: 86px;
 }
-
 
 .rand {
   text-align:center;
