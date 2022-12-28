@@ -77,7 +77,7 @@
 
           var line1 = "<span>" + (img?String.fromCharCode(9776 + top):"⚊") + "</span>";
           var line2 = "<span>" + (img?String.fromCharCode(9776 + low):"⚋") + "</span>";
-          var dice =  "<span>" + ((_line===null)?String.fromCharCode(9856 + parseInt(_line)):"☯") + "</span>"; 
+          var dice =  "<span>" + ((_line!==null)?String.fromCharCode(9856 + parseInt(_line)):"☯") + "</span>"; 
 
           return line1 + line2 + dice ;
         }
