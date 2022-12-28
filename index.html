@@ -211,7 +211,7 @@
 
     }
 
-    document.getElementById("tb1-container").innerHTML = genTb1Content();
+    document.getElementById("tb1-container").innerHTML = "<table class='tb1' style='width:100%;'><tbody>" + genTb1Content() + "</tbody></table>";
 
     const pData = fetch('data.txt')
       .then(response => response.text())
