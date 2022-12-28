@@ -231,8 +231,9 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
   content: '＊';
 }
 .star {
-  font-size: 52px;
+  font-size: 28px;
   display: inline;
+  vertical-align: top;
 }
 
 .np{
