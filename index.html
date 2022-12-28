@@ -63,7 +63,7 @@
     let rand = null;
     let rows = null;
 
-    var randLines = function(_img, _line, loadImg = false){
+    var randLines = function(_img, _line = null, loadImg = false){
 
       let img = null;
       let top = null;
@@ -75,9 +75,6 @@
         low = img.d[1]?order.indexOf(img.d[1]):top;
       }
 
-        console.log("_line")
-        console.log(_line);
-      
       var line1 = "<span>" + (img?String.fromCharCode(9776 + top):"⚊") + "</span>";
       var line2 = "<span>" + (img?String.fromCharCode(9776 + low):"⚋") + "</span>";
       var dice =  "<span>" + ((_line!==null)?String.fromCharCode(9856 + parseInt(_line)):"☯") + "</span>"; 
