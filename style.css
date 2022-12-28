@@ -230,10 +230,16 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
 .line-matched:before {
   content: '＊';
 }
+
+
 .star {
   font-size: 28px;
   display: inline;
   vertical-align: top;
+}
+
+body.theme-desk .star{
+  font-size: 52px;
 }
 
 .np{
