@@ -224,10 +224,10 @@
     var bookmarkLine = 0;
     var bookmarkText = "";
 
-    function markLine(_line, _lineEle){
+    function markLine(_line, _lineEl){
       document.getElementById("bookmark-btn-line").innerHTML = _line;
       bookmarkLine = _line;
-      bookmarkText = _lineEle.parentElement.innerText;
+      bookmarkText = _lineEl.parentElement.innerText;
       document.getElementById("footer-group-bookmark").style.display = "block"
     }
 
