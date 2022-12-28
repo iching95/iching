@@ -64,13 +64,17 @@
 	  // + " - R's iChing"
     
     // console.log(name)
+    var dice =  String.fromCharCode(9856 + parseInt(matchLine));
+
     const headerHTML = `<a href="#" onclick="openDicURL()"><div id='dic-ptr'></div></a>
     <div class='header'>
       <div class='number'>${idx}</div>
       <div class='symbol'>${symbol}</div>
       <div id='header-c'>・</div>
-      ${matchIdx?`<div class='star'>*</div>`:""}
+      ${matchIdx?`<div class='star'>${dice}</div>`:""}
     </div>`;
+
+
 
     document.getElementById("header").innerHTML = headerHTML;
 
