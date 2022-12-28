@@ -116,6 +116,12 @@ td {
   display:block;
   font-weight:bold;
 }
+
+.rand:empty{
+  height: 86px;
+}
+
+
 .rand {
   text-align:center;
   font-size:64px;
