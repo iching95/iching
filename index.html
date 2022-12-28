@@ -176,7 +176,7 @@
 
           const content = rows?rows[n]:{
             d:"天天",
-            c:double.indexOf(n)?"天天":"天"
+            c:double.includes(n)?"天天":"天"
           };
 
           const img = String.fromCharCode(19904+parseInt(n)-1);
