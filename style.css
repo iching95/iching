@@ -205,6 +205,11 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
   display: none;
 }
 
+.tb1 tr:nth-of-type(1) .tb2-l-hidden:after, .tb1 tr:nth-of-type(9) .tb2-l-hidden:after, .tb1 tr:nth-of-type(10) .tb2-l-hidden:after {
+  content: '＊' !important;
+}
+
+
 .tb1 tr .tb1-l-hidden:after {
   content: '＊＊';
 }
