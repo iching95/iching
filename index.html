@@ -136,6 +136,8 @@
 
       if(randImg){
 
+        console.log("updateImgMatchLink:" + randImg)
+
         Array.from(document.getElementsByClassName(`symbol-tb-link-matched`)).map(ele=>{
           const href = ele.getAttribute("href");
           ele.setAttribute("href",href.replace(/&m=1&l=[0-9]/,""));
@@ -146,7 +148,7 @@
           const href = ele.getAttribute("href");
           const append = `&m=1&l=${randLine+1}`;
           ele.setAttribute("href",`${href.replace(append,"")+append}`);
-          ele.className = ele.className + "symbol-tb-link-matched";
+          ele.className = ele.className + " symbol-tb-link-matched";
         })
 
       }
