@@ -128,11 +128,11 @@
 
 
     const updateImgForRandLines = function(){
-      Array.from(document.getElementsByClassName("rand")).map( ele =>{
-        ele.setAttribute("img", randImg)
-        ele.setAttribute("line", randLine)
-        ele.className = "rand rand-loaded"
-        ele.innerHTML = randLines(randImg, randLine, rows!==null);
+      Array.from(document.getElementsByClassName("rand")).map( el =>{
+        el.setAttribute("img", randImg)
+        el.setAttribute("line", randLine)
+        el.className = "rand rand-loaded"
+        el.innerHTML = randLines(randImg, randLine, rows!==null);
       })
     }
 
@@ -142,17 +142,17 @@
 
         console.log("updateImgMatchLink:" + randImg)
 
-        Array.from(document.getElementsByClassName(`symbol-tb-link-matched`)).map(ele=>{
-          const href = ele.getAttribute("href");
-          ele.setAttribute("href",href.replace(/&m=1&l=[0-9]/,""));
-          ele.className = ele.className.replace(" symbol-tb-link-matched","")
+        Array.from(document.getElementsByClassName(`symbol-tb-link-matched`)).map(el=>{
+          const href = el.getAttribute("href");
+          el.setAttribute("href",href.replace(/&m=1&l=[0-9]/,""));
+          el.className = el.className.replace(" symbol-tb-link-matched","")
         })
 
-        Array.from(document.getElementsByClassName(`symbol-tb-${parseInt(randImg)}-link`)).map(ele=>{
-          const href = ele.getAttribute("href");
+        Array.from(document.getElementsByClassName(`symbol-tb-${parseInt(randImg)}-link`)).map(el=>{
+          const href = el.getAttribute("href");
           const append = `&m=1&l=${randLine+1}`;
-          ele.setAttribute("href",`${href.replace(append,"")+append}`);
-          ele.className = ele.className + " symbol-tb-link-matched";
+          el.setAttribute("href",`${href.replace(append,"")+append}`);
+          el.className = el.className + " symbol-tb-link-matched";
         })
 
       }
@@ -188,8 +188,8 @@
         let tbodyHTML1 = "";
         const skip = [9,20,30,30,30,33,33,35,51,60,61,63];
         
-        Array.from(document.getElementsByClassName("rand")).map( ele =>{
-          // ele.innerHTML = randLines(ele.getAttribute("img"), ele.getAttribute("line"), true);
+        Array.from(document.getElementsByClassName("rand")).map( el =>{
+          // el.innerHTML = randLines(ele.getAttribute("img"), el.getAttribute("line"), true);
         })
         
         for (let i=1;i<=13;i++){
@@ -307,9 +307,9 @@
         document.getElementById("tb2-container").innerHTML = tableHTML2;
         document.getElementById("tb3-container").innerHTML = tableHTML3;
 
-        document.getElementById("rand-1").onclick = function(){ switchHide(); resetSymbol(); }
-        document.getElementById("rand-2").onclick = function(){ switchHide(); resetSymbol(); }
-        document.getElementById("rand-3").onclick = function(){ switchHide(); resetSymbol(); }
+        Array.from(document.getElementsByClassName("rand")).map( el =>{
+          el.onclick = function(){ switchHide(); resetSymbol(); }
+        })
 
       })
 
@@ -323,8 +323,8 @@
   <script>
 
     function resetSymbol(){
-      Array.from(document.getElementsByClassName(`symbol-hightlight`)).map(ele=>{
-        ele.className = "symbol";
+      Array.from(document.getElementsByClassName(`symbol-hightlight`)).map(el=>{
+        el.className = "symbol";
       })
     }
 
