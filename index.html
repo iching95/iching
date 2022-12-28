@@ -161,53 +161,65 @@
 
     }
 
+    const genTb1Content = function(_rows){
+
+      const rows = _rows;
+
+      let n = 1;
+      let tbodyHTML1 = "";
+      const skip = [9,20,30,30,30,33,33,35,51,60,61,63];
+      
+      for (let i=1;i<=13;i++){
+        tbodyHTML1 += ("<tr>");
+        for (let j=1;j<=7;j++){
+
+          if(!rows[n]){
+            tbodyHTML1 += ("<td><span></span></td>");
+            continue;
+          }
+
+          const content = rows[n];
+          const html = `<td>
+          <span>${parseInt(n)}</span>
+          <span onclick="findPair(${parseInt(n)})" class='symbol' id='symbol-tb1-${parseInt(n)}'>
+            ${String.fromCharCode(19904+parseInt(n)-1)}
+          </span>
+          ` + (content.d.length==2?`
+            <div>${content.d}</div>
+            <a class="tb1-l symbol-tb-${parseInt(n)}-link" id='symbol-tb1-${parseInt(n)}-link' href='reader.html?i=${n}' ><c>${content.c}</c></a>
+          `:`
+            <span class="tb-char-double">
+            <a class="tb1-l symbol-tb-${parseInt(n)}-link" id='symbol-tb1-${parseInt(n)}-link' href='reader.html?i=${n}'><c>${content.c}</c></a>
+            </span>
+            <div>為${content.d}</div>
+          `) + '</td>';
+          
+          tbodyHTML1 += html;
+
+          for (let k=0; k<((rows[n].c.length - 1) + skip.filter(x => x === n).length); k++, j++){
+              tbodyHTML1 += ("<td><span></span></td>");
+          }
+
+          n++;
+
+        }
+
+        tbodyHTML1 += ("</tr>");
+      }
+      
+      return tbodyHTML1;
+
+    }
+
+    document.getElementById("tb1-container").innerHTML = genTb1Content();
+
     const pData = fetch('data.txt')
       .then(response => response.text())
       .then((data) => {
+
         rows = JSON.parse(data);
-        let n = 1;
-        let tbodyHTML1 = "";
-        const skip = [9,20,30,30,30,33,33,35,51,60,61,63];
-        
-        Array.from(document.getElementsByClassName("rand")).map( el =>{
-          // el.innerHTML = randLines(ele.getAttribute("img"), el.getAttribute("line"), true);
-        })
-        
-        for (let i=1;i<=13;i++){
-          tbodyHTML1 += ("<tr>");
-          for (let j=1;j<=7;j++){
-            // console.log(n);
-            if(rows[n]){
 
-              // tbodyHTML1 += (`<td><a class='symbol-tb-${parseInt(n)}-link' href='reader.html?i=${n}'><span>${n}</span> ${rows[n].c}</a></td>`);
-              const content = rows[n];
-              const html = `<td>
-              <span>${parseInt(n)}</span>
-              <span onclick="findPair(${parseInt(n)})" class='symbol' id='symbol-tb1-${parseInt(n)}'>
-                ${String.fromCharCode(19904+parseInt(n)-1)}
-              </span>
-              ` + (content.d.length==2?`
-                <div>${content.d}</div>
-                <a class="tb1-l symbol-tb-${parseInt(n)}-link" id='symbol-tb1-${parseInt(n)}-link' href='reader.html?i=${n}' ><c>${content.c}</c></a>
-              `:`
-                <span class="tb-char-double">
-                <a class="tb1-l symbol-tb-${parseInt(n)}-link" id='symbol-tb1-${parseInt(n)}-link' href='reader.html?i=${n}'><c>${content.c}</c></a>
-                </span>
-                <div>為${content.d}</div>
-              `) + '</td>';
-
-              tbodyHTML1 += html
-
-              for (let k=0; k<((rows[n].c.length - 1) + skip.filter(x => x === n).length); k++, j++){
-                  tbodyHTML1 += ("<td><span></span></td>");
-                }
-                n++;
-              }
-
-          }
-          tbodyHTML1 += ("</tr>");
-        }
-
+        let tbodyHTML1 = genTb1Content(rows)
         let tbodyHTML2 = "";
 
         for (let i=0;i<8;i++){
