@@ -86,7 +86,7 @@
 
     const reseed = () => {
 
-      document.getElementById("block").innerHTML = `<span>...</span><span>...</span><span>・...</span>`;
+      document.getElementById("block").innerHTML = `<span>0x000000000000</span><span>...</span><span>・00:00:00</span>`;
       
       return fetch(rpc,{
         method: 'POST',
@@ -109,7 +109,7 @@
 
         console.log(rand);
 
-        randImg = rand[1] % 64 + 1;
+        randImg  = rand[1] % 64 + 1;
         randLine = rand[1] % 6;
 
         Array.from(document.getElementsByClassName("rand")).map( ele =>{
