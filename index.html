@@ -167,6 +167,11 @@
         }
     });
 
+    document.getElementById("last-go-btn").innerHTML = `
+    <button type="button">last read (...)</button>
+    `;
+
+
     const pRand = reseed();
 
     const pData = fetch('data.txt')
