@@ -91,7 +91,7 @@
           <button type="button">...</button>
           `;
       
-      fetch(rpc,{
+      return fetch(rpc,{
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(rpcObj)
@@ -121,8 +121,6 @@
           ele.innerHTML = randLines(randImg, randLine, rows!==null);
         })
         
-        updateImgMatchLink();
-
         document.getElementById("block").innerHTML = `<span>${blockInfo}</span><span>${blockNo}</span><span>・${timestamp}</span>`;
 
         document.getElementById("regen-rand-btn").innerHTML = `
@@ -132,17 +130,18 @@
 
     }
 
-    const updateImgMatchLink = function(){
-      if(randImg){
+    const updateImgMatchLink = function(_randImg){
+
+      _randImg = _randImg?_randImg:randImg;
+
+      if(_randImg){
         const ele = document.getElementById(`symbol-tb2-${parseInt(randImg)}-link`);
         if(ele){
           const href = ele.getAttribute("href");
-          ele.setAttribute("href",`${href}&m=1&l=${randLine+1}`);
+          ele.setAttribute("href",`${href}&m=1&l=${_randImg+1}`);
         }
       }
     }
-
-    reseed();
 
     document.body.classList.add(`theme-${theme}`);
 
@@ -158,7 +157,9 @@
         }
     });
 
-    fetch('data.txt')
+    const pRand = reseed();
+
+    const pData = fetch('data.txt')
       .then(response => response.text())
       .then((data) => {
         rows = JSON.parse(data);
@@ -255,10 +256,11 @@
         document.getElementById("rand-2").onclick = function(){ switchHide(); resetSymbol(); }
         document.getElementById("rand-3").onclick = function(){ switchHide(); resetSymbol(); }
 
-        updateImgMatchLink();
-
       })
 
+      Promise.all([pData, pRand]]).then((res) => {
+        updateImgMatchLink(randImg);
+      })
 
       
   </script>
