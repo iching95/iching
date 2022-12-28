@@ -173,7 +173,7 @@
         tbodyHTML1 += ("<tr>");
         for (let j=1;j<=7;j++){
 
-          if(!rows[n]){
+          if(!rows || !rows[n]){
             tbodyHTML1 += ("<td><span></span></td>");
             continue;
           }
