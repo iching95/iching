@@ -48,14 +48,7 @@ td {
   width: 14.25%;
 }
 
-.tb1 td {
-  vertical-align: top;
-  padding: 0px 0px 12px;
-  width: 14.25%;
-  text-align:center;
-}
-
-.tb2 td, .tb3 td{
+.tb1 td, .tb2 td, .tb3 td{
   vertical-align: top;
   padding: 0px 0px 12px;
   width: 12.5%;
@@ -68,10 +61,20 @@ td {
   width: 16.6%;
 }
 
-.tb2 td div, .tb3 td div{
+.tb1 td div, .tb2 td div, .tb3 td div{
   width: 28px;
   margin:auto;
 }
+
+/*
+
+.tb1 td {
+  vertical-align: top;
+  padding: 0px 0px 12px;
+  width: 14.25%;
+  text-align:center;
+}
+
 .tb1 a {
   font-size:40px;
   font-family: monospace;
@@ -83,12 +86,20 @@ td {
   display: block;
 }
 
-.tb2 a > span, .tb3 a > span{
+.tb1 td > span {
   font-size:22px;
   color:#888;
 }
 
-.tb1 td > span {
+*/
+
+.tb1 td > span:before {
+  content: "・";
+  color:#888;
+}
+
+
+.tb1 a > span, .tb2 a > span, .tb3 a > span{
   font-size:22px;
   color:#888;
 }
@@ -96,12 +107,7 @@ td {
 .tb2 td > span {
 }
 
-.tb1 td > span:before {
-  content: "・";
-  color:#888;
-}
-
-.tb2 a, .tb3 a{
+.tb1 a, .tb2 a, .tb3 a{
   display:block;
   font-weight:bold;
 }
