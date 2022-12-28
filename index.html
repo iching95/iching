@@ -75,8 +75,8 @@
             low = img.d[1]?order.indexOf(img.d[1]):top;
           }
 
-          var line1 = "<span>" + (img?String.fromCharCode(9776 + top):"") + "</span>"
-          var line2 = "<span>" + (img?String.fromCharCode(9776 + low):"") + "</span>"
+          var line1 = "<span>" + (img?String.fromCharCode(9776 + top):"–") + "</span>"
+          var line2 = "<span>" + (img?String.fromCharCode(9776 + low):"–") + "</span>"
           var dice =  "<span>" + (String.fromCharCode(9856 + parseInt(_line))) + "</span>"
           
           return line1 + line2 + dice ;
