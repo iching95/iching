@@ -122,8 +122,9 @@
         document.getElementById("block").innerHTML = `<span>${blockInfo}</span><span>${blockNo}</span><span>・${timestamp}</span>`;
 
         document.getElementById("block").onclick = function(){
-          reseed();
+          Promise.all([reseed()]).then((res) => {
           updateImgMatchLink();
+          })
         }
 
       });
