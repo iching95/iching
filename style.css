@@ -96,6 +96,7 @@ td {
 .tb1 td > span:empty:before {
   content: "・";
   color:#888;
+  font-size:28px;
 }
 
 
@@ -104,7 +105,7 @@ td {
   color:#888;
 }
 
-.tb1 td > span {
+.tb1 td > span:first-of-type {
   font-size:14px;
 }
 
