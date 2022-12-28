@@ -137,10 +137,11 @@
       if(_randImg){
         Array.from(document.getElementsByClassName(`symbol-tb-${parseInt(randImg)}-link`)).map(ele=>{
           const href = ele.getAttribute("href");
-          ele.setAttribute("href",`${href}&m=1&l=${_randImg+1}`);
+          const append = `&m=1&l=${_randImg+1}`;
+          ele.setAttribute("href",`${href.replace(append,"")+append}`);
         })
       }
-      
+
     }
 
     document.body.classList.add(`theme-${theme}`);
