@@ -196,6 +196,7 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
 
 #block {
   text-align: center;
+  margin: 0px 0px 6px;
 }
 
 #block span:first-of-type{
