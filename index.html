@@ -168,28 +168,24 @@
       let n = 1;
       let tbodyHTML1 = "";
       const skip = [9,20,30,30,30,33,33,35,51,60,61,63];
+      const double = [9,13,14,20,21,25,26];
       
       for (let i=1;i<=13;i++){
         tbodyHTML1 += ("<tr>");
         for (let j=1;j<=7;j++){
 
-          if(!rows || !rows[n]){
-            tbodyHTML1 += (`<td>
-              <span>1</span>
-              <span onclick="findPair(${parseInt(n)})" class='symbol' id='symbol-tb1-1'>
-                ${String.fromCharCode(19904+parseInt(1)-1)}
-              </span>
-              <div>・・</div>
-              <a class="tb1-l symbol-tb-${parseInt(n)}-link" id='symbol-tb1-${parseInt(n)}-link'><c>・</c></a>
-              </td>`);
-            continue;
-          }
+          const content = rows?rows[n]:{
+            d:"．．",
+            c:double.indexOf(n)?"．":"．．"
+          };
 
-          const content = rows[n];
+          const img = rows?String.fromCharCode(19904+parseInt(n)-1):String.fromCharCode(19904+parseInt(1)-1)
+          const num = rows?parseInt(n):0;
+
           const html = `<td>
-          <span>${parseInt(n)}</span>
+          <span>${num}</span>
           <span onclick="findPair(${parseInt(n)})" class='symbol' id='symbol-tb1-${parseInt(n)}'>
-            ${String.fromCharCode(19904+parseInt(n)-1)}
+            ${img}
           </span>
           ` + (content.d.length==2?`
             <div>${content.d}</div>
@@ -218,7 +214,7 @@
 
     }
 
-    // document.getElementById("tb1-container").innerHTML = "<table class='tb1' style='width:100%;'><tbody>" + genTb1Content() + "</tbody></table>";
+    document.getElementById("tb1-container").innerHTML = "<table class='tb1' style='width:100%;'><tbody>" + genTb1Content() + "</tbody></table>";
 
     const pData = fetch('data.txt')
       .then(response => response.text())
