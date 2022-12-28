@@ -187,12 +187,32 @@
           for (let j=1;j<=7;j++){
             // console.log(n);
             if(rows[n]){
-              tbodyHTML1 += (`<td><a class='symbol-tb-${parseInt(n)}-link' href='reader.html?i=${n}'><span>${n}</span> ${rows[n].c}</a></td>`);
+
+              // tbodyHTML1 += (`<td><a class='symbol-tb-${parseInt(n)}-link' href='reader.html?i=${n}'><span>${n}</span> ${rows[n].c}</a></td>`);
+
+              const html = `<td>
+              <span></span>
+              <span onclick="findPair(${parseInt(n)})" class='symbol' id='symbol-tb2-${parseInt(n)}'>
+                ${String.fromCharCode(19904+parseInt(n)-1)}
+              </span>
+              ` + (content.d.length==2?`
+                <div>${content.d}</div>
+                <a class="tb2-l symbol-tb-${parseInt(n)}-link" id='symbol-tb2-${parseInt(n)}-link' href='reader.html?i=${n}' ><c>${content.c}</c></a>
+              `:`
+                <span class="tb-char-double">
+                <a class="tb2-l symbol-tb-${parseInt(n)}-link" id='symbol-tb2-${parseInt(n)}-link' href='reader.html?i=${n}'><c>${content.c}</c></a>
+                </span>
+                <div>為${content.d}</div>
+              `) + '</td>';
+
+              tbodyHTML1 += html
+
               for (let k=0; k<((rows[n].c.length - 1) + skip.filter(x => x === n).length); k++, j++){
-                tbodyHTML1 += ("<td><span></span></td>");
+                  tbodyHTML1 += ("<td><span></span></td>");
+                }
+                n++;
               }
-              n++;
-            }
+
           }
           tbodyHTML1 += ("</tr>");
         }
@@ -209,20 +229,23 @@
             
             const n = cell[0][0];
             const content = cell[0][1];
+
             const html = `<td>
-                <span></span>
-                <span onclick="findPair(${parseInt(n)})" class='symbol' id='symbol-tb2-${parseInt(n)}'>
-                  ${String.fromCharCode(19904+parseInt(n)-1)}
-                </span>
-              ` + (content.d.length==2?`
-                <div>${content.d}</div>
-                <a class="tb2-l symbol-tb-${parseInt(n)}-link" id='symbol-tb2-${parseInt(n)}-link' href='reader.html?i=${n}' ><c>${content.c}</c></a>
-              `:`
-                <span class="tb-char-double">
-                <a class="tb2-l symbol-tb-${parseInt(n)}-link" id='symbol-tb2-${parseInt(n)}-link' href='reader.html?i=${n}'><c>${content.c}</c></a>
-                </span>
-                <div>為${content.d}</div>`) + '</td>'
-             tbodyHTML2 += html;
+              <span></span>
+              <span onclick="findPair(${parseInt(n)})" class='symbol' id='symbol-tb2-${parseInt(n)}'>
+                ${String.fromCharCode(19904+parseInt(n)-1)}
+              </span>
+            ` + (content.d.length==2?`
+              <div>${content.d}</div>
+              <a class="tb2-l symbol-tb-${parseInt(n)}-link" id='symbol-tb2-${parseInt(n)}-link' href='reader.html?i=${n}' ><c>${content.c}</c></a>
+            `:`
+              <span class="tb-char-double">
+              <a class="tb2-l symbol-tb-${parseInt(n)}-link" id='symbol-tb2-${parseInt(n)}-link' href='reader.html?i=${n}'><c>${content.c}</c></a>
+              </span>
+              <div>為${content.d}</div>
+            `) + '</td>'
+
+            tbodyHTML2 += html;
           }
 
           tbodyHTML2 += ("</tr>");
@@ -251,15 +274,16 @@
             const mthString = new Date(0,mth+1,0).toLocaleString('en-US', { month: 'short', });
             
             const html = `<td>
-              <span class='${((mth)==new Date().getMonth())?'mth-current':'mth'}'>${mthString}</span><span class='symbol'>${String.fromCharCode(19904+parseInt(n)-1)}</span>
-              ` + (content.d.length==2?`
-                <div>${content.d}</div>
-                <a class="tb3-l symbol-tb-${parseInt(n)}-link" id='symbol-tb3-${parseInt(n)}-link' href='reader.html?i=${n}'><c>${content.c}</c></a>
-              `:`
-                <span class="tb-char-double">
-                <a class="tb3-l symbol-tb-${parseInt(n)}-link" id='symbol-tb3-${parseInt(n)}-link' href='reader.html?i=${n}'><c>${content.c}</c></a>
-                </span><div>為${content.d}</div>
-                `) + '</td>'
+            <span class='${((mth)==new Date().getMonth())?'mth-current':'mth'}'>${mthString}</span><span class='symbol'>${String.fromCharCode(19904+parseInt(n)-1)}</span>
+            ` + (content.d.length==2?`
+              <div>${content.d}</div>
+              <a class="tb3-l symbol-tb-${parseInt(n)}-link" id='symbol-tb3-${parseInt(n)}-link' href='reader.html?i=${n}'><c>${content.c}</c></a>
+            `:`
+              <span class="tb-char-double">
+              <a class="tb3-l symbol-tb-${parseInt(n)}-link" id='symbol-tb3-${parseInt(n)}-link' href='reader.html?i=${n}'><c>${content.c}</c></a>
+              </span><div>為${content.d}</div>
+            `) + '</td>'
+            
             tbodyHTML3 += html;
           }
           tbodyHTML3 += ("</tr>");
