@@ -65,22 +65,23 @@
 
     var randLines = function(_img, _line, loadImg = false){
 
-          let img = null;
-          let top = null;
-          let low = null;
+      let img = null;
+      let top = null;
+      let low = null;
 
-          if(rows && rows[_img] && loadImg){
-            img = rows[_img];
-            top = order.indexOf(img.d[0]);
-            low = img.d[1]?order.indexOf(img.d[1]):top;
-          }
+      if(rows && rows[_img] && loadImg){
+        img = rows[_img];
+        top = order.indexOf(img.d[0]);
+        low = img.d[1]?order.indexOf(img.d[1]):top;
+      }
 
-          var line1 = "<span>" + (img?String.fromCharCode(9776 + top):"⚊") + "</span>";
-          var line2 = "<span>" + (img?String.fromCharCode(9776 + low):"⚋") + "</span>";
-          var dice =  "<span>" + ((_line!==null)?String.fromCharCode(9856 + parseInt(_line)):"☯") + "</span>"; 
+      var line1 = "<span>" + (img?String.fromCharCode(9776 + top):"⚊") + "</span>";
+      var line2 = "<span>" + (img?String.fromCharCode(9776 + low):"⚋") + "</span>";
+      var dice =  "<span>" + ((_line!==null)?String.fromCharCode(9856 + parseInt(_line)):"☯") + "</span>"; 
 
-          return line1 + line2 + dice ;
-        }
+      return line1 + line2 + dice;
+
+    }
 
     document.getElementById("rand-1").innerHTML = randLines();
 
@@ -111,24 +112,28 @@
 
         randImg  = rand[1] % 64 + 1;
         randLine = rand[1] % 6;
-
-        Array.from(document.getElementsByClassName("rand")).map( ele =>{
-          ele.setAttribute("img", randImg)
-          ele.setAttribute("line", randLine)
-          ele.className = "rand rand-loaded"
-          ele.innerHTML = randLines(randImg, randLine, rows!==null);
-        })
         
         document.getElementById("block").innerHTML = `<span>${blockInfo}</span><span>${blockNo}</span><span>・${timestamp}</span>`;
 
         document.getElementById("block").onclick = function(){
           Promise.all([reseed()]).then((res) => {
           updateImgMatchLink();
+          updateImgForRandLines(randImg, randLine, true);
           })
         }
 
       });
 
+    }
+
+
+    const updateImgForRandLines = function(){
+      Array.from(document.getElementsByClassName("rand")).map( ele =>{
+        ele.setAttribute("img", randImg)
+        ele.setAttribute("line", randLine)
+        ele.className = "rand rand-loaded"
+        ele.innerHTML = randLines(randImg, randLine, rows!==null);
+      })
     }
 
     const updateImgMatchLink = function(){
@@ -184,7 +189,7 @@
         const skip = [9,20,30,30,30,33,33,35,51,60,61,63];
         
         Array.from(document.getElementsByClassName("rand")).map( ele =>{
-          ele.innerHTML = randLines(ele.getAttribute("img"), ele.getAttribute("line"), true);
+          // ele.innerHTML = randLines(ele.getAttribute("img"), ele.getAttribute("line"), true);
         })
         
         for (let i=1;i<=13;i++){
@@ -310,6 +315,7 @@
 
       Promise.all([pData, pRand]).then((res) => {
         updateImgMatchLink();
+        updateImgForRandLines(randImg, randLine, true);
       })
       
   </script>
