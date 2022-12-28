@@ -189,7 +189,7 @@
             if(rows[n]){
 
               // tbodyHTML1 += (`<td><a class='symbol-tb-${parseInt(n)}-link' href='reader.html?i=${n}'><span>${n}</span> ${rows[n].c}</a></td>`);
-
+              const content = rows[n];
               const html = `<td>
               <span></span>
               <span onclick="findPair(${parseInt(n)})" class='symbol' id='symbol-tb2-${parseInt(n)}'>
