@@ -135,7 +135,7 @@
       Array.from(document.getElementsByClassName("rand")).map( el =>{
         el.setAttribute("img", randImg)
         el.setAttribute("line", randLine)
-        el.className = "rand rand-loaded"
+        el.classList.add("rand-loaded");
         el.innerHTML = randLines(randImg, randLine, rows!==null);
       })
     }
@@ -147,14 +147,14 @@
         Array.from(document.getElementsByClassName(`symbol-tb-link-matched`)).map(el=>{
           const href = el.getAttribute("href");
           el.setAttribute("href",href.replace(/&m=1&l=[0-9]/,""));
-          el.className = el.className.replace(" symbol-tb-link-matched","")
+          el.classList.remove("symbol-tb-link-matched")
         })
 
         Array.from(document.getElementsByClassName(`symbol-tb-${parseInt(randImg)}-link`)).map(el=>{
           const href = el.getAttribute("href");
           const append = `&m=1&l=${randLine+1}`;
           el.setAttribute("href",`${href.replace(append,"")+append}`);
-          el.className = el.className + " symbol-tb-link-matched";
+          el.classList.add("symbol-tb-link-matched")
         })
 
       }
@@ -328,7 +328,7 @@
 
     function resetSymbol(){
       Array.from(document.getElementsByClassName(`symbol-hightlight`)).map(el=>{
-        el.className = "symbol";
+        el.classList.remove("symbol-hightlight");
       })
     }
 
@@ -338,12 +338,12 @@
       stateHide = !stateHide;
 
       Array.from(document.getElementsByClassName(`tb2-l`)).map(el=>{
-        el.className = stateHide?"tb2-l tb2-l-hidden":"tb2-l";
+        el.classList.toggle("tb2-l-hidden");
         el.onclick = stateHide?switchHide:null;
       })
 
       Array.from(document.getElementsByClassName(`tb1-l`)).map(el=>{
-        el.className = stateHide?"tb1-l tb1-l-hidden":"tb1-l";
+        el.classList.toggle("tb1-l-hidden");
         el.onclick = stateHide?switchHide:null;
       })
 
@@ -356,11 +356,8 @@
       resetSymbol();
 
       const pair = (n%2>0)?(n+1):(n-1);
-      document.getElementById(`symbol-tb2-${n}`).className    = "symbol symbol-hightlight symbol-selected";
-      document.getElementById(`symbol-tb2-${pair}`).className = "symbol symbol-hightlight";
-      
-      // document.getElementById(`symbol-tb1-${n}`).className    = "symbol symbol-hightlight symbol-selected";
-      // document.getElementById(`symbol-tb1-${pair}`).className = "symbol symbol-hightlight";
+      document.getElementById(`symbol-tb2-${n}`).classList.add("symbol-selected").add("symbol-hightlight");
+      document.getElementById(`symbol-tb2-${pair}`).classList.add("symbol-hightlight");
 
       const cross = Object.entries(rows).filter(row => (row[1].d[0] === rows[n].d[1] && row[1].d[1] === rows[n].d[0]));
 
@@ -370,8 +367,7 @@
         console.log(crossIdx);
 
         if(crossIdx != pair){
-          document.getElementById(`symbol-tb2-${crossIdx}`).className = "symbol symbol-hightlight";
-          // document.getElementById(`symbol-tb1-${crossIdx}`).className = "symbol symbol-hightlight";
+          document.getElementById(`symbol-tb2-${crossIdx}`).classList.add("symbol-hightlight");
         }
 
       }
