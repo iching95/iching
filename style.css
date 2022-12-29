@@ -254,6 +254,11 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
 .ptr-lines{
 
 }
+
+.ptr-lines span:nth-last-of-type(3){
+  margin: 10px 0px 5px;
+}
+
 .ptr-line{
   height: 5px;
   width: 32px;
