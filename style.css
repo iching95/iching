@@ -107,6 +107,7 @@ td {
 
 .tb1 td > span:first-of-type {
   font-size:14px;
+  display: block;
 }
 
 .tb2 td > span {
