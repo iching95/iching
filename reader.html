@@ -350,10 +350,10 @@
             prefix = prefix.replace(/^(初[九六])/,"<strong onclick='readLine(1,this)' class='markLine' id='line1' mark-data-id='line1'>$1</strong>");
             prefix = prefix.replace(/^([六九]二)/,"<strong onclick='readLine(2,this)' class='markLine' id='line2' mark-data-id='line2'>$1</strong>");
             prefix = prefix.replace(/^([六九]三)/,"<strong onclick='readLine(3,this)' class='markLine' id='line3' mark-data-id='line3'>$1</strong>");
-            prefix = prefix.replace(/^([六九]四)/,"<strong onclick='readLine(4,this)'><span class='markLine' id='line4' mark-data-id='line4'></span>$1</strong>");
-            prefix = prefix.replace(/^([六九]五)/,"<strong onclick='readLine(5,this)'><span class='markLine' id='line5' mark-data-id='line5'></span>$1</strong>");
-            prefix = prefix.replace(/^(上[九六])/,"<strong onclick='readLine(6,this)'><span class='markLine' id='line6' mark-data-id='line6'></span>$1</strong>");
-            prefix = prefix.replace(/^(用[九六])/,"<strong onclick='readLine(7,this)'><span class='markLine' id='line7' mark-data-id='line6'></span>$1</strong>");
+            prefix = prefix.replace(/^([六九]四)/,"<strong onclick='readLine(4,this)' class='markLine' id='line4' mark-data-id='line4'>$1</strong>");
+            prefix = prefix.replace(/^([六九]五)/,"<strong onclick='readLine(5,this)' class='markLine' id='line5' mark-data-id='line5'>$1</strong>");
+            prefix = prefix.replace(/^(上[九六])/,"<strong onclick='readLine(6,this)' class='markLine' id='line6' mark-data-id='line6'>$1</strong>");
+            prefix = prefix.replace(/^(用[九六])/,"<strong onclick='readLine(7,this)' class='markLine' id='line7' mark-data-id='line7'>$1</strong>");
 
             stmtContent.split('').forEach(function(char) {
               if(!char.match(/[：。，！]/)){
@@ -406,8 +406,7 @@
 
         var anchors = document.getElementsByTagName('c');
         var onclickAction = function(evt) {
-              console.log(evt.target.parentElement.querySelector(".markLine"))
-              const el    = evt.target.parentElement.querySelector(".markLine")[0];
+              const el    = evt.target.parentElement.querySelector(".markLine");
               const line  = el.getAttribute("mark-data-id").match(/line[1-7]/)[0]
               markLine(line, el);
 
