@@ -90,6 +90,8 @@
     <button type="button">last read (...)</button>
     `;
 
+    document.getElementById("block").innerHTML = `<span>0x000000000000</span><span>10000000</span><span><span id="block-loader">．</span>00:00:00</span>`;
+
     const reseed = () => {
 
       document.getElementById("block-loader").innerHTML = "⟳";
