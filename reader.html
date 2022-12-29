@@ -513,7 +513,7 @@
 
           if(y){
             const line = linePos.indexOf(y);
-            document.querySelector(`#ptr-line-${(6-line)}`).classList.add("ptr-line-active");
+            document.querySelector(`#ptr-line-${(line+1)}`).classList.add("ptr-line-active");
           }else{
             // document.getElementById("dic-ptr").innerHTML = "";
           }
