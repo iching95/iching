@@ -75,8 +75,6 @@
       ${matchIdx?`<div class='star'>${dice}</div>`:""}
     </div>`;
 
-
-
     document.getElementById("header").innerHTML = headerHTML;
 
     var next = "location.href='./reader.html?i="+(idx+1)+"'";
@@ -225,14 +223,24 @@
     var bookmarkLine = 0;
     var bookmarkText = "";
 
-    function markLine(_line, _lineEl){
+    const markLine = (_line, _lineEl) => {
       document.getElementById("bookmark-btn-line").innerHTML = _line;
       bookmarkLine = _line;
       bookmarkText = _lineEl.parentElement.innerText;
       document.getElementById("footer-group-bookmark").style.display = "block"
     }
 
-    function createBookmark(){
+    const readLine = (_line, _lineEl) => {
+      
+      const destURL = './reader.html?' + (new URLSearchParams({
+        t:"text",
+        i:idx
+      }).toString());
+
+      location.href = `reader.html?i=${last}#line${_line}`;
+    }
+
+    const createBookmark = () => {
 
       if(!document.getElementById("bookmark-btn-line").innerHTML.match(/[123456]/)){
         document.getElementById("bookmark-btn-line").innerHTML = "*"
@@ -411,12 +419,21 @@
                 
       })
 
-      fetch("data.txt")
+      const updateTitle = () => {
+        if(data){
+          document.title = (n-1)  + ". " + data[idx].c + " - iChing"
+          document.getElementById("header-c").innerHTML =  data[idx].c;
+        }
+      }
+
+      let data = localStorage.getItem("data-v1");
+      data = data?JSON.parse(data):fetch("data.txt")
       .then(response => response.json())
-      .then((data) => {
-        document.title = (n-1)  + ". " + data[idx].c + " - iChing"
-        document.getElementById("header-c").innerHTML =  data[idx].c;
+      .then((_data) => {
+        data = _data
+        updateTitle();
       })
+      updateTitle();
 
       document.getElementById("toc").innerHTML = tocHTML;
 	    document.getElementById("content").innerHTML = "Loading "+ idx + " ..."
