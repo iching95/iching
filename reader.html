@@ -468,6 +468,7 @@
           for(var i=1;i<=6;i++){
             lines.push(`<span class='ptr-line ptr-line-yin' id='ptr-line-${i}'>`)
           }
+          document.getElementById("dic-ptr").innerHTML = `<span class='ptr-lines'>${lines.join("\n")}</span>`
         }
 
       }
