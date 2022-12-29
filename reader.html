@@ -421,23 +421,28 @@
       })
 
       const updateTitle = () => {
-        if(data){
+
+        if(Array.isArray(data)){
           document.title = (n-1)  + ". " + data[idx].c + " - iChing"
           document.getElementById("header-c").innerHTML =  data[idx].c;
+          return;
         }
+
+        document.getElementById("toc").innerHTML = tocHTML;
+	      document.getElementById("content").innerHTML = "Loading "+ idx + " ..."
+
       }
 
       let data = localStorage.getItem("data-v1");
-      data = data?JSON.parse(data):fetch("data.txt")
+
+      data = data?(JSON.parse(data)):fetch("data.txt")
       .then(response => response.json())
       .then((_data) => {
         data = _data
         updateTitle();
       })
-      updateTitle();
 
-      document.getElementById("toc").innerHTML = tocHTML;
-	    document.getElementById("content").innerHTML = "Loading "+ idx + " ..."
+      updateTitle();
     
   </script>
   <form style="display:none" id="ephhk-form" action="https://ephpth.ephhk.com/resource/tools/lcprichi/search/show_word.php" method="get" accept="BIG5" accept-charset="BIG5">
