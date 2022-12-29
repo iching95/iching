@@ -3,7 +3,7 @@
 <head>
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css?v32">
+  <link rel="stylesheet" href="style.css?v33">
   <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
 </head>
 
@@ -325,6 +325,7 @@
     var url = loadBook?"book":"content";
 
     var tocHTML = "";
+
     if(loadBook){
       var tocHTML = `
       <ul>
@@ -503,6 +504,7 @@
       })
 
       document.getElementById("toc").innerHTML = tocHTML;
+      document.getElementById("toc").classList.add(isWatch:"toc-watch":"toc");
 	    document.getElementById("content").innerHTML = "Loading "+ idx + " ..."
 
       const posOffset = 45;
