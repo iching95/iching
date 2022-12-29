@@ -420,19 +420,17 @@
                 
       })
 
-      const updateTitle = () => {
-        console.log(data)
-        document.title = (n-1)  + ". " + data[idx].c + " - iChing"
-        document.getElementById("header-c").innerHTML =  data[idx].c;
+      const updateTitle = (_data) => {
+        document.title = (n-1)  + ". " + _data[idx].c + " - iChing"
+        document.getElementById("header-c").innerHTML =  _data[idx].c;
       }
 
-      let data = localStorage.getItem("data-v1");
+      let tData = localStorage.getItem("data-v1");
 
-      data = data?(JSON.parse(data) && updateTitle()):fetch("data.txt")
+      tData = tData?updateTitle(JSON.parse(data)):fetch("data.txt")
       .then(response => response.json())
       .then((_data) => {
-        data = _data
-        updateTitle();
+        updateTitle(_data);
       })
 
       document.getElementById("toc").innerHTML = tocHTML;
