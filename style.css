@@ -271,11 +271,7 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
 }
 
 .ptr-line-ying{
-  font-size: 20px;
-  text-align: center;
-  color: #49494c;
-  overflow: hidden;
-  vertical-align: top;
+  background: liner-graadient(90deg, #fff 35%, #49494c 35%, #49494c 65%, #fff 65%);
 }
 
 .ptr-line-yan::before{
