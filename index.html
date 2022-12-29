@@ -221,105 +221,109 @@
 
     document.getElementById("tb1-container").innerHTML = "<table class='tb1' style='width:100%;'><tbody>" + genTb1Content() + "</tbody></table>";
 
-    const pData = fetch('data.txt')
+    const layoutData = function(data){
+      let tbodyHTML1 = genTb1Content(rows)
+      let tbodyHTML2 = "";
+
+      for (let i=0;i<8;i++){
+
+        tbodyHTML2 += ("<tr>");
+        const row = Object.entries(rows).filter(row => (row[1].d === order[i] || row[1].d[1] === order[i]));
+        
+        for (let j=0;j<8;j++){
+          const cell = row.filter(cell => (cell[1].d === order[j] || cell[1].d[0] === order[j]));
+          
+          const n = cell[0][0];
+          const content = cell[0][1];
+
+          const html = `<td>
+            <span></span>
+            <span onclick="findPair(${parseInt(n)})" class='symbol' id='symbol-tb2-${parseInt(n)}'>
+              ${String.fromCharCode(19904+parseInt(n)-1)}
+            </span>
+          ` + (content.d.length==2?`
+            <div>${content.d}</div>
+            <a class="tb2-l symbol-tb-${parseInt(n)}-link" id='symbol-tb2-${parseInt(n)}-link' href='reader.html?i=${n}' ><c>${content.c}</c></a>
+          `:`
+            <span class="tb-char-double">
+            <a class="tb2-l symbol-tb-${parseInt(n)}-link" id='symbol-tb2-${parseInt(n)}-link' href='reader.html?i=${n}'><c>${content.c}</c></a>
+            </span>
+            <div>為${content.d}</div>
+          `) + '</td>'
+
+          tbodyHTML2 += html;
+        }
+
+        tbodyHTML2 += ("</tr>");
+      }
+
+      const months = [24,19,11,34,43,1,44,33,12,20,23,2];
+      let tbodyHTML3 = "";
+
+      for (let i=0;i<2;i++){
+        tbodyHTML3 += ("<tr>");
+        for (let j=0;j<6;j++){
+          // console.log(n);
+          const k = i*6 + j;
+          const n = months[k];
+          const content = rows[n];
+          const mth = (11+k-1)%12;
+          const mthString = new Date(0,mth+1,0).toLocaleString('en-US', { month: 'short', });
+          
+          const html = `<td>
+          <span class='${((mth)==new Date().getMonth())?'mth-current':'mth'}'>${mthString}</span><span class='symbol'>${String.fromCharCode(19904+parseInt(n)-1)}</span>
+          ` + (content.d.length==2?`
+            <div>${content.d}</div>
+            <a class="tb3-l symbol-tb-${parseInt(n)}-link" id='symbol-tb3-${parseInt(n)}-link' href='reader.html?i=${n}'><c>${content.c}</c></a>
+          `:`
+            <span class="tb-char-double">
+            <a class="tb3-l symbol-tb-${parseInt(n)}-link" id='symbol-tb3-${parseInt(n)}-link' href='reader.html?i=${n}'><c>${content.c}</c></a>
+            </span><div>為${content.d}</div>
+          `) + '</td>'
+          
+          tbodyHTML3 += html;
+        }
+        tbodyHTML3 += ("</tr>");
+      }
+
+      const tableHTML1 = "<table class='tb1' style='width:100%;'><tbody>" + tbodyHTML1 + "</tbody></table>";
+      const tableHTML2 = "<table class='tb2' style='width:100%;'><tbody>" + tbodyHTML2 + "</tbody></table>";
+      const tableHTML3 = "<table class='tb3' style='width:100%;'><tbody>" + tbodyHTML3 + "</tbody></table>";
+
+      document.getElementById("tb1-container").innerHTML = tableHTML1;
+      document.getElementById("tb2-container").innerHTML = tableHTML2;
+      document.getElementById("tb3-container").innerHTML = tableHTML3;
+
+      Array.from(document.getElementsByClassName("rand")).map( el =>{
+        el.onclick = function(){ switchHide(); resetSymbol(); }
+      })
+    }
+
+    const data = localStorage.getItem("data");
+    const pData = data?layoutData(data):fetch('data.txt')
       .then(response => response.text())
       .then((data) => {
-
-        rows = JSON.parse(data);
-
-        let tbodyHTML1 = genTb1Content(rows)
-        let tbodyHTML2 = "";
-
-        for (let i=0;i<8;i++){
-
-          tbodyHTML2 += ("<tr>");
-          const row = Object.entries(rows).filter(row => (row[1].d === order[i] || row[1].d[1] === order[i]));
-          
-          for (let j=0;j<8;j++){
-            const cell = row.filter(cell => (cell[1].d === order[j] || cell[1].d[0] === order[j]));
-            
-            const n = cell[0][0];
-            const content = cell[0][1];
-
-            const html = `<td>
-              <span></span>
-              <span onclick="findPair(${parseInt(n)})" class='symbol' id='symbol-tb2-${parseInt(n)}'>
-                ${String.fromCharCode(19904+parseInt(n)-1)}
-              </span>
-            ` + (content.d.length==2?`
-              <div>${content.d}</div>
-              <a class="tb2-l symbol-tb-${parseInt(n)}-link" id='symbol-tb2-${parseInt(n)}-link' href='reader.html?i=${n}' ><c>${content.c}</c></a>
-            `:`
-              <span class="tb-char-double">
-              <a class="tb2-l symbol-tb-${parseInt(n)}-link" id='symbol-tb2-${parseInt(n)}-link' href='reader.html?i=${n}'><c>${content.c}</c></a>
-              </span>
-              <div>為${content.d}</div>
-            `) + '</td>'
-
-            tbodyHTML2 += html;
-          }
-
-          tbodyHTML2 += ("</tr>");
-        }
-
-        const months = [24,19,11,34,43,1,44,33,12,20,23,2];
-        let tbodyHTML3 = "";
-
-        for (let i=0;i<2;i++){
-          tbodyHTML3 += ("<tr>");
-          for (let j=0;j<6;j++){
-            // console.log(n);
-            const k = i*6 + j;
-            const n = months[k];
-            const content = rows[n];
-            const mth = (11+k-1)%12;
-            const mthString = new Date(0,mth+1,0).toLocaleString('en-US', { month: 'short', });
-            
-            const html = `<td>
-            <span class='${((mth)==new Date().getMonth())?'mth-current':'mth'}'>${mthString}</span><span class='symbol'>${String.fromCharCode(19904+parseInt(n)-1)}</span>
-            ` + (content.d.length==2?`
-              <div>${content.d}</div>
-              <a class="tb3-l symbol-tb-${parseInt(n)}-link" id='symbol-tb3-${parseInt(n)}-link' href='reader.html?i=${n}'><c>${content.c}</c></a>
-            `:`
-              <span class="tb-char-double">
-              <a class="tb3-l symbol-tb-${parseInt(n)}-link" id='symbol-tb3-${parseInt(n)}-link' href='reader.html?i=${n}'><c>${content.c}</c></a>
-              </span><div>為${content.d}</div>
-            `) + '</td>'
-            
-            tbodyHTML3 += html;
-          }
-          tbodyHTML3 += ("</tr>");
-        }
-
-        const tableHTML1 = "<table class='tb1' style='width:100%;'><tbody>" + tbodyHTML1 + "</tbody></table>";
-        const tableHTML2 = "<table class='tb2' style='width:100%;'><tbody>" + tbodyHTML2 + "</tbody></table>";
-        const tableHTML3 = "<table class='tb3' style='width:100%;'><tbody>" + tbodyHTML3 + "</tbody></table>";
-
-        document.getElementById("tb1-container").innerHTML = tableHTML1;
-        document.getElementById("tb2-container").innerHTML = tableHTML2;
-        document.getElementById("tb3-container").innerHTML = tableHTML3;
-
-        Array.from(document.getElementsByClassName("rand")).map( el =>{
-          el.onclick = function(){ switchHide(); resetSymbol(); }
-        })
-
+        const rows = JSON.parse(data);
+        localStorage.setItem("data", rows);
+        layoutData(rows);
       })
+    const promises = data?[reseed()];[pData,reseed()]
 
-      Promise.all([pData, reseed()]).then((res) => {
-        updateImgMatchLink();
-        updateImgForRandLines(randImg, randLine, true);
-      })
+    Promise.all(promises).then((res) => {
+      updateImgMatchLink();
+      updateImgForRandLines(randImg, randLine, true);
+    })
 
-      fetch(`https://instant-cell-9492.iching.workers.dev/`)
-      .then((response) => response.json())
-      .then(json => {
-        console.log(json);
-        if(json.idx){
-          const last = json.idx;
-          document.getElementById("last-go-btn").innerHTML = `
-          <button onclick="location.href='reader.html?i=${last}'" type="button">last read (${last})</button>
-          `;
-        }
+    fetch(`https://instant-cell-9492.iching.workers.dev/`)
+    .then((response) => response.json())
+    .then(json => {
+      console.log(json);
+      if(json.idx){
+        const last = json.idx;
+        document.getElementById("last-go-btn").innerHTML = `
+        <button onclick="location.href='reader.html?i=${last}'" type="button">last read (${last})</button>
+        `;
+      }
     });
       
   </script>
