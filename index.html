@@ -307,7 +307,7 @@
         localStorage.setItem("data", rows);
         layoutData(rows);
       })
-    const promises = data?[reseed()];[pData,reseed()]
+    const promises = data?[reseed()]:[pData,reseed()]
 
     Promise.all(promises).then((res) => {
       updateImgMatchLink();
