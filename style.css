@@ -266,11 +266,11 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
   margin: 5px 0px;
 }
 
-.ptr-line-yin{
+.ptr-line-yan{
 
 }
 
-.ptr-line-yan{
+.ptr-line-ying{
   font-size: 20px;
   text-align: center;
   color: #49494c;
