@@ -310,7 +310,10 @@
         layoutData(rows);
       })
 
-    Promise.all(data?[reseed()]:[pData,reseed()]).then((res) => {
+    const ps = data?[reseed()]:[pData, reseed()];
+    console.log(ps)
+
+    Promise.all(ps).then((res) => {
       updateImgMatchLink();
       updateImgForRandLines(randImg, randLine, true);
     })
