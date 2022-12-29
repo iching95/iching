@@ -254,6 +254,10 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
 .book-symbol{
   font-size: 72px !important;
 }
+.book-symbol span{
+  display:block;
+}
+
 
 .line-matched:before {
   content: '➤';
