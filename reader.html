@@ -505,13 +505,15 @@
       document.getElementById("toc").innerHTML = tocHTML;
 	    document.getElementById("content").innerHTML = "Loading "+ idx + " ..."
 
+      const posOffset = 45;
+
       if(loadBook){
         // document.getElementById("dic-ptr").innerHTML = symbol;
         document.getElementById("dic-ptr").classList.add("book-symbol");
         document.addEventListener("scroll", (event) => {
           pos = window.pageYOffset * (device=="desktop"?2:1);
           // console.log(linePos)
-          const y = linePos.find((y)=>( (pos + 30) >y));
+          const y = linePos.find((y)=>( (pos + posOffset) >y));
 
           Array.from(document.getElementsByClassName("ptr-line-active")).map(el=>{
             el.classList.remove("ptr-line-active");
