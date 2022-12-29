@@ -243,7 +243,7 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
 /* reader */
 
 .line-matched:before {
-  content: '⯈';
+  content: '➤';
 }
 
 .markLine{
