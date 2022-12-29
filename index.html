@@ -90,7 +90,7 @@
     <button type="button">last read (...)</button>
     `;
 
-    document.getElementById("block").innerHTML = `<span>0x000000000000</span><span>10000000</span><span><span id="block-loader">．</span>00:00:00</span>`;
+    document.getElementById("block").innerHTML = `<span>0x000000000000</span><span>10000000</span><span>・00:00:00</span><span id="block-loader"></span>`;
 
     const reseed = () => {
 
@@ -120,7 +120,7 @@
         randImg  = rand[1] % 64 + 1;
         randLine = rand[1] % 6;
         
-        document.getElementById("block").innerHTML = `<span>${blockInfo}</span><span>${blockNo}</span><span id="block-loader">．</span><span>${timestamp}</span>`;
+        document.getElementById("block").innerHTML = `<span>${blockInfo}</span><span>${blockNo}</span><span>・${timestamp}</span><span id="block-loader"></span>`;
 
         document.getElementById("block").onclick = function(){
           Promise.all([reseed()]).then((res) => {
