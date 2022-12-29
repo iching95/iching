@@ -417,6 +417,12 @@
           var anchor = anchors[i];
           anchor.onclick = onclickAction
         }
+
+        if(loadBook && location.hash.match(/line[1-6]/)){
+          console.log(location.hash)
+          location.reload()
+        }
+
                 
       })
 
