@@ -136,7 +136,7 @@
         el.setAttribute("img", randImg)
         el.setAttribute("line", randLine)
         el.classList.add("rand-loaded");
-        el.innerHTML = randLines(randImg, randLine, rows!==null);
+        el.innerHTML = randLines(randImg, randLine, true);
       })
     }
 
@@ -310,10 +310,9 @@
         layoutData(rows);
       })
 
-    const ps = data?[reseed()]:[pData, reseed()];
-    console.log(ps)
+    const promises = data?[reseed()]:[pData, reseed()];
 
-    Promise.all(ps).then((res) => {
+    Promise.all(promises).then((res) => {
       updateImgMatchLink();
       updateImgForRandLines(randImg, randLine, true);
     })
