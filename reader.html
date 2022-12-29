@@ -505,7 +505,7 @@
         document.addEventListener("scroll", (event) => {
           pos = window.pageYOffset * (device=="desktop"?2:1);
           // console.log(linePos)
-          const y = linePos.find((y)=>pos>y);
+          const y = linePos.find((y)=>( (pos - 25) >y));
 
           Array.from(document.getElementsByClassName("ptr-line-active")).map(el=>{
             el.classList.remove("ptr-line-active");
