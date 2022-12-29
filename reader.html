@@ -3,7 +3,7 @@
 <head>
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css?v21">
+  <link rel="stylesheet" href="style.css?v22">
   <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
 </head>
 
@@ -433,10 +433,6 @@
           document.getElementById(hash[0]).scrollIntoView();
         }
 
-        if(loadBook){
-          // document.getElementById("dic-ptr").innerHTML = symbol;
-          document.getElementById("dic-ptr").classList.add("book-symbol")
-        }
 
       })
 
@@ -457,6 +453,7 @@
         }
 
       }
+      
 
       let tData = localStorage.getItem("data-v1");
 
@@ -468,6 +465,11 @@
 
       document.getElementById("toc").innerHTML = tocHTML;
 	    document.getElementById("content").innerHTML = "Loading "+ idx + " ..."
+
+      if(loadBook){
+        // document.getElementById("dic-ptr").innerHTML = symbol;
+        document.getElementById("dic-ptr").classList.add("book-symbol")
+      }
 
   </script>
   <form style="display:none" id="ephhk-form" action="https://ephpth.ephhk.com/resource/tools/lcprichi/search/show_word.php" method="get" accept="BIG5" accept-charset="BIG5">
