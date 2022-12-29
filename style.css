@@ -251,6 +251,10 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
 
 /* reader */
 
+.book-symbol{
+  
+}
+
 .line-matched:before {
   content: '➤';
 }
