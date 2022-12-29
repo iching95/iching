@@ -470,7 +470,7 @@
         // document.getElementById("dic-ptr").innerHTML = symbol;
         document.getElementById("dic-ptr").classList.add("book-symbol");
         document.addEventListener("scroll", (event) => {
-          console.log(window.pageYOffset)
+          console.log(window.pageYOffset * (device=="desktop"?.5:1))
           console.log(document.getElementById("line1").offsetTop)
         })
       }
