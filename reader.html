@@ -56,8 +56,8 @@
 
     document.body.classList.add(`theme-${theme}`);
 
-    var loadBook = params.t?params.t.match(/book/):false;
-    var symbol = String.fromCharCode(19904+(idx-1))
+    const loadBook = params.t?params.t.match(/book/):false;
+    const symbol = String.fromCharCode(19904+(idx-1))
     var n = 1+idx
     
     document.title = (n-1) + " - iChing"
@@ -428,6 +428,10 @@
         const hash = location.hash.match(/line([1-7])/);
         if(loadBook && hash){
           document.getElementById(hash[0]).scrollIntoView();
+        }
+
+        if(loadBook){
+          document.getElementById("dic-ptr").innerHTML = symbol
         }
 
       })
