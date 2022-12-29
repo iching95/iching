@@ -221,7 +221,8 @@
 
     document.getElementById("tb1-container").innerHTML = "<table class='tb1' style='width:100%;'><tbody>" + genTb1Content() + "</tbody></table>";
 
-    const layoutData = function(data){
+    const layoutData = function(_data){
+      const rows = _data;
       let tbodyHTML1 = genTb1Content(rows)
       let tbodyHTML2 = "";
 
