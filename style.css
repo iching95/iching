@@ -271,7 +271,7 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
 }
 
 .ptr-line-ying{
-  background: liner-graadient(90deg, #fff 35%, #49494c 35%, #49494c 65%, #fff 65%);
+  background: liner-gradient(90deg, #fff 35%, #49494c 35%, #49494c 65%, #fff 65%);
 }
 
 .ptr-line-yan::before{
