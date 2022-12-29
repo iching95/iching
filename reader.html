@@ -480,7 +480,8 @@
         document.getElementById("dic-ptr").classList.add("book-symbol");
         document.addEventListener("scroll", (event) => {
           pos = window.pageYOffset * (device=="desktop"?2:1);
-          const line = linePos.indexOf(pos);
+          console.log(linePos)
+          const line = linePos.find((y)=>pos>y);
           if(line>0){
             document.getElementById("dic-ptr").innerHTML = line
           }
