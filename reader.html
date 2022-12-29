@@ -471,7 +471,7 @@
         document.getElementById("dic-ptr").classList.add("book-symbol");
         document.addEventListener("scroll", (event) => {
           pos = window.pageYOffset * (device=="desktop"?2:1);
-          for(var i=1;i<6;i++){
+          for(var i=6;i>=1;i--){
             const el = document.getElementById("line"+i);
             const linePos = document.getElementById("line"+i).offsetTop;
             if(pos >= linePos){
