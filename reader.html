@@ -413,17 +413,18 @@
         var anchors = document.getElementsByTagName('c');
         var onclickAction = function(evt) {
 
-              const el    = evt.target.parentElement.querySelector(".markLine");
-              if(el){
-                markLine(el.getAttribute("mark-data-id").match(/line([1-7])/)[1], el);
-              }
+          const el    = evt.target.parentElement.querySelector(".markLine");
+          if(el){
+            markLine(el.getAttribute("mark-data-id").match(/line([1-7])/)[1], el);
+          }
 
-              const clickedLetter = evt.target.textContent
-              //range.endOffset - range.startOffset
-              document.getElementById("dic").innerHTML = "Lookup " + "<span id='dic-search-word' contenteditable>" + clickedLetter + "</span>"
-              document.getElementById("dic-ptr").innerHTML = clickedLetter;
-              document.getElementById("dic-opt-default").selected = 'selected';
-              document.getElementById("footer-group-dic").style.display = "block";
+          const clickedLetter = evt.target.textContent
+          //range.endOffset - range.startOffset
+          document.getElementById("dic").innerHTML = "Lookup " + "<span id='dic-search-word' contenteditable>" + clickedLetter + "</span>"
+          document.getElementById("dic-ptr").innerHTML = clickedLetter;
+          document.getElementById("dic-opt-default").selected = 'selected';
+          document.getElementById("footer-group-dic").style.display = "block";
+
         }
 
         for(var i = 0; i < anchors.length; i++) {
@@ -505,9 +506,12 @@
           pos = window.pageYOffset * (device=="desktop"?2:1);
           // console.log(linePos)
           const y = linePos.find((y)=>pos>y);
+
+          document.getElementById("ptr-line-active").classList.remove("ptr-line-active")
+
           if(y){
-            const line = linePos.indexOf(y)
-            // document.getElementById("dic-ptr").innerHTML = 6 - line
+            const line = linePos.indexOf(y);
+            document.querySelector(`#ptr-line-${line}`).classList.add("ptr-line-active");
           }else{
             // document.getElementById("dic-ptr").innerHTML = "";
           }

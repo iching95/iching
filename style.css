@@ -274,6 +274,15 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
   background: linear-gradient(90deg,  #fff 35%, #49494c 35%, #49494c 65%, #fff 65%)
 }
 
+.ptr-line-active{
+  background: #8b0000;
+}
+
+.ptr-line-active.ptr-line-ying{
+  background: linear-gradient(90deg,  #8b0000 35%, #49494c 35%, #49494c 65%, #8b0000 65%)
+}
+
+
 .ptr-line-yan::before{
 }
 
