@@ -94,6 +94,7 @@
 
     let blockLastMod = 0;
 
+    /*
     setInterval(()=>{
       console.log(Math.floor(Date.now() / 1000))
       console.log(blockLastMod)
@@ -101,10 +102,11 @@
         document.getElementById("block-loader").innerHTML = "⟳";
       }
     },1200)
+    */
 
     const reseed = () => {
 
-      document.getElementById("block-loader").innerHTML = "⇄";
+      document.getElementById("block-loader").innerHTML = "⟳";
       
       return fetch(rpc,{
         method: 'POST',
