@@ -134,7 +134,7 @@ td {
   margin: 0 15px;
 }
 
-.rand:first-of-type{
+.rand:first{
   margin: 0px;
   height: 70px;
 }
