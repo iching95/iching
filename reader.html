@@ -427,7 +427,7 @@
 
       let tData = localStorage.getItem("data-v1");
 
-      tData = tData?updateTitle(JSON.parse(data)):fetch("data.txt")
+      tData?updateTitle(JSON.parse(tData)):fetch("data.txt")
       .then(response => response.json())
       .then((_data) => {
         updateTitle(_data);
