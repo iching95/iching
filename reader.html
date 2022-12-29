@@ -409,7 +409,7 @@
 
               const el    = evt.target.parentElement.querySelector(".markLine");
               if(el){
-                markLine(el.getAttribute("mark-data-id").match(/line[1-7]/)[1], el);
+                markLine(el.getAttribute("mark-data-id").match(/line([1-7])/)[1], el);
               }
 
               const clickedLetter = evt.target.textContent
