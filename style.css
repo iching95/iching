@@ -252,7 +252,7 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
 /* reader */
 
 .book-symbol{
-  
+  font-size: 128px !important;
 }
 
 .line-matched:before {
