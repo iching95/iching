@@ -246,6 +246,9 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
   content: '⯈';
 }
 
+.markLine{
+  cursor: pointer;
+}
 
 .star {
   font-size: 28px;
