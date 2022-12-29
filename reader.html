@@ -421,6 +421,7 @@
       })
 
       const updateTitle = () => {
+        console.log(data)
         document.title = (n-1)  + ". " + data[idx].c + " - iChing"
         document.getElementById("header-c").innerHTML =  data[idx].c;
       }
