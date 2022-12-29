@@ -279,7 +279,7 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
 }
 
 .ptr-line-yan::before{
-  content: "█"
+  content: "!"
 }
 
 
