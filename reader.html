@@ -444,11 +444,11 @@
 
         document.title = (n-1)  + ". " + _data[idx].c + " - iChing"
         document.getElementById("header-c").innerHTML =  _data[idx].c;
-        
+
         let top, low;
 
 
-        let  img = _data[_img];
+        let  img = _data[idx];
         top = order.indexOf(img.d[0]);
         low = img.d[1]?order.indexOf(img.d[1]):top;
 
