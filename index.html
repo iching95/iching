@@ -92,9 +92,17 @@
 
     document.getElementById("block").innerHTML = `<span>0x000000000000</span><span>10000000</span><span>・00:00:00</span><span id="block-loader"></span>`;
 
+    let blockLastMod = 0;
+
+    setInterval(()=>{
+      if(Math.floor(Date.now() / 1000) > blockLastMod + 12){
+        document.getElementById("block-loader").innerHTML = "⟳";
+      }
+    },1200)
+
     const reseed = () => {
 
-      document.getElementById("block-loader").innerHTML = "⟳";
+      document.getElementById("block-loader").innerHTML = "⇄";
       
       return fetch(rpc,{
         method: 'POST',
@@ -107,6 +115,8 @@
         const blockInfo = json.result.hash.substring(0,14);
         const blockNo = parseInt(json.result.number);
         const timestamp = new Date(parseInt(json.result.timestamp) * 1000).toTimeString().split(' ')[0];
+
+        blockLastMod = json.result.timestamp
 
         const seed = parseInt(blockInfo);
         
