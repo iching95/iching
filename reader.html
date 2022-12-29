@@ -462,15 +462,17 @@
 
           let topCode = (lineCode[top]).toString(2).padStart(3,"0");
           let lowCode = (lineCode[low]).toString(2).padStart(3,"0");
+
           console.log(topCode)
           console.log(lowCode)
+
           let code = [
-            topCode[2],
-            topCode[1],
             topCode[0],
-            lowCode[2],
-            lowCode[1],
+            topCode[1],
+            topCode[2],
             lowCode[0],
+            lowCode[1],
+            lowCode[2],
           ];
 
           console.log(code)
