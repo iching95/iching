@@ -460,8 +460,8 @@
           top = order.indexOf(img.d[0]);
           low = img.d[1]?order.indexOf(img.d[1]):top;
 
-          let topCode = (lineCode[top] >>> 0).toString(2);
-          let lowCode = (lineCode[low] >>> 0).toString(2);
+          let topCode = (lineCode[top]).toString(2);
+          let lowCode = (lineCode[low]).toString(2);
           console.log(lineCode[top])
           console.log(lineCode[low])
           let code = [
