@@ -421,7 +421,7 @@
         const hash = location.hash.match(/line([1-6])/);
         if(loadBook && hash){
           console.log(hash)
-          var top = document.getElementById(hash[0]).offsetTop;
+          var top = document.getElementById(hash[0]).scrollIntoView();
           window.scrollTo(0, top)
         }
 
