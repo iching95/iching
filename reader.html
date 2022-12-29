@@ -406,9 +406,11 @@
 
         var anchors = document.getElementsByTagName('c');
         var onclickAction = function(evt) {
+
               const el    = evt.target.parentElement.querySelector(".markLine");
-              const line  = el.getAttribute("mark-data-id").match(/line[1-7]/)[0]
-              markLine(line, el);
+              if(el){
+                markLine(el.getAttribute("mark-data-id").match(/line[1-7]/)[1], el);
+              }
 
               const clickedLetter = evt.target.textContent
               //range.endOffset - range.startOffset
