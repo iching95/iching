@@ -356,7 +356,7 @@
       resetSymbol();
 
       const pair = (n%2>0)?(n+1):(n-1);
-      document.getElementById(`symbol-tb2-${n}`).classList.add("symbol-selected").add("symbol-hightlight");
+      document.getElementById(`symbol-tb2-${n}`).classList.add("symbol-selected", "symbol-hightlight")
       document.getElementById(`symbol-tb2-${pair}`).classList.add("symbol-hightlight");
 
       const cross = Object.entries(rows).filter(row => (row[1].d[0] === rows[n].d[1] && row[1].d[1] === rows[n].d[0]));
