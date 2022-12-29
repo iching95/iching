@@ -440,13 +440,14 @@
 
       })
 
-      let top, low;
-
       const updateTitle = (_data) => {
-        
+
         document.title = (n-1)  + ". " + _data[idx].c + " - iChing"
         document.getElementById("header-c").innerHTML =  _data[idx].c;
         
+        let top, low;
+
+
         let  img = _data[_img];
         top = order.indexOf(img.d[0]);
         low = img.d[1]?order.indexOf(img.d[1]):top;
