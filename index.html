@@ -95,6 +95,8 @@
     let blockLastMod = 0;
 
     setInterval(()=>{
+      console.log(Math.floor(Date.now() / 1000))
+      console.log(blockLastMod)
       if(Math.floor(Date.now() / 1000) > blockLastMod + 12){
         document.getElementById("block-loader").innerHTML = "⟳";
       }
@@ -114,9 +116,9 @@
         // console.log(json);
         const blockInfo = json.result.hash.substring(0,14);
         const blockNo = parseInt(json.result.number);
-        const timestamp = new Date(parseInt(json.result.timestamp) * 1000).toTimeString().split(' ')[0];
+        blockLastMod  = parseInt(json.result.timestamp)
+        const timestamp = new Date(blockLastMod * 1000).toTimeString().split(' ')[0];
 
-        blockLastMod = json.result.timestamp
 
         const seed = parseInt(blockInfo);
         
