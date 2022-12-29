@@ -342,7 +342,7 @@
 
           if(!loadBook){
 
-            const match = stmt.match(/^([上初]?[九六][二三四五]?)(.+)$/);
+            const match = stmt.match(/^([上初用]?[九六][二三四五]?)(.+)$/);
 
             var prefix      = match?match[1]:"";
             var stmtContent = match?match[2]:stmt;
@@ -353,6 +353,7 @@
             prefix = prefix.replace(/^([六九]四)/,"<strong onclick='readLine(4,this)'><span onclick='markLine(4,this)' id='line4' mark-data-id='line4'></span>$1</strong>");
             prefix = prefix.replace(/^([六九]五)/,"<strong onclick='readLine(5,this)'><span onclick='markLine(5,this)' id='line5' mark-data-id='line5'></span>$1</strong>");
             prefix = prefix.replace(/^(上[九六])/,"<strong onclick='readLine(6,this)'><span onclick='markLine(6,this)' id='line6' mark-data-id='line6'></span>$1</strong>");
+            prefix = prefix.replace(/^(用[九六])/,"<strong onclick='readLine(7,this)'><span onclick='markLine(7,this)' id='line7' mark-data-id='line6'></span>$1</strong>");
 
             stmtContent.split('').forEach(function(char) {
               if(!char.match(/[：。，！]/)){
@@ -372,6 +373,7 @@
             stmt = stmt.replace(/<strong>([六九]四)/,"<strong id='line4'>$1");
             stmt = stmt.replace(/<strong>([六九]五)/,"<strong id='line5'>$1");
             stmt = stmt.replace(/<strong>(上[九六])/,"<strong id='line6'>$1");
+            stmt = stmt.replace(/<strong>(用[九六])/,"<strong id='line7'>$1");
 
             line = stmt;
 
@@ -392,7 +394,6 @@
         if(matchLine){
           document.getElementById("line"+(matchLine)).className = "line-matched";
         }
-
 
         if(!loadBook){
           document.getElementById("footer-group-note").style.display = (isWatch?"none":"block");
@@ -418,10 +419,11 @@
           anchor.onclick = onclickAction
         }
 
-        const hash = location.hash.match(/line([1-6])/);
+        const hash = location.hash.match(/line([1-7])/);
         if(loadBook && hash){
           document.getElementById(hash[0]).scrollIntoView();
         }
+
       })
 
       const updateTitle = (_data) => {
