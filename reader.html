@@ -507,7 +507,9 @@
           // console.log(linePos)
           const y = linePos.find((y)=>pos>y);
 
-          document.getElementById("ptr-line-active").classList.remove("ptr-line-active")
+          Array.from(document.getElementsByClassName("ptr-line-active")).map(el=>{
+            el.classList.remove("ptr-line-active");
+          });
 
           if(y){
             const line = linePos.indexOf(y);
