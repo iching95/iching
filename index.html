@@ -309,9 +309,8 @@
         localStorage.setItem("data", data);
         layoutData(rows);
       })
-    const promises = data?[reseed()]:[pData,reseed()]
 
-    Promise.all(promises).then((res) => {
+    Promise.all(data?[reseed()]:[pData,reseed()]).then((res) => {
       updateImgMatchLink();
       updateImgForRandLines(randImg, randLine, true);
     })
@@ -319,7 +318,6 @@
     fetch(`https://instant-cell-9492.iching.workers.dev/`)
     .then((response) => response.json())
     .then(json => {
-      console.log(json);
       if(json.idx){
         const last = json.idx;
         document.getElementById("last-go-btn").innerHTML = `
