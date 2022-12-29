@@ -249,6 +249,10 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
   height: 24px;
 }
 
+.block-watch span{
+  font-size: 20px !important;
+}
+
 /* reader */
 
 .ptr-lines{
