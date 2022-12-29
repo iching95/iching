@@ -406,7 +406,7 @@
 
         var anchors = document.getElementsByTagName('c');
         var onclickAction = function(evt) {
-
+              console.log(evt.target.parentElement.querySelector(".markLine"))
               const el    = evt.target.parentElement.querySelector(".markLine")[0];
               const line  = el.getAttribute("mark-data-id").match(/line[1-7]/)[0]
               markLine(line, el);
