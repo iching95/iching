@@ -421,24 +421,18 @@
       })
 
       const updateTitle = () => {
-
-        if(Array.isArray(data)){
-          document.title = (n-1)  + ". " + data[idx].c + " - iChing"
-          document.getElementById("header-c").innerHTML =  data[idx].c;
-        }
-
+        document.title = (n-1)  + ". " + data[idx].c + " - iChing"
+        document.getElementById("header-c").innerHTML =  data[idx].c;
       }
 
       let data = localStorage.getItem("data-v1");
 
-      data = data?(JSON.parse(data)):fetch("data.txt")
+      data = data?(JSON.parse(data) && updateTitle()):fetch("data.txt")
       .then(response => response.json())
       .then((_data) => {
         data = _data
         updateTitle();
       })
-
-      updateTitle();
 
       document.getElementById("toc").innerHTML = tocHTML;
 	    document.getElementById("content").innerHTML = "Loading "+ idx + " ..."
