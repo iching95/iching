@@ -453,6 +453,7 @@
         document.getElementById("header-c").innerHTML =  _data[idx].c;
 
         if(loadBook){
+          /*
           let top, low;
           let  img = _data[idx];
           top = order.indexOf(img.d[0]);
@@ -461,6 +462,12 @@
           var line1 = "<span>" + (img?String.fromCharCode(9776 + top):"⚊") + "</span>";
           var line2 = "<span>" + (img?String.fromCharCode(9776 + low):"⚋") + "</span>";
           document.getElementById("dic-ptr").innerHTML = line1 + line2;
+          */
+
+          const lines = [];
+          for(var i=1;i<=6;i++){
+            lines.push(`<span class='ptr-line ptr-line-yin' id='ptr-line-${i}'>`)
+          }
         }
 
       }
