@@ -48,16 +48,16 @@
         last:idx
     }) + "; expires=" + expires + ";path=/;"
 
-    fetch(`https://instant-cell-9492.iching.workers.dev/?i=${idx}&d=${device}`)
+    const loadBook = params.t?params.t.match(/book/):false;
+    const symbol = String.fromCharCode(19904+(idx-1));
+
+    fetch(`https://instant-cell-9492.iching.workers.dev/?i=${idx}&d=${device}${loadBook?"&t=1":""}${matchLine?("&l="+matchLine):""}`)
       .then((response) => response.json())
       .then(json => {
         console.log(json);
     });
 
     document.body.classList.add(`theme-${theme}`);
-
-    const loadBook = params.t?params.t.match(/book/):false;
-    const symbol = String.fromCharCode(19904+(idx-1));
 
     const order = "天澤火雷風水山地";
     const lineCode = [7,3,5,1,6,2,4,0];
