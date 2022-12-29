@@ -251,6 +251,22 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
 
 /* reader */
 
+.ptr-lines{
+
+}
+.ptr-line{
+  
+}
+
+.ptr-line-yin{
+
+}
+
+.ptr-line-yan{
+
+}
+
+
 .book-symbol{
   font-size: 72px !important;
 }
