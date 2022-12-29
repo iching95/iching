@@ -279,11 +279,11 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
 }
 
 .ptr-line-active{
-  background: #8b0000;
+  background: #ffcccb;
 }
 
 .ptr-line-active.ptr-line-ying{
-  background: linear-gradient(90deg,  #8b0000 35%, #49494c 35%, #49494c 65%, #8b0000 65%)
+  background: linear-gradient(90deg,  #ffcccb 35%, #49494c 35%, #49494c 65%, #ffcccb 65%)
 }
 
 
