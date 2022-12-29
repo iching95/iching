@@ -302,11 +302,11 @@
     }
 
     const data = localStorage.getItem("data");
-    const pData = data?layoutData(data):fetch('data.txt')
+    const pData = data?layoutData(JSON.parse(data)):fetch('data.txt')
       .then(response => response.text())
       .then((data) => {
         const rows = JSON.parse(data);
-        localStorage.setItem("data", rows);
+        localStorage.setItem("data", data);
         layoutData(rows);
       })
     const promises = data?[reseed()]:[pData,reseed()]
