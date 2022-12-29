@@ -273,6 +273,9 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
 .ptr-line-yan{
 
 }
+.ptr-line-yan::before{
+  content: "█"
+}
 
 
 .book-symbol{
