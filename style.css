@@ -251,6 +251,7 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
   font-size: 28px;
   display: inline;
   vertical-align: top;
+  position: absolute;
 }
 
 body.theme-desk .star{
