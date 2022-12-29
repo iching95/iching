@@ -445,16 +445,16 @@
         document.title = (n-1)  + ". " + _data[idx].c + " - iChing"
         document.getElementById("header-c").innerHTML =  _data[idx].c;
 
-        let top, low;
+        if(loadBook){
+          let top, low;
+          let  img = _data[idx];
+          top = order.indexOf(img.d[0]);
+          low = img.d[1]?order.indexOf(img.d[1]):top;
 
-
-        let  img = _data[idx];
-        top = order.indexOf(img.d[0]);
-        low = img.d[1]?order.indexOf(img.d[1]):top;
-
-        var line1 = "<span>" + (img?String.fromCharCode(9776 + top):"⚊") + "</span>";
-        var line2 = "<span>" + (img?String.fromCharCode(9776 + low):"⚋") + "</span>";
-        document.getElementById("dic-ptr").innerHTML = line1 + line2
+          var line1 = "<span>" + (img?String.fromCharCode(9776 + top):"⚊") + "</span>";
+          var line2 = "<span>" + (img?String.fromCharCode(9776 + low):"⚋") + "</span>";
+          document.getElementById("dic-ptr").innerHTML = line1 + line2
+        }
 
       }
 
