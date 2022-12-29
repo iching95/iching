@@ -271,8 +271,13 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
 }
 
 .ptr-line-yan{
-
+  font-size: 20px;
+  text-align: center;
+  color: #49494c;
+  overflow: hidden;
+  vertical-align: top;
 }
+
 .ptr-line-yan::before{
   content: "█"
 }
