@@ -449,7 +449,7 @@
 
           var line1 = "<span>" + (img?String.fromCharCode(9776 + top):"⚊") + "</span>";
           var line2 = "<span>" + (img?String.fromCharCode(9776 + low):"⚋") + "</span>";
-          document.getElementById("dic-ptr").innerHTML = line1 + line2
+          document.getElementById("dic-ptr").innerHTML = line1 + line2;
         }
 
       }
@@ -475,7 +475,7 @@
             const el = document.getElementById("line"+i);
             const linePos = document.getElementById("line"+i).offsetTop;
             if(pos >= linePos){
-              document.getElementById("dic-ptr") = el.getAttribute("id")
+              document.getElementById("dic-ptr").innerHTML = el.getAttribute("id")
               break;
             }
           }
