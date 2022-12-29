@@ -483,9 +483,10 @@
         document.addEventListener("scroll", (event) => {
           pos = window.pageYOffset * (device=="desktop"?2:1);
           console.log(linePos)
-          const line = linePos.find((y)=>pos>y);
-          if(line>0){
-            document.getElementById("dic-ptr").innerHTML = line
+          const pos = linePos.find((y)=>pos>y);
+          if(pos){
+            const line = linePos.indexOf(pos)
+            document.getElementById("dic-ptr").innerHTML = 6 - line
           }
         })
       }
