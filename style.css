@@ -255,7 +255,10 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
 
 }
 .ptr-line{
-  
+  height: 5px;
+  width: 32px;
+  background: #fff;
+  margin: 5px 0px;
 }
 
 .ptr-line-yin{
