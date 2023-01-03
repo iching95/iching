@@ -402,6 +402,10 @@
       document.getElementById("tb2-container").scrollIntoView();
     }
 
+    window.addEventListener("popstate", function(e) {
+      window.location.href = location.href;
+    });
+
   </script>
 
 </body>
