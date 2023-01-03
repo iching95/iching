@@ -255,8 +255,8 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
 
 /* reader */
 
-a{
-  
+a.line-prefix{
+  font-weight: bold;
 }
 
 .ptr-lines{
