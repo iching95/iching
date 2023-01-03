@@ -477,6 +477,8 @@
 
       })
 
+      let code = Array(6);
+
       const updateTitle = (_data) => {
 
         document.title = (n-1)  + ". " + _data[idx].c + " - iChing"
@@ -492,7 +494,7 @@
           let topCode = (lineCode[top]).toString(2).padStart(3,"0");
           let lowCode = (lineCode[low]).toString(2).padStart(3,"0");
 
-          let code = [
+          code = [
             topCode[0],
             topCode[1],
             topCode[2],
@@ -508,16 +510,8 @@
             lines.push(`<span class='ptr-line ptr-line-${(code[i-1]==1)?"yan":"ying"}' id='ptr-line-${i}'></span>`)
           }
 
-          const lineInfo = {
-            support : code[line] != code[line+(line>3?-1:+1)*3],
-            right   : (line % 2) == code[line-1],
-            centric :[2,5].includes(line)
-          };
-          
-          console.log(lineInfo)
-          
-
           document.getElementById("dic-ptr").innerHTML = `<span class='ptr-lines'>${lines.join("\n")}</span>`
+
         }
 
       }
@@ -552,6 +546,15 @@
           if(y){
             const line = linePos.indexOf(y);
             document.querySelector(`#ptr-line-${(line+1)}`).classList.add("ptr-line-active");
+
+            const lineInfo = {
+              support : code[line] != code[line+(line>3?-1:+1)*3],
+              right   : (line % 2) == code[line-1],
+              centric :[2,5].includes(line)
+            };
+
+            console.log(lineInfo)
+            
           }else{
             // document.getElementById("dic-ptr").innerHTML = "";
           }
