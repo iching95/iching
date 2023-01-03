@@ -499,7 +499,14 @@
             lines.push(`<span class='ptr-line ptr-line-${(code[6-i]==1)?"yan":"ying"}' id='ptr-line-${(6-i+1)}'></span>`)
           }
 
-          document.getElementById("dic-ptr").innerHTML = `<span class='ptr-lines'>${lines.join("\n")}</span>`
+          document.getElementById("dic-ptr").innerHTML = `
+            <span class='ptr-lines'>${lines.join("\n")}</span>
+            <div class='info'>
+              <span id='info-support'>S</span>
+              <span id='info-centric'>C</span>
+              <span id='info-right'>R</span>
+            </div>
+          `
 
         }
 
