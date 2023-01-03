@@ -538,11 +538,9 @@
           // console.log(linePos)
           const y = linePos.find((y)=>( (pos + posOffset) >y));
 
-          Array.from(document.getElementsByClassName("ptr-line-active")).map(el=>{
-            el.classList.remove("ptr-line-active");
-          });
 
           if(y){
+
             const line = 6 - linePos.indexOf(y);
 
             if(line == lastLine){
@@ -550,6 +548,10 @@
             }
 
             lastLine = line
+
+            Array.from(document.getElementsByClassName("ptr-line-active")).map(el=>{
+              el.classList.remove("ptr-line-active");
+            });
 
             document.querySelector(`#ptr-line-${line}`).classList.add("ptr-line-active");
 
