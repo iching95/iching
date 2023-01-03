@@ -259,6 +259,7 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
   text-align: center;
   display: block;
   padding: 6px 0 12px;
+  text-transform: uppercase;
 }
 
 /* reader */
