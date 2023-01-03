@@ -546,8 +546,11 @@
             el.classList.remove("ptr-line-active");
           });
 
-          if(line){
+          Array.from(document.getElementsByClassName("info-active")).map(el=>{
+            el.classList.remove("info-active");
+          });
 
+          if(line){
 
             document.querySelector(`#ptr-line-${line}`).classList.add("ptr-line-active");
 
