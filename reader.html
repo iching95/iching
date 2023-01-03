@@ -16,7 +16,7 @@
     <div id="footer"></div>
 
   <script>
-    
+
     window.addEventListener("popstate", function(e) {
       if(!location.href.match(/reader.html/)){
         window.location.href = location.href;
@@ -79,7 +79,7 @@
     // console.log(name)
     var dice =  String.fromCharCode(9856 + parseInt(matchLine) -1);
 
-    const headerHTML = `<a href="#" onclick="openDicURL()"><div id='dic-ptr'></div></a>
+    const headerHTML = `<a onclick="openDicURL()"><div id='dic-ptr'></div></a>
     <div class='header'>
       <div class='number'>${idx}</div>
       <div class='symbol'>${symbol}</div>
@@ -312,7 +312,7 @@
     <div class='footer-group' id='footer-group-dic' hidden>
       <span class='footer-group-hr'></span>
       <div id='dic'></div>
-      <button id='dic-btn' onclick="openDicURL()" type="button">dict</button>
+      <button id='dic-btn' onclick="!loadBook?openDicURL():window.scrollTo(0)" type="button">dict</button>
       ${dicLinks}
     </div>`;
 
