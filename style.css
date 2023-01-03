@@ -276,6 +276,10 @@ a.line-prefix{
   font-weight: bold;
 }
 
+.ptr-info span{
+  font-size: 8px;
+}
+
 .ptr-lines{
 
 }
