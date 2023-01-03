@@ -555,7 +555,6 @@
 
             lastLine = line
 
-
             document.querySelector(`#ptr-line-${line}`).classList.add("ptr-line-active");
 
             const lineInfo = line?{
@@ -565,8 +564,15 @@
               right   : (line % 2) == code[line-1]
             }:null;
 
-            console.log(lineInfo)
-            
+            if(lineInfo){
+              lineInfo.support? document.getElementById("info-support").classList.add("info-active"):
+                                document.getElementById("info-support").classList.remove("info-active")
+              lineInfo.centric? document.getElementById("info-centric").classList.add("info-active"):
+                                document.getElementById("info-centric").classList.remove("info-active")
+              lineInfo.right?   document.getElementById("info-right").classList.add("info-active"):
+                                document.getElementById("info-right").classList.remove("info-active")
+            }
+
           }else{
             // document.getElementById("dic-ptr").innerHTML = "";
           }
