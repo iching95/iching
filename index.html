@@ -340,7 +340,7 @@
     .then(json => {
       if(json.idx){
         const last = json.idx;
-        const dest = json.book?`reader.html?i=${last}&?t=book${json.line?("#line"+json.line):""}`;`reader.html?i=${last}`
+        const dest = json.book?`reader.html?i=${last}&?t=book${json.line?("#line"+json.line):""}`:`reader.html?i=${last}`
         document.getElementById("last-go-btn").innerHTML = `
         <button onclick="location.href='${dest}'" type="button">last read (${last}${json.line?("-"+json.line):""})</button>
         `;
