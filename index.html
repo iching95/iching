@@ -92,7 +92,7 @@
     document.getElementById("rand-1").innerHTML = randLines();
     document.body.classList.add(`theme-${theme}`);
     document.getElementById("last-go-btn").innerHTML = `
-    <button type="button">last read (...)</button>
+    <a>last read (...)</a>
     `;
 
     document.getElementById("block").innerHTML = `<span>0x000000000000</span>
@@ -352,7 +352,7 @@
         const stateMod = json.line?"history.pushState({},'','"+`reader.html?i=${last}`+"');":"var i=0;";
         console.log(stateMod)
         document.getElementById("last-go-btn").innerHTML = `
-        <a href="${stateMod};location.href='${dest}';" >
+        <a onclick="${stateMod};location.href='${dest}';" >
           last read (${last}${json.line?("-"+json.line):""})
         </a>
         `;
