@@ -544,7 +544,7 @@
           });
 
           if(y){
-            const line = 6 - linePos.indexOf(y) + 1;
+            const line = 6 - linePos.indexOf(y);
             document.querySelector(`#ptr-line-${line}`).classList.add("ptr-line-active");
 
             const lineInfo = line?{
