@@ -50,8 +50,9 @@
 
     const loadBook = params.t?params.t.match(/book/):false;
     const symbol = String.fromCharCode(19904+(idx-1));
+    var mline = matchLine?matchLine:"0";
 
-    fetch(`https://instant-cell-9492.iching.workers.dev/?i=${idx}&d=${device}${loadBook?"&b=1":""}&l=${matchLine?matchLine:"0"}`)
+    fetch(`https://instant-cell-9492.iching.workers.dev/?i=${idx}&d=${device}${loadBook?("&b=1&l="+mline):""}`)
       .then((response) => response.json())
       .then(json => {
         console.log(json);
