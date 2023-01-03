@@ -353,6 +353,8 @@
           
           stmt = stmt.replace("#np","")
 
+          let replaces = [/^(初[九六])/,/^([六九]二)/,/^([六九]三)/,/^([六九]四)/,/^([六九]五)/,/^(上[九六])/,/^(用[九六])/];
+
           if(!loadBook){
 
             const match = stmt.match(/^([上初用]?[九六][二三四五]?)(.+)$/);
@@ -360,13 +362,9 @@
             var prefix      = match?match[1]:"";
             var stmtContent = match?match[2]:stmt;
 
-            prefix = prefix.replace(/^(初[九六])/,"<strong onclick='readLine(1,this)' class='markLine' id='line1' mark-data-id='line1'>$1</strong>");
-            prefix = prefix.replace(/^([六九]二)/,"<strong onclick='readLine(2,this)' class='markLine' id='line2' mark-data-id='line2'>$1</strong>");
-            prefix = prefix.replace(/^([六九]三)/,"<strong onclick='readLine(3,this)' class='markLine' id='line3' mark-data-id='line3'>$1</strong>");
-            prefix = prefix.replace(/^([六九]四)/,"<strong onclick='readLine(4,this)' class='markLine' id='line4' mark-data-id='line4'>$1</strong>");
-            prefix = prefix.replace(/^([六九]五)/,"<strong onclick='readLine(5,this)' class='markLine' id='line5' mark-data-id='line5'>$1</strong>");
-            prefix = prefix.replace(/^(上[九六])/,"<strong onclick='readLine(6,this)' class='markLine' id='line6' mark-data-id='line6'>$1</strong>");
-            prefix = prefix.replace(/^(用[九六])/,"<strong onclick='readLine(7,this)' class='markLine' id='line7' mark-data-id='line7'>$1</strong>");
+            replaces.map((re,n)=>{
+              prefix = prefix.replace(re,`<a href='./reader.html?t=book&i=${idx}#line${n+1}' onclick='readLine(${n+1},this)' class='markLine' id='line${n+1}' mark-data-id='line${n+1}'>$1</a>`);
+            })
 
             stmtContent.split('').forEach(function(char) {
               if(!char.match(/[：。，！]/)){
@@ -380,13 +378,9 @@
 
           }else{
 
-            stmt = stmt.replace(/<strong>(初[九六])/,"<strong id='line1'>$1");
-            stmt = stmt.replace(/<strong>([六九]二)/,"<strong id='line2'>$1");
-            stmt = stmt.replace(/<strong>([六九]三)/,"<strong id='line3'>$1");
-            stmt = stmt.replace(/<strong>([六九]四)/,"<strong id='line4'>$1");
-            stmt = stmt.replace(/<strong>([六九]五)/,"<strong id='line5'>$1");
-            stmt = stmt.replace(/<strong>(上[九六])/,"<strong id='line6'>$1");
-            stmt = stmt.replace(/<strong>(用[九六])/,"<strong id='line7'>$1");
+            replaces.map((re,n)=>{
+              stmt = stmt.replace(new RegExp(`<strong>${re}`),`<strong id='line${n+1}'>$1`);
+            })
 
             line = stmt;
 
