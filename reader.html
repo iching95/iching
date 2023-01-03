@@ -540,7 +540,12 @@
           const y = linePos.find((y)=>( (pos + posOffset) >y));
           const line = y? 6 - linePos.indexOf(y):
                           null;
-          lastLine = (lastLine!=line)?line:lastLine
+          
+          if(lastLine == line){
+            return;
+          }
+
+          lastLine = line
 
           Array.from(document.getElementsByClassName("ptr-line-active")).map(el=>{
             el.classList.remove("ptr-line-active");
