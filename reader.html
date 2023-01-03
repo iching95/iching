@@ -534,10 +534,10 @@
 
         
         document.addEventListener("scroll", (event) => {
+          
           pos = window.pageYOffset * (device=="desktop"?2:1);
           // console.log(linePos)
           const y = linePos.find((y)=>( (pos + posOffset) >y));
-
 
           if(y){
 
