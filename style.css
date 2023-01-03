@@ -255,6 +255,10 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
 
 /* reader */
 
+a{
+  
+}
+
 .ptr-lines{
 
 }
