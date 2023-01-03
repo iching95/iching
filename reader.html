@@ -501,13 +501,13 @@
             lowCode[0],
             lowCode[1],
             lowCode[2],
-          ];
+          ].reverse();
 
           console.log(code)
           
           const lines = [];
           for(var i=1;i<=6;i++){
-            lines.push(`<span class='ptr-line ptr-line-${(code[i-1]==1)?"yan":"ying"}' id='ptr-line-${(6-i+1)}'></span>`)
+            lines.push(`<span class='ptr-line ptr-line-${(code[6-i]==1)?"yan":"ying"}' id='ptr-line-${(6-i+1)}'></span>`)
           }
 
           document.getElementById("dic-ptr").innerHTML = `<span class='ptr-lines'>${lines.join("\n")}</span>`
