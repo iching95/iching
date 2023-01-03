@@ -196,6 +196,10 @@
 
     function openDicURL(evt){
 
+      if(loadBook){
+        window.scrollTo(0,0)
+      }
+
       if(!document.getElementById("dic-search-word") || document.getElementById("dic-search-word").innerHTML == ""){
         return
       }
@@ -312,7 +316,7 @@
     <div class='footer-group' id='footer-group-dic' hidden>
       <span class='footer-group-hr'></span>
       <div id='dic'></div>
-      <button id='dic-btn' onclick="!loadBook?openDicURL():window.scrollTo(0)" type="button">dict</button>
+      <button id='dic-btn' onclick="openDicURL()" type="button">dict</button>
       ${dicLinks}
     </div>`;
 
