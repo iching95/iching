@@ -50,7 +50,8 @@
 
     const loadBook = params.t?params.t.match(/book/):false;
     const symbol = String.fromCharCode(19904+(idx-1));
-    var mline = matchLine?matchLine:"0";
+    const hash = location.hash.match(/line([1-7])/);
+    var mline = hash[1]?hash[1]:"0";
 
     fetch(`https://instant-cell-9492.iching.workers.dev/?i=${idx}&d=${device}${loadBook?("&b=1&l="+mline):""}`)
       .then((response) => response.json())
@@ -434,8 +435,7 @@
           var anchor = anchors[i];
           anchor.onclick = onclickAction
         }
-
-        const hash = location.hash.match(/line([1-7])/);
+        
         if(loadBook && hash){
           document.getElementById(hash[0]).scrollIntoView();
         }
