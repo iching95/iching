@@ -501,7 +501,7 @@
 
           document.getElementById("dic-ptr").innerHTML = `
             <span class='ptr-lines'>${lines.join("\n")}</span>
-            <div class='ptr-info'>
+            <div id="ptr-info" class='ptr-info ptr-info-hidden'>
               <span id='info-support'>応</span>
               <span id='info-centric'>中</span>
               <span id='info-right'>  当</span>
@@ -554,6 +554,7 @@
           Array.from(document.getElementsByClassName("info-active")).map(el=>{
             el.classList.remove("info-active");
           });
+          
 
           if(line){
 
@@ -575,8 +576,11 @@
                                 document.getElementById("info-right").classList.remove("info-active")
             }
 
+            document.getElementById("ptr-info").classList.remove("ptr-info-hidden");
+
           }else{
             // document.getElementById("dic-ptr").innerHTML = "";
+            document.getElementById("ptr-info").classList.add("ptr-info-hidden");
           }
         })
 

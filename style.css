@@ -288,6 +288,10 @@ a.line-prefix{
   color: #ff726f ;
 }
 
+.ptr-info-hidden{
+  display:none;
+}
+
 .ptr-lines{
 
 }
