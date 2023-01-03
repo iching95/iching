@@ -538,20 +538,16 @@
           pos = window.pageYOffset * (device=="desktop"?2:1);
           // console.log(linePos)
           const y = linePos.find((y)=>( (pos + posOffset) >y));
+          const line = y? 6 - linePos.indexOf(y):
+                          null;
+          lastLine = (lastLine!=line)?line:lastLine
 
-          if(y){
+          Array.from(document.getElementsByClassName("ptr-line-active")).map(el=>{
+            el.classList.remove("ptr-line-active");
+          });
 
-            const line = 6 - linePos.indexOf(y);
-            console.log(line);
-            if(line == lastLine){
-              return
-            }
+          if(line){
 
-            lastLine = line
-
-            Array.from(document.getElementsByClassName("ptr-line-active")).map(el=>{
-              el.classList.remove("ptr-line-active");
-            });
 
             document.querySelector(`#ptr-line-${line}`).classList.add("ptr-line-active");
 
