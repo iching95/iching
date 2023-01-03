@@ -346,18 +346,18 @@
     if(loadBook){
       var tocHTML = `
       <ul>
-        <li><a href="#line1">初</a></li>
-        <li><a href="#line2">二</a></li>
-        <li><a href="#line3">三</a></li>
-        <li><a href="#line4">四</a></li>
-        <li><a href="#line5">五</a></li>
-        <li><a href="#line6">上</a></li>
+        <li><a href="#line1">${lineOrderNum.pre[0]} </a></li>
+        <li><a href="#line2">${lineOrderNum.post[0]}</a></li>
+        <li><a href="#line3">${lineOrderNum.post[0]}</a></li>
+        <li><a href="#line4">${lineOrderNum.post[0]}</a></li>
+        <li><a href="#line5">${lineOrderNum.post[0]}</a></li>
+        <li><a href="#line6">${lineOrderNum.pre[1]} </a></li>
+        ` + idx<2?`<li><a href="#line7">${lineOrderNum.pre[2]} </a></li>`:"" + `
       </ul>
       `;
     }
 
     const linePos = []
-
     
     const replaces = Array(`${lineOrderNum.pre[0]}[${ninesix}]`,
     `[${ninesix}]${lineOrderNum.post[0]}`,
