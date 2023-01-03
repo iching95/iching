@@ -332,6 +332,12 @@
     
     // footerHTML = '<div class="footer">' +footerHTML+ '</div>'
     
+    const lineOrderNum = {
+      pre:"初上用",
+      post:"二三四五"
+    };
+    const ninesix = "九六";
+    
     var insertHTML = "";
     var url = loadBook?"book":"content";
 
@@ -351,7 +357,15 @@
     }
 
     const linePos = []
-    const replaces = ["初[九六]","[六九]二","[六九]三","[六九]四","[六九]五","上[九六]","用[九六]"];
+
+    
+    const replaces = Array(`${lineOrderNum.pre[0]}[${ninesix}]`,
+    `[${ninesix}]${lineOrderNum.post[0]}`,
+    `[${ninesix}]${lineOrderNum.post[1]}`,
+    `[${ninesix}]${lineOrderNum.post[2]}`,
+    `[${ninesix}]${lineOrderNum.post[3]}`,
+    `${lineOrderNum.pre[1]}[${ninesix}]`,
+    `${lineOrderNum.pre[2]}[${ninesix}]`);
 
     fetch(url+"/"+idx+'.txt')
       .then(response => response.text())
@@ -368,7 +382,7 @@
 
           if(!loadBook){
 
-            const match = stmt.match(/^([上初用]?[九六][二三四五]?)(.+)$/);
+            const match = stmt.match(new RegExp(`^([${lineOrderNum.pre}]?[${ninesix}][${lineOrderNum.post}]?)(.+)$`,""));
 
             var prefix      = match?match[1]:"";
             var stmtContent = match?match[2]:stmt;
