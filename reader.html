@@ -251,17 +251,6 @@
       document.getElementById("footer-group-bookmark").style.display = "block"
     }
 
-    const readLine = (_line) => {
-
-      const destURL = './reader.html?' + (new URLSearchParams({
-        t:"book",
-        i:idx
-      }).toString());
-
-      location.href = `${destURL}#line${_line}`;
-
-    }
-
     const createBookmark = () => {
 
       if(!document.getElementById("bookmark-btn-line").innerHTML.match(/[123456]/)){
