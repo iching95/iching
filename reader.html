@@ -530,10 +530,13 @@
 	    document.getElementById("content").innerHTML = "Loading "+ idx + " ..."
 
       const posOffset = 45;
+      let lastLine = null;
 
       if(loadBook){
         // document.getElementById("dic-ptr").innerHTML = symbol;
         document.getElementById("dic-ptr").classList.add("book-symbol");
+
+        
         document.addEventListener("scroll", (event) => {
           pos = window.pageYOffset * (device=="desktop"?2:1);
           // console.log(linePos)
@@ -545,6 +548,14 @@
 
           if(y){
             const line = 6 - linePos.indexOf(y);
+
+            if(line == lastLine){
+              return
+            }
+
+            lastLine = line
+
+
             document.querySelector(`#ptr-line-${line}`).classList.add("ptr-line-active");
 
             const lineInfo = line?{
@@ -560,6 +571,7 @@
             // document.getElementById("dic-ptr").innerHTML = "";
           }
         })
+
       }
 
   </script>
