@@ -523,6 +523,12 @@
         })
       }
 
+    window.addEventListener("popstate", function(e) {
+      if(!location.href.match(/reader.html/)){
+        window.location.href = location.href;
+      }
+    });
+
   </script>
   <form style="display:none" id="ephhk-form" action="https://ephpth.ephhk.com/resource/tools/lcprichi/search/show_word.php" method="get" accept="BIG5" accept-charset="BIG5">
     <input type="hidden" id="ephhk-form-input" name="input_word">
