@@ -255,10 +255,11 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
 
 #last-go-btn a{
   font-size: 22px;
-  color: #888;
   text-decoration: underline;
   text-align: center;
-  display: block;}
+  display: block;
+  padding: 6px 0 12px;
+}
 
 /* reader */
 
