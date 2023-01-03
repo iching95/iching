@@ -340,6 +340,7 @@
     }
 
     const linePos = []
+    const replaces = [/^(初[九六])/,/^([六九]二)/,/^([六九]三)/,/^([六九]四)/,/^([六九]五)/,/^(上[九六])/,/^(用[九六])/];
 
     fetch(url+"/"+idx+'.txt')
       .then(response => response.text())
@@ -353,7 +354,6 @@
           
           stmt = stmt.replace("#np","")
 
-          let replaces = [/^(初[九六])/,/^([六九]二)/,/^([六九]三)/,/^([六九]四)/,/^([六九]五)/,/^(上[九六])/,/^(用[九六])/];
 
           if(!loadBook){
 
@@ -379,7 +379,7 @@
           }else{
 
             replaces.map((re,n)=>{
-              stmt = stmt.replace(new RegExp(`<strong>${re.source}`),`<strong id='line${n+1}'>$1`);
+              stmt = stmt.replace(new RegExp(`<strong>${re.source}`,"i"),`<strong id='line${n+1}'>$1`);
             })
 
             line = stmt;
