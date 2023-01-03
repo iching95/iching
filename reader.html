@@ -363,7 +363,7 @@
             var stmtContent = match?match[2]:stmt;
 
             replaces.map((re,n)=>{
-              prefix = prefix.replace(new RegExp(`^(${re})`,"i"),`<a class='line-prefix' href='./reader.html?t=book&i=${idx}#line${n+1}' onclick='readLine(${n+1},this)' class='markLine' id='line${n+1}' mark-data-id='line${n+1}'>$1</a>`);
+              prefix = prefix.replace(new RegExp(`^(${re})`,"i"),`<a class='line-prefix' href='./reader.html?t=book&i=${idx}#line${n+1}' class='markLine' id='line${n+1}' mark-data-id='line${n+1}'>$1</a>`);
             })
 
             stmtContent.split('').forEach(function(char) {
