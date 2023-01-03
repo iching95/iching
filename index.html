@@ -353,7 +353,9 @@
         const stateMod = json.line?"history.pushState({},'','"+`reader.html?i=${last}`+"');":"var i=0;";
         console.log(stateMod)
         document.getElementById("last-go-btn").innerHTML = `
-        <button onclick="${stateMod};location.href='${dest}';" type="button">last read (${last}${json.line?("-"+json.line):""})</button>
+        <a href="${stateMod};location.href='${dest}';" >
+          last read (${last}${json.line?("-"+json.line):""})
+        </a>
         `;
       }
     });
