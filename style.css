@@ -171,7 +171,20 @@ td:has(.symbol-selected) > span:first-of-type:before {
   content: '▼' !important;
 }
 
+
 td:has(.symbol-selected) > span:first-of-type {
+  position: relative;
+  display: block;
+  height: 0px;
+  top: -20px;
+  font-size: 12px;
+}
+
+td:has(.mth-current) > span:first-of-type:before {
+  content: '▼' !important;
+}
+
+td:has(.mth-current) > span:first-of-type {
   position: relative;
   display: block;
   height: 0px;
