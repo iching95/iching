@@ -51,7 +51,7 @@
     const loadBook = params.t?params.t.match(/book/):false;
     const symbol = String.fromCharCode(19904+(idx-1));
 
-    fetch(`https://instant-cell-9492.iching.workers.dev/?i=${idx}&d=${device}${loadBook?"&t=1":""}${matchLine?("&l="+matchLine):""}`)
+    fetch(`https://instant-cell-9492.iching.workers.dev/?i=${idx}&d=${device}${loadBook?"&b=1":""}&l=${matchLine?matchLine:"0"}`)
       .then((response) => response.json())
       .then(json => {
         console.log(json);
@@ -189,7 +189,6 @@
     function openDicURL(evt){
 
       if(!document.getElementById("dic-search-word") || document.getElementById("dic-search-word").innerHTML == ""){
-
         return
       }
 
@@ -367,7 +366,7 @@
                prefix = prefix.replace(new RegExp(`^(${re})`,"i"),`<a class='line-prefix' href='./reader.html?t=book&i=${idx}#line${n+1}' class='markLine' id='line${n+1}' mark-data-id='line${n+1}'>$1</a>`);
               })
             }
-            
+
             stmtContent.split('').forEach(function(char) {
               if(!char.match(/[：。，！]/)){
                 line = line + "<c>" + char + "</c>"
