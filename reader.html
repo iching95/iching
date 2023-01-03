@@ -379,6 +379,8 @@
           }else{
 
             replaces.map((re,n)=>{
+              console.log(re.source)
+              console.log(new RegExp(`<strong>${re.source}`,"i"))
               stmt = stmt.replace(new RegExp(`<strong>${re.source}`,"i"),`<strong id='line${n+1}'>$1`);
             })
 
