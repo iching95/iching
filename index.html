@@ -367,6 +367,10 @@
       Array.from(document.getElementsByClassName(`symbol-hightlight`)).map(el=>{
         el.classList.remove("symbol-hightlight");
       })
+      Array.from(document.getElementsByClassName(`symbol-selected`)).map(el=>{
+        el.classList.remove("symbol-selected");
+      })
+
     }
 
     var stateHide = false;
