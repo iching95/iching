@@ -379,7 +379,7 @@
           }else{
 
             replaces.map((re,n)=>{
-              stmt = stmt.replace(new RegExp(`<strong>${re}`),`<strong id='line${n+1}'>$1`);
+              stmt = stmt.replace(new RegExp(`<strong>${re.source}`),`<strong id='line${n+1}'>$1`);
             })
 
             line = stmt;
