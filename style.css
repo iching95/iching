@@ -257,7 +257,8 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
   font-size: 22px;
   color: #888;
   text-decoration: underline;
-}
+  text-align: center;
+  display: block;}
 
 /* reader */
 
