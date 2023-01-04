@@ -297,7 +297,8 @@ a.line-prefix{
 
 .ptr-info span.info-active{
   opacity: 1;
-  color: #007AFF ;
+  color: #007AFF;
+  font-weight: bold;
 }
 
 .ptr-info-hidden{
