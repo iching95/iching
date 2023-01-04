@@ -121,6 +121,7 @@ table c{
 .tb3 td > span:first-of-type, .mth{
   text-transform: uppercase;
   font-size: 14px;
+  display:block;
 }
 
 
