@@ -297,7 +297,7 @@ a.line-prefix{
 
 .ptr-info span.info-active{
   opacity: 1;
-  color: #ff726f ;
+  color: #007AFF ;
 }
 
 .ptr-info-hidden{
@@ -328,11 +328,11 @@ a.line-prefix{
 }
 
 .ptr-line-active{
-  background: #ff726f ;
+  background: #007AFF ;
 }
 
 .ptr-line-active.ptr-line-ying{
-  background: linear-gradient(90deg,  #ff726f  35%, #49494c 35%, #49494c 65%, #ff726f  65%)
+  background: linear-gradient(90deg,  #007AFF  35%, #49494c 35%, #49494c 65%, #007AFF  65%)
 }
 
 

@@ -347,6 +347,7 @@
     .then((response) => response.json())
     .then(json => {
       if(json.idx){
+
         const last = json.idx;
         const dest = json.book?`reader.html?i=${last}&t=book${json.line?("#line"+json.line):""}`:`reader.html?i=${last}`;
         const stateMod = json.line?"history.pushState({},'','"+`reader.html?i=${last}`+"');":"var i=0;";
@@ -364,9 +365,11 @@
   <script>
 
     function resetSymbol(){
+      
       Array.from(document.getElementsByClassName(`symbol-hightlight`)).map(el=>{
         el.classList.remove("symbol-hightlight");
       })
+
       Array.from(document.getElementsByClassName(`symbol-selected`)).map(el=>{
         el.classList.remove("symbol-selected");
       })
