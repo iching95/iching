@@ -269,11 +269,14 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
   font-size: 20px !important;
 }
 
+#last-go-btn {
+  text-align: center;
+}
+
 #last-go-btn a{
   font-size: 22px;
   text-decoration: underline;
   text-align: center;
-  display: block;
   padding: 6px 0 12px;
   text-transform: uppercase;
   cursor: pointer;
