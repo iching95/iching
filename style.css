@@ -112,6 +112,7 @@ table c{
 .tb1 td > span:first-of-type {
   font-size:14px;
   display: block;
+  margin: 0 0 4px;
 }
 
 .tb2 td > span:first-of-type{
@@ -122,14 +123,12 @@ table c{
   text-transform: uppercase;
   font-size: 14px;
   display:block;
+  margin: 0 0 4px;
 }
-
 
 .tb2 td > span {
   
 }
-
-
 
 .tb1 a, .tb2 a, .tb3 a{
   display:block;
@@ -278,6 +277,7 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
 
 #last-go-btn {
   text-align: center;
+  margin: 0 0 12px;  
 }
 
 #last-go-btn a{
