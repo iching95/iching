@@ -37,7 +37,7 @@
 
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css?42">
+  <link rel="stylesheet" href="style.css?46">
   <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
 </head>
 
@@ -209,7 +209,7 @@
           const html = `<td>
           <span>${num}</span>
           <span onclick="findPair(${parseInt(n)})" class='symbol' id='symbol-tb1-${parseInt(n)}'>
-            ${img}
+            <span>${img}<span>
           </span>
           ` + (content.d.length>=2?`
             <div>${content.d}</div>
@@ -265,7 +265,7 @@
           const html = `<td>
             <span></span>
             <span onclick="findPair(${parseInt(n)})" class='symbol' id='symbol-tb2-${parseInt(n)}'>
-              ${String.fromCharCode(19904+parseInt(n)-1)}
+              <span>${String.fromCharCode(19904+parseInt(n)-1)}</span>
             </span>
           ` + (content.d.length==2?`
             <div>${content.d}</div>
@@ -297,7 +297,7 @@
           const mthString = new Date(0,mth+1,0).toLocaleString('en-US', { month: 'short', });
           
           const html = `<td>
-          <span class='${((mth)==new Date().getMonth())?'mth-current':'mth'}'>${mthString}</span><span class='symbol'>${String.fromCharCode(19904+parseInt(n)-1)}</span>
+          <span class='${((mth)==new Date().getMonth())?'mth-current':'mth'}'>${mthString}</span><span class='symbol'><span>${String.fromCharCode(19904+parseInt(n)-1)}</span></span>
           ` + (content.d.length==2?`
             <div>${content.d}</div>
             <a class="tb3-l symbol-tb-${parseInt(n)}-link" id='symbol-tb3-${parseInt(n)}-link' href='reader.html?i=${n}'><c>${content.c}</c></a>

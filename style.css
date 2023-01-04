@@ -159,9 +159,13 @@ td {
 td > .symbol {
   display:block;
   font-size:32px;
-  transform: scale(1, 1.8);
   padding: 2px 0 4px;
 }
+
+td > .symbol > span{
+  transform: scale(1, 1.8);
+}
+
 
 .tb2 .symbol {
   cursor: pointer;
