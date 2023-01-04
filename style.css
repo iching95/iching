@@ -276,6 +276,7 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
   display: block;
   padding: 6px 0 12px;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 /* reader */
