@@ -103,7 +103,7 @@ table c{
 }
 
 .tb1-nav{
-  ext-talign: center;
+  text-align: center;
 }
 
 .tb1 td > span:empty:before {
