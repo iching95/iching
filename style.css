@@ -432,6 +432,9 @@ button, select{
   font-size: 64px;
   display: inline-block;
   vertical-align: middle;
+}
+
+.header > div{
   width: 15%;
 }
 
