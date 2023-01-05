@@ -429,10 +429,10 @@ button, select{
 }    
 
 .symbol, .number, #header-c{
-  font-size:64px;
-  display:inline;
-  padding:6px 8px;
+  font-size: 64px;
+  display: inline-block;
   vertical-align: middle;
+  width: 15%;
 }
 
 #header-c{
