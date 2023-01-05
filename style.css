@@ -102,6 +102,10 @@ table c{
   font-size:14px;
 }
 
+.tb1-nav{
+  ext-talign: center;
+}
+
 .tb1 td > span:empty:before {
   content: "・";
   color:#888;
