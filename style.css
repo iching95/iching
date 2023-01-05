@@ -112,6 +112,13 @@ table c{
   
 }
 
+.tb1-nav-watch .nav-delim{
+  display: block;
+  height: 5px;
+  width: 0px;
+}
+
+
 .tb1 td > span:empty:before {
   content: "・";
   color:#888;
@@ -302,6 +309,7 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
   text-transform: uppercase;
   cursor: pointer;
 }
+
 
 /* reader */
 

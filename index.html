@@ -342,6 +342,8 @@
       document.getElementById("tb2-container").innerHTML = tableHTML2;
       document.getElementById("tb3-container").innerHTML = tableHTML3;
       document.getElementById("tb1-nav").innerHTML       = tb1Nav;
+      document.getElementById("tb1-nav").classList.add(isWatch?"tb1-nav-watch":"tb1-nav");
+
 
       Array.from(document.getElementsByClassName("rand")).map( el =>{
         el.onclick = function(){ switchHide(); resetSymbol(); }
