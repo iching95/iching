@@ -108,6 +108,10 @@ table c{
   margin: 0 0 6px;
 }
 
+.nav-delim{
+  
+}
+
 .tb1 td > span:empty:before {
   content: "・";
   color:#888;
