@@ -98,9 +98,10 @@ color:#888;
 */
 
 #tb1-nav span{
-padding:0 2px;
-font-size:18px;
-color:#888;
+  padding:0 2px;
+  font-size:18px;
+  color:#888;
+  cursor: pointer;
 }
 
 #tb1-nav{
