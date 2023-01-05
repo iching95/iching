@@ -212,7 +212,7 @@
           };
 
           if(j==1){
-            navHTML += `${(n==31)?"．":""}<span onclick="tb1Scroll(${n})">${content.c[0]}</span>`;
+            navHTML += `${(n==31)?"<span>．</span>":""}<span onclick="tb1Scroll(${n})">${content.c[0]}</span>`;
           }
 
           const img = String.fromCharCode(19904+parseInt(n)-1);
