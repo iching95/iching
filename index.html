@@ -46,6 +46,7 @@
   <div id="block"></div>
   <div id="last-go-btn"></div>
   <!-- <div id="regen-rand-btn"></div> -->
+  <div id="tb1-nav"></div>
   <div id="tb1-container"></div>
   <div id="rand-2" class="rand"></div>
   <div id="tb2-container"></div>
@@ -124,10 +125,11 @@
       })
       .then((response) => response.json())
       .then(json => {
+
         // console.log(json);
         const blockInfo = json.result.hash.substring(0,14);
-        const blockNo = parseInt(json.result.number);
-        blockLastMod  = parseInt(json.result.timestamp)
+        const blockNo   = parseInt(json.result.number);
+        blockLastMod    = parseInt(json.result.timestamp);
         const timestamp = new Date(blockLastMod * 1000).toTimeString().split(' ')[0];
 
         const seed = parseInt(blockInfo);
@@ -359,11 +361,7 @@
         `;
       }
     });
-      
-  </script>
-
-  <script>
-
+    
     function resetSymbol(){
       
       Array.from(document.getElementsByClassName(`symbol-hightlight`)).map(el=>{
@@ -400,6 +398,7 @@
       resetSymbol();
 
       const pair = (n%2>0)?(n+1):(n-1);
+
       document.getElementById(`symbol-tb2-${n}`).classList.add("symbol-selected", "symbol-hightlight")
       document.getElementById(`symbol-tb2-${pair}`).classList.add("symbol-hightlight");
 
