@@ -105,8 +105,8 @@ color:#888;
 }
 
 #tb1-nav{
-text-align: center;
-margin: 0 0 6px;
+  text-align: center;
+  margin: 0 0 6px;
 }
 
 .nav-delim{
@@ -121,7 +121,7 @@ width: 0px;
 
 
 .tb1 td > span:empty:before {
-content: "・";
+content: "˙";
 color:#888;
 font-size:28px;
 }
