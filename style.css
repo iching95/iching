@@ -100,11 +100,12 @@ table c{
 #tb1-nav span{
   padding:0 2px;
   font-size:18px;
+  color:#888;
 }
 
 #tb1-nav{
   text-align: center;
-  margin: 0 0 12px;
+  margin: 0 0 6px;
 }
 
 .tb1 td > span:empty:before {
@@ -184,7 +185,6 @@ td > .symbol > span{
   display:block;
   font-size:32px;
 }
-
 
 .tb2 .symbol {
   cursor: pointer;
@@ -287,7 +287,7 @@ table:has(.symbol-hightlight) td:has(.symbol-hightlight) {
 
 #last-go-btn {
   text-align: center;
-  margin: 0 0 12px;  
+  margin: 0 0 24px;  
 }
 
 #last-go-btn a{
