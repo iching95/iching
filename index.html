@@ -196,6 +196,8 @@
       const skip   = [9,20,30,30,30,33,33,35,51,60,61,63];
       const double = [9,13,14,21,25,26,28];
       
+      let navHTML = '';
+
       for (let i=1;i<=13;i++){
         tbodyHTML1 += ("<tr>");
         for (let j=1;j<=7;j++){
@@ -204,6 +206,10 @@
             d:"．<br>．",
             c:double.includes(n)?"．<br>．":"．"
           };
+
+          if(j==1){
+            navHTML += `<span onclick="">${content.d}</span>`
+          }
 
           const img = String.fromCharCode(19904+parseInt(n)-1);
           const num = parseInt(n);
@@ -241,16 +247,22 @@
 
       }
       
-      return tbodyHTML1;
+      return {
+        table:tbodyHTML1,
+        nav:navHTML
+      };
 
     }
 
-    document.getElementById("tb1-container").innerHTML = "<table class='tb1' style='width:100%;'><tbody>" + genTb1Content() + "</tbody></table>";
+    document.getElementById("tb1-container").innerHTML = "<table class='tb1' style='width:100%;'><tbody>" + genTb1Content().table + "</tbody></table>";
 
     const layoutData = (_data) => {
 
       const rows = _data;
-      let tbodyHTML1 = genTb1Content(rows)
+      const tb1 = genTb1Content(rows);
+
+      let tbodyHTML1 = tb1.table;
+
       let tbodyHTML2 = "";
 
       for (let i=0;i<8;i++){
@@ -318,9 +330,14 @@
       const tableHTML2 = "<table class='tb2' style='width:100%;'><tbody>" + tbodyHTML2 + "</tbody></table>";
       const tableHTML3 = "<table class='tb3' style='width:100%;'><tbody>" + tbodyHTML3 + "</tbody></table>";
 
+      const tb1Nav = `
+        ${tb1.nav}
+      `;
+
       document.getElementById("tb1-container").innerHTML = tableHTML1;
       document.getElementById("tb2-container").innerHTML = tableHTML2;
       document.getElementById("tb3-container").innerHTML = tableHTML3;
+      document.getElementById("tb1-nav").innerHTML       = tb1Nav;
 
       Array.from(document.getElementsByClassName("rand")).map( el =>{
         el.onclick = function(){ switchHide(); resetSymbol(); }
