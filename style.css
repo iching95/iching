@@ -218,7 +218,7 @@ td:has(.symbol-selected) > span:first-of-type {
   position: relative;
   display: block;
   height: 0px;
-  top: -18px;
+  top: -22px;
   font-size: 12px;
 }
 
