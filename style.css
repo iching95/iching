@@ -97,6 +97,11 @@ table c{
 
 */
 
+.tb1-nav span{
+  padding:0 2px;
+  font-size:14px;
+}
+
 .tb1 td > span:empty:before {
   content: "・";
   color:#888;
