@@ -99,11 +99,12 @@ table c{
 
 #tb1-nav span{
   padding:0 2px;
-  font-size:14px;
+  font-size:18px;
 }
 
 #tb1-nav{
   text-align: center;
+  margin: 0 0 12px;
 }
 
 .tb1 td > span:empty:before {

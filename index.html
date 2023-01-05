@@ -187,6 +187,10 @@
 
     }
 
+    function tb1Scroll(n){
+      document.getElementById(`symbol-tb1-${n}`).scrollIntoView();
+    }
+
     const genTb1Content = (_rows) => {
 
       const rows = _rows;
@@ -208,10 +212,7 @@
           };
 
           if(j==1){
-            navHTML += `<span onclick="">${content.c}</span>`;
-            if(n == 31){
-              navHTML +="．";
-            }
+            navHTML += `${(n==31)?"．":" "}<span onclick="tb1Scroll(${n})">${content.c}</span>`;
           }
 
           const img = String.fromCharCode(19904+parseInt(n)-1);
