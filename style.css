@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols+2&display=swap&text=☰☱☲☳☴☵☶☷⚀⚁⚂⚃⚄⚅');
-
 body {
   background-color: #000;
   color: #fff;
-  font-family: "Noto Sans Symbols 2", monospace;
+  font-family: monospace;
 }
 
 body.theme-sepia{
