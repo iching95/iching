@@ -196,8 +196,7 @@ color:#888;
 /*.tb2 td > .symbol, .tb3 td > .symbol*/
 td > .symbol {
   display: block;
-  padding: 2px 0;
-  height: 35px;
+  padding: 0;
   position: relative;
   z-index: 1;
 }
