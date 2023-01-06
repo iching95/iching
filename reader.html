@@ -374,7 +374,8 @@
             let match = stmt.match(new RegExp(`^([${lineOrderNum.pre}]?[${ninesix}][${lineOrderNum.post}]?)(.+)$`,""))
             
             if(!match && n==0){
-              match = stmt.match(/^(.：)(.+)$/);
+              console.log(stmt)
+              match = stmt.match(/^(.：)(.+)/);
             }
 
             var prefix      = match?match[1]:"";
