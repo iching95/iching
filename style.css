@@ -72,6 +72,11 @@ width: 28px;
 margin:auto;
 }
 
+.tb-char-double{
+  position: relative;
+  z-index: 99;
+}
+
 /*
 
 .tb1 td {
