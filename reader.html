@@ -362,15 +362,18 @@
       .then((data) => {
         
         var content = data.split(/\r?\n/)
-        content.map(stmt => {
+        content.map((stmt,n) => {
           
           var line = "";
           var linebreak = stmt.search('#np') > 0;
           
           stmt = stmt.replace("#np","")
 
-
           if(!loadBook){
+
+            if(n==0){
+              stmt = stmt.replace(/^(.)/,`<a href='./reader.html?t=book&i=${idx}>$1</a>`)
+            }
 
             const match = stmt.match(new RegExp(`^([${lineOrderNum.pre}]?[${ninesix}][${lineOrderNum.post}]?)(.+)$`,""));
 
