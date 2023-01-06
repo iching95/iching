@@ -371,11 +371,11 @@
 
           if(!loadBook){
 
-            if(n==0){
-              stmt = stmt.replace(/^(.)/,`<a href='./reader.html?t=book&i=${idx}>$1</a>`)
+            let match = stmt.match(new RegExp(`^([${lineOrderNum.pre}]?[${ninesix}][${lineOrderNum.post}]?)(.+)$`,""))
+            
+            if(!match && n==0){
+              match = stmt.match(/^([.]：)(.+)$/));
             }
-
-            const match = stmt.match(new RegExp(`^([${lineOrderNum.pre}]?[${ninesix}][${lineOrderNum.post}]?)(.+)$`,""));
 
             var prefix      = match?match[1]:"";
             var stmtContent = match?match[2]:stmt;
