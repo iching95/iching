@@ -62,6 +62,23 @@
       }
     });
 
+    fetch(`https://instant-cell-9492.iching.workers.dev/`)
+    .then((response) => response.json())
+    .then(json => {
+      if(json.idx){
+
+        const last = json.idx;
+        const dest = json.book?`reader.html?i=${last}&t=book${json.line?("#line"+json.line):""}`:`reader.html?i=${last}`;
+        const stateMod = json.line?"history.pushState({},'','"+`reader.html?i=${last}`+"');":"var i=0;";
+
+        document.getElementById("last-go-btn").innerHTML = `
+        <a onclick="${stateMod};location.href='${dest}';" >
+          last read (${last}${json.line?("-"+json.line):""})
+        </a>
+        `;
+      }
+    });
+
     const rpc = "https://cloudflare-eth.com";
     const rpcObj = {"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest", false],"id":1};
 
@@ -369,23 +386,6 @@
       updateImgMatchLink();
       updateImgForRandLines(randImg, randLine, true);
     })
-
-    fetch(`https://instant-cell-9492.iching.workers.dev/`)
-    .then((response) => response.json())
-    .then(json => {
-      if(json.idx){
-
-        const last = json.idx;
-        const dest = json.book?`reader.html?i=${last}&t=book${json.line?("#line"+json.line):""}`:`reader.html?i=${last}`;
-        const stateMod = json.line?"history.pushState({},'','"+`reader.html?i=${last}`+"');":"var i=0;";
-
-        document.getElementById("last-go-btn").innerHTML = `
-        <a onclick="${stateMod};location.href='${dest}';" >
-          last read (${last}${json.line?("-"+json.line):""})
-        </a>
-        `;
-      }
-    });
     
     function resetSymbol(){
       
