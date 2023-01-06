@@ -197,7 +197,7 @@ color:#888;
 td > .symbol {
   display: block;
   padding: 2px 0;
-  height: 45px;
+  height: 35px;
   position: relative;
   z-index: 1;
 }
