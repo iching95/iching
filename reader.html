@@ -383,9 +383,13 @@
             var stmtContent = match?match[2]:stmt;
 
             if(match){
-              replaces.map((re,n)=>{
-               prefix = prefix.replace(new RegExp(`^(${re})`,"i"),`<a class='line-prefix' href='./reader.html?t=book&i=${idx}#line${n+1}' class='markLine' id='line${n+1}' mark-data-id='line${n+1}'>$1</a>`);
-              })
+              if(n==0){
+                prefix = `<a href='./reader.html?t=book&i=${idx}'>${prefix}</a>`
+              }else{
+                replaces.map((re,n)=>{
+                prefix = prefix.replace(new RegExp(`^(${re})`,"i"),`<a class='line-prefix' href='./reader.html?t=book&i=${idx}#line${n+1}' class='markLine' id='line${n+1}' mark-data-id='line${n+1}'>$1</a>`);
+                })
+              }
             }
 
             stmtContent.split('').forEach(function(char) {
