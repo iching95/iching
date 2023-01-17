@@ -117,89 +117,6 @@
 
     let blockLastMod = 0;
 
-    /*
-    setInterval(()=>{
-      console.log(Math.floor(Date.now() / 1000))
-      console.log(blockLastMod)
-      if(Math.floor(Date.now() / 1000) > blockLastMod + 12){
-        document.getElementById("block-loader").innerHTML = "⟳";
-      }
-    },1200)
-    */
-
-    const reseed = () => {
-
-      document.getElementById("block-loader").innerHTML = "⟳";
-      
-      return fetch(rpc,{
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(rpcObj)
-      })
-      .then((response) => response.json())
-      .then(json => {
-
-        // console.log(json);
-        const blockInfo = json.result.hash.substring(0,14);
-        const blockNo   = parseInt(json.result.number);
-        blockLastMod    = parseInt(json.result.timestamp);
-        const timestamp = new Date(blockLastMod * 1000).toTimeString().split(' ')[0];
-
-        const seed = parseInt(blockInfo);
-        
-        // console.log(seed);
-        rand = [seed];
-        rand.push(rand[0] * 16807 % 2147483647);
-        rand.push(rand[1] * 16807 % 2147483647);
-
-        console.log(rand);
-
-        randImg  = rand[1] % 64 + 1;
-        randLine = rand[1] % 6;
-        
-        document.getElementById("block").innerHTML = `<span>${blockInfo}</span><span>${blockNo}</span><span>・${timestamp}</span><span id="block-loader"></span>`;
-
-        document.getElementById("block").onclick = function(){
-          Promise.all([reseed()]).then((res) => {
-          updateImgMatchLink();
-          updateImgForRandLines(randImg, randLine, true);
-          })
-        }
-
-      });
-
-    }
-
-    const updateImgForRandLines = () => {
-      Array.from(document.getElementsByClassName("rand")).map( el =>{
-        el.setAttribute("img", randImg)
-        el.setAttribute("line", randLine)
-        el.classList.add("rand-loaded");
-        el.innerHTML = randLines(randImg, randLine, true);
-      })
-    }
-
-    const updateImgMatchLink = () => {
-
-      if(randImg){
-
-        Array.from(document.getElementsByClassName(`symbol-tb-link-matched`)).map(el=>{
-          const href = el.getAttribute("href");
-          el.setAttribute("href",href.replace(/&m=1&l=[0-9]/,""));
-          el.classList.remove("symbol-tb-link-matched")
-        })
-
-        Array.from(document.getElementsByClassName(`symbol-tb-${parseInt(randImg)}-link`)).map(el=>{
-          const href = el.getAttribute("href");
-          const append = `&m=1&l=${randLine+1}`;
-          el.setAttribute("href",`${href.replace(append,"")+append}`);
-          el.classList.add("symbol-tb-link-matched")
-        })
-
-      }
-
-    }
-
     function tb1Scroll(n){
       document.getElementById(`symbol-tb1-${n}`).scrollIntoView();
     }
@@ -274,6 +191,9 @@
       const tableHTML1 = "<table class='tb1' style='width:100%;'><tbody>" + tbodyHTML1 + "</tbody></table>";
 
       document.getElementById("tb1-container").innerHTML = tableHTML1;
+    }
+
+    layoutData();
 
 
   </script>
