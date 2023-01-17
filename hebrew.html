@@ -144,9 +144,13 @@
       .then(response => response.text())
       .then((data) => {
         // rows = JSON.parse(data);
-        rows = data.split(/-/g);
-        rows.map((row)=>{
-          row = row.split(/\r?\n|\r|\n/g);
+        const tdata = data.split(/-/g);
+        tdata[0].map((r,i)=>{
+          rows[i] = {
+            a:tdata[0][i],
+            p:tdata[1][i],
+            s:tdata[2][i],
+          }
         })
         
         console.log(rows);
