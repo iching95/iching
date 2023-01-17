@@ -69,7 +69,6 @@
 
       let n = 1;
       let tbodyHTML1 = "";
-      const skip   = [0,2,3];
       
       let navHTML = '';
 
@@ -77,7 +76,7 @@
         tbodyHTML1 += ("<tr>");
         for (let j=1;j<=10;j++){
 
-          const skip=[];
+          const skip=[0,2,3];
           const double=[];
 
           const content = rows?rows[n]:{
