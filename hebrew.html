@@ -148,7 +148,7 @@
         
         rows = [];
         tdata.map((r,i)=>{
-          tdata[i] = tdata[i].split(/\r?\n|\r|\n/g);
+          tdata[i] = tdata[i].trim().split(/\r?\n|\r|\n/g);
         })
         console.log(tdata);
 
