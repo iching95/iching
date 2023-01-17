@@ -152,9 +152,8 @@
         })
         console.log(tdata);
 
-        tdata.map((r,i)=>{
-          rows[i] = {
-            a:tdata[0][i],
+        tdata[0].map((r,i)=>{
+          rows[tdata[0][i]] = {
             p:tdata[1][i],
             s:tdata[2][i],
           }
