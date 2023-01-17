@@ -145,12 +145,12 @@
       .then((data) => {
         // rows = JSON.parse(data);
         const tdata = data.split(/[-]/g);
-        console.log(tdata);
+        
 
         tdata.map((r,i)=>{
           r = r.split(/\r?\n|\r|\n/g);
         })
-        
+        console.log(tdata);
         tdata.map((r,i)=>{
           rows[i] = {
             a:tdata[0][i],
