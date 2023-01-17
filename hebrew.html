@@ -69,8 +69,7 @@
 
       let n = 1;
       let tbodyHTML1 = "";
-      const skip   = [9,20,30,30,30,33,33,35,51,60,61,63];
-      const double = [9,13,14,21,25,26,28];
+      const skip   = [];
       
       let navHTML = '';
 
@@ -123,6 +122,17 @@
 
     document.getElementById("tb1-container").innerHTML = "<table class='tb1' style='width:100%;'><tbody>" + genTb1Content().table + "</tbody></table>";
 
+    const pData = data?layoutData(rows):fetch('hebrew-data.txt')
+      .then(response => response.text())
+      .then((data) => {
+        // rows = JSON.parse(data);
+        rows = data.split(/\r?\n|\r|\n/g);
+        localStorage.setItem("hebrew-v1", data);
+
+        console.log(rows);
+        layoutData(rows);
+      })
+
     const layoutData = (_data) => {
 
       const rows = _data;
@@ -134,9 +144,6 @@
 
       document.getElementById("tb1-container").innerHTML = tableHTML1;
     }
-
-    layoutData();
-
 
   </script>
 
