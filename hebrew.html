@@ -144,7 +144,8 @@
       .then(response => response.text())
       .then((data) => {
         // rows = JSON.parse(data);
-        const tdata = data.split(/-/g);
+        const tdata = data.split(/[-]/g);
+        console.log(tdata);
         tdata[0].map((r,i)=>{
           rows[i] = {
             a:tdata[0][i],
