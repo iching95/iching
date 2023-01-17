@@ -76,7 +76,7 @@
         tbodyHTML1 += ("<tr>");
         for (let j=1;j<=10;j++){
 
-          const skip=[1,3,4,7,12,15,16,,18,21];
+          const skip=[1,3,4,7,12,15,16,18,21];
           const double=[];
 
           const content = rows?rows[n]:{
@@ -87,7 +87,7 @@
           if(j==1){
           }
 
-          const alefbet = String.fromCharCode(parseInt('05D0', 16)+parseInt(n)-1);
+          const alefbet = String.fromCharCode(parseInt('05D0', 16)+parseInt(n)-1 + (n>11:-1:0));
           const num = parseInt(n);
 
           const html = `<td>
@@ -104,10 +104,6 @@
           }
 
           n++;
-
-          if(n==11){
-            n++;
-          }
 
         }
 
