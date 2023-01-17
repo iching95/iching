@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>iChing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css?65">
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
+  <script>
+
+    const deviceCookMatch = window.location.search.match(/device=([^&]+)/);
+    const themeCookMatch  = window.location.search.match(/theme=([^&]+)+/);
+
+    let isWatch = false;
+    let theme = "dark";
+    let device = "phone";
+    let last = 0;
+
+    const cookMatch = document.cookie?document.cookie.match(/prefs=(.+)/):false;
+    
+    if(cookMatch){
+      let cookie = JSON.parse(cookMatch[1]);
+      device = cookie.device;
+      theme = cookie.theme;
+      last = cookie.last;
+      isWatch = (cookie.device == "watch");
+    }
+
+    device = deviceCookMatch?deviceCookMatch[1]:device;
+    theme =  themeCookMatch?themeCookMatch[1]:theme;
+
+    var expires = (new Date(Date.now() + 86400 * 1000)).toUTCString();
+
+    document.cookie = "prefs=" +JSON.stringify({
+        device:device,
+        theme :theme,
+        last:last
+    }) + "; expires=" + expires + ";path=/;";
+
+    isWatch = (device == "watch");
+    
+  </script>
+</head>
+
+<body>
+  <div id="container container-index">
+    <div id="rand-1" class="rand rand-top"></div>
+    <div id="block"></div>
+    <div id="last-go-btn"></div>
+    <!-- <div id="regen-rand-btn"></div> -->
+    <div id="tb1-nav"></div>
+    <div id="tb1-container"></div>
+    <div id="rand-2" class="rand"></div>
+    <div id="tb2-container"></div>
+    <div id="rand-3" class="rand"></div>
+    <div id="tb3-container"></div>
+  </div>
+  <script>
+    
+    window.addEventListener("popstate", function(e) {
+      if(location.href.match(/reader.html/)){
+        window.location.href = location.href;
+      }
+    });
+
+    fetch(`https://instant-cell-9492.iching.workers.dev/`)
+    .then((response) => response.json())
+    .then(json => {
+      if(json.idx){
+
+        const last = json.idx;
+        const dest = json.book?`reader.html?i=${last}&t=book${json.line?("#line"+json.line):""}`:`reader.html?i=${last}`;
+        const stateMod = json.line?"history.pushState({},'','"+`reader.html?i=${last}`+"');":"var i=0;";
+
+        document.getElementById("last-go-btn").innerHTML = `
+        <a onclick="${stateMod};location.href='${dest}';" >
+          last read (${last}${json.line?("-"+json.line):""})
+        </a>
+        `;
+      }
+    });
+
+    const rpc = "https://cloudflare-eth.com";
+    const rpcObj = {"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest", false],"id":1};
+
+    const order = "天澤火雷風水山地";
+
+    let randImg, randLine;
+
+    let rand = null;
+    let rows = null;
+
+    var randLines = function(_img, _line = null, loadImg = false){
+
+      let img = null;
+      let top = null;
+      let low = null;
+
+      if(rows && rows[_img] && loadImg){
+        img = rows[_img];
+        top = order.indexOf(img.d[0]);
+        low = img.d[1]?order.indexOf(img.d[1]):top;
+      }
+
+      var line1 = "<span>" + (img?String.fromCharCode(9776 + top):"⚊") + "</span>";
+      var line2 = "<span>" + (img?String.fromCharCode(9776 + low):"⚋") + "</span>";
+      var dice =  "<span>" + ((_line!==null)?String.fromCharCode(9856 + parseInt(_line)):"⚇") + "</span>";
+
+      return line1 + line2 + dice;
+
+    }
+
+    document.getElementById("rand-1").innerHTML = randLines();
+    document.body.classList.add(`theme-${theme}`);
+    document.getElementById("last-go-btn").innerHTML = `
+    <a>last read (...)</a>
+    `;
+
+    document.getElementById("block").innerHTML = `<span>0x000000000000</span>
+      <span>10000000</span>
+      <span>・00:00:00</span>
+      <span id="block-loader"></span>`;
+    document.getElementById("block").classList.add(isWatch?"block-watch":"block");
+
+    let blockLastMod = 0;
+
+    /*
+    setInterval(()=>{
+      console.log(Math.floor(Date.now() / 1000))
+      console.log(blockLastMod)
+      if(Math.floor(Date.now() / 1000) > blockLastMod + 12){
+        document.getElementById("block-loader").innerHTML = "⟳";
+      }
+    },1200)
+    */
+
+    const reseed = () => {
+
+      document.getElementById("block-loader").innerHTML = "⟳";
+      
+      return fetch(rpc,{
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(rpcObj)
+      })
+      .then((response) => response.json())
+      .then(json => {
+
+        // console.log(json);
+        const blockInfo = json.result.hash.substring(0,14);
+        const blockNo   = parseInt(json.result.number);
+        blockLastMod    = parseInt(json.result.timestamp);
+        const timestamp = new Date(blockLastMod * 1000).toTimeString().split(' ')[0];
+
+        const seed = parseInt(blockInfo);
+        
+        // console.log(seed);
+        rand = [seed];
+        rand.push(rand[0] * 16807 % 2147483647);
+        rand.push(rand[1] * 16807 % 2147483647);
+
+        console.log(rand);
+
+        randImg  = rand[1] % 64 + 1;
+        randLine = rand[1] % 6;
+        
+        document.getElementById("block").innerHTML = `<span>${blockInfo}</span><span>${blockNo}</span><span>・${timestamp}</span><span id="block-loader"></span>`;
+
+        document.getElementById("block").onclick = function(){
+          Promise.all([reseed()]).then((res) => {
+          updateImgMatchLink();
+          updateImgForRandLines(randImg, randLine, true);
+          })
+        }
+
+      });
+
+    }
+
+    const updateImgForRandLines = () => {
+      Array.from(document.getElementsByClassName("rand")).map( el =>{
+        el.setAttribute("img", randImg)
+        el.setAttribute("line", randLine)
+        el.classList.add("rand-loaded");
+        el.innerHTML = randLines(randImg, randLine, true);
+      })
+    }
+
+    const updateImgMatchLink = () => {
+
+      if(randImg){
+
+        Array.from(document.getElementsByClassName(`symbol-tb-link-matched`)).map(el=>{
+          const href = el.getAttribute("href");
+          el.setAttribute("href",href.replace(/&m=1&l=[0-9]/,""));
+          el.classList.remove("symbol-tb-link-matched")
+        })
+
+        Array.from(document.getElementsByClassName(`symbol-tb-${parseInt(randImg)}-link`)).map(el=>{
+          const href = el.getAttribute("href");
+          const append = `&m=1&l=${randLine+1}`;
+          el.setAttribute("href",`${href.replace(append,"")+append}`);
+          el.classList.add("symbol-tb-link-matched")
+        })
+
+      }
+
+    }
+
+    function tb1Scroll(n){
+      document.getElementById(`symbol-tb1-${n}`).scrollIntoView();
+    }
+
+    const genTb1Content = (_rows) => {
+
+      const rows = _rows;
+
+      let n = 1;
+      let tbodyHTML1 = "";
+      const skip   = [9,20,30,30,30,33,33,35,51,60,61,63];
+      const double = [9,13,14,21,25,26,28];
+      
+      let navHTML = '';
+
+      for (let i=1;i<=13;i++){
+        tbodyHTML1 += ("<tr>");
+        for (let j=1;j<=7;j++){
+
+          const content = rows?rows[n]:{
+            d:"．<br>．",
+            c:double.includes(n)?"．<br>．":"．"
+          };
+
+          if(j==1){
+            navHTML += `${(n==31)?"<span class='nav-delim'>．</span>":""}<span onclick="tb1Scroll(${n})">${content.c[0]}</span>`;
+          }
+
+          const img = String.fromCharCode(19904+parseInt(n)-1);
+          const num = parseInt(n);
+
+          const html = `<td>
+          <span>${num}</span>
+          <span onclick="findPair(${parseInt(n)})" class='symbol' id='symbol-tb1-${parseInt(n)}'>
+            <span>${img}</span>
+          </span>
+          ` + (content.d.length>=2?`
+            <div>${content.d}</div>
+            <a class="tb1-l symbol-tb-${parseInt(n)}-link" id='symbol-tb1-${parseInt(n)}-link' href='reader.html?i=${n}' ><c>${content.c}</c></a>
+          `:`
+            <span class="tb-char-double">
+            <a class="tb1-l symbol-tb-${parseInt(n)}-link" id='symbol-tb1-${parseInt(n)}-link' href='reader.html?i=${n}'><c>${content.c}</c></a>
+            </span>
+            <div>為${content.d}</div>
+          `) + '</td>';
+          
+          tbodyHTML1 += html;
+
+          for (let k=0; k<((Math.min(content.c.length, 2) - 1) + skip.filter(x => x === n).length); k++, j++){
+              tbodyHTML1 += ("<td><span></span></td>");
+          }
+
+          n++;
+
+        }
+
+        tbodyHTML1 += ("</tr>");
+
+        if(!rows && n > 30){
+          break;
+        }
+
+      }
+      
+      return {
+        table:tbodyHTML1,
+        nav:navHTML
+      };
+
+    }
+
+    document.getElementById("tb1-container").innerHTML = "<table class='tb1' style='width:100%;'><tbody>" + genTb1Content().table + "</tbody></table>";
+
+    const layoutData = (_data) => {
+
+      const rows = _data;
+      const tb1 = genTb1Content(rows);
+
+      let tbodyHTML1 = tb1.table;
+
+      let tbodyHTML2 = "";
+
+      for (let i=0;i<8;i++){
+
+        tbodyHTML2 += ("<tr>");
+        const row = Object.entries(rows).filter(row => (row[1].d === order[i] || row[1].d[1] === order[i]));
+        
+        for (let j=0;j<8;j++){
+          const cell = row.filter(cell => (cell[1].d === order[j] || cell[1].d[0] === order[j]));
+          
+          const n = cell[0][0];
+          const content = cell[0][1];
+
+          const html = `<td>
+            <span></span>
+            <span onclick="findPair(${parseInt(n)})" class='symbol' id='symbol-tb2-${parseInt(n)}'>
+              <span>${String.fromCharCode(19904+parseInt(n)-1)}</span>
+            </span>
+          ` + (content.d.length==2?`
+            <div>${content.d}</div>
+            <a class="tb2-l symbol-tb-${parseInt(n)}-link" id='symbol-tb2-${parseInt(n)}-link' href='reader.html?i=${n}' ><c>${content.c}</c></a>
+          `:`
+            <span class="tb-char-double">
+            <a class="tb2-l symbol-tb-${parseInt(n)}-link" id='symbol-tb2-${parseInt(n)}-link' href='reader.html?i=${n}'><c>${content.c}</c></a>
+            </span>
+            <div>為${content.d}</div>
+          `) + '</td>'
+
+          tbodyHTML2 += html;
+        }
+
+        tbodyHTML2 += ("</tr>");
+      }
+
+      const months = [24,19,11,34,43,1,44,33,12,20,23,2];
+      let tbodyHTML3 = "";
+
+      for (let i=0;i<2;i++){
+        tbodyHTML3 += ("<tr>");
+        for (let j=0;j<6;j++){
+          // console.log(n);
+          const k = i*6 + j;
+          const n = months[k];
+          const content = rows[n];
+          const mth = (11+k-1)%12;
+          const mthString = new Date(0,mth+1,0).toLocaleString('en-US', { month: 'short', });
+          
+          const html = `<td>
+          <span class='${((mth)==new Date().getMonth())?'mth-current':'mth'}'>${mthString}</span><span class='symbol'><span>${String.fromCharCode(19904+parseInt(n)-1)}</span></span>
+          ` + (content.d.length==2?`
+            <div>${content.d}</div>
+            <a class="tb3-l symbol-tb-${parseInt(n)}-link" id='symbol-tb3-${parseInt(n)}-link' href='reader.html?i=${n}'><c>${content.c}</c></a>
+          `:`
+            <span class="tb-char-double">
+            <a class="tb3-l symbol-tb-${parseInt(n)}-link" id='symbol-tb3-${parseInt(n)}-link' href='reader.html?i=${n}'><c>${content.c}</c></a>
+            </span><div>為${content.d}</div>
+          `) + '</td>'
+          
+          tbodyHTML3 += html;
+        }
+        tbodyHTML3 += ("</tr>");
+      }
+
+      const tableHTML1 = "<table class='tb1' style='width:100%;'><tbody>" + tbodyHTML1 + "</tbody></table>";
+      const tableHTML2 = "<table class='tb2' style='width:100%;'><tbody>" + tbodyHTML2 + "</tbody></table>";
+      const tableHTML3 = "<table class='tb3' style='width:100%;'><tbody>" + tbodyHTML3 + "</tbody></table>";
+
+      const tb1Nav = `
+        ${tb1.nav}
+      `;
+
+      document.getElementById("tb1-container").innerHTML = tableHTML1;
+      document.getElementById("tb2-container").innerHTML = tableHTML2;
+      document.getElementById("tb3-container").innerHTML = tableHTML3;
+      document.getElementById("tb1-nav").innerHTML       = tb1Nav;
+      document.getElementById("tb1-nav").classList.add(isWatch?"tb1-nav-watch":"tb1-nav");
+
+
+      Array.from(document.getElementsByClassName("rand")).map( el =>{
+        el.onclick = function(){ switchHide(); resetSymbol(); }
+      })
+    }
+
+    const data = localStorage.getItem("data-v1");
+    rows = data?JSON.parse(data):null;
+
+    const pData = data?layoutData(rows):fetch('data.txt')
+      .then(response => response.text())
+      .then((data) => {
+        rows = JSON.parse(data);
+        localStorage.setItem("data-v1", data);
+        layoutData(rows);
+      })
+
+    const promises = data?[reseed()]:[pData, reseed()];
+
+    Promise.all(promises).then((res) => {
+      updateImgMatchLink();
+      updateImgForRandLines(randImg, randLine, true);
+    })
+    
+    function resetSymbol(){
+      
+      Array.from(document.getElementsByClassName(`symbol-hightlight`)).map(el=>{
+        el.classList.remove("symbol-hightlight");
+      })
+
+      Array.from(document.getElementsByClassName(`symbol-selected`)).map(el=>{
+        el.classList.remove("symbol-selected");
+      })
+
+    }
+
+    var stateHide = false;
+    var switchHide = function(){
+      
+      stateHide = !stateHide;
+
+      Array.from(document.getElementsByClassName(`tb2-l`)).map(el=>{
+        el.classList.toggle("tb2-l-hidden");
+        el.onclick = stateHide?switchHide:null;
+      })
+
+      Array.from(document.getElementsByClassName(`tb1-l`)).map(el=>{
+        el.classList.toggle("tb1-l-hidden");
+        el.onclick = stateHide?switchHide:null;
+      })
+
+      return false;
+      
+    }
+
+    var findPair = function(n){
+
+      resetSymbol();
+
+      const pair = (n%2>0)?(n+1):(n-1);
+
+      document.getElementById(`symbol-tb2-${n}`).classList.add("symbol-selected", "symbol-hightlight")
+      document.getElementById(`symbol-tb2-${pair}`).classList.add("symbol-hightlight");
+
+      const cross = Object.entries(rows).filter(row => (row[1].d[0] === rows[n].d[1] && row[1].d[1] === rows[n].d[0]));
+
+      if(cross.length){
+        
+        const crossIdx = cross[0][0];
+        console.log(crossIdx);
+
+        if(crossIdx != pair){
+          document.getElementById(`symbol-tb2-${crossIdx}`).classList.add("symbol-hightlight");
+        }
+
+      }
+
+      document.getElementById("tb2-container").scrollIntoView();
+    }
+
+  </script>
+
+</body>
+</html>
