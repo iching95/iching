@@ -44,9 +44,7 @@
 <body>
   <div id="container container-index">
     <div id="rand-1" class="rand rand-top"></div>
-    <div id="block"></div>
     <div id="last-go-btn"></div>
-    <!-- <div id="regen-rand-btn"></div> -->
     <div id="tb1-nav"></div>
     <div id="tb1-container"></div>
     <div id="rand-2" class="rand"></div>
@@ -56,66 +54,10 @@
   </div>
   <script>
     
-    fetch(`https://instant-cell-9492.iching.workers.dev/`)
-    .then((response) => response.json())
-    .then(json => {
-      if(json.idx){
-
-        const last = json.idx;
-        const dest = json.book?`reader.html?i=${last}&t=book${json.line?("#line"+json.line):""}`:`reader.html?i=${last}`;
-        const stateMod = json.line?"history.pushState({},'','"+`reader.html?i=${last}`+"');":"var i=0;";
-
-        document.getElementById("last-go-btn").innerHTML = `
-        <a onclick="${stateMod};location.href='${dest}';" >
-          last read (${last}${json.line?("-"+json.line):""})
-        </a>
-        `;
-      }
-    });
-
-    const rpc = "https://cloudflare-eth.com";
-    const rpcObj = {"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest", false],"id":1};
-
-    const order = "天澤火雷風水山地";
-
     let randImg, randLine;
 
     let rand = null;
     let rows = null;
-
-    var randLines = function(_img, _line = null, loadImg = false){
-
-      let img = null;
-      let top = null;
-      let low = null;
-
-      if(rows && rows[_img] && loadImg){
-        img = rows[_img];
-        top = order.indexOf(img.d[0]);
-        low = img.d[1]?order.indexOf(img.d[1]):top;
-      }
-
-      var line1 = "<span>" + (img?String.fromCharCode(9776 + top):"⚊") + "</span>";
-      var line2 = "<span>" + (img?String.fromCharCode(9776 + low):"⚋") + "</span>";
-      var dice =  "<span>" + ((_line!==null)?String.fromCharCode(9856 + parseInt(_line)):"⚇") + "</span>";
-
-      return line1 + line2 + dice;
-
-    }
-
-    document.getElementById("rand-1").innerHTML = randLines();
-    document.body.classList.add(`theme-${theme}`);
-    document.getElementById("last-go-btn").innerHTML = `
-    <a>last read (...)</a>
-    `;
-
-    document.getElementById("block").innerHTML = `<span>0x000000000000</span>
-      <span>10000000</span>
-      <span>・00:00:00</span>
-      <span id="block-loader"></span>`;
-    document.getElementById("block").classList.add(isWatch?"block-watch":"block");
-
-    let blockLastMod = 0;
 
     function tb1Scroll(n){
       document.getElementById(`symbol-tb1-${n}`).scrollIntoView();
