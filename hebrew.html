@@ -77,6 +77,9 @@
         tbodyHTML1 += ("<tr>");
         for (let j=1;j<=7;j++){
 
+          const skip=[];
+          const double=[];
+
           const content = rows?rows[n]:{
             d:"．<br>．",
             c:double.includes(n)?"．<br>．":"．"
