@@ -133,9 +133,9 @@
       .then((data) => {
         // rows = JSON.parse(data);
         rows = data.split(/\r?\n|\r|\n/g);
-        localStorage.setItem("hebrew-v1", data);
-
         console.log(rows);
+        localStorage.setItem("hebrew-v1", JSON.stringify(rows));
+
         layoutData(rows);
       })
 
