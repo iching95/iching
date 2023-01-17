@@ -146,7 +146,7 @@
         // rows = JSON.parse(data);
         const tdata = data.split(/[-]/g);
         console.log(tdata);
-        tdata[0].map((r,i)=>{
+        tdata.map((r,i)=>{
           rows[i] = {
             a:tdata[0][i],
             p:tdata[1][i],
