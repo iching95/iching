@@ -99,7 +99,7 @@
           
           tbodyHTML1 += html;
 
-          for (let k=0; k<((Math.min("".length, 2) - 1) + skip.filter(x => x === n).length); k++, j++){
+          for (let k=0; k< skip.filter(x => x === n).length; k++, j++){
               tbodyHTML1 += ("<td><span></span></td>");
           }
 
