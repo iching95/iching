@@ -125,6 +125,9 @@
 
     document.getElementById("tb1-container").innerHTML = "<table class='tb1' style='width:100%;'><tbody>" + genTb1Content().table + "</tbody></table>";
 
+    const data = localStorage.getItem("data-v1");
+    rows = data?JSON.parse(data):null;
+
     const pData = data?layoutData(rows):fetch('hebrew-data.txt')
       .then(response => response.text())
       .then((data) => {
