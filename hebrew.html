@@ -78,6 +78,14 @@
     const rpc = "https://cloudflare-eth.com";
     const rpcObj = {"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest", false],"id":1};
 
+    document.getElementById("block").innerHTML = `<span>0x000000000000</span>
+      <span>10000000</span>
+      <span>・00:00:00</span>
+      <span id="block-loader"></span>`;
+    document.getElementById("block").classList.add(isWatch?"block-watch":"block");
+
+    let blockLastMod = 0;
+
     const reseed = () => {
 
       document.getElementById("block-loader").innerHTML = "⟳";
