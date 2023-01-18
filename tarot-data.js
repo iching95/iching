@@ -1,4 +1,4 @@
-const tarotData = function(){
+const _tarotData = function(){
 
     const classicalPlanetSigns = ["♄","♃","♂","☉","♀","☿","☾"];
     const classicalPlanets = ["Saturn","Jupiter","Mars","Sol","Venus","Mercury","Moon"];
