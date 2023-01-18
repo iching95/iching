@@ -1,4 +1,4 @@
-export tarotData = function(){
+const tarotData = function(){
 
     const classicalPlanetSigns = ["♄","♃","♂","☉","♀","☿","☾"];
     const classicalPlanets = ["Saturn","Jupiter","Mars","Sol","Venus","Mercury","Moon"];
@@ -281,3 +281,4 @@ export tarotData = function(){
   
   }
   
+  module.exports = [tarotData];
