@@ -53,10 +53,10 @@
     <div id="rand-3" class="rand"></div>
     <div id="tb3-container"></div>
   </div>
-  <script type="module" src="tarot-data.js">
+  <script>
 
-    import { tarotData } from './tarot-data.js';
-    
+    const tarotData = require('./tarot-data.js');
+
     function shuffle(array, seed) {
       var m = array.length, t, i;
 
