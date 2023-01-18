@@ -1,4 +1,4 @@
-exports.getData = function(){
+export tarotData = function(){
 
     const classicalPlanetSigns = ["♄","♃","♂","☉","♀","☿","☾"];
     const classicalPlanets = ["Saturn","Jupiter","Mars","Sol","Venus","Mercury","Moon"];
