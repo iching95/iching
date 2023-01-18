@@ -232,6 +232,12 @@
         layoutData(rows);
       })
 
+      const promises = data?[reseed()]:[pData, reseed()];
+
+      Promise.all(promises).then((res) => {
+        // updateImgMatchLink();
+        updateImgForRandLines(randImg, randLine, true);
+      })
 
   </script>
 
