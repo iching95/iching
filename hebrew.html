@@ -120,8 +120,9 @@
 
           document.getElementById("block").onclick = function(){
             Promise.all([reseed()]).then((res) => {
-            // updateImgMatchLink();
-            // updateImgForRandLines(randImg, randLine, true);
+              
+              // updateImgMatchLink();
+              // updateImgForRandLines(randImg, randLine, true);
             })
           }
 
@@ -137,6 +138,63 @@
     function tb1Scroll(n){
       document.getElementById(`symbol-tb1-${n}`).scrollIntoView();
     }
+
+    const genTbDeckContent = (_rows) => {
+
+      const rows = _rows;
+
+      let n = 1;
+      let tbodyHTML = "";
+      
+      let navHTML = '';
+
+      for (let i=1;i<=4;i++){
+        tbodyHTML += ("<tr>");
+        for (let j=1;j<=10;j++){
+
+          const content = rows?rows[n]:{
+            d:"．<br>．",
+            c:double.includes(n)?"．<br>．":"．"
+          };
+
+          if(j==1){
+          }
+
+          const alefbet = String.fromCharCode(parseInt('05D0', 16)+parseInt(n)-1 + (n>11?-1:0));
+          const num = parseInt(n);
+
+          const html = `<td>
+          <span>${num}</span>
+          <span class='alefbet' id='alefbet-tb1-${parseInt(n)}'>
+            <span>${alefbet}</span>
+          </span>
+          </td>`;
+          
+          tbodyHTML += html;
+
+          for (let k=0; k< skip.filter(x => x === n).length; k++, j++){
+              tbodyHTML += ("<td><span></span></td>");
+          }
+
+          n++;
+
+        }
+
+        tbodyHTML += ("</tr>");
+
+        if(!rows && n > 30){
+          break;
+        }
+
+      }
+      
+      return {
+        table:tbodyHTML1,
+        nav:navHTML
+      };
+
+    }
+
 
     const genTb1Content = (_rows) => {
 
