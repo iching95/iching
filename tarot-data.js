@@ -281,4 +281,3 @@ const tarotData = function(){
   
   }
   
-  module.exports = [tarotData];
