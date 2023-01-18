@@ -54,6 +54,73 @@
   </div>
   <script>
     
+    function shuffle(array, seed) {
+      var m = array.length, t, i;
+
+      const _random = (seed) => {
+        var x = Math.sin(seed++) * 10000; 
+        return x - Math.floor(x);
+      }
+
+      while (m) {
+        i = Math.floor(_random(seed) * m--);
+        t = array[m];
+        array[m] = array[i];
+        array[i] = t;
+        ++seed 
+      }
+
+      return array;
+
+    }
+
+    
+    const rpc = "https://cloudflare-eth.com";
+    const rpcObj = {"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest", false],"id":1};
+
+    const reseed = () => {
+
+      document.getElementById("block-loader").innerHTML = "⟳";
+
+      return fetch(rpc,{
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(rpcObj)
+        })
+        .then((response) => response.json())
+        .then(json => {
+
+          // console.log(json);
+          const blockInfo = json.result.hash.substring(0,14);
+          const blockNo   = parseInt(json.result.number);
+          blockLastMod    = parseInt(json.result.timestamp);
+          const timestamp = new Date(blockLastMod * 1000).toTimeString().split(' ')[0];
+
+          const seed = parseInt(blockInfo);
+          
+          // console.log(seed);
+          rand = [seed];
+          rand.push(rand[0] * 16807 % 2147483647);
+          rand.push(rand[1] * 16807 % 2147483647);
+
+          const deck = Array.from(Array(78).keys());
+          shuffle(deck,rand[0]);
+          console.log(deck)
+          
+          document.getElementById("block").innerHTML = `<span>${blockInfo}</span><span>${blockNo}</span><span>・${timestamp}</span><span id="block-loader"></span>`;
+
+          document.getElementById("block").onclick = function(){
+            Promise.all([reseed()]).then((res) => {
+            // updateImgMatchLink();
+            // updateImgForRandLines(randImg, randLine, true);
+            })
+          }
+
+        });
+
+    }
+
+
     let randImg, randLine;
 
     let rand = null;
