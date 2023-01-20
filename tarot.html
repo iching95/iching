@@ -208,8 +208,7 @@
       if(n <= 21){
         return `${n}+${tarotData.cardsMajorArcanaOrdered[n].title}`;
       }
-
-      return `${n}+${tarotData.cardsMajorArcanaOrdered[n].title}`;
+      return `${tarotData.cardsMinorArcanaMap[n].suit}+${tarotData.cardsMinorArcanaMap[n].num}`;
 
     }
 
