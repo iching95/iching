@@ -12,3 +12,6 @@
   color: #fff;
 }
 
+.tarot-deck img{
+  filter: invert(61%) sepia(1%) saturate(0%) hue-rotate(167deg) brightness(88%) contrast(91%);
+}
