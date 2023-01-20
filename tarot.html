@@ -212,7 +212,7 @@
       return `${imageRWSPath}${tarotData.cardsMinorArcanaMap[n-22].suit} ${tarotData.cardsMinorArcanaMap[n-22].num}.svg`.replace(" ","+");
     }
 
-    const cardInfoLine (n) => {
+    const cardInfoLine = (n) => {
 
       let line ="";
       const num = n%14+1;
@@ -223,7 +223,7 @@
       if(num >= 2 && num <= 10){
         const zodiacName = tarotData.zodiacNames[tarotData.cardsMinorArcanaMap[n-22].zodiacIdx];
         const zodiacSign = tarotData.combinedSignMap[zodiacName];
-        
+
         line = tarotData.cardsMinorArcanaMap[n-22].zodiacIdx
       }
 
