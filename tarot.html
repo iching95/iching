@@ -241,7 +241,7 @@
         
         const zodiacSign = tarotData.combinedSignMap[tarotData.cardsMinorArcanaMap[n].zodiac];
         const planetSign = tarotData.combinedSignMap[tarotData.cardsMinorArcanaMap[n].planet];
-        line = `${suit}${num} ${zodiacSign}．${planetSign}`
+        line = `${suit.toUpperCase()}${num} ${zodiacSign}．${planetSign}`
       }else{
         const ruler = tarotData.cardsMajorArcanaOrdered[_n].ruler;
         const sign = tarotData.combinedSignMap[ruler];
