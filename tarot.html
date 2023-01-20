@@ -250,7 +250,7 @@
         const ruler = tarotData.cardsMajorArcanaOrdered[_n].ruler;
         const sign = tarotData.combinedSignMap[ruler];
         const hebrew = tarotData.cardsMajorArcanaOrdered[_n].hebrew.alphabet
-        line = `${romanize(num)} ${sign}．${hebrew}`
+        line = `${romanize(_n)} ${sign}．${hebrew}`
       }
 
       return line;
