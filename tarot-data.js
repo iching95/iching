@@ -282,6 +282,13 @@ export const _tarotData = function(){
         // courtDecanGroup
       };
     })
+
+    cardsMinorArcanaMap.map((card,n)=>{
+      const num = n%14+1;
+      if(num >= 2 && num <= 10){
+        card.courtDecanGroup = getCourtDecanCards(courtDecanMap[courtIdx][0],courtDecanMap[courtIdx][1]);
+      }
+    })
   
     _planetZodiacMap.map((row,n)=>{
       planetZodiacMap[row[0]] = row[1].split("-").map(text=>text.trim())
