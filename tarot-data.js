@@ -255,16 +255,16 @@ export const _tarotData = function(){
                    n >= 42 && n <=56 ? "s" : "c";
 
 
-      courtDecanGroup = [];
-      courtIdx = 0;
-      zodiacIdx = 0;
+      let courtDecanGroup = null;
+      let courtIdx = null;
+      let zodiacIdx = null;
 
       if(num < 10){
 
         const modalityIdx = Math.floor((num-1-1)/3)
         const zIdx = suitMap[suit] * 3 + modalityIdx;
         zodiacIdx = zodiacMap[zIdx];
-        
+
         const m = (zodiacIdx-1) * 3 + ((num-1-1)%3);
         courtIdx = Math.floor(((m + (36+1)) % 36)/3);
         courtDecanGroup = getCourtDecanCards(courtDecanMap[courtIdx][0],courtDecanMap[courtIdx][1])
