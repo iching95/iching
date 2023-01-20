@@ -237,7 +237,7 @@ export const _tarotData = function(){
       const courtMap = [null, 1, 0, 2];
       const courtIdx = suitMap[_suit] * 14 + courtMap[_num - 11] * 3 + 2;
       const prev = ((courtIdx + (56 - 14 - 1 ))  )% 56 - 1 + (_num==13?9:0);
-      return courtDecanCards = {
+      return {
         ruler:cardsMinorArcanaMap[ suitMap[_suit] * 14 + _num-1 ],
         decans:[
           cardsMinorArcanaMap[prev],
