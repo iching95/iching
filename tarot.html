@@ -206,9 +206,9 @@
 
     const rwsImgPath = (n) => {
       if(n <= 21){
-        return `${n}+${tarotData.cardsMajorArcanaOrdered[n].title}`;
+        return `${imageRWSPath}${n} ${tarotData.cardsMajorArcanaOrdered[n].title}`.replace(" ","+");
       }
-      return `${tarotData.cardsMinorArcanaMap[n].suit}+${tarotData.cardsMinorArcanaMap[n].num}`;
+      return `${imageRWSPath}${tarotData.cardsMinorArcanaMap[n].suit} ${tarotData.cardsMinorArcanaMap[n].num}`.replace(" ","+");
     }
 
     const updateDeck = (_deck) => {
