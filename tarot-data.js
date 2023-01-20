@@ -199,17 +199,38 @@ export const _tarotData = function(){
       dignityMap[zodiacNames[n]] = row.trim().split("\t").map(text=>text.trim()).slice(1)
     })
   
+    
     const cardsMinorArcanaMap = []
   
     const suitPrefix = ["Wands","Pentacles","Swords","Cups"];
     const numReplace = ["Ace",2,3,4,5,6,7,8,9,10,"Page","Knight","Queen","King"];
-  
+
+    const zodiacMap = [+1,+5,+9,10,+2,+6,+7,11,+3,+4,+8,12];
+
+    const courtMap = [
+      ["w",13],["p",12],["s",14],["c",13],
+      ["w",12],["p",14],["s",13],["c",12],
+      ["w",14],["p",13],["s",12],["c",14],
+    ]
+
     cardsMinorTitleRaw.split("\n").map((row,n)=>{
+
+      const modalityIdx = Math.floor((num-1-1)/3)
+      const zIdx = suitMap[suit] * 3 + modalityIdx;
+      const zodiacIdx = zodiacMap[zIdx];
+      const m = (zodiacIdx-1) * 3 + ((num-1-1)%3);
+
+      const courtIdx = Math.floor(((m + (36+1)) % 36)/3);
+      const courtDecanGroup = getCourtDecanCards(courtMap[courtIdx][0],courtMap[courtIdx][1])
+   
       cardsMinorArcanaMap[n] = {
         title:`${numReplace[n%14]} of ${suitPrefix[Math.floor(n/14)]}`,
         esoteric:row.trim(),
         suit:suitPrefix[Math.floor(n/14)],
         num:numReplace[n%14],
+        zodiacIdx,
+        courtIdx,
+        courtDecanGroup,
       };
     })
   
@@ -258,6 +279,9 @@ export const _tarotData = function(){
     elements.map((element,n)=>{
       combinedSignMap[element.name] = element.sign
     })
+
+    const zodiacMap = [+1,+5,+9,10,+2,+6,+7,11,+3,+4,+8,12];
+
   
     return {
       sefirotMap,
