@@ -1,0 +1,14 @@
+/* deck */
+
+.tarot-deck{
+  
+}
+
+.tarot-deck > div {
+  color: #fff;
+}
+
+.tarot-deck > div > div {
+  color: #fff;
+}
+
