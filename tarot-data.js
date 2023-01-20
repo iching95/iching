@@ -251,8 +251,8 @@ export const _tarotData = function(){
       const num = n%14+1;
 
       const suit = n >= 0  && n <=13 ? "w" :
-                   n >= 14 && n <=28 ? "p" :
-                   n >= 42 && n <=56 ? "s" : "c";
+                    n >= 14 && n <=28 ? "p" :
+                    n >= 29 && n <=43 ? "s" : "c";
 
 
       let courtDecanGroup = null;
