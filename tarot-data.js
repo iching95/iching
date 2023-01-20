@@ -207,7 +207,9 @@ export const _tarotData = function(){
     cardsMinorTitleRaw.split("\n").map((row,n)=>{
       cardsMinorArcanaMap[n] = {
         title:`${numReplace[n%14]} of ${suitPrefix[Math.floor(n/14)]}`,
-        esoteric:row.trim()
+        esoteric:row.trim(),
+        suit:suitPrefix[Math.floor(n/14)],
+        num:numReplace[n%14],
       };
     })
   
