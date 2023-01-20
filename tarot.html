@@ -4,7 +4,7 @@
   <title>T. Deck</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css?65">
-  <link rel="stylesheet" href="style-tarot.css?4">
+  <link rel="stylesheet" href="style-tarot.css?5">
   <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
   <script>
 
@@ -251,7 +251,7 @@
         const ruler = tarotData.cardsMajorArcanaOrdered[_n].ruler;
         const sign = tarotData.combinedSignMap[ruler];
         const hebrew = tarotData.cardsMajorArcanaOrdered[_n].hebrew.alphabet
-        line = `${romanize(_n)} ${sign}．${hebrew}`
+        line = `${romanize(_n)} ${sign}．<span class='hebrew'>${hebrew}</span>`
       }
 
       return line;
