@@ -5,7 +5,9 @@ export const _tarotData = function(){
     const zodiacNames = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius" , "Pisces"];
     const zodiacSigns = ["♈︎", "♉︎", "♊︎", "♋︎", "♌︎", "♍︎", "♎︎", "♏︎", "♐︎", "♑︎", "♒︎" , "♓︎"];
     const hebrewAlphabet = "אבגדהוזחטיכלמנסעפצקרשת";
-  
+    
+    const zodiacMap = [+1,+5,+9,10,+2,+6,+7,11,+3,+4,+8,12];
+
   
     const zodiacModality = [
       {name:"Cardinal",primes:"Sulfur",sign:"🜍"},
@@ -205,8 +207,6 @@ export const _tarotData = function(){
     const suitPrefix = ["Wands","Pentacles","Swords","Cups"];
     const numReplace = ["Ace",2,3,4,5,6,7,8,9,10,"Page","Knight","Queen","King"];
 
-    const zodiacMap = [+1,+5,+9,10,+2,+6,+7,11,+3,+4,+8,12];
-
     const courtMap = [
       ["w",13],["p",12],["s",14],["c",13],
       ["w",12],["p",14],["s",13],["c",12],
@@ -279,9 +279,6 @@ export const _tarotData = function(){
     elements.map((element,n)=>{
       combinedSignMap[element.name] = element.sign
     })
-
-    const zodiacMap = [+1,+5,+9,10,+2,+6,+7,11,+3,+4,+8,12];
-
   
     return {
       sefirotMap,
