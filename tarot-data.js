@@ -245,7 +245,7 @@ export const _tarotData = function(){
   
     })
   
-    combinedSignMap = {
+    const combinedSignMap = {
       ...modernPlaneSigntMap,...sefirotPlanetSigns
     }
   
