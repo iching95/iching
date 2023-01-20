@@ -248,7 +248,7 @@ export const _tarotData = function(){
     }    
     cardsMinorTitleRaw.split("\n").map((row,n)=>{
 
-      const num = n%14;
+      const num = n%14+1;
 
       const suit = n >= 0  && n <=13 ? "w" :
                    n >= 14 && n <=28 ? "p" :
@@ -259,7 +259,7 @@ export const _tarotData = function(){
       let courtIdx = null;
       let zodiacIdx = null;
 
-      if(num < 10){
+      if(num <= 10){
 
         const modalityIdx = Math.floor((num-1-1)/3)
         const zIdx = suitMap[suit] * 3 + modalityIdx;
