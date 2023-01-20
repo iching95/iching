@@ -19,7 +19,8 @@
 }
 
 body.theme-sepia .tarot-deck img{
-  filter: invert(26%) sepia(3%) saturate(6430%) hue-rotate(353deg) brightness(103%) contrast(87%);
+  /* filter: invert(26%) sepia(3%) saturate(6430%) hue-rotate(353deg) brightness(103%) contrast(87%); */
+  filter: invert(60%) sepia(3%) saturate(20%) hue-rotate(39deg) brightness(89%) contrast(85%);
 }
 
 
