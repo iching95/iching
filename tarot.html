@@ -51,9 +51,9 @@
     <div id="block" class="block-tarot"></div>
 
     <div id="rand-2" class="rand"></div>
-    <div id="tb2-container"></div>
+    <div style="display:none" id="tb2-container"></div>
     <div id="rand-3" class="rand"></div>
-    <div id="tb3-container"></div>
+    <div style="display:none" id="tb3-container"></div>
   </div>
   
   <script type="module">
@@ -350,7 +350,7 @@
 
     }
 
-    document.getElementById("tb1-container").innerHTML = "<table class='tb1' style='width:100%;'><tbody>" + genTb1Content().table + "</tbody></table>";
+    // document.getElementById("tb2-container").innerHTML = "<table class='tb1' style='width:100%;'><tbody>" + genTb1Content().table + "</tbody></table>";
 
     const data = localStorage.getItem("hebrew-v1");
     rows = data?JSON.parse(data):null;
