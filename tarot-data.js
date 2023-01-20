@@ -219,7 +219,13 @@ export const _tarotData = function(){
       "s":2,
       "c":3,
     }
-    
+
+    const courtDecanMap = [
+      ["w",13],["p",12],["s",14],["c",13],
+      ["w",12],["p",14],["s",13],["c",12],
+      ["w",14],["p",13],["s",12],["c",14],
+    ]
+
     const getCourtDecanCards = (_suit, _num) => {
 
       if(_num < 12){
@@ -253,13 +259,13 @@ export const _tarotData = function(){
       const zodiacIdx = zodiacMap[zIdx];
       const m = (zodiacIdx-1) * 3 + ((num-1-1)%3);
 
-      const courtIdx = Math.floor(((m + (36+1)) % 36)/3);
-      const courtDecanMap = [
-        ["w",13],["p",12],["s",14],["c",13],
-        ["w",12],["p",14],["s",13],["c",12],
-        ["w",14],["p",13],["s",12],["c",14],
-      ]
-      const courtDecanGroup = getCourtDecanCards(courtDecanMap[courtIdx][0],courtDecanMap[courtIdx][1])
+      courtDecanGroup = [];
+      courtIdx = 0;
+
+      if(num < 10){
+        courtIdx = Math.floor(((m + (36+1)) % 36)/3);
+        courtDecanGroup = getCourtDecanCards(courtDecanMap[courtIdx][0],courtDecanMap[courtIdx][1])
+      }
    
       cardsMinorArcanaMap[n] = {
         title:`${numReplace[n%14]} of ${suitPrefix[Math.floor(n/14)]}`,
