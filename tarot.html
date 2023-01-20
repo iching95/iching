@@ -227,7 +227,7 @@
         tbodyHTML += ("</div>");
       }
 
-      document.getElementById("tb2-container").innerHTML = tbodyHTML;
+      document.getElementById("tb1-container").innerHTML = tbodyHTML;
 
     }
 
@@ -304,7 +304,7 @@
 
       const tableHTML1 = "<table class='tb1' style='width:100%;'><tbody>" + tbodyHTML1 + "</tbody></table>";
 
-      document.getElementById("tb1-container").innerHTML = tableHTML1;
+      document.getElementById("tb2-container").innerHTML = tableHTML1;
     }
 
     const pData = data?layoutData(rows):fetch('hebrew-data.txt')
