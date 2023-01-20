@@ -56,12 +56,7 @@
   
   <script type="module">
     import { _tarotData } from './tarot-data.js';
-    const _data = _tarotData();
-    console.log(_data)
-    window.tarotData = _data;
-  </script>
-  <script>
-    const tarotData = window.tarotData
+    const tarotData = _tarotData();
     console.log("tarotData")
     console.log(tarotData)
 
