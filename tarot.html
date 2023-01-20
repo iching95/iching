@@ -55,6 +55,7 @@
   </div>
   
   <script type="module">
+    
     import { _tarotData } from './tarot-data.js';
     const tarotData = _tarotData();
     console.log("tarotData")
@@ -125,9 +126,7 @@
 
           document.getElementById("block").onclick = function(){
             Promise.all([reseed()]).then((res) => {
-              
-              // updateImgMatchLink();
-              // updateImgForRandLines(randImg, randLine, true);
+              updateDeck(deck);
             })
           }
 
@@ -200,6 +199,34 @@
 
     }
 
+
+    const updateDeck = (_deck) => {
+
+      let n = 1;
+      let tbodyHTML = "";
+
+      for (let i=1;i<=3;i++){
+        tbodyHTML += ("<div>");
+        for (let j=1;j<=3;j++){
+          if(i!=2 && j>1){
+            break;
+          }
+
+          const html = `
+          <div class='deck-card' id='deck-card-${parseInt(n)}'>
+            <span>${_deck[n]}</span>
+          </div>`;
+          
+          tbodyHTML += html;
+          n++;
+
+        }
+        tbodyHTML += ("</div>");
+      }
+
+      document.getElementById("tb2-container").innerHTML = tbodyHTML;
+
+    }
 
     const genTb1Content = (_rows) => {
 
@@ -309,7 +336,10 @@
       Promise.all(promises).then((res) => {
         // updateImgMatchLink();
         // updateImgForRandLines(randImg, randLine, true);
+        updateDeck(deck)
       })
+
+
 
   </script>
 
