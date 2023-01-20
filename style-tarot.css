@@ -5,11 +5,12 @@
 }
 
 .tarot-deck > div {
-  color: #fff;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .tarot-deck > div > div {
-  color: #fff;
+ width:80px%;
 }
 
 .tarot-deck img {
