@@ -224,9 +224,14 @@
                      n >= 14 && n <=28 ? "p" :
                      n >= 42 && n <=56 ? "s" : "c";
         
-        const zodiacSign = ""// tarotData.combinedSignMap[tarotData.cardsMinorArcanaMap[n-22].zodiac];
-        const planetSign = ""// tarotData.combinedSignMap[tarotData.cardsMinorArcanaMap[n-22].planet];
+        const zodiacSign = tarotData.combinedSignMap[tarotData.cardsMinorArcanaMap[n].zodiac];
+        const planetSign = tarotData.combinedSignMap[tarotData.cardsMinorArcanaMap[n].planet];
         line = `${suit}${num} ${zodiacSign}．${planetSign}`
+      }else{
+        const ruler = tarotData.cardsMajorArcanaOrdered[_n].ruler;
+        const sign = tarotData.combinedSignMap[ruler];
+        const hebrew = tarotData.cardsMajorArcanaOrdered[_n].hebrew.alphabet
+        line = `${num} ${sign}．${hebrew}`
       }
 
       return line;
