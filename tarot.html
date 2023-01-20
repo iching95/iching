@@ -212,15 +212,18 @@
       return `${imageRWSPath}${tarotData.cardsMinorArcanaMap[n-22].suit} ${tarotData.cardsMinorArcanaMap[n-22].num}.svg`.replace(" ","+");
     }
 
-    const cardInfoLine = (n) => {
+    const cardInfoLine = (_n) => {
 
       let line ="";
-      const num = n%14+1;
-      const suit = n >= 0  && n <=13 ? "w" :
-                   n >= 14 && n <=28 ? "p" :
-                   n >= 42 && n <=56 ? "s" : "c";
 
       if(num >= 2 && num <= 10){
+
+        const n   = _n -22;
+        const num = n%14+1;
+        const suit = n >= 0  && n <=13 ? "w" :
+                     n >= 14 && n <=28 ? "p" :
+                     n >= 42 && n <=56 ? "s" : "c";
+        
         const zodiacSign = ""// tarotData.combinedSignMap[tarotData.cardsMinorArcanaMap[n-22].zodiac];
         const planetSign = ""// tarotData.combinedSignMap[tarotData.cardsMinorArcanaMap[n-22].planet];
         line = `${suit}${num} ${zodiacSign}．${planetSign}`
