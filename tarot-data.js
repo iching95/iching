@@ -213,9 +213,20 @@ export const _tarotData = function(){
       ["w",14],["p",13],["s",12],["c",14],
     ]
 
+    const suitMap = {
+      "w":0,
+      "p":1,
+      "s":2,
+      "c":3,
+    }
+    
     cardsMinorTitleRaw.split("\n").map((row,n)=>{
 
-      const num = n%14
+      const num = n%14;
+      
+      const suit = n >= 0  && n <=13 ? "w" :
+                   n >= 14 && n <=28 ? "p" :
+                   n >= 42 && n <=56 ? "s" : "c";
 
       const modalityIdx = Math.floor((num-1-1)/3)
       const zIdx = suitMap[suit] * 3 + modalityIdx;
