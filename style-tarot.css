@@ -30,4 +30,8 @@ body.theme-sepia .tarot-deck img{
   filter: invert(60%) sepia(3%) saturate(20%) hue-rotate(39deg) brightness(89%) contrast(85%);
 }
 
+.block-tarot{
+  margin: 12px 0px 6px !important;
+}
+
 
