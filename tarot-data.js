@@ -286,6 +286,7 @@ export const _tarotData = function(){
     cardsMinorArcanaMap.map((card,n)=>{
       const num = n%14+1;
       if(num >= 2 && num <= 10){
+        const courtIdx = card.courtIdx
         card.courtDecanGroup = getCourtDecanCards(courtDecanMap[courtIdx][0],courtDecanMap[courtIdx][1]);
       }
     })
