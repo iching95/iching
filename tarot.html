@@ -223,7 +223,7 @@
       if(num >= 2 && num <= 10){
         const zodiacSign = tarotData.combinedSignMap[tarotData.cardsMinorArcanaMap[n-22].zodiac];
         const planetSign = tarotData.combinedSignMap[tarotData.cardsMinorArcanaMap[n-22].planet];
-        line = `${zodiacSign}．${planetSign}`
+        line = `${suit}${num} ${zodiacSign}．${planetSign}`
       }
 
       return line;
