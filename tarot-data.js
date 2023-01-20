@@ -278,8 +278,8 @@ export const _tarotData = function(){
         suit:suitPrefix[Math.floor(n/14)],
         num:numReplace[n%14],
         zodiacIdx,
-        courtIdx
-        courtDecanGroup,
+        courtIdx,
+        courtDecanGroup
       };
     })
   
