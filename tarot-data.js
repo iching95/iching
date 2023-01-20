@@ -258,15 +258,20 @@ export const _tarotData = function(){
       let courtDecanGroup = null;
       let courtIdx = null;
       let zodiacIdx = null;
+      let zodiac = null;
+      let planet = null;
 
       if(num >= 2 && num <= 10){
 
         const modalityIdx = Math.floor((num-1-1)/3)
         const zIdx = suitMap[suit] * 3 + modalityIdx;
         zodiacIdx = zodiacMap[zIdx];
-
+        zodiac = zodiacNames[zodiacIdx-1];
+        
         const m = (zodiacIdx-1) * 3 + ((num-1-1)%3);
         courtIdx = Math.floor(((m + (36+1)) % 36)/3);
+
+        planet = ([...classicalPlanets.slice(2),classicalPlanets[0],classicalPlanets[1]])[m % classicalPlanets.length];
         // courtDecanGroup = getCourtDecanCards(courtDecanMap[courtIdx][0],courtDecanMap[courtIdx][1])
       }
    
@@ -275,8 +280,10 @@ export const _tarotData = function(){
         esoteric:row.trim(),
         suit:suitPrefix[Math.floor(n/14)],
         num:numReplace[n%14],
+        zodiac,
         zodiacIdx,
         courtIdx,
+        planet
         // courtDecanGroup
       };
     })
