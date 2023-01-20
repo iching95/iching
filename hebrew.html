@@ -53,9 +53,12 @@
     <div id="rand-3" class="rand"></div>
     <div id="tb3-container"></div>
   </div>
-  <script type="module" src="tarot-data.js"></script>
+  <script type="module">
+    import { _tarotData } from './tarot-data.js';
+    window.tarotData = _tarotData;
+  </script>
   <script>
-    const tarotData = _tarotData()
+    const tarotData = window.tarotData()
     console.log("tarotData")
     console.log(tarotData)
 
