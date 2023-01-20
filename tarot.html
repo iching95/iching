@@ -209,7 +209,6 @@
         return `${n}+${tarotData.cardsMajorArcanaOrdered[n].title}`;
       }
       return `${tarotData.cardsMinorArcanaMap[n].suit}+${tarotData.cardsMinorArcanaMap[n].num}`;
-
     }
 
     const updateDeck = (_deck) => {
@@ -228,7 +227,7 @@
           const html = `
           <div class='deck-card' id='deck-card-${parseInt(n)}'>
             <div>
-              ${rwsImgPath()}  
+              ${rwsImgPath(n)}  
             </div>
             <span>${_deck[n]}</span>
           </div>`;
