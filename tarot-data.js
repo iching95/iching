@@ -5,7 +5,7 @@ export const _tarotData = function(){
     const zodiacNames = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius" , "Pisces"];
     const zodiacSigns = ["♈︎", "♉︎", "♊︎", "♋︎", "♌︎", "♍︎", "♎︎", "♏︎", "♐︎", "♑︎", "♒︎" , "♓︎"];
     const hebrewAlphabet = "אבגדהוזחטיכלמנסעפצקרשת";
-    
+
     const zodiacMap = [+1,+5,+9,10,+2,+6,+7,11,+3,+4,+8,12];
 
   
@@ -214,6 +214,8 @@ export const _tarotData = function(){
     ]
 
     cardsMinorTitleRaw.split("\n").map((row,n)=>{
+
+      const num = n%14
 
       const modalityIdx = Math.floor((num-1-1)/3)
       const zIdx = suitMap[suit] * 3 + modalityIdx;
