@@ -16,7 +16,7 @@
   text-align: center;
   min-height: 180px;
 }
-.tarot-deck > div > span { 
+.tarot-deck > div > div > span { 
   display: block;
   height: 20px;
 }
