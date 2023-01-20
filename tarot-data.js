@@ -269,7 +269,7 @@ export const _tarotData = function(){
         courtIdx = Math.floor(((m + (36+1)) % 36)/3);
         console.log(num)
         console.log(courtIdx);
-        courtDecanGroup = getCourtDecanCards(courtDecanMap[courtIdx][0],courtDecanMap[courtIdx][1])
+        // courtDecanGroup = getCourtDecanCards(courtDecanMap[courtIdx][0],courtDecanMap[courtIdx][1])
       }
    
       cardsMinorArcanaMap[n] = {
@@ -279,7 +279,7 @@ export const _tarotData = function(){
         num:numReplace[n%14],
         zodiacIdx,
         courtIdx,
-        courtDecanGroup
+        // courtDecanGroup
       };
     })
   
