@@ -12,6 +12,7 @@
 .tarot-deck > div > div {
  width:60px;
  margin:0px 6px;
+ text-align: center;
 }
 
 .tarot-deck img {
