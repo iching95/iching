@@ -220,10 +220,30 @@ export const _tarotData = function(){
       "c":3,
     }
     
+    const getCourtDecanCards = (_suit, _num) => {
+
+      if(_num < 12){
+        return null;
+      }
+    
+      // console.log(_suit)
+      // console.log(_num)
+      const courtMap = [null, 1, 0, 2];
+      const courtIdx = suitMap[_suit] * 14 + courtMap[_num - 11] * 3 + 2;
+      const prev = ((courtIdx + (56 - 14 - 1 ))  )% 56 - 1 + (_num==13?9:0);
+      return courtDecanCards = {
+        ruler:cardsMinorArcanaMap[ suitMap[_suit] * 14 + _num-1 ],
+        decans:[
+          cardsMinorArcanaMap[prev],
+          cardsMinorArcanaMap[courtIdx + 0 - 1],
+          cardsMinorArcanaMap[courtIdx + 1 - 1],
+        ]
+      };
+    }    
     cardsMinorTitleRaw.split("\n").map((row,n)=>{
 
       const num = n%14;
-      
+
       const suit = n >= 0  && n <=13 ? "w" :
                    n >= 14 && n <=28 ? "p" :
                    n >= 42 && n <=56 ? "s" : "c";
