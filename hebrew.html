@@ -55,10 +55,10 @@
   </div>
   <script type="module">
     import { _tarotData } from './tarot-data.js';
-    window.tarotData = _tarotData;
+    window.tarotData = _tarotData();
   </script>
   <script>
-    const tarotData = window.tarotData()
+    const tarotData = window.tarotData
     console.log("tarotData")
     console.log(tarotData)
 
