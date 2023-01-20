@@ -209,7 +209,7 @@
       if(n <= 21){
         return `${imageRWSPath}${n} ${tarotData.cardsMajorArcanaOrdered[n].title}.svg`.replace(" ","+");
       }
-      return `${imageRWSPath}${tarotData.cardsMinorArcanaMap[n].suit} ${tarotData.cardsMinorArcanaMap[n].num}.svg`.replace(" ","+");
+      return `${imageRWSPath}${tarotData.cardsMinorArcanaMap[n-22].suit} ${tarotData.cardsMinorArcanaMap[n-22].num}.svg`.replace(" ","+");
     }
 
     const updateDeck = (_deck) => {
