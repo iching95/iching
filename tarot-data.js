@@ -259,7 +259,7 @@ export const _tarotData = function(){
       let courtIdx = null;
       let zodiacIdx = null;
 
-      if(num <= 10){
+      if(num >= 2 && num <= 10){
 
         const modalityIdx = Math.floor((num-1-1)/3)
         const zIdx = suitMap[suit] * 3 + modalityIdx;
