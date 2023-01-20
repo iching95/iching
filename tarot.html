@@ -82,6 +82,7 @@
 
     }
 
+    document.body.classList.add(`theme-${theme}`);
     
     const rpc = "https://cloudflare-eth.com";
     const rpcObj = {"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest", false],"id":1};
