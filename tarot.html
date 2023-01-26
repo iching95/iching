@@ -334,6 +334,7 @@
       let tbodyHTML = "";
       let navHTML = '';
 
+      tbodyHTML += ("<div id='tb-planets'>");
       planets.map((row,_n) => {
 
         const n = parseInt(_n) + 3;
@@ -343,36 +344,40 @@
         const major   = tarotData.cardsMajorArcanaMap[row.toLowerCase()].title
 
         const html = `
-          <tr>
-            <td>${symbol}</td>
-            <td>${alefbet}</td>
-            <td>${name}</td>
-            <td>${major}</td>
-          </tr>`;
+          <div>
+            <div>${symbol}</div>
+            <div>${alefbet}</div>
+            <div>${name}</div>
+            <div>${major}</div>
+          </div>`;
         
         tbodyHTML += html;
 
       })
+      tbodyHTML += ("</div>");
 
+      tbodyHTML += ("<div id='tb-minors'>");
       let m = 0;
       for (let i=1;i<=4;i++){
-        tbodyHTML += ("<tr>");
-        for (let j=1;j<=3;j++){
+        tbodyHTML += ("<div>");
+        for (let j=1;j<=10;j++){
 
           const card = cardInfoLine(22+(m++))
           console.log(card.info)
           const html = `
-            <td>
+            <div>
               ${tarotData.combinedSignMap[card.info.zodiac]}
               ${tarotData.combinedSignMap[card.info.planet]}
-            </td>
+            </div>
           `;
 
           tbodyHTML += html;
 
         }
-        tbodyHTML += ("</tr>");
+        tbodyHTML += ("</div>");
       }
+      tbodyHTML += ("</div>");
+
 
       return {
         table:tbodyHTML,
