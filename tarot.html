@@ -245,15 +245,20 @@
         line = (num>=2 && num<=10)?
         `${suit.toUpperCase()}${num}．${planetSign}．${zodiacSign}`:
         `${suit.toUpperCase()}${num}`;
+        title = tarotData.cardsMinorArcanaMap[n].title;
 
       }else{
         const ruler = tarotData.cardsMajorArcanaOrdered[_n].ruler;
         const sign = tarotData.combinedSignMap[ruler];
         const hebrew = tarotData.cardsMajorArcanaOrdered[_n].hebrew.alphabet
         line = `${romanize(_n)} ${sign}．<span class='hebrew'>${hebrew}</span>`
+        title = tarotData.cardsMajorArcanaOrdered[_n].title;
       }
 
-      return line;
+      return {
+        line,
+        title
+      };
     }
 
     var stateHide = false;
@@ -288,10 +293,11 @@
 
           const html = `
           <div class='deck-card' id='deck-card-${parseInt(n)}'>
-            <span class='tb1-info'><span>${cardInfoLine(_deck[n])}</span></span>
+            <span class='tb1-info'><span>${cardInfoLine(_deck[n].line)}</span></span>
             <div>
               <img class='tb1-img' src="${rwsImgPath(_deck[n])}">
             </div>
+            <span class='tb1-info'><span>${cardInfoLine(_deck[n].title)}</span></span>
           </div>`;
           
           tbodyHTML += html;
