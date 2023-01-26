@@ -78,10 +78,34 @@ body.theme-sepia .tarot-deck img{
   height: 24px;
 }
 
+#tb-minors {
+
+}
+
 #tb-minors div{
 
 }
 
+#tb-minors > div{
+
+}
+
+#tb-minors > div > div{
+
+}
+
+#tb-planets{
+  
+}
+
 #tb-planets div{
+  
+}
+
+#tb-planets > div{
+  
+}
+
+#tb-planets > div > div{
   
 }
