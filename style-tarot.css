@@ -31,6 +31,7 @@
 
 .tarot-deck > div > div > span:last-of-type { 
   height: 40px;
+  font-size: 11px;
 }
 
 .hebrew{

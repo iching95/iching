@@ -170,10 +170,10 @@ export const _tarotData = function(){
     Earned Success
     Unstable Effort
     Shortened Force
-    Despair and Cruelty
+    Despair & Cruelty
     Ruin
     Prince of Rushing Winds
-    Lord of Winds and Breezes
+    Lord of Winds & Breezes
     Queen of Thrones of Air
     King of Spirits of Air
     Powers of Water
@@ -189,7 +189,7 @@ export const _tarotData = function(){
     Prince of Waters
     Prince of Chariot of Waves
     Queen of Throne of Waters
-    Lord of Waves and Waters`;
+    Lord of Waves & Waters`;
   
     const kabbalahWorlds = [
       {name:"Atziluth",hebrew:"אֲצִילוּת",meaning:"Emanation",domination:[2]},
