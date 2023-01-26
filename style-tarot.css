@@ -80,19 +80,27 @@ body.theme-sepia .tarot-deck img{
 
 #tb-minors {
   display: flex;
-
 }
 
 #tb-minors div{
 }
 
 #tb-minors > div{
-  width: 25%;
+
 }
 
 #tb-minors > div > div{
 
 }
+
+#tb-minors > div > div:nth-child(1), #tb-minors > div > div:nth-child(2){
+  width:20px;
+}
+
+#tb-minors > div > div:nth-child(3), #tb-minors > div > div:nth-child(4){
+  width:30%;
+}
+
 
 #tb-planets{
   display: table;
