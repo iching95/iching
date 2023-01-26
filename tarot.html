@@ -256,6 +256,23 @@
       return line;
     }
 
+    var stateHide = false;
+    const switchHide = function(_init){
+      
+      stateHide = _init?stateHide:!stateHide;
+
+      Array.from(document.getElementsByClassName(`tb1-info`)).map(el=>{
+        el.classList.toggle("tb1-info-hidden");
+      })
+
+      Array.from(document.getElementsByClassName(`tb1-img`)).map(el=>{
+        el.onclick = stateHide?switchHide:null;
+      })
+
+      return false;
+      
+    }
+
     const updateDeck = (_deck) => {
 
       let n = 1;
@@ -288,23 +305,8 @@
 
       document.getElementById("tb1-container").innerHTML = tbodyHTML;
 
-    }
+      switchHide();
 
-    var stateHide = false;
-    const switchHide = function(){
-      
-      stateHide = !stateHide;
-
-      Array.from(document.getElementsByClassName(`tb1-info`)).map(el=>{
-        el.classList.toggle("tb1-info-hidden");
-      })
-
-      Array.from(document.getElementsByClassName(`tb1-img`)).map(el=>{
-        el.onclick = stateHide?switchHide:null;
-      })
-
-      return false;
-      
     }
 
     const genTbAlefbetContent = (_rows) => {
@@ -381,6 +383,7 @@
       const tableHTML1 = "<table class='tb1' style='width:100%;'><tbody>" + tbodyHTML1 + "</tbody></table>";
 
       document.getElementById("tb2-container").innerHTML = tableHTML1;
+      
     }
 
     const pData = data?layoutData(rows):fetch('hebrew-data.txt')
@@ -415,7 +418,7 @@
       Promise.all(promises).then((res) => {
         // updateImgMatchLink();
         // updateImgForRandLines(randImg, randLine, true);
-        updateDeck(deck)
+        updateDeck(deck);
       })
 
 

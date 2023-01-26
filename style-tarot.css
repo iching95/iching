@@ -39,10 +39,10 @@ body.theme-sepia .tarot-deck img{
   margin: 12px 0px 6px !important;
 }
 
-.tb1-info > span{
+.tb1-info-hidden > span{
   display: none;
 }
 
-.tb1-info:after {
+.tb1-info-hidden:after {
   content: '＊＊';
 }
