@@ -134,62 +134,62 @@ export const _tarotData = function(){
     Yesod, Foundation
     Malkuth, Kingdom`;
   
-    const cardsMinorTitleRaw = `The Root of the Powers of Fire
-    The Lord of Dominion
-    The Lord of Established Strength
-    The Lord of Perfected Work
-    The Lord of Strife
-    The Lord of Victory
-    The Lord of Courage
-    The Lord of Swiftness
-    The Lord of Strength
-    The Lord of Oppression
-    The Rose of the Palace of Fire
-    The Prince of the Chariot of Fire
-    The Queen of the Thrones of Flame
-    King of the Spirits of Fire
-    The Root of the Powers of the Earth
-    The Lord of Harmonious Change
-    The Lord of Material Works
-    The Lord of Earthly Power
-    The Lord of Material Trouble
-    The Lord of Material Success
-    The Lord of Unfulfilled Success
-    The Lord of Material Prudence
-    The Lord of Material Gain
-    The Lord of Wealth
-    The Rose of the Palace of Earth
-    The Prince of the Chariot of Earth
-    The Queen of the Throne of Earth
-    The King of the Spirits of Earth
-    The Root of the Powers of Air
-    The Lord of Peace Restored
-    The Lord of Sorrow
-    The Lord of Rest from Strife
-    The Lord of Defeat
-    The Lord of Earned Success
-    The Lord of Unstable Effort
-    The Lord of Shortened Force
-    The Lord of Despair and Cruelty
-    The Lord of Ruin
-    The Prince of the Rushing Winds
-    Lord of the Winds and the Breezes
-    Queen of the Thrones of Air
-    King of the Spirits of Air
-    The Root of the Powers of Water
-    The Lord of Love
-    The Lord of Abundance
-    The Lord of Blended Pleasure
-    The Lord of Loss in Pleasure
-    The Lord of Pleasure
-    The Lord of Illusionary Success
-    The Lord of Abandoned Success
-    The Lord of Material Happiness
-    The Lord of Perfected Success
-    The Prince of the Waters
-    The Prince of the Chariot of the Waves
-    The Queen of the Throne of Waters
-    The Lord of the Waves and Waters`;
+    const cardsMinorTitleRaw = `Powers of Fire
+    Dominion
+    Established Strength
+    Perfected Work
+    Strife
+    Victory
+    Courage
+    Swiftness
+    Strength
+    Oppression
+    Rose of Palace of Fire
+    Prince of Chariot of Fire
+    Queen of Thrones of Flame
+    King of Spirits of Fire
+    Powers of Earth
+    Harmonious Change
+    Material Works
+    Earthly Power
+    Material Trouble
+    Material Success
+    Unfulfilled Success
+    Material Prudence
+    Material Gain
+    Wealth
+    Rose of Palace of Earth
+    Prince of Chariot of Earth
+    Queen of Throne of Earth
+    King of Spirits of Earth
+    Powers of Air
+    Peace Restored
+    Sorrow
+    Rest from Strife
+    Defeat
+    Earned Success
+    Unstable Effort
+    Shortened Force
+    Despair and Cruelty
+    Ruin
+    Prince of Rushing Winds
+    Lord of Winds and Breezes
+    Queen of Thrones of Air
+    King of Spirits of Air
+    Powers of Water
+    Love
+    Abundance
+    Blended Pleasure
+    Loss in Pleasure
+    Pleasure
+    Illusionary Success
+    Abandoned Success
+    Material Happiness
+    Perfected Success
+    Prince of Waters
+    Prince of Chariot of Waves
+    Queen of Throne of Waters
+    Lord of Waves and Waters`;
   
     const kabbalahWorlds = [
       {name:"Atziluth",hebrew:"אֲצִילוּת",meaning:"Emanation",domination:[2]},
