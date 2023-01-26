@@ -49,9 +49,8 @@
     <div style="display:none" id="tb1-nav"></div>
     <div id="tb1-container"></div>
     <div id="block" class="block-tarot"></div>
-
     <div id="rand-2" class="rand"></div>
-    <div style="display:none" id="tb2-container"></div>
+    <div id="tb2-container"></div>
     <div id="rand-3" class="rand"></div>
     <div style="display:none" id="tb3-container"></div>
   </div>
@@ -315,6 +314,42 @@
 
     }
 
+    const genTbSignContent = () => {
+
+      const elements = ['air','water','fire']
+      const rows = [...elements, ...classicalPlanets, ...zodiacNames];
+      rows.map(r=> r=r.toLowerCase());
+
+      let n = 1;
+      let tbodyHTML = "";
+      let navHTML = '';
+
+      rows.map((row,n) => {
+
+        const name = row;
+        const symbol = tarotData.combinedSignMap[row];
+        const alefbet = String.fromCharCode(parseInt('05D0', 16)+parseInt(n)-1 + (n>11?-1:0));
+        const num = parseInt(n);
+
+        const html = `<tr>
+            <td>${num}</td>
+            <td>${symbol}</td>
+            <td>${name}</td>
+            <td>${alefbet}</td>
+          </tr>`;
+        
+          tbodyHTML += html;
+
+      })
+
+
+      return {
+        table:tbodyHTML,
+        nav:null
+      };
+
+    }
+
     const genTbAlefbetContent = (_rows) => {
 
       const rows = _rows;
@@ -385,10 +420,11 @@
       // const tb1 = genTb1Content(rows);
 
       let tbodyHTML1 = "";
-
       const tableHTML1 = "<table class='tb1' style='width:100%;'><tbody>" + tbodyHTML1 + "</tbody></table>";
 
-      document.getElementById("tb2-container").innerHTML = tableHTML1;
+      const tableHTML2 = "<table class='tb2' style='width:100%;'><tbody>" + genTbSignContent(rows) + "</tbody></table>";
+
+      document.getElementById("tb2-container").innerHTML = tableHTML2;
 
       stateHide = true;
       switchHide(true);
