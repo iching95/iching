@@ -93,11 +93,11 @@ body.theme-sepia .tarot-deck img{
 
 }
 
-#tb-minors > div > div:nth-child(1), #tb-minors > div > div:nth-child(2){
+#tb-planets > div > div:nth-child(1), #tb-planets > div > div:nth-child(2){
   width:20px;
 }
 
-#tb-minors > div > div:nth-child(3), #tb-minors > div > div:nth-child(4){
+#tb-planets > div > div:nth-child(3), #tb-planets > div > div:nth-child(4){
   width:30%;
 }
 
