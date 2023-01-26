@@ -97,6 +97,31 @@ export const _tarotData = function(){
     Head / First
     Tooth / Eat
     Cross / Mark`;
+
+    const hebrewAlphabetPronounRaw = `Ox
+    Alef
+    Bet
+    Gimel
+    Dalet
+    He
+    Vav
+    Zayin
+    Chet
+    Tet
+    Yod
+    Kaf
+    Lamed
+    Mem
+    Nun
+    Samekh
+    Ayin
+    Pe
+    Tsadi
+    Qof
+    Resh
+    Shin
+    Tav`;
+    
   
     const sefirotRaw = `Keter, Crown
     Chokhmah, Wisdom
@@ -309,6 +334,12 @@ export const _tarotData = function(){
     hebrewAlphabetMeaningRaw.split("\n").map((row,n)=>{
       hebrewAlphabetMeaningMap[n] = row.trim()
     })
+
+    const hebrewAlphabetPronounMap = []
+    hebrewAlphabetPronounRaw.split("\n").map((row,n)=>{
+      hebrewAlphabetPronounMap[n] = row.trim()
+    })
+
   
     const cardsMajorArcanaMap = [];
     const cardsMajorArcanaOrdered = []
@@ -322,6 +353,7 @@ export const _tarotData = function(){
         hebrew:{
           alphabet:hebrewAlphabet[n],
           meaning:hebrewAlphabetMeaningMap[n],
+          pronoun:hebrewAlphabetPronounMap[n]
         }
       }
   
