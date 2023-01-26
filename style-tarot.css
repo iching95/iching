@@ -80,6 +80,7 @@ body.theme-sepia .tarot-deck img{
 
 #tb-minors {
   display: flex;
+  margin-top: 18px;
 }
 
 #tb-minors div{
@@ -93,31 +94,35 @@ body.theme-sepia .tarot-deck img{
   text-align: center;
 }
 
-#tb-minors > div > div:nth-of-type(1), #tb-minors > div > div:nth-of-type(4), #tb-minors > div > div:nth-of-type(7){
+#tb-minors > div > div:nth-of-type(4), #tb-minors > div > div:nth-of-type(7){
   margin-top: 18px;
 }
 
-#tb-planets > div > div:nth-child(1), #tb-planets > div > div:nth-child(2){
+#tb-symbols > div > div:nth-child(1), #tb-symbols > div > div:nth-child(2){
   width:20px;
 }
 
-#tb-planets > div > div:nth-child(3), #tb-planets > div > div:nth-child(4){
+#tb-symbols > div > div:nth-child(3), #tb-symbols > div > div:nth-child(4){
   width:40%;
 }
 
-
-#tb-planets{
-  display: table;
+#tb-symbols > div:nth-of-type(4), #tb-symbols > div:nth-of-type(11){
+  margin-top: 18px;
 }
 
-#tb-planets div{
+#tb-symbols{
+  display: table;
+  margin-top: 18px;
+}
+
+#tb-symbols div{
   
 }
 
-#tb-planets > div{
+#tb-symbols > div{
   display: table-row;
 }
 
-#tb-planets > div > div{
+#tb-symbols > div > div{
   display: table-cell;
 }
