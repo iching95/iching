@@ -328,7 +328,8 @@
         const num     = parseInt(n);
         const name    = row;
         const symbol  = tarotData.combinedSignMap[row];
-        const alefbet = tarotData.hebrewAlphabet[n]
+        const alefbet = tarotData.cardsMajorArcanaOrdered[n].hebrew.alphabet
+        const major = tarotData.cardsMajorArcanaOrdered[n].title
 
         let divider = "";
 
@@ -341,6 +342,7 @@
             <td>${symbol}</td>
             <td>${alefbet}</td>
             <td>${name}</td>
+            <td>${major}</td>
           </tr>`;
         
           tbodyHTML += html;
@@ -351,65 +353,6 @@
       return {
         table:tbodyHTML,
         nav:null
-      };
-
-    }
-
-    const genTbAlefbetContent = (_rows) => {
-
-      const rows = _rows;
-
-      let n = 1;
-      let tbodyHTML1 = "";
-      
-      let navHTML = '';
-
-      for (let i=1;i<=4;i++){
-        tbodyHTML1 += ("<tr>");
-        for (let j=1;j<=10;j++){
-
-          const skip=[1,3,4,7,12,15,16,18,21];
-          const double=[];
-
-          const content = rows?rows[n]:{
-            d:"．<br>．",
-            c:double.includes(n)?"．<br>．":"．"
-          };
-
-          if(j==1){
-          }
-
-          const alefbet = String.fromCharCode(parseInt('05D0', 16)+parseInt(n)-1 + (n>11?-1:0));
-          const num = parseInt(n);
-
-          const html = `<td>
-          <span>${num}</span>
-          <span class='alefbet' id='alefbet-tb1-${parseInt(n)}'>
-            <span>${alefbet}</span>
-          </span>
-          </td>`;
-          
-          tbodyHTML1 += html;
-
-          for (let k=0; k< skip.filter(x => x === n).length; k++, j++){
-              tbodyHTML1 += ("<td><span></span></td>");
-          }
-
-          n++;
-
-        }
-
-        tbodyHTML1 += ("</tr>");
-
-        if(!rows && n > 30){
-          break;
-        }
-
-      }
-      
-      return {
-        table:tbodyHTML1,
-        nav:navHTML
       };
 
     }
