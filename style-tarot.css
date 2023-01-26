@@ -60,6 +60,6 @@ body.theme-sepia .tarot-deck img{
   content: '＊＊＊';
 }
 
-.container-tarot .tb2-container table{
+.container-tarot #tb2-container table{
   font-size: 20px;
 }
