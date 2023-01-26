@@ -49,7 +49,7 @@ body.theme-sepia .tarot-deck img{
 }
 
 .block-tarot{
-  margin: 12px 0px 6px !important;
+  margin: 16px 0px 6px !important;
 }
 
 .tb1-info-hidden > span{
@@ -89,6 +89,7 @@ body.theme-sepia .tarot-deck img{
 }
 
 #tb-minors div{
+  font-size: 22px;
 }
 
 #tb-minors > div{
@@ -105,6 +106,7 @@ body.theme-sepia .tarot-deck img{
 
 #tb-symbols > div > div:nth-child(1), #tb-symbols > div > div:nth-child(2){
   width:20px;
+  font-size: 22px;
 }
 
 #tb-symbols > div > div:nth-child(3), #tb-symbols > div > div:nth-child(4){
