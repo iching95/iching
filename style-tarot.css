@@ -90,7 +90,7 @@ body.theme-sepia .tarot-deck img{
 }
 
 #tb-minors > div > div{
-
+  text-align: center;
 }
 
 #tb-planets > div > div:nth-child(1), #tb-planets > div > div:nth-child(2){
