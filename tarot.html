@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>T. Deck</title>
+  <title>T Deck</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css?65">
   <link rel="stylesheet" href="style-tarot.css?5">
@@ -227,7 +227,6 @@
       return Array(+digits.join("") + 1).join("M") + roman;
     }
 
-
     const cardInfoLine = (_n) => {
 
       let line ="";
@@ -272,9 +271,9 @@
 
           const html = `
           <div class='deck-card' id='deck-card-${parseInt(n)}'>
-            <span>${cardInfoLine(_deck[n])}</span>
+            <span class='tb1-info'><span>${cardInfoLine(_deck[n])}</span></span>
             <div>
-              <img src="${rwsImgPath(_deck[n])}">
+              <img class='tb1-img' src="${rwsImgPath(_deck[n])}">
             </div>
           </div>`;
           
@@ -291,7 +290,24 @@
 
     }
 
-    const genTb1Content = (_rows) => {
+    var stateHide = false;
+    const switchHide = function(){
+      
+      stateHide = !stateHide;
+
+      Array.from(document.getElementsByClassName(`tb1-info`)).map(el=>{
+        el.classList.toggle("tb1-info-hidden");
+      })
+
+      Array.from(document.getElementsByClassName(`tb1-img`)).map(el=>{
+        el.onclick = stateHide?switchHide:null;
+      })
+
+      return false;
+      
+    }
+
+    const genTbAlefbetContent = (_rows) => {
 
       const rows = _rows;
 
@@ -358,7 +374,7 @@
     const layoutData = (_data) => {
 
       const rows = _data;
-      const tb1 = genTb1Content(rows);
+      // const tb1 = genTb1Content(rows);
 
       let tbodyHTML1 = tb1.table;
 
