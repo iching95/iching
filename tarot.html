@@ -317,31 +317,22 @@
     const genTbSignContent = () => {
 
       const elements = ['Air','Water','Fire']
-      const rows = [...elements, ...tarotData.classicalPlanets, ...tarotData.zodiacNames];
+      const planets = tarotData.classicalPlanets;
+      const zodiacs = tarotData.zodiacNames;
+      // [...elements, ...tarotData.classicalPlanets, ...tarotData.zodiacNames];
 
-      let n = 1;
       let tbodyHTML = "";
       let navHTML = '';
 
-      rows.map((row,n) => {
+      planets.map((row,_n) => {
 
-        if(n <= 10){
-          return;
-        }
-
-        const num     = parseInt(n);
+        const n = parseInt(n) + 3;
         const name    = row;
         const symbol  = tarotData.combinedSignMap[row];
         const alefbet = tarotData.cardsMajorArcanaMap[row.toLowerCase()].hebrew.alphabet
         const major   = tarotData.cardsMajorArcanaMap[row.toLowerCase()].title
 
-        let divider = "";
-        
-        if(n == 3 || n == 10){
-          divider = "<tr><td class='tb-divider' colspan='4'></td></tr>"
-        }
-
-        const html = `${divider}
+        const html = `
           <tr>
             <td>${symbol}</td>
             <td>${alefbet}</td>
@@ -353,6 +344,23 @@
 
       })
 
+      for (let i=1;i<=4;i++){
+        tbodyHTML += ("<tr>");
+        for (let j=1;j<=3;j++){
+
+          const row    = zodiacs[(i-1)*4+(j-1)];
+          const symbol  = tarotData.combinedSignMap[row];
+        
+          const html = `
+          <tr>
+            <td>${row}</td>
+            <td>${alefbet}</td>
+          </tr>`;
+          tbodyHTML += html;
+
+        }
+        tbodyHTML += ("</tr>");
+      }
 
       return {
         table:tbodyHTML,
