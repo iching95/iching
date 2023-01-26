@@ -261,7 +261,7 @@
       };
     }
 
-    var stateHide = false;
+    var stateHide = true;
     const switchHide = function(_init){
       
       stateHide = _init?stateHide:!stateHide;
@@ -311,7 +311,7 @@
 
       document.getElementById("tb1-container").innerHTML = tbodyHTML;
 
-      switchHide();
+      switchHide(true);
 
     }
 
@@ -389,6 +389,9 @@
       const tableHTML1 = "<table class='tb1' style='width:100%;'><tbody>" + tbodyHTML1 + "</tbody></table>";
 
       document.getElementById("tb2-container").innerHTML = tableHTML1;
+
+      stateHide = true;
+      switchHide(true);
       
     }
 
