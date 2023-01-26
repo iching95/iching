@@ -16,10 +16,18 @@
   text-align: center;
   min-height: 180px;
 }
+
 .tarot-deck > div > div > span { 
   display: block;
-  height: 20px;
   vertical-align: middle;
+}
+
+.tarot-deck > div > div > span:first-of-type { 
+  height: 20px;
+}
+
+.tarot-deck > div > div > span:last-of-type { 
+  height: 40px;
 }
 
 .hebrew{
