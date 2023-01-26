@@ -93,6 +93,10 @@ body.theme-sepia .tarot-deck img{
   text-align: center;
 }
 
+#tb-minors > div > div:nth-of-type(1), #tb-minors > div > div:nth-of-type(4), #tb-minors > div > div:nth-of-type(8){
+  margin-top: 18px;
+}
+
 #tb-planets > div > div:nth-child(1), #tb-planets > div > div:nth-child(2){
   width:20px;
 }
