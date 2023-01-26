@@ -393,6 +393,7 @@ export const _tarotData = function(){
       cardsMajorArcanaOrdered,
       cardsMinorArcanaMap,
       combinedSignMap,
+      hebrewAlphabet,
     }
   
   }

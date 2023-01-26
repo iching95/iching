@@ -328,7 +328,13 @@
         const num     = parseInt(n);
         const name    = row;
         const symbol  = tarotData.combinedSignMap[row];
-        const alefbet = tarotData.hebrewAlphabet[n]
+        const alefbet = tarotData.hebrewAlphabet[n+1]
+
+        const divider = "";
+
+        if(n == 3 || n == 10){
+          divider = "<tr><td colspan='4'></td></tr>"
+        }
 
         const html = `<tr>
             <td>${num}</td>
