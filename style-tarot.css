@@ -19,6 +19,9 @@
 
 .tarot-deck > div > div > span { 
   display: block;
+}
+
+.tarot-deck > div > div span { 
   vertical-align: middle;
 }
 
