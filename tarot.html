@@ -316,9 +316,8 @@
 
     const genTbSignContent = () => {
 
-      const elements = ['air','water','fire']
+      const elements = ['Air','Water','Fire']
       const rows = [...elements, ...tarotData.classicalPlanets, ...tarotData.zodiacNames];
-      rows.map(r=> r=r.toLowerCase());
 
       let n = 1;
       let tbodyHTML = "";
@@ -326,10 +325,10 @@
 
       rows.map((row,n) => {
 
-        const name = row;
-        const symbol = tarotData.combinedSignMap[row];
-        const alefbet = String.fromCharCode(parseInt('05D0', 16)+parseInt(n)-1 + (n>11?-1:0));
-        const num = parseInt(n);
+        const num     = parseInt(n);
+        const name    = row;
+        const symbol  = tarotData.combinedSignMap[row];
+        const alefbet = tarotData.hebrewAlphabet[n]
 
         const html = `<tr>
             <td>${num}</td>
