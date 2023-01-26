@@ -98,8 +98,7 @@ export const _tarotData = function(){
     Tooth / Eat
     Cross / Mark`;
 
-    const hebrewAlphabetPronounRaw = `Ox
-    Alef
+    const hebrewAlphabetPronounRaw = `Alef
     Bet
     Gimel
     Dalet
