@@ -57,6 +57,10 @@ body.theme-sepia .tarot-deck img{
 }
 
 .tb1-info-hidden:after {
+  content: '＊＊＊';
+}
+
+.tb1-info-hidden:last-of-type:after {
   content: '＊＊＊\A＊＊＊\A＊＊＊';
   white-space: pre-wrap;
 }
@@ -107,7 +111,7 @@ body.theme-sepia .tarot-deck img{
   width:40%;
 }
 
-#tb-symbols > div:nth-of-type(4), #tb-symbols > div:nth-of-type(11){
+#tb-symbols > div:nth-of-type(4) td, #tb-symbols > div:nth-of-type(11) td{
   margin-top: 18px;
 }
 
