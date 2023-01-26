@@ -344,12 +344,11 @@
         const major   = tarotData.cardsMajorArcanaMap[row.toLowerCase()].title
 
         const html = `
-          <div>
             <div>${symbol}</div>
             <div>${alefbet}</div>
             <div>${name}</div>
             <div>${major}</div>
-          </div>`;
+          `;
         
         tbodyHTML += html;
 
@@ -359,7 +358,6 @@
       tbodyHTML += ("<div id='tb-minors'>");
       let m = 0;
       for (let i=1;i<=4;i++){
-        tbodyHTML += ("<div>");
         for (let j=1;j<=10;j++){
 
           const card = cardInfoLine(22+(m++))
@@ -374,7 +372,6 @@
           tbodyHTML += html;
 
         }
-        tbodyHTML += ("</div>");
       }
       tbodyHTML += ("</div>");
 
