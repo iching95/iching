@@ -51,7 +51,7 @@ padding: 12px 0px;
 width: 14.25%;
 }
 
-.tb1 td, .tb2 td, .tb3 td{
+.container-iching .tb1 td, .container-iching .tb2 td, .container-iching .tb3 td{
 vertical-align: top;
 padding: 0px 0px 8px;
 width: 12.5%;
