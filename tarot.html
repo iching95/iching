@@ -358,9 +358,9 @@
       tbodyHTML += ("<div id='tb-minors'>");
       let m = 0;
       for (let i=1;i<=4;i++){
-        for (let j=1;j<=10;j++){
+        for (let j=1;j<=9;j++){
 
-          const card = cardInfoLine(22+(m++))
+          const card = cardInfoLine(22+(m++)+(i)+(i-1)*4)
           console.log(card.info)
           const html = `
             <div>
