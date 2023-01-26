@@ -4,7 +4,7 @@
   <title>T Deck</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css?65">
-  <link rel="stylesheet" href="style-tarot.css?15">
+  <link rel="stylesheet" href="style-tarot.css?16">
   <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
   <script>
 
@@ -341,7 +341,7 @@
         for (let j=1;j<=9;j++){
 
           const card = cardInfoLine(22+(m++)+(i)+(i-1)*4)
-          console.log(card.info)
+          // console.log(card.info)
           const html = `
             <div>
               <span>${tarotData.combinedSignMap[card.info.planet]}</span>
