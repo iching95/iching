@@ -49,7 +49,7 @@ body.theme-sepia .tarot-deck img{
 }
 
 .block-tarot{
-  margin: 16px 0px 6px !important;
+  margin: 12px 0px 6px !important;
 }
 
 .tb1-info-hidden > span{
@@ -61,7 +61,7 @@ body.theme-sepia .tarot-deck img{
 }
 
 .tb1-info-hidden:last-of-type:after {
-  content: '＊＊＊\A＊＊＊\A＊＊＊';
+  content: '＊＊＊\A＊＊＊';
   white-space: pre-wrap;
 }
 
