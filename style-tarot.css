@@ -83,11 +83,11 @@ body.theme-sepia .tarot-deck img{
 }
 
 #tb-minors div{
-
+  display: flex;
 }
 
 #tb-minors > div{
-
+  width: 25%;
 }
 
 #tb-minors > div > div{
@@ -95,7 +95,7 @@ body.theme-sepia .tarot-deck img{
 }
 
 #tb-planets{
-  
+  display: table;
 }
 
 #tb-planets div{
@@ -103,9 +103,9 @@ body.theme-sepia .tarot-deck img{
 }
 
 #tb-planets > div{
-  
+  display: table-row;
 }
 
 #tb-planets > div > div{
-  
+  display: table-cell;
 }
