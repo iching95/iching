@@ -325,6 +325,10 @@
 
       rows.map((row,n) => {
 
+        if(n <= 10){
+          return;
+        }
+
         const num     = parseInt(n);
         const name    = row;
         const symbol  = tarotData.combinedSignMap[row];
@@ -332,7 +336,7 @@
         const major   = tarotData.cardsMajorArcanaMap[row.toLowerCase()].title
 
         let divider = "";
-
+        
         if(n == 3 || n == 10){
           divider = "<tr><td class='tb-divider' colspan='4'></td></tr>"
         }
@@ -345,7 +349,7 @@
             <td>${major}</td>
           </tr>`;
         
-          tbodyHTML += html;
+        tbodyHTML += html;
 
       })
 
