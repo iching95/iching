@@ -59,3 +59,7 @@ body.theme-sepia .tarot-deck img{
 .tb1-info-hidden:after {
   content: '＊＊＊';
 }
+
+.container-tarot .tb2-container table{
+  font-size: 20px;
+}
