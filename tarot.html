@@ -328,8 +328,8 @@
         const num     = parseInt(n);
         const name    = row;
         const symbol  = tarotData.combinedSignMap[row];
-        const alefbet = tarotData.cardsMajorArcanaOrdered[n].hebrew.alphabet
-        const major = tarotData.cardsMajorArcanaOrdered[n].title
+        const alefbet = tarotData.cardsMajorArcanaMap[row.toLowerCase()].hebrew.alphabet
+        const major   = tarotData.cardsMajorArcanaMap[row.toLowerCase()].title
 
         let divider = "";
 
