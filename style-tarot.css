@@ -160,7 +160,16 @@ body.theme-sepia .tarot-deck img{
   text-align: center;
 }
 
-
+#tb-sefirots > div > div:first-of-type > span:last-of-type{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#tb-sefirots > div > div:first-of-type > span:last-of-type > span::before{
+  content:" - ";
+}
 
 #tb-sefirots > div > div:first-of-type > span{
   display: block;
