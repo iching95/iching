@@ -418,8 +418,8 @@
             <span>${tarotData.sefirotMap[i-1][0]}</span>
             <span>${tarotData.sefirotMap[i-1][1]}</span>
             <span>${colSymbol?colSymbol:""}</span>
+            <span><!-- title --></span>
           </div>
-          <div><!-- title --></div>
         `;
 
         tbodyHTML += col;
@@ -448,9 +448,9 @@
 
         }
 
-        tbodyHTML.replace("<!-- title -->",`${titles}`)
+        tbodyHTML = tbodyHTML.replace("<!-- title -->",`${titles}`)
         tbodyHTML += ("</div>");
-        
+
       }
       
       tbodyHTML += ("</div>");
