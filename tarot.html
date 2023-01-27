@@ -380,7 +380,10 @@
             <div>${alefbet}</div>
             <div>${name}</div>
             <div>${major}</div>
-            <div>${tarotData.cardsMajorArcanaMap[row.toLowerCase()].hebrew.meaning}</div>
+            <div>
+              ${tarotData.cardsMajorArcanaMap[row.toLowerCase()].hebrew.meaning} 
+              (${${tarotData.cardsMajorArcanaMap[row.toLowerCase()].hebrew.pronoun})
+            </div>
           </div>
           `;
         
