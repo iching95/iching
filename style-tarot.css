@@ -110,8 +110,8 @@ body.theme-sepia .tarot-deck img{
   padding: 0px 5px;
 }
 
-#tb-symbols > div > div:nth-child(3), #tb-symbols > div > div:nth-child(4){
-  width:40%;
+#tb-symbols > div > div{
+  font-size: 16px;
 }
 
 #tb-symbols > div:nth-of-type(4) div, #tb-symbols > div:nth-of-type(11) div{
