@@ -159,9 +159,16 @@ body.theme-sepia .tarot-deck img{
   width:50%;
   text-align: center;
 }
+
+
+
 #tb-sefirots > div > div:first-of-type > span{
   display: block;
 }
+#tb-sefirots > div > div:first-of-type > span > span{
+  font-size: 8px;
+}
+
 #tb-sefirots > div > div > span{
   display: inline;
 }

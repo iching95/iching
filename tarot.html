@@ -4,7 +4,7 @@
   <title>T Deck</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css?65">
-  <link rel="stylesheet" href="style-tarot.css?22">
+  <link rel="stylesheet" href="style-tarot.css?23">
   <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
   <script>
 
@@ -448,7 +448,7 @@
 
         }
 
-        tbodyHTML = tbodyHTML.replace("<!-- title -->",`${titles}`)
+        tbodyHTML = tbodyHTML.replace("<!-- title -->",`${titles.join("")}`)
         tbodyHTML += ("</div>");
 
       }
