@@ -266,7 +266,9 @@
       return {
         line,
         title,
-        info
+        info,
+        suit,
+        num
       };
     }
 
@@ -380,12 +382,46 @@
       })
       tbodyHTML += ("</div>");
 
-
-
       return {
         table:tbodyHTML,
         nav:null
       };
+
+    }
+
+    const genTbSefirotContent = () => {
+
+      const symbols =  [...elements, ...tarotData.classicalPlanets, ...tarotData.zodiacNames];
+
+      let tbodyHTML = "";
+      let navHTML = '';
+
+      tbodyHTML += ("<div id='tb-sefirots'>");
+      let m = 0;
+      for (let i=1;i<=10;i++){
+        tbodyHTML += ("<div>");
+        for (let j=1;j<=4;j++){
+
+          const card = cardInfoLine(22+(m++)+(i)+(i-1)*4)
+          // console.log(card.info)
+          const html = `
+            <div>
+              <span>${card.suit}${card.num}</span>
+              <img src="${rwsImgPath(m)}">
+            </div>
+          `;
+
+          tbodyHTML += html;
+
+        }
+        tbodyHTML += ("</div>");
+      }
+      tbodyHTML += ("</div>");
+
+      return {
+        table:tbodyHTML,
+        nav:null
+      }
 
     }
 
@@ -397,14 +433,12 @@
     const layoutData = (_data) => {
 
       const rows = _data;
-      // const tb1 = genTb1Content(rows);
-
-      let tbodyHTML1 = "";
-      const tableHTML1 = "<table class='tb1' style='width:100%;'><tbody>" + tbodyHTML1 + "</tbody></table>";
 
       const tableHTML2 = "<table class='tb2' style='width:100%;'><tbody>" + genTbSignContent(rows).table + "</tbody></table>";
-
       document.getElementById("tb2-container").innerHTML = tableHTML2;
+
+      const tableHTML3 = "<table class='tb3' style='width:100%;'><tbody>" + genTbSefirotContent(rows).table + "</tbody></table>";
+      document.getElementById("tb3-container").innerHTML = tableHTML3;
 
       stateHide = true;
       switchHide(true);
@@ -445,8 +479,6 @@
         // updateImgForRandLines(randImg, randLine, true);
         updateDeck(deck);
       })
-
-
 
   </script>
 
