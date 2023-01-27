@@ -152,9 +152,10 @@ body.theme-sepia .tarot-deck img{
 #tb-sefirots > div > div{
   display: table-cell;
 }
-
+#tb-sefirots > div > div > span{
+  display: block;
+}
 #tb-sefirots > div > div img{
-  width: 50%;
 }
 
 
