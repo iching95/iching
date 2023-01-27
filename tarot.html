@@ -425,6 +425,8 @@
           // console.log(card.info)
           const html = `
             <div>
+              <span>${tarotData.combinedSignMap[card.info.planet]}</span>
+              <span>${tarotData.combinedSignMap[card.info.zodiac]}</span>
               <img src="${rwsImgPath(k)}">
             </div>
           `;
