@@ -419,10 +419,12 @@
             <span>${tarotData.sefirotMap[i-1][1]}</span>
             <span>${colSymbol?colSymbol:""}</span>
           </div>
+          <div><!-- title --></div>
         `;
 
         tbodyHTML += col;
         
+        const titles = []
         for (let j=1;j<=4;j++){
 
           const k = 22+(j-1)*14+(i-1);
@@ -433,9 +435,7 @@
             <span>${tarotData.combinedSignMap[card.info.zodiac]}</span>
           `:``;
 
-          const title = card.title?`
-            <span class='title'>${card.title}</span>
-          `:``;
+          titles.push(`<span>${card.title}</span>`);
 
           const html = `
             <div>
@@ -450,6 +450,7 @@
         }
         tbodyHTML += ("</div>");
       }
+      tbodyHTML.replace("<!-- title -->",`${titles}`)
       tbodyHTML += ("</div>");
 
       return {
