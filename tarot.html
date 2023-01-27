@@ -373,7 +373,7 @@
         const symbol  = tarotData.combinedSignMap[row];
         const alefbet = tarotData.cardsMajorArcanaMap[row.toLowerCase()].hebrew.alphabet
         const major   = tarotData.cardsMajorArcanaMap[row.toLowerCase()].title
-
+        
         const html = `
           <div>
             <div>${symbol}</div>
@@ -406,6 +406,18 @@
       let m = 0;
       for (let i=1;i<=10;i++){
         tbodyHTML += ("<div>");
+
+        const colSymbol  = tarotData.combinedSignMap[tarotData.sefirotMap[i-1][2]];
+        const col = `
+          <div>
+            <span>${tarotData.sefirotMap[i-1][0]}</span>
+            <span>${tarotData.sefirotMap[i-1][1]}</span>
+            <span>${colSymbol}</span>
+          </div>
+        `;
+
+        tbodyHTML += col;
+        
         for (let j=1;j<=4;j++){
 
           const k = 22+(j-1)*14+(i-1);
