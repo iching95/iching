@@ -153,6 +153,7 @@ body.theme-sepia .tarot-deck img{
   display: table-cell;
   vertical-align: middle;
   text-align: center;
+  padding-top: 12px;
 }
 #tb-sefirots > div > div:first-of-type{
   width:50%;
