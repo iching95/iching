@@ -412,7 +412,7 @@
           <div>
             <span>${tarotData.sefirotMap[i-1][0]}</span>
             <span>${tarotData.sefirotMap[i-1][1]}</span>
-            <span>${colSymbol}</span>
+            <span>${colSymbol?colSymbol:""}</span>
           </div>
         `;
 
@@ -425,7 +425,6 @@
           // console.log(card.info)
           const html = `
             <div>
-              <span>${card.suit}${card.num}</span>
               <img src="${rwsImgPath(k)}">
             </div>
           `;
