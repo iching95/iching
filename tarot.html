@@ -380,6 +380,7 @@
             <div>${alefbet}</div>
             <div>${name}</div>
             <div>${major}</div>
+            <div>${tarotData.cardsMajorArcanaMap[row.toLowerCase()].hebrew.meaning}</div>
           </div>
           `;
         
@@ -429,10 +430,15 @@
             <span>${tarotData.combinedSignMap[card.info.zodiac]}</span>
           `:``;
 
+          const esoteric = card.info.esoteric?`
+            <span class='title'>${card.info.esoteric}</span>
+          `:``;
+
           const html = `
             <div>
               ${line}
               <img src="${rwsImgPath(k)}">
+              ${esoteric}
             </div>
           `;
 
