@@ -408,7 +408,8 @@
         tbodyHTML += ("<div>");
         for (let j=1;j<=4;j++){
 
-          const card = cardInfoLine(22+(m++)+(i)+(i-1)*4)
+          const k = 22+(j-1)*14+(i-1);
+          const card = cardInfoLine(k)
           // console.log(card.info)
           const html = `
             <div>
