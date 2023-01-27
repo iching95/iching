@@ -447,9 +447,12 @@
           tbodyHTML += html;
 
         }
+
+        tbodyHTML.replace("<!-- title -->",`${titles}`)
         tbodyHTML += ("</div>");
+        
       }
-      tbodyHTML.replace("<!-- title -->",`${titles}`)
+      
       tbodyHTML += ("</div>");
 
       return {
