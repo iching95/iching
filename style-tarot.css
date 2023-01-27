@@ -134,3 +134,24 @@ body.theme-sepia .tarot-deck img{
 #tb-symbols > div > div{
   display: table-cell;
 }
+
+
+#tb-sefirots{
+  display: table;
+  margin-top: 18px;
+}
+
+#tb-sefirots div{
+  
+}
+
+#tb-sefirots > div{
+  display: table-row;
+}
+
+#tb-sefirots > div > div{
+  display: table-cell;
+  width: 20%;
+}
+
+
