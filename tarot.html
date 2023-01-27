@@ -423,10 +423,13 @@
           const k = 22+(j-1)*14+(i-1);
           const card = cardInfoLine(k)
           // console.log(card.info)
+          const line = card.info.planet?`
+            <span>${tarotData.combinedSignMap[card.info.planet]}</span>
+            <span>${tarotData.combinedSignMap[card.info.zodiac]}</span>
+          `:``;
+
           const html = `
             <div>
-              <span>${tarotData.combinedSignMap[card.info.planet]}</span>
-              <span>${tarotData.combinedSignMap[card.info.zodiac]}</span>
               <img src="${rwsImgPath(k)}">
             </div>
           `;
