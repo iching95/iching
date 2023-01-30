@@ -126,6 +126,12 @@
           shuffle(deck,rand[0]);
           console.log(deck)
           
+          fetch(`https://aged-heart-e031.iching.workers.dev/?t=t&r=${deck.join(",")}&h=${json.result.hash}`)
+            .then((response) => response.json())
+            .then(json => {
+              console.log(json);
+          });
+          
           document.getElementById("block").innerHTML = `<span>${blockInfo}</span><span>${blockNo}</span><span>・${timestamp}</span><span id="block-loader"></span>`;
 
           document.getElementById("block").onclick = function(){
