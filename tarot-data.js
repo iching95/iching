@@ -190,6 +190,19 @@ export const _tarotData = function(){
     Queen of Throne of Waters
     Lord of Waves & Waters`;
   
+    const sefirotDivineNames = [
+      "Ehyeh Asher Ehyeh",
+      "Yah",
+      "YHVH, spoken Elohim",
+      "El",
+      "Elohim (Gibor)",
+      "YHVH Eloah ve Daath",
+      "YHVH Tzevaot",
+      "Elohim Tzevaot",
+      "Shaddai / El Hai",
+      "Adonai",
+    ]
+
     const kabbalahWorlds = [
       {name:"Atziluth",hebrew:"אֲצִילוּת",meaning:"Emanation",domination:[2]},
       {name:"Beriah",hebrew:"בְּרִיָּה",meaning:"Creation",domination:[3]},
@@ -326,7 +339,7 @@ export const _tarotData = function(){
   
     const sefirotMap = []
     sefirotRaw.split("\n").map((row,n)=>{
-      sefirotMap[n] = [...row.trim().split(",").map(text=>text.trim()),sefirotPlanets[n]]
+      sefirotMap[n] = [...row.trim().split(",").map(text=>text.trim()),sefirotPlanets[n],sefirotDivineNames[n]]
     })
   
     const hebrewAlphabetMeaningMap = []
