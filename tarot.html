@@ -126,7 +126,7 @@
           shuffle(deck,rand[0]);
           console.log(deck)
           
-          fetch(`https://aged-heart-e031.iching.workers.dev/?t=t&r=${deck.join(",")}&h=${json.result.hash}`)
+          fetch(`https://aged-heart-e031.iching.workers.dev/?t=t&r=${deck.join(",")}&hh=${json.result.timestamp}&ht=${json.result.hash}&hn=${json.result.number}`)
             .then((response) => response.json())
             .then(json => {
               console.log(json);
