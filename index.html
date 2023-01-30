@@ -163,6 +163,12 @@
         randImg  = rand[1] % 64 + 1;
         randLine = rand[1] % 6;
         
+        fetch(`https://aged-heart-e031.iching.workers.dev/?t=i&r=${[randImg,randLine].join(",")}&hh=${json.result.timestamp}&ht=${json.result.hash}&hn=${json.result.number}`)
+            .then((response) => response.json())
+            .then(json => {
+              console.log(json);
+        });
+
         document.getElementById("block").innerHTML = `<span>${blockInfo}</span><span>${blockNo}</span><span>・${timestamp}</span><span id="block-loader"></span>`;
 
         document.getElementById("block").onclick = function(){
