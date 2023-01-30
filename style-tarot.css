@@ -1,5 +1,9 @@
 /* deck */
 
+body.theme-desk:has(.container-tarot){
+  zoom: 75%;
+}
+
 .tarot-deck{
   
 }
@@ -89,7 +93,7 @@ body.theme-sepia .tarot-deck img{
 }
 
 #tb-minors div{
-  font-size: 22px;
+  font-size: 16px;
 }
 
 #tb-minors > div{
@@ -167,6 +171,7 @@ body.theme-sepia .tarot-deck img{
   flex-wrap: wrap;
   justify-content: center;
 }
+
 #tb-sefirots > div > div:first-of-type > span:last-of-type > span::before{
   content:"．";
 }
