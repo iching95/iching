@@ -193,14 +193,14 @@ export const _tarotData = function(){
     const sefirotDivineNames = [
       "Ehyeh Asher Ehyeh",
       "Yah",
-      "YHVH, spoken Elohim",
+      "Elohim",
       "El",
-      "Elohim (Gibor)",
+      "Elohim Gibor",
       "YHVH Eloah ve Daath",
       "YHVH Tzevaot",
       "Elohim Tzevaot",
       "Shaddai / El Hai",
-      "Adonai",
+      "Adonai / Shekhinah",
     ]
 
     const kabbalahWorlds = [
