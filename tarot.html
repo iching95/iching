@@ -446,7 +446,9 @@
             <span>${tarotData.combinedSignMap[card.info.zodiac]}</span>
           `:``;
 
-          titles.push(`<span>${card.title} (${card.thoth})</span>`);
+          titles.push(`<span>${card.title}
+            ${(card.thoth && card.thoth != card.title?`(${card.thoth})`:"")}
+            </span>`);
 
           const html = `
             <div>
