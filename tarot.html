@@ -258,7 +258,7 @@
         title = tarotData.cardsMinorArcanaMap[n].esoteric;
         info.zodiac = tarotData.cardsMinorArcanaMap[n].zodiac
         info.planet = tarotData.cardsMinorArcanaMap[n].planet
-        thoth = tarotData.cardsMinorArcanaMap[n].thoth.title
+        thoth = tarotData.cardsMinorArcanaMap[n].thoth.title?
 
       }else{
 
@@ -445,7 +445,7 @@
             <span>${tarotData.combinedSignMap[card.info.zodiac]}</span>
           `:``;
 
-          titles.push(`<span>${card.title} (${card.thoth.title})</span>`);
+          titles.push(`<span>${card.title} (${card.thoth})</span>`);
 
           const html = `
             <div>
