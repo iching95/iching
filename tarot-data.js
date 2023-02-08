@@ -257,8 +257,8 @@ export const _tarotData = function(){
       "YHVH Eloah ve Daath",
       "YHVH Tzevaot",
       "Elohim Tzevaot",
-      "Shaddai / El Hai",
-      "Adonai / Shekhinah",
+      "El Shaddai / El Hai",
+      "Shekhinah / Adonai",
     ]
 
     const kabbalahWorlds = [
