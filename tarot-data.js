@@ -389,7 +389,7 @@ export const _tarotData = function(){
       cardsMinorArcanaMap[n].thoth = {
         title: row
       }
-    }
+    })
 
     cardsMinorArcanaMap.map((card,n)=>{
       const num = n%14+1;
