@@ -190,6 +190,64 @@ export const _tarotData = function(){
     Queen of Throne of Waters
     Lord of Waves & Waters`;
   
+
+    const cardsMinorTitleThothRaw = `...
+    Dominion
+    Virtue
+    Completion
+    Strife
+    Victory
+    Valour
+    Swiftness
+    Strength
+    Oppression
+    ...
+    ...
+    ...
+    ...
+    ...
+    Change
+    Works
+    Power
+    Worry
+    Success
+    Failure
+    Prudence
+    Gain
+    Wealth
+    ...
+    ...
+    ...
+    ...
+    ...
+    Peace
+    Sorrow
+    Truce
+    Defeat
+    Science
+    Futility
+    Interference
+    Cruelty
+    Ruin
+    ...
+    ...
+    ...
+    ...
+    ...
+    Love
+    Abundance
+    Luxury
+    Disappointment
+    Pleasure
+    Debauch
+    Indolence
+    Happiness
+    Satiety
+    ...
+    ...
+    ...
+    ...`;
+
     const sefirotDivineNames = [
       "Ehyeh Asher Ehyeh",
       "Yah",
@@ -282,7 +340,9 @@ export const _tarotData = function(){
           cardsMinorArcanaMap[courtIdx + 1 - 1],
         ]
       };
-    }    
+    }
+
+
     cardsMinorTitleRaw.split("\n").map((row,n)=>{
 
       const num = n%14+1;
@@ -324,6 +384,12 @@ export const _tarotData = function(){
         // courtDecanGroup
       };
     })
+
+    cardsMinorTitleThothRaw.split("\n").map((row,n)=>{
+      cardsMinorArcanaMap[n].thoth = {
+        title: row
+      }
+    }
 
     cardsMinorArcanaMap.map((card,n)=>{
       const num = n%14+1;
