@@ -388,7 +388,7 @@ export const _tarotData = function(){
     cardsMinorTitleThothRaw.split("\n").map((row,n)=>{
       const text = row.trim();
       cardsMinorArcanaMap[n].thoth = {
-        title: text=="..."?null,text
+        title: text=="..."?null:text
       }
     })
 
