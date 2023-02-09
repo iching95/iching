@@ -189,7 +189,7 @@ body.theme-desk img {
 }
 
 #tb-sefirots > div > div:first-of-type > span{
-  display: block;
+  display: inline;
 }
 
 #tb-sefirots > div > div > span{
