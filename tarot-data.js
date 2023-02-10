@@ -479,9 +479,11 @@ export const _tarotData = function(){
   }
   
 /*
-Antoine Court de Gébelin
-Etteilla
-Éliphas Lévi
-Aleister Crowley / Lady Frieda Harris
-A. E. Waite / Pamela Colman Smith
+Antoine Court de Gébelin (1728-1784)
+Etteilla (1738 - 1791)
+
+Éliphas Lévi (1810-1875)
+
+Aleister Crowley (1875 – 1947) / Lady Frieda Harris
+A. E. Waite (1857 - 1942) / Pamela Colman Smith
 */
