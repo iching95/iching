@@ -478,3 +478,10 @@ export const _tarotData = function(){
   
   }
   
+/*
+Antoine Court de Gébelin
+Etteilla
+Éliphas Lévi
+Aleister Crowley / Lady Frieda Harris
+A. E. Waite / Pamela Colman Smith
+*/
