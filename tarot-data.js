@@ -483,6 +483,7 @@ Antoine Court de Gébelin (1728-1784)
 Etteilla (1738 - 1791)
 
 Gérard Encausse Papus (1865 - 1916)
+Jean-Baptiste Pitois - The term ‘arcana’ was popularized in esoteric literature
 Éliphas Lévi (1810-1875)
 
 Aleister Crowley (1875 – 1947) / Lady Frieda Harris
