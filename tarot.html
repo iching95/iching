@@ -209,13 +209,23 @@
 
     }
 
-    const imageRWSPath = "https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/tarot-rws-svg/";
+    const imageRWSPath    = "https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/tarot-rws-svg/";
+    const imageThothPath  = "https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/tarot-thoth-img/";
 
+
+    
     const rwsImgPath = (n) => {
       if(n <= 21){
         return `${imageRWSPath}${n} ${tarotData.cardsMajorArcanaOrdered[n].title}.svg`.replace(" ","+");
       }
       return `${imageRWSPath}${tarotData.cardsMinorArcanaMap[n-22].suit} ${tarotData.cardsMinorArcanaMap[n-22].num}.svg`.replace(" ","+");
+    }
+
+    const thothImgPath = (n) => {
+      if(n <= 21){
+        return `${imageThothPath}${n} ${tarotData.cardsMajorArcanaOrdered[n].title}.svg`.replace(" ","+");
+      }
+      return `${imageThothPath}${tarotData.cardsMinorArcanaMap[n-22].num}_of_${tarotData.cardsMinorArcanaMap[n-22].suit} .svg`.replace(" ","+");
     }
 
     const romanize = (num) => {
@@ -452,6 +462,7 @@
             <div>
               ${line}
               <img src="${rwsImgPath(k)}">
+              <img src="${thothImgPath(k)}">
             </div>
           `;
 
