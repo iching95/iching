@@ -429,6 +429,7 @@ export const _tarotData = function(){
         title:card[0],
         ruler: card[1],
         esoteric:card[2],
+        num:n,
         hebrew:{
           alphabet:hebrewAlphabet[n],
           meaning:hebrewAlphabetMeaningMap[n],
