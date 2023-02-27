@@ -479,8 +479,12 @@ export const _tarotData = function(){
   }
   
 /*
+
+
 Antoine Court de Gébelin (1728-1784)
 Etteilla (1738 - 1791)
+
+1765 According to Casanova, his Russian peasant mistress would read the cards every day—laying them out in a square of twenty-five cards.
 
 Gérard Encausse Papus (1865 - 1916)
 Jean-Baptiste Pitois - The term ‘arcana’ was popularized in esoteric literature
@@ -488,4 +492,5 @@ Jean-Baptiste Pitois - The term ‘arcana’ was popularized in esoteric literat
 
 Aleister Crowley (1875 – 1947) / Lady Frieda Harris
 A. E. Waite (1857 - 1942) / Pamela Colman Smith
+
 */
