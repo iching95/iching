@@ -225,7 +225,7 @@
       if(n <= 21){
         return `${imageThothPath}${n} ${tarotData.cardsMajorArcanaOrdered[n].title}.svg`.replace(" ","+");
       }
-      return `${imageThothPath}${tarotData.cardsMinorArcanaMap[n-22].num}_of_${tarotData.cardsMinorArcanaMap[n-22].suit}_Thoth.jpeg`.replace(" ","+");
+      return `${imageThothPath}${tarotData.cardsMinorArcanaMap[n-22].num}_of_${tarotData.cardsMinorArcanaMap[n-22].suit.replace("Pentacles","Disks")}_Thoth.jpeg`.replace(" ","+");
     }
 
     const romanize = (num) => {
