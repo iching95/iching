@@ -197,6 +197,7 @@ body.theme-desk img {
 }
 #tb-sefirots > div > div img{
   width:100%;
+  min-width: 5vw;
 }
 
 
