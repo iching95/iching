@@ -461,8 +461,8 @@
           const html = `
             <div>
               ${line}
-              <img src="${rwsImgPath(k)}">
-              <img src="${thothImgPath(k)}">
+              <img src="${rwsImgPath(k)}"  >
+              <img class='lazyLoadingImg' data-src="${thothImgPath(k)}">
             </div>
           `;
 
@@ -502,6 +502,18 @@
       stateHide = true;
       switchHide(true);
       
+      const io = new IntersectionObserver((entries) =>
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const image = entry.target;
+                    image.src = image.dataset.src;
+                    io.unobserve(image);
+                }
+            })
+        );
+
+      document.querySelectorAll(".lazyLoadingImg").forEach((element) => io.observe(element));
+
     }
 
     const pData = data?layoutData(rows):fetch('hebrew-data.txt')
