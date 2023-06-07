@@ -1,0 +1,24 @@
+/* deck */
+
+
+
+#tb-futhark {
+  display: flex;
+  margin-top: 6px;
+}
+
+#tb-futhark div{
+  font-size: 16px;
+}
+
+#tb-futhark > div{
+  width:12.5%;
+}
+
+#tb-futhark > div > div{
+  text-align: center;
+}
+
+#tb-futhark > div > div:nth-of-type(4), #tb-minors > div > div:nth-of-type(7){
+  margin-top: 18px;
+}
