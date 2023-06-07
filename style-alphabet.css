@@ -3,7 +3,6 @@
 
 
 #tb-futhark {
-  display: flex;
   margin-top: 6px;
 }
 
@@ -12,13 +11,10 @@
 }
 
 #tb-futhark > div{
-  width:12.5%;
+  display: flex;
 }
 
 #tb-futhark > div > div{
+  width:12.5%;
   text-align: center;
-}
-
-#tb-futhark > div > div:nth-of-type(4), #tb-minors > div > div:nth-of-type(7){
-  margin-top: 18px;
 }
