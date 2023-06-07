@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>T Deck</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css?65">
+  <link rel="stylesheet" href="style-tarot.css?27">
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
+  <script>
+
+    const deviceCookMatch = window.location.search.match(/device=([^&]+)/);
+    const themeCookMatch  = window.location.search.match(/theme=([^&]+)+/);
+
+    let isWatch = false;
+    let theme = "dark";
+    let device = "phone";
+    let last = 0;
+
+    const cookMatch = document.cookie?document.cookie.match(/prefs=(.+)/):false;
+    
+    if(cookMatch){
+      let cookie = JSON.parse(cookMatch[1]);
+      device = cookie.device;
+      theme = cookie.theme;
+      last = cookie.last;
+      isWatch = (cookie.device == "watch");
+    }
+
+    device = deviceCookMatch?deviceCookMatch[1]:device;
+    theme =  themeCookMatch?themeCookMatch[1]:theme;
+
+    var expires = (new Date(Date.now() + 86400 * 1000)).toUTCString();
+
+    document.cookie = "prefs=" +JSON.stringify({
+        device:device,
+        theme :theme,
+        last:last
+    }) + "; expires=" + expires + ";path=/;";
+
+    isWatch = (device == "watch");
+    
+  </script>
+</head>
+
+<body>
+  <div id="container" class="container-tarot container-index">
+    <div style="display:none" id="rand-1" class="rand rand-top"></div>
+    <div style="display:none" id="last-go-btn"></div>
+    <div style="display:none" id="tb1-nav"></div>
+    <div id="tb1-container"></div>
+    <div id="block" class="block-tarot"></div>
+    <div style="display:none" id="rand-2" class="rand"></div>
+    <div id="tb2-container"></div>
+    <div style="display:none" id="rand-3" class="rand"></div>
+    <div id="tb3-container"></div>
+  </div>
+  
+  <script type="module">
+    
+    import { _tarotData } from './tarot-data.js';
+    const tarotData = _tarotData();
+    console.log("tarotData")
+    console.log(tarotData)
+
+    function shuffle(array, seed) {
+      var m = array.length, t, i;
+
+      const _random = (seed) => {
+        var x = Math.sin(seed++) * 10000; 
+        return x - Math.floor(x);
+      }
+
+      while (m) {
+        i = Math.floor(_random(seed) * m--);
+        t = array[m];
+        array[m] = array[i];
+        array[i] = t;
+        ++seed 
+      }
+
+      return array;
+
+    }
+
+    document.body.classList.add(`theme-${theme}`);
+    
+    const rpc = "https://cloudflare-eth.com";
+    const rpcObj = {"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest", false],"id":1};
+
+    document.getElementById("block").innerHTML = `<span>0x000000000000</span>
+      <span>10000000</span>
+      <span>・00:00:00</span>
+      <span id="block-loader"></span>`;
+    document.getElementById("block").classList.add(isWatch?"block-watch":"block");
+
+    let blockLastMod = 0;
+
+    let deck = [];
+
+    const reseed = () => {
+
+      document.getElementById("block-loader").innerHTML = "⟳";
+
+      return fetch(rpc,{
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(rpcObj)
+        })
+        .then((response) => response.json())
+        .then(json => {
+
+          // console.log(json);
+          const blockInfo = json.result.hash.substring(0,14);
+          const blockNo   = parseInt(json.result.number);
+          blockLastMod    = parseInt(json.result.timestamp);
+          const timestamp = new Date(blockLastMod * 1000).toTimeString().split(' ')[0];
+
+          const seed = parseInt(blockInfo);
+          
+          // console.log(seed);
+          rand = [seed];
+          rand.push(rand[0] * 16807 % 2147483647);
+          rand.push(rand[1] * 16807 % 2147483647);
+
+          deck = Array.from(Array(78).keys());
+          shuffle(deck,rand[0]);
+          console.log(deck)
+          
+          fetch(`https://aged-heart-e031.iching.workers.dev/?t=t&r=${deck.join(",")}&hh=${json.result.timestamp}&ht=${json.result.hash}&hn=${json.result.number}`)
+            .then((response) => response.json())
+            .then(json => {
+              console.log(json);
+          });
+          
+          document.getElementById("block").innerHTML = `<span>${blockInfo}</span><span>${blockNo}</span><span>・${timestamp}</span><span id="block-loader"></span>`;
+
+          document.getElementById("block").onclick = function(){
+            Promise.all([reseed()]).then((res) => {
+              updateDeck(deck);
+            })
+          }
+
+        });
+
+    }
+
+    let randImg, randLine;
+
+    let rand = null;
+    let rows = null;
+
+    function tb1Scroll(n){
+      document.getElementById(`symbol-tb1-${n}`).scrollIntoView();
+    }
+
+    const genTbDeckContent = (_rows) => {
+
+      const rows = _rows;
+
+      let n = 1;
+      let tbodyHTML = "";
+      
+      let navHTML = '';
+
+      for (let i=1;i<=4;i++){
+        tbodyHTML += ("<tr>");
+        for (let j=1;j<=10;j++){
+
+          const content = rows?rows[n]:{
+            d:"．<br>．",
+            c:double.includes(n)?"．<br>．":"．"
+          };
+
+          if(j==1){
+          }
+
+          const alefbet = String.fromCharCode(parseInt('05D0', 16)+parseInt(n)-1 + (n>11?-1:0));
+          const num = parseInt(n);
+
+          const html = `<td>
+          <span>${num}</span>
+          <span class='alefbet' id='alefbet-tb1-${parseInt(n)}'>
+            <span>${alefbet}</span>
+          </span>
+          </td>`;
+          
+          tbodyHTML += html;
+
+          for (let k=0; k< skip.filter(x => x === n).length; k++, j++){
+              tbodyHTML += ("<td><span></span></td>");
+          }
+
+          n++;
+
+        }
+
+        tbodyHTML += ("</tr>");
+
+        if(!rows && n > 30){
+          break;
+        }
+
+      }
+      
+      return {
+        table:tbodyHTML1,
+        nav:navHTML
+      };
+
+    }
+
+    const imageRWSPath    = "https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/tarot-rws-svg/";
+    const imageThothPath  = "https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/tarot-thoth-img/";
+    const imageOshoPath  = "https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/tarot-osho-img/";
+
+    
+    const rwsImgPath = (n) => {
+      if(n <= 21){
+        return `${imageRWSPath}${n} ${tarotData.cardsMajorArcanaOrdered[n].title}.svg`.replace(" ","+");
+      }
+      return `${imageRWSPath}${tarotData.cardsMinorArcanaMap[n-22].suit} ${tarotData.cardsMinorArcanaMap[n-22].num}.svg`.replace(" ","+");
+    }
+
+    const thothImgPath = (n) => {
+      if(n <= 21){
+        return `${imageThothPath}${n} ${tarotData.cardsMajorArcanaOrdered[n].title}.svg`.replace(" ","+");
+      }
+      return `${imageThothPath}${tarotData.cardsMinorArcanaMap[n-22].num}_of_${tarotData.cardsMinorArcanaMap[n-22].suit.replace("Pentacles","Disks")}_Thoth.jpeg`.replace(" ","+");
+    }
+
+    const oshoImgPath = (n) => {
+      if(n <= 21){
+        return `${imageOshoPath}osho-major-${n}.jpg`;
+      }
+      return `${imageOshoPath}osho-${tarotData.cardsMinorArcanaMap[n-22].suit
+          .replace("Pentacles","rainbows")
+          .replace("Wands","fire")
+          .replace("Cups","water")
+          .replace("Swords","clouds")}-${tarotData.cardsMinorArcanaMap[n-22].num.toString().replace("Ace","1")}.jpg`;
+    }
+
+    const romanize = (num) => {
+      if (isNaN(num))
+          return NaN;
+      var digits = String(+num).split(""),
+          key = ["","C","CC","CCC","CD","D","DC","DCC","DCCC","CM",
+                "","X","XX","XXX","XL","L","LX","LXX","LXXX","XC",
+                "","I","II","III","IV","V","VI","VII","VIII","IX"],
+          roman = "",
+          i = 3;
+      while (i--)
+          roman = (key[+digits.pop() + (i * 10)] || "") + roman;
+      return Array(+digits.join("") + 1).join("M") + roman;
+    }
+
+    const cardInfoLine = (_n) => {
+
+      let line = "";
+      let title = "";
+      let info = {};
+      let suit = null;
+      let num = null;
+      let thoth = "";
+
+      if(_n >= 22){
+        
+        const n   = _n -22;
+        num = n%14+1;
+        suit = n >= 0  && n <=13 ? "w" :
+                     n >= 14 && n <=27 ? "p" :
+                     n >= 28 && n <=41 ? "s" : "c";
+        
+
+        const zodiacSign = tarotData.combinedSignMap[tarotData.cardsMinorArcanaMap[n].zodiac];
+        const planetSign = tarotData.combinedSignMap[tarotData.cardsMinorArcanaMap[n].planet];
+        line = (num>=2 && num<=10)?
+        `${suit.toUpperCase()}${num}．${planetSign}．${zodiacSign}`:
+        `${suit.toUpperCase()}${num}`;
+
+        title = tarotData.cardsMinorArcanaMap[n].esoteric;
+        info.zodiac = tarotData.cardsMinorArcanaMap[n].zodiac
+        info.planet = tarotData.cardsMinorArcanaMap[n].planet
+        thoth = tarotData.cardsMinorArcanaMap[n].thoth.title
+
+      }else{
+
+        num = _n;
+        suit = "m";
+
+        const ruler = tarotData.cardsMajorArcanaOrdered[_n].ruler;
+        const sign = tarotData.combinedSignMap[ruler];
+        const hebrew = tarotData.cardsMajorArcanaOrdered[_n].hebrew.alphabet
+        line = `${romanize(_n)} ${sign}．<span class='hebrew'>${hebrew}</span>`
+        title = `${tarotData.cardsMajorArcanaOrdered[_n].hebrew.pronoun}．${tarotData.cardsMajorArcanaOrdered[_n].esoteric}`;
+        
+        info.ruler = ruler
+        info.hebrew = hebrew
+
+      }
+
+      return {
+        line,
+        title,
+        thoth,
+        info,
+        suit,
+        num
+      };
+    }
+
+    var stateHide = true;
+    const switchHide = function(_init){
+      
+      stateHide = _init?stateHide:!stateHide;
+
+      Array.from(document.getElementsByClassName(`tb1-info`)).map(el=>{
+        el.classList.toggle("tb1-info-hidden");
+      })
+
+      Array.from(document.getElementsByClassName(`tb1-img`)).map(el=>{
+        el.onclick = stateHide?switchHide:null;
+      })
+
+      return false;
+      
+    }
+
+    const updateDeck = (_deck) => {
+
+      let n = 1;
+      let tbodyHTML = "";
+
+      for (let i=1;i<=3;i++){
+        tbodyHTML += ("<div>");
+        for (let j=1;j<=3;j++){
+
+          if(i!=2 && j>0){
+            break;
+          }
+
+          const html = `
+          <div class='deck-card' id='deck-card-${parseInt(n)}'>
+            <span class='tb1-info'><span>${cardInfoLine(_deck[n]).line}</span></span>
+            <div>
+              <img class='tb1-img' src="${rwsImgPath(_deck[n])}">
+            </div>
+            <span class='tb1-info'><span>${cardInfoLine(_deck[n]).title}</span></span>
+          </div>`;
+          
+          tbodyHTML += html;
+          n++;
+
+        }
+        tbodyHTML += ("</div>");
+      }
+
+      tbodyHTML = `<div class='tarot-deck'>${tbodyHTML}</div>`
+
+      document.getElementById("tb1-container").innerHTML = tbodyHTML;
+
+      switchHide(true);
+
+    }
+
+    const genTbSignContent = () => {
+
+      const elements = ['Air','Water','Fire']
+      // const planets = tarotData.classicalPlanets;
+      // const zodiacs = tarotData.zodiacNames;
+      const symbols =  [...elements, ...tarotData.classicalPlanets, ...tarotData.zodiacNames];
+
+      let tbodyHTML = "";
+      let navHTML = '';
+
+      tbodyHTML += ("<div id='tb-minors'>");
+      let m = 0;
+      for (let i=1;i<=4;i++){
+        tbodyHTML += ("<div>");
+        for (let j=1;j<=9;j++){
+
+          const card = cardInfoLine(22+(m++)+(i)+(i-1)*4)
+          // console.log(card.info)
+          const html = `
+            <div>
+              <span>${tarotData.combinedSignMap[card.info.planet]}</span>
+              <span>${tarotData.combinedSignMap[card.info.zodiac]}</span>
+            </div>
+          `;
+
+          tbodyHTML += html;
+
+        }
+        tbodyHTML += ("</div>");
+      }
+      tbodyHTML += ("</div>");
+
+      tbodyHTML += ("<div id='tb-symbols'>");
+
+      symbols.map((row,_n) => {
+
+        const n = parseInt(_n);
+        const name    = row;
+        const symbol  = tarotData.combinedSignMap[row];
+        const alefbet = tarotData.cardsMajorArcanaMap[row.toLowerCase()].hebrew.alphabet
+        const major   = tarotData.cardsMajorArcanaMap[row.toLowerCase()].title
+        const num   = tarotData.cardsMajorArcanaMap[row.toLowerCase()].num
+
+        const html = `
+          <div>
+            <div>${symbol}</div>
+            <div>${alefbet}</div>
+            <div>${name}</div>
+            <div>${num}. ${major.replace("The ","")}</div>
+            <div>
+              ${tarotData.cardsMajorArcanaMap[row.toLowerCase()].hebrew.meaning} 
+              (${tarotData.cardsMajorArcanaMap[row.toLowerCase()].hebrew.pronoun})
+            </div>
+          </div>
+          `;
+        
+        tbodyHTML += html;
+
+      })
+      tbodyHTML += ("</div>");
+
+      return {
+        table:tbodyHTML,
+        nav:null
+      };
+
+    }
+
+    const genTbSefirotContent = () => {
+
+      // const symbols =  [...elements, ...tarotData.classicalPlanets, ...tarotData.zodiacNames];
+
+      let tbodyHTML = "";
+      let navHTML = '';
+
+      tbodyHTML += ("<div id='tb-sefirots'>");
+      let m = 0;
+      for (let i=1;i<=10;i++){
+        tbodyHTML += ("<div>");
+
+        const colSymbol  = tarotData.combinedSignMap[tarotData.sefirotMap[i-1][2]];
+        const col = `
+          <div>
+            <span>${i}. ${colSymbol?colSymbol:""}</span>
+            <span>${tarotData.sefirotMap[i-1][0]}</span>
+            <span class="god-names">${tarotData.sefirotMap[i-1][3]}</span>
+            <span><!-- title --></span>
+          </div>
+        `;
+
+        tbodyHTML += col;
+        
+        const titles = []
+        for (let j=1;j<=4;j++){
+
+          const k = 22+(j-1)*14+(i-1);
+          const card = cardInfoLine(k)
+          // console.log(card.info)
+          const line = card.info.planet?`
+            <span>${tarotData.combinedSignMap[card.info.planet]}</span>
+            <span>${tarotData.combinedSignMap[card.info.zodiac]}</span>
+          `:``;
+
+          titles.push(`<span>${card.title}
+            ${(card.thoth && card.thoth != card.title?`(${card.thoth})`:"")}
+            </span>`);
+
+          const html = `
+            <div>
+              ${line}
+              <img src="${rwsImgPath(k)}"  >
+              <img class='lazyLoadingImg' data-src="${thothImgPath(k)}">
+              <img class='lazyLoadingImg' data-src="${oshoImgPath(k)}">
+            </div>
+          `;
+
+          tbodyHTML += html;
+
+        }
+
+        tbodyHTML = tbodyHTML.replace("<!-- title -->",`${titles.join("<br>")}`)
+        tbodyHTML += ("</div>");
+
+      }
+      
+      tbodyHTML += ("</div>");
+
+      return {
+        table:tbodyHTML,
+        nav:null
+      }
+
+    }
+
+    // document.getElementById("tb2-container").innerHTML = "<table class='tb1' style='width:100%;'><tbody>" + genTb1Content().table + "</tbody></table>";
+
+    const data = localStorage.getItem("hebrew-v1");
+    rows = data?JSON.parse(data):null;
+
+    const layoutData = (_data) => {
+
+      const rows = _data;
+
+      const tableHTML2 = "<table class='tb2' style='width:100%;'><tbody>" + genTbSignContent(rows).table + "</tbody></table>";
+      document.getElementById("tb2-container").innerHTML = tableHTML2;
+
+      const tableHTML3 = "<table class='tb3' style='width:100%;'><tbody>" + genTbSefirotContent(rows).table + "</tbody></table>";
+      document.getElementById("tb3-container").innerHTML = tableHTML3;
+
+      stateHide = true;
+      switchHide(true);
+      
+      const io = new IntersectionObserver((entries) =>
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const image = entry.target;
+                    image.src = image.dataset.src;
+                    io.unobserve(image);
+                }
+            })
+        );
+
+      document.querySelectorAll(".lazyLoadingImg").forEach((element) => io.observe(element));
+
+    }
+
+    const pData = data?layoutData(rows):fetch('hebrew-data.txt')
+      .then(response => response.text())
+      .then((data) => {
+        // rows = JSON.parse(data);
+        const tdata = data.split(/[-]/g);
+        
+        rows = [];
+        tdata.map((r,i)=>{
+          tdata[i] = tdata[i].trim().split(/\r?\n|\r|\n/g);
+        })
+        console.log(tdata);
+
+        tdata[0].map((r,i)=>{
+          rows[i] = {
+            a:tdata[0][i],
+            p:tdata[1][i],
+            s:tdata[2][i][0],
+            l:tdata[2][i].length,
+          }
+        })
+        
+        console.log(rows);
+        localStorage.setItem("hebrew-v1", JSON.stringify(rows));
+
+        layoutData(rows);
+      })
+
+      const promises = data?[reseed()]:[pData, reseed()];
+
+      Promise.all(promises).then((res) => {
+        // updateImgMatchLink();
+        // updateImgForRandLines(randImg, randLine, true);
+        updateDeck(deck);
+      })
+
+  </script>
+
+</body>
+</html>
