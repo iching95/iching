@@ -362,28 +362,23 @@
 
     }
 
-    const genTbSignContent = () => {
-
-      const elements = ['Air','Water','Fire']
-      // const planets = tarotData.classicalPlanets;
-      // const zodiacs = tarotData.zodiacNames;
-      const symbols =  [...elements, ...tarotData.classicalPlanets, ...tarotData.zodiacNames];
+    const futharkLetters = "ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛈᛇᛉᛊᛏᛒᛖᛗᛚᛜᛞᛟ";
+    const genTbFutharkContent = () => {
 
       let tbodyHTML = "";
       let navHTML = '';
 
-      tbodyHTML += ("<div id='tb-minors'>");
-      let m = 0;
-      for (let i=1;i<=4;i++){
+      tbodyHTML += ("<div id='tb-futhark'>");
+      let n = 0;
+      for (let i=1;i<=3;i++){
         tbodyHTML += ("<div>");
-        for (let j=1;j<=9;j++){
+        for (let j=1;j<=8;j++,n++){
 
           const card = cardInfoLine(22+(m++)+(i)+(i-1)*4)
           // console.log(card.info)
           const html = `
             <div>
-              <span>${tarotData.combinedSignMap[card.info.planet]}</span>
-              <span>${tarotData.combinedSignMap[card.info.zodiac]}</span>
+              <span>${futharkLetters[n]}</span>
             </div>
           `;
 
@@ -392,107 +387,12 @@
         }
         tbodyHTML += ("</div>");
       }
-      tbodyHTML += ("</div>");
-
-      tbodyHTML += ("<div id='tb-symbols'>");
-
-      symbols.map((row,_n) => {
-
-        const n = parseInt(_n);
-        const name    = row;
-        const symbol  = tarotData.combinedSignMap[row];
-        const alefbet = tarotData.cardsMajorArcanaMap[row.toLowerCase()].hebrew.alphabet
-        const major   = tarotData.cardsMajorArcanaMap[row.toLowerCase()].title
-        const num   = tarotData.cardsMajorArcanaMap[row.toLowerCase()].num
-
-        const html = `
-          <div>
-            <div>${symbol}</div>
-            <div>${alefbet}</div>
-            <div>${name}</div>
-            <div>${num}. ${major.replace("The ","")}</div>
-            <div>
-              ${tarotData.cardsMajorArcanaMap[row.toLowerCase()].hebrew.meaning} 
-              (${tarotData.cardsMajorArcanaMap[row.toLowerCase()].hebrew.pronoun})
-            </div>
-          </div>
-          `;
-        
-        tbodyHTML += html;
-
-      })
       tbodyHTML += ("</div>");
 
       return {
         table:tbodyHTML,
         nav:null
       };
-
-    }
-
-    const genTbSefirotContent = () => {
-
-      // const symbols =  [...elements, ...tarotData.classicalPlanets, ...tarotData.zodiacNames];
-
-      let tbodyHTML = "";
-      let navHTML = '';
-
-      tbodyHTML += ("<div id='tb-sefirots'>");
-      let m = 0;
-      for (let i=1;i<=10;i++){
-        tbodyHTML += ("<div>");
-
-        const colSymbol  = tarotData.combinedSignMap[tarotData.sefirotMap[i-1][2]];
-        const col = `
-          <div>
-            <span>${i}. ${colSymbol?colSymbol:""}</span>
-            <span>${tarotData.sefirotMap[i-1][0]}</span>
-            <span class="god-names">${tarotData.sefirotMap[i-1][3]}</span>
-            <span><!-- title --></span>
-          </div>
-        `;
-
-        tbodyHTML += col;
-        
-        const titles = []
-        for (let j=1;j<=4;j++){
-
-          const k = 22+(j-1)*14+(i-1);
-          const card = cardInfoLine(k)
-          // console.log(card.info)
-          const line = card.info.planet?`
-            <span>${tarotData.combinedSignMap[card.info.planet]}</span>
-            <span>${tarotData.combinedSignMap[card.info.zodiac]}</span>
-          `:``;
-
-          titles.push(`<span>${card.title}
-            ${(card.thoth && card.thoth != card.title?`(${card.thoth})`:"")}
-            </span>`);
-
-          const html = `
-            <div>
-              ${line}
-              <img src="${rwsImgPath(k)}"  >
-              <img class='lazyLoadingImg' data-src="${thothImgPath(k)}">
-              <img class='lazyLoadingImg' data-src="${oshoImgPath(k)}">
-            </div>
-          `;
-
-          tbodyHTML += html;
-
-        }
-
-        tbodyHTML = tbodyHTML.replace("<!-- title -->",`${titles.join("<br>")}`)
-        tbodyHTML += ("</div>");
-
-      }
-      
-      tbodyHTML += ("</div>");
-
-      return {
-        table:tbodyHTML,
-        nav:null
-      }
 
     }
 
@@ -505,15 +405,18 @@
 
       const rows = _data;
 
-      const tableHTML2 = "<table class='tb2' style='width:100%;'><tbody>" + genTbSignContent(rows).table + "</tbody></table>";
+      // const tableHTML2 = "<table class='tb2' style='width:100%;'><tbody>" + genTbSignContent(rows).table + "</tbody></table>";
+      const tableHTML2 = "<table class='tb2' style='width:100%;'><tbody>" + genTbFutharkContent().table + "</tbody></table>";
       document.getElementById("tb2-container").innerHTML = tableHTML2;
 
-      const tableHTML3 = "<table class='tb3' style='width:100%;'><tbody>" + genTbSefirotContent(rows).table + "</tbody></table>";
-      document.getElementById("tb3-container").innerHTML = tableHTML3;
+      // const tableHTML3 = "<table class='tb3' style='width:100%;'><tbody>" + genTbSefirotContent(rows).table + "</tbody></table>";
+      // document.getElementById("tb3-container").innerHTML = tableHTML3;
 
       stateHide = true;
       switchHide(true);
       
+      /*
+
       const io = new IntersectionObserver((entries) =>
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -525,6 +428,7 @@
         );
 
       document.querySelectorAll(".lazyLoadingImg").forEach((element) => io.observe(element));
+      */
 
     }
 
@@ -560,7 +464,7 @@
       Promise.all(promises).then((res) => {
         // updateImgMatchLink();
         // updateImgForRandLines(randImg, randLine, true);
-        updateDeck(deck);
+        // updateDeck(deck);
       })
 
   </script>
