@@ -48,3 +48,7 @@
 #futhark-deck > div > div > span:last-of-type { 
   font-size: 11px;
 }
+
+.block-futhark{
+  margin: 4px 0px 2px !important;
+}
