@@ -345,8 +345,9 @@
           const html = `
           <div class='deck-card' id='deck-card-${parseInt(n)}'>
             <span class='tb-futhark-char'><span>${futharkLetters[_deck[n]]}</span></span>
-          </div>`;
-          // <span class='tb1-info'><span>${futharkLetters[_deck[n]]}</span></span>
+          </div>
+          <span class='tb1-info'><span>${rows[_deck[n]].n}</span></span>
+          `;
           
           tbodyHTML += html;
           n++;
@@ -365,10 +366,6 @@
 
     const genTbFutharkContent = () => {
 
-      console.log(rows)
-
-      // const rows = _rows;
-
       let tbodyHTML = "";
       let navHTML = '';
 
@@ -380,8 +377,7 @@
 
           const html = `
             <div>
-              <span>${rows[_deck[n]].r}</span>
-              <span class='tb1-info'><span>${rows[_deck[n]].n}</span></span>
+              <span>${futharkLetters[n]}</span>
             </div>
           `;
 
@@ -409,7 +405,7 @@
       const rows = _data;
 
       // const tableHTML2 = "<table class='tb2' style='width:100%;'><tbody>" + genTbSignContent(rows).table + "</tbody></table>";
-      const tableHTML2 = "<table class='tb2' style='width:100%;'><tbody>" + genTbFutharkContent(rows).table + "</tbody></table>";
+      const tableHTML2 = "<table class='tb2' style='width:100%;'><tbody>" + genTbFutharkContent().table + "</tbody></table>";
       document.getElementById("tb2-container").innerHTML = tableHTML2;
 
       // const tableHTML3 = "<table class='tb3' style='width:100%;'><tbody>" + genTbSefirotContent(rows).table + "</tbody></table>";
