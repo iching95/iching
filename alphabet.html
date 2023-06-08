@@ -365,6 +365,10 @@
 
     const genTbFutharkContent = (_rows) => {
 
+      if(!_rows){
+        return 
+      }
+
       const rows = _rows;
 
       let tbodyHTML = "";
