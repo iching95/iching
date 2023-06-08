@@ -49,7 +49,7 @@
     <div style="display:none" id="last-go-btn"></div>
     <div style="display:none" id="tb1-nav"></div>
     <div id="tb1-container"></div>
-    <div style="display:none" id="block" class="block-tarot"></div>
+    <div id="block" class="block-tarot"></div>
     <div style="display:none" id="rand-2" class="rand"></div>
     <div id="tb2-container"></div>
     <div style="display:none" id="rand-3" class="rand"></div>
@@ -459,12 +459,12 @@
         layoutData(rows);
       })
 
-      // const promises = data?[reseed()]:[pData, reseed()];
+      const promises = data?[reseed()]:[pData, reseed()];
 
       Promise.all(promises).then((res) => {
         // updateImgMatchLink();
         // updateImgForRandLines(randImg, randLine, true);
-        // updateDeck(deck);
+         updateDeck(deck);
       })
 
   </script>
