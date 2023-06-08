@@ -363,7 +363,9 @@
 
     }
 
-    const genTbFutharkContent = () => {
+    const genTbFutharkContent = (_rows) => {
+
+      const rows = _rows;
 
       let tbodyHTML = "";
       let navHTML = '';
@@ -405,7 +407,7 @@
       const rows = _data;
 
       // const tableHTML2 = "<table class='tb2' style='width:100%;'><tbody>" + genTbSignContent(rows).table + "</tbody></table>";
-      const tableHTML2 = "<table class='tb2' style='width:100%;'><tbody>" + genTbFutharkContent().table + "</tbody></table>";
+      const tableHTML2 = "<table class='tb2' style='width:100%;'><tbody>" + genTbFutharkContent(rows).table + "</tbody></table>";
       document.getElementById("tb2-container").innerHTML = tableHTML2;
 
       // const tableHTML3 = "<table class='tb3' style='width:100%;'><tbody>" + genTbSefirotContent(rows).table + "</tbody></table>";
