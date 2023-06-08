@@ -3,6 +3,7 @@
 #futhark-deck{
   font-size: 36px;
   font-family: Helvetica, sans-serif;
+  min-height: 80px;
 }
 
 #futhark-deck > div{

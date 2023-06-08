@@ -1,0 +1,170 @@
+{
+  "1": {
+    "n": "fehu",
+    "r": "ᚠ",
+    "p": "fay-hoo",
+    "t": "f",
+    "m": "cattle; wealth"
+  },
+  "2": {
+    "n": "ūruz",
+    "r": "ᚢ",
+    "p": "oo-rooz",
+    "t": "u",
+    "m": "aurochs"
+  },
+  "3": {
+    "n": "þurisaz",
+    "r": "ᚦ",
+    "p": "thur-see-az",
+    "t": "þ",
+    "m": "Thurs or the god Thunraz"
+  },
+  "4": {
+    "n": "ansuz",
+    "r": "ᚨ",
+    "p": "ahn-sooz",
+    "t": "a",
+    "m": "god"
+  },
+  "5": {
+    "n": "raidō",
+    "r": "ᚱ",
+    "p": "ray-doh",
+    "t": "r",
+    "m": "ride, journey"
+  },
+  "6": {
+    "n": "kaunan",
+    "r": "ᚲ",
+    "p": "kow-nan or tee-torch",
+    "t": "k (c)",
+    "m": "ulcer or torch"
+  },
+  "7": {
+    "n": "gebō",
+    "r": "ᚷ",
+    "p": "geh-boh",
+    "t": "g",
+    "m": "gift"
+  },
+  "8": {
+    "n": "wunjō",
+    "r": "ᚹ",
+    "p": "wun-yoh",
+    "t": "w",
+    "m": "joy"
+  },
+  "9": {
+    "n": "hagalaz",
+    "r": "ᚺ",
+    "p": "hah-gah-laz",
+    "t": "h",
+    "m": "hail"
+  },
+  "10": {
+    "n": "naudiz",
+    "r": "ᚾ",
+    "p": "now-diz",
+    "t": "n",
+    "m": "need"
+  },
+  "11": {
+    "n": "īsaz",
+    "r": "ᛁ",
+    "p": "ee-saz",
+    "t": "i",
+    "m": "ice"
+  },
+  "12": {
+    "n": "jēra-",
+    "r": "ᛃ",
+    "p": "yeh-rah",
+    "t": "j",
+    "m": "year, good year, harvest"
+  },
+  "13": {
+    "n": "īwaz",
+    "r": "ᛇ",
+    "p": "ee-waz",
+    "t": "ï (æ)",
+    "m": "yew-tree"
+  },
+  "14": {
+    "n": "perþ",
+    "r": "ᛈ",
+    "p": "pear-tree",
+    "t": "p",
+    "m": "meaning unknown; possibly pear-tree"
+  },
+  "15": {
+    "n": "algiz",
+    "r": "ᛉ",
+    "p": "al-giz",
+    "t": "z",
+    "m": "elk or protection, defence"
+  },
+  "16": {
+    "n": "sōwilō",
+    "r": "ᛊ",
+    "p": "soh-wee-loh",
+    "t": "s",
+    "m": "sun"
+  },
+  "17": {
+    "n": "tīwaz",
+    "r": "ᛏ",
+    "p": "tee-waz",
+    "t": "t",
+    "m": "the god Tiwaz"
+  },
+  "18": {
+    "n": "berkanan",
+    "r": "ᛒ",
+    "p": "ber-ka-nan",
+    "t": "b",
+    "m": "birch"
+  },
+  "19": {
+    "n": "ehwaz",
+    "r": "ᛖ",
+    "p": "eh-waz",
+    "t": "e",
+    "m": "horse"
+  },
+  "20": {
+    "n": "mannaz",
+    "r": "ᛗ",
+    "p": "mah-naz",
+    "t": "m",
+    "m": "man"
+  },
+  "21": {
+    "n": "laguz",
+    "r": "ᛚ",
+    "p": "lah-gooz",
+    "t": "l",
+    "m": "water, lake or possibly leek"
+  },
+  "22": {
+    "n": "ingwaz",
+    "r": "ᛜ",
+    "p": "ing-waz",
+    "t": "ŋ",
+    "m": "the god Ingwaz"
+  },
+  "23": {
+    "n": "dagaz",
+    "r": "ᛞ",
+    "p": "day-gahz",
+    "t": "d",
+    "m": "day"
+  },
+  "24": {
+    "n": "ōþila-/ōþala-",
+    "r": "ᛟ",
+    "p": "oh-thee-lah",
+    "t": "o",
+    "m": "heritage, estate, possession"
+  }
+}
