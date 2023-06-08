@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css?65">
   <link rel="stylesheet" href="style-tarot.css?27">
-  <link rel="stylesheet" href="style-alphabet.css?5">
+  <link rel="stylesheet" href="style-alphabet.css?6">
   <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
   <script>
 
@@ -335,7 +335,7 @@
       let tbodyHTML = "";
 
       for (let i=1;i<=3;i++){
-        tbodyHTML += ("<div>");
+        tbodyHTML += ("<div id='tb-futhark-rand'>");
         for (let j=1;j<=3;j++){
 
           if(i!=2 && j>0){
@@ -344,8 +344,9 @@
 
           const html = `
           <div class='deck-card' id='deck-card-${parseInt(n)}'>
-            <span class='tb1-letter'><span>${futharkLetters[_deck[n]]}</span></span>
+            <span class='tb-futhark-char'><span>${futharkLetters[_deck[n]]}</span></span>
           </div>`;
+          // <span class='tb1-info'><span>${futharkLetters[_deck[n]]}</span></span>
           
           tbodyHTML += html;
           n++;
@@ -354,7 +355,7 @@
         tbodyHTML += ("</div>");
       }
 
-      tbodyHTML = `<div class='tarot-deck'>${tbodyHTML}</div>`
+      tbodyHTML = `<div class='futhark-deck'>${tbodyHTML}</div>`
 
       document.getElementById("tb1-container").innerHTML = tbodyHTML;
 

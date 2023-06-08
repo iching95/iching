@@ -1,6 +1,18 @@
 /* deck */
 
+#futhark-deck{
+  font-size: 36px;
+  font-family: Helvetica, sans-serif;
+}
 
+#futhark-deck > div{
+  display: flex;
+  margin:16px 0px;
+}
+
+#tb-futhark > div > div{
+  text-align: center;
+}
 
 #tb-futhark {
   margin-top: 6px;
