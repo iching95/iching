@@ -17,6 +17,11 @@
   text-align: center;
 }
 
+#futhark-deck > div > div > div{
+  height: 36px;
+  margin-bottom: 8px;
+}
+
 #tb-futhark {
   margin-top: 6px;
 }
