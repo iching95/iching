@@ -9,6 +9,8 @@
   <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
   <script>
 
+    const futharkLetters = "ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈᛉᛊᛏᛒᛖᛗᛚᛜᛞᛟ";
+
     const deviceCookMatch = window.location.search.match(/device=([^&]+)/);
     const themeCookMatch  = window.location.search.match(/theme=([^&]+)+/);
 
@@ -124,7 +126,7 @@
           rand.push(rand[0] * 16807 % 2147483647);
           rand.push(rand[1] * 16807 % 2147483647);
 
-          deck = Array.from(Array(78).keys());
+          deck = Array.from(Array(24).keys());
           shuffle(deck,rand[0]);
           console.log(deck)
           
@@ -342,11 +344,7 @@
 
           const html = `
           <div class='deck-card' id='deck-card-${parseInt(n)}'>
-            <span class='tb1-info'><span>${cardInfoLine(_deck[n]).line}</span></span>
-            <div>
-              <img class='tb1-img' src="${rwsImgPath(_deck[n])}">
-            </div>
-            <span class='tb1-info'><span>${cardInfoLine(_deck[n]).title}</span></span>
+            <span class='tb1-letter'><span>${futharkLetters[_deck[n]]}</span></span>
           </div>`;
           
           tbodyHTML += html;
@@ -364,7 +362,6 @@
 
     }
 
-    const futharkLetters = "ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈᛉᛊᛏᛒᛖᛗᛚᛜᛞᛟ";
     const genTbFutharkContent = () => {
 
       let tbodyHTML = "";
