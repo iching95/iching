@@ -363,15 +363,11 @@
 
     }
 
-    const genTbFutharkContent = (_rows) => {
+    const genTbFutharkContent = () => {
 
-      if(!_rows){
-        return 
-      }
+      console.log(rows)
 
-      console.log(_rows)
-
-      const rows = _rows;
+      // const rows = _rows;
 
       let tbodyHTML = "";
       let navHTML = '';
@@ -384,8 +380,8 @@
 
           const html = `
             <div>
-              <span>${rows[n].r}</span>
-              <span class='tb1-info'><span>${rows[n].n}</span></span>
+              <span>${rows[_deck[n]].r}</span>
+              <span class='tb1-info'><span>${rows[_deck[n]].n}</span></span>
             </div>
           `;
 
