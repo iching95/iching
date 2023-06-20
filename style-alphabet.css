@@ -42,17 +42,16 @@
 }
 
 #tb-runepoem > div{
-  margin: 12px;
+  margin: 12px 0px;
 }
 
 #tb-runepoem > div > div:first-of-type{
   font-size: 16px;
-  margin: 3px
 }
 
 #tb-runepoem > div > div{
   font-size: 9px;
-  margin: 3px
+  margin: 3px 0px;
 }
 
 #futhark-deck .tb1-info-hidden:last-of-type:after {
