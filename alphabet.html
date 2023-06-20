@@ -441,7 +441,7 @@
 
     // document.getElementById("tb2-container").innerHTML = "<table class='tb1' style='width:100%;'><tbody>" + genTb1Content().table + "</tbody></table>";
 
-    const data = localStorage.getItem("futhark-v1");
+    const data = localStorage.getItem("futhark-v2");
     rows = data?JSON.parse(data):null;
 
     const layoutData = (_data) => {
@@ -482,7 +482,7 @@
         rows = JSON.parse(data);
 
         console.log(rows);
-        localStorage.setItem("futhark-v1", JSON.stringify(rows));
+        localStorage.setItem("futhark-v2", JSON.stringify(rows));
 
         layoutData(rows);
       })
