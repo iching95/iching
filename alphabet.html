@@ -401,7 +401,7 @@
 
     const genTbPoemContent = (_runes) => {
 
-      const rune = _runes;
+      const runes = _runes;
 
       let tbodyHTML = "";
       let navHTML = '';
@@ -414,13 +414,13 @@
 
           const html = `
             <div>
-              <span>${rune[i].OE}</span>
+              <span>${runes[i.toString()].OE}</span>
             </div>
             <div>
-              <span>${rune[i].NO?rune[i].NO:"..."}</span>
+              <span>${runes[i.toString()].NO?runes[i.toString()].NO:"..."}</span>
             </div>
             <div>
-              <span>${rune[i].NO?rune[i].NO:"..."}</span>
+              <span>${runes[i.toString()].IS?runes[i.toString()].IS:"..."}</span>
             </div>
           `;
 
