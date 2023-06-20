@@ -4,167 +4,223 @@
     "r": "ᚠ",
     "p": "fay-hoo",
     "t": "f",
-    "m": "cattle; wealth"
+    "m": "cattle; wealth",
+    "OE": "Wealth is a comfort to all men; yet must every man bestow it freely, if he wish to gain honour in the sight of the Lord.",
+    "NO": "Wealth is a source of discord among kinsmen; the wolf lives in the forest.",
+    "IS": "Fé - Wealth: Source of discord among kinsmen and fire of the sea and path of the serpent."
   },
   "2": {
     "n": "ūruz",
     "r": "ᚢ",
     "p": "oo-rooz",
     "t": "u",
-    "m": "aurochs"
+    "m": "aurochs",
+    "OE": "The aurochs is proud and has great horns; it is a very savage beast and fights with its horns; a great ranger of the moors, it is a creature of mettle.",
+    "NO": "Dross comes from bad iron; the reindeer often races over the frozen snow.",
+    "IS": "Úr - Shower: Lamentation of the clouds and ruin of the hay-harvest and abomination of the shepherd."
   },
   "3": {
     "n": "þurisaz",
     "r": "ᚦ",
     "p": "thur-see-az",
     "t": "þ",
-    "m": "Thurs or the god Thunraz"
+    "m": "Thurs or the god Thunraz",
+    "OE": "The thorn is exceedingly sharp, an evil thing for any knight to touch, uncommonly severe on all who sit among them.",
+    "NO": "Giant causes anguish to women; misfortune makes few men cheerful.",
+    "IS": "Thurs - Giant: Torture of women and cliff-dweller and husband of a giantess."
   },
   "4": {
     "n": "ansuz",
     "r": "ᚨ",
     "p": "ahn-sooz",
     "t": "a",
-    "m": "god"
+    "m": "god",
+    "OE": "The mouth is the source of all language, a pillar of wisdom and a comfort to wise men, a blessing and a joy to every knight.",
+    "NO": "Estuary is the way of most journeys; but a scabbard is of swords.",
+    "IS": "Óss - God: Aged Gautr and prince of Ásgardr and lord of Vallhalla."
   },
   "5": {
     "n": "raidō",
     "r": "ᚱ",
     "p": "ray-doh",
     "t": "r",
-    "m": "ride, journey"
+    "m": "ride, journey",
+    "OE": "Riding seems easy to every warrior while he is indoors and very courageous to him who traverses the high-roads on the back of a stout horse.",
+    "NO": "Riding is said to be the worst thing for horses; Reginn forged the finest sword.",
+    "IS": "Reid - Riding: Joy of the horsemen and speedy journey and toil of the steed."
   },
   "6": {
     "n": "kaunan",
     "r": "ᚲ",
     "p": "kow-nan or tee-torch",
     "t": "k (c)",
-    "m": "ulcer or torch"
+    "m": "ulcer or torch",
+    "OE": "The torch is known to every living man by its pale, bright flame; it always burns where princes sit within.",
+    "NO": "Ulcer is fatal to children; death makes a corpse pale.",
+    "IS": "Kaun - Ulcer: Disease fatal to children and painful spot and abode of mortification."
   },
   "7": {
     "n": "gebō",
     "r": "ᚷ",
     "p": "geh-boh",
     "t": "g",
-    "m": "gift"
+    "m": "gift",
+    "OE": "Generosity brings credit and honour, which support one's dignity; it furnishes help and subsistence to all broken men who are devoid of aught else."
   },
   "8": {
     "n": "wunjō",
     "r": "ᚹ",
     "p": "wun-yoh",
     "t": "w",
-    "m": "joy"
+    "m": "joy",
+    "OE": "Bliss he enjoys who knows not suffering, sorrow nor anxiety, and has prosperity and happiness and a good enough house."
   },
   "9": {
     "n": "hagalaz",
     "r": "ᚺ",
     "p": "hah-gah-laz",
     "t": "h",
-    "m": "hail"
+    "m": "hail",
+    "OE": "Hail is the whitest of grain; it is whirled from the vault of heaven and is tossed about by gusts of wind and then it melts into water.",
+    "NO": "Hail is the coldest of grain; Christ created the world of old.",
+    "IS": "Hagall - Hail: Cold grain and shower of sleet and sickness of serpents."
   },
   "10": {
     "n": "naudiz",
     "r": "ᚾ",
     "p": "now-diz",
     "t": "n",
-    "m": "need"
+    "m": "need",
+    "OE": "Trouble is oppressive to the heart; yet often it proves a source of help and salvation to the children of men, to everyone who heeds it betimes.",
+    "NO": "Constraint gives scant choice; a naked man is chilled by the frost.",
+    "IS": "Naud - Constraint: Grief of the bond-maid and state of oppression and toilsome work."
   },
   "11": {
     "n": "īsaz",
     "r": "ᛁ",
     "p": "ee-saz",
     "t": "i",
-    "m": "ice"
+    "m": "ice",
+    "OE": "Ice is very cold and immeasurably slippery; it glistens as clear as glass and most like to gems; it is a floor wrought by the frost, fair to look upon.",
+    "NO": "Ice we call the broad bridge; the blind man must be led.",
+    "IS": "Iss - Ice: Bark of rivers and roof of the wave and destruction of the doomed."
   },
   "12": {
     "n": "jēra-",
     "r": "ᛃ",
     "p": "yeh-rah",
     "t": "j",
-    "m": "year, good year, harvest"
+    "m": "year, good year, harvest",
+    "OE": "Summer is a joy to men, when God, the holy King of Heaven, suffers the earth to bring forth shining fruits for rich and poor alike.",
+    "NO": "Plenty is a boon to men; I say that Frodi was generous.",
+    "IS": "Ár - Plenty: Boon to men and good summer and thriving crops."
   },
   "13": {
     "n": "īwaz",
     "r": "ᛇ",
     "p": "ee-waz",
     "t": "ï (æ)",
-    "m": "yew-tree"
+    "m": "yew-tree",
+    "OE": "The yew is a tree with rough bark, hard and fast in the earth, supported by its roots, a guardian of flame and a joy upon an estate.",
+    "NO": "Yew is the greenest of trees in winter; it is wont to crackle when it burns.",
+    "IS": "Yr - Yew: Bent bow and brittle iron and giant of the arrow."
   },
   "14": {
     "n": "perþ",
     "r": "ᛈ",
     "p": "pear-tree",
     "t": "p",
-    "m": "meaning unknown; possibly pear-tree"
+    "m": "meaning unknown; possibly pear-tree",
+    "OE": "Peorth is a source of recreation and amusement to the great, where warriors sit blithely together in the banqueting-hall."
   },
   "15": {
     "n": "algiz",
     "r": "ᛉ",
     "p": "al-giz",
     "t": "z",
-    "m": "elk or protection, defence"
+    "m": "elk or protection, defence",
+    "OE": "The Eolh-sedge is mostly to be found in a marsh; it grows in the water and makes a ghastly wound, covering with blood every warrior who touches it."
   },
   "16": {
     "n": "sōwilō",
     "r": "ᛊ",
     "p": "soh-wee-loh",
     "t": "s",
-    "m": "sun"
+    "m": "sun",
+    "OE": "The sun is ever a joy in the hopes of seafarers when they journey away over the fishes' bath, until the courser of the deep bears them to land.",
+    "NO": "Sun is the light of the world; I bow to the divine decree.",
+    "IS": "Sól - Sun: Shield of the clouds and shining ray and destroyer of ice."
   },
   "17": {
     "n": "tīwaz",
     "r": "ᛏ",
     "p": "tee-waz",
     "t": "t",
-    "m": "the god Tiwaz"
+    "m": "the god Tiwaz",
+    "OE": "Tiw is a guiding star; well does it keep faith with princes; it is ever on its course over the mists of night and never fails.",
+    "NO": "Tyr is a one-handed god; often has the smith to blow.",
+    "IS": "Tyr: God with one hand and leavings of the wolf and prince of temples."
   },
   "18": {
     "n": "berkanan",
     "r": "ᛒ",
     "p": "ber-ka-nan",
     "t": "b",
-    "m": "birch"
+    "m": "birch",
+    "OE": "The poplar bears no fruit; yet without seed it brings forth suckers, for it is generated from its leaves. Splendid are its branches and gloriously adorned its lofty crown which reaches to the skies.",
+    "NO": "Birch has the greenest leaves of any shrub; Loki was fortunate in his deceit.",
+    "IS": "Bjarken - Birch: Leafy twig and little tree and fresh young shrub."
   },
   "19": {
     "n": "ehwaz",
     "r": "ᛖ",
     "p": "eh-waz",
     "t": "e",
-    "m": "horse"
+    "m": "horse",
+    "OE": "The horse is a joy to princes in the presence of warriors. A steed in the pride of its hoofs, when rich men on horseback bandy words about it; and it is ever a source of comfort to the restless."
   },
   "20": {
     "n": "mannaz",
     "r": "ᛗ",
     "p": "mah-naz",
     "t": "m",
-    "m": "man"
+    "m": "man",
+    "OE": "The joyous man is dear to his kinsmen; yet every man is doomed to fail his fellow, since the Lord by his decree will commit the vile carrion to the earth.",
+    "NO": "Man is an augmentation of the dust; great is the claw of the hawk.",
+    "IS": "Madr - Man: Delight of man and augmentation of the earth and adorner of ships."
   },
   "21": {
     "n": "laguz",
     "r": "ᛚ",
     "p": "lah-gooz",
     "t": "l",
-    "m": "water, lake or possibly leek"
+    "m": "water, lake or possibly leek",
+    "OE": "The ocean seems interminable to men, if they venture on the rolling bark and the waves of the sea terrify them and the courser of the deep heed not its bridle.",
+    "NO": "A waterfall is a River which falls from a mountain-side; but ornaments are of gold.",
+    "IS": "Lögr - Water: Eddying stream and broad geysir and land of the fish."
   },
   "22": {
     "n": "ingwaz",
     "r": "ᛜ",
     "p": "ing-waz",
     "t": "ŋ",
-    "m": "the god Ingwaz"
+    "m": "the god Ingwaz",
+    "OE": "Ing was first seen by men among the East-Danes, till, followed by his chariot, he departed eastwards over the waves. So the Heardingas named the hero."
   },
   "23": {
     "n": "dagaz",
     "r": "ᛞ",
     "p": "day-gahz",
     "t": "d",
-    "m": "day"
+    "m": "day",
+    "OE": "Day, the glorious light of the Creator, is sent by the Lord; it is beloved of men, a source of hope and happiness to rich and poor, and of service to all."
   },
   "24": {
     "n": "ōþala",
     "r": "ᛟ",
     "p": "oh-thee-lah",
     "t": "o",
-    "m": "heritage, estate, possession"
+    "m": "heritage, estate, possession",
+    "OE": "An estate is very dear to every man, if he can enjoy there in his house whatever is right and proper in constant prosperity."
   }
 }
