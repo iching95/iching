@@ -41,6 +41,13 @@
   text-align: center;
 }
 
+#tb-runepoem > div{
+  margin: 12px;
+}
+#tb-runepoem > div > div{
+  font-size: 8px;
+}
+
 #futhark-deck .tb1-info-hidden:last-of-type:after {
   content: '＊＊＊';
 }

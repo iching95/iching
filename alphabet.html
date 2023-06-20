@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css?65">
   <link rel="stylesheet" href="style-tarot.css?27">
-  <link rel="stylesheet" href="style-alphabet.css?10">
+  <link rel="stylesheet" href="style-alphabet.css?11">
   <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
   <script>
 
@@ -413,6 +413,9 @@
 
         const html = `
           <div>
+            <span>${runes[i].r}</span>
+          </div>
+          <div>
             <span>${runes[i].OE}</span>
           </div>
           <div>
@@ -424,7 +427,7 @@
         `;
 
         tbodyHTML += html;
-        
+
         tbodyHTML += ("</div>");
       }
       tbodyHTML += ("</div>");
