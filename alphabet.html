@@ -400,7 +400,7 @@
     }
 
     const genTbPoemContent = (_runes) => {
-
+      console.log(_runes)
       const runes = _runes;
 
       let tbodyHTML = "";
@@ -414,13 +414,13 @@
 
           const html = `
             <div>
-              <span>${runes[i.toString()].OE}</span>
+              <span>${runes[i].OE}</span>
             </div>
             <div>
-              <span>${runes[i.toString()].NO?runes[i.toString()].NO:"..."}</span>
+              <span>${runes[i].NO?runes[i].NO:"..."}</span>
             </div>
             <div>
-              <span>${runes[i.toString()].IS?runes[i.toString()].IS:"..."}</span>
+              <span>${runes[i].IS?runes[i].IS:"..."}</span>
             </div>
           `;
 
