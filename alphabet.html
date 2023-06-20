@@ -410,23 +410,21 @@
       let n = 0;
       for (let i=1;i<=24;i++){
         tbodyHTML += ("<div>");
-        for (let j=1;j<=3;j++,n++){
 
-          const html = `
-            <div>
-              <span>${runes[i].OE}</span>
-            </div>
-            <div>
-              <span>${runes[i].NO?runes[i].NO:"..."}</span>
-            </div>
-            <div>
-              <span>${runes[i].IS?runes[i].IS:"..."}</span>
-            </div>
-          `;
+        const html = `
+          <div>
+            <span>${runes[i].OE}</span>
+          </div>
+          <div>
+            <span>${runes[i].NO?runes[i].NO:"..."}</span>
+          </div>
+          <div>
+            <span>${runes[i].IS?runes[i].IS:"..."}</span>
+          </div>
+        `;
 
-          tbodyHTML += html;
-
-        }
+        tbodyHTML += html;
+        
         tbodyHTML += ("</div>");
       }
       tbodyHTML += ("</div>");
