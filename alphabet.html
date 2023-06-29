@@ -160,7 +160,7 @@
     */
 
     function tbFutharkScroll(n){
-      document.getElementById(`tb-futhark-${n}`).scrollIntoView();
+      document.getElementById(`tb-runepoem-${n}`).scrollIntoView();
     }
 
     const genTbDeckContent = (_rows) => {
@@ -415,7 +415,7 @@
       tbodyHTML += ("<div id='tb-runepoem'>");
       let n = 0;
       for (let i=1;i<=24;i++){
-        tbodyHTML += ("<div>");
+        tbodyHTML += `<div id='tb-runepoem-${n}' >`;
 
         const html = `
           <div>
