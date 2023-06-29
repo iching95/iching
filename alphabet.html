@@ -153,8 +153,14 @@
     let rand = null;
     let rows = null;
 
+    /*
     function tb1Scroll(n){
       document.getElementById(`symbol-tb1-${n}`).scrollIntoView();
+    }
+    */
+
+    function tbFutharkScroll(n){
+      document.getElementById(`tb-futhark-${n}`).scrollIntoView();
     }
 
     const genTbDeckContent = (_rows) => {
@@ -380,7 +386,7 @@
         for (let j=1;j<=8;j++,n++){
 
           const html = `
-            <div>
+            <div id='tb-futhark-${n}' onclick="tbFutharkScroll(${n})">
               <span>${futharkLetters[n]}</span>
             </div>
           `;
