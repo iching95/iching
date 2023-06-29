@@ -386,7 +386,7 @@
         for (let j=1;j<=8;j++,n++){
 
           const html = `
-            <div id='tb-futhark-${n}' onclick="tbFutharkScroll(${n})">
+            <div id='tb-futhark-${n}' onclick="tbFutharkScroll(${n+1})">
               <span>${futharkLetters[n]}</span>
             </div>
           `;
