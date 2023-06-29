@@ -153,11 +153,13 @@
     let rand = null;
     let rows = null;
 
-    /*
     function tb1Scroll(n){
       document.getElementById(`symbol-tb1-${n}`).scrollIntoView();
     }
-    */
+
+    function tbFutharkScroll(n){
+      document.getElementById(`tb-runepoem-${n}`).scrollIntoView();
+    }
 
     const genTbDeckContent = (_rows) => {
 
@@ -370,9 +372,6 @@
 
     }
 
-    function tbFutharkScroll(n){
-      document.getElementById(`tb-runepoem-${n}`).scrollIntoView();
-    }
 
     const genTbFutharkContent = () => {
 
