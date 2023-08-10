@@ -1,37 +1,35 @@
 <script>
     var url = "content";
-    var sign = [];
+    var dict = [];
     var loaded = 0
 
-    for(var i=1; i<=64;i++){
-      
-      var idx = i;
-
-      fetch(url+"/"+idx+'.txt')
+    fetch('data.txt')
       .then(response => response.text())
       .then((data) => {
-        
-        var content = data.split(/\r?\n/)
-        content.map((stmt,n) => {
-          
-          var line = "";
-          var linebreak = stmt.search('#np') > 0;
-          
-          stmt = stmt.replace("#np","");
+        rows = JSON.parse(data);
+        Object.keys(rows).forEach(key => {
+          fetch(url+"/"+idx+'.txt')
+          .then(response => response.text())
+          .then((data) => {
 
-        })
+            var content = data.split(/\r?\n/)
 
-        sign[idx] = content;
+            content.map((stmt,n) => {
+              var line = "";
+              var linebreak = stmt.search('#np') > 0;
+              stmt = stmt.replace("#np","");
+            })
 
-        if( ++loaded == 64){
-          for(var j=1; j<=64;j++){
-            document.write(sign[j])
-          }
-        }
+            dict[key] = content;
+            if( ++loaded == 64){
+              for(var j=1; j<=64;j++){
+                document.write(dict[j])
+              }
+            }
+          })
 
+        });
       })
 
-
-    }
 
 </script>
