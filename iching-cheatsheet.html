@@ -47,7 +47,7 @@
               }
               
               if(!match && n==0){
-                match = stmt.match(new RegExp(`^(${rows.c})`,"i"));
+                match = stmt.match(new RegExp(`^(${rows[key].c})`,"i"));
               }
 
               var prefix      = match?match[1]:"";
