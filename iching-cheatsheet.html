@@ -58,7 +58,18 @@
                   })
                 }
               }
-              out = out + stmt;
+
+              stmtContent.split('').forEach(function(char) {
+                if(!char.match(/[：。，！]/)){
+                  line = line + "<c>" + char + "</c>"
+                }else{
+                  line = line + "" + char + ""
+                }
+              });
+
+              line = prefix + "" + line + "";
+              
+              out = out + line;
               
             })
 
