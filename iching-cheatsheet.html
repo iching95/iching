@@ -50,7 +50,7 @@
                 match = stmt.match(new RegExp(`^(${rows[key].c})(.+)`,"i"));
               }
 
-              const symbol = String.fromCharCode(19904+(idx-1));
+              const symbol = String.fromCharCode(19904+(key-1));
               
               var prefix      = match?match[1]:"";
               var stmtContent = match?match[2]:stmt;
