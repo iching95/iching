@@ -45,6 +45,10 @@
               if(!match && n==0){
                 match = stmt.match(/^(.+)(：.+)/);
               }
+              
+              if(!match && n==0){
+                match = stmt.match(new RegExp(`^(${rows.c})`,"i"));
+              }
 
               var prefix      = match?match[1]:"";
               var stmtContent = match?match[2]:stmt;
