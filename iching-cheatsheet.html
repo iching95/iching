@@ -57,7 +57,7 @@
 
               if(match){
                 if(n==0){
-                  prefix = `<strong class='line-prefix' >${symbol}${rows[key].d}${prefix}</strong>`
+                  prefix = `<strong class='line-prefix-first' style="color:#8b0000">${symbol}${rows[key].d}${prefix}</strong>`
                 }else{
                   replaces.map((re,n)=>{
                   prefix = prefix.replace(new RegExp(`^(${re})`,"i"),`<strong class='line-prefix' class='markLine' id='line${n+1}' mark-data-id='line${n+1}'>$1</strong>`);
