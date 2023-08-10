@@ -40,10 +40,24 @@
               var linebreak = stmt.search('#np') > 0;
               stmt = stmt.replace("#np","");
 
-              replaces.map((re,n)=>{
-                stmt = stmt.replace(new RegExp(`<strong>(${re})`,"i"),`<strong id='line${n+1}'>$1`);
-              })
+              let match = stmt.match(new RegExp(`^([${lineOrderNum.pre}]?[${ninesix}][${lineOrderNum.post}]?)(.+)$`,""))
+            
+              if(!match && n==0){
+                match = stmt.match(/^(.+)(：.+)/);
+              }
 
+              var prefix      = match?match[1]:"";
+              var stmtContent = match?match[2]:stmt;
+
+              if(match){
+                if(n==0){
+                  prefix = `<strong class='line-prefix' >${prefix}</strong>`
+                }else{
+                  replaces.map((re,n)=>{
+                  prefix = prefix.replace(new RegExp(`^(${re})`,"i"),`<strong class='line-prefix' class='markLine' id='line${n+1}' mark-data-id='line${n+1}'>$1</strong>`);
+                  })
+                }
+              }
               out = out + stmt;
               
             })
