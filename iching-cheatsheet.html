@@ -2,6 +2,13 @@
     var url = "content";
     var dict = [];
     var loaded = 0
+    
+    const lineOrderNum = {
+      pre:"初上用",
+      post:"二三四五"
+    };
+
+    const ninesix = "九六";
 
     const replaces = Array(`${lineOrderNum.pre[0]}[${ninesix}]`,
     `[${ninesix}]${lineOrderNum.post[0]}`,
