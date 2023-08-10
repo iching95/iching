@@ -8,7 +8,7 @@
       .then((data) => {
         rows = JSON.parse(data);
         Object.keys(rows).forEach(key => {
-          fetch(url+"/"+idx+'.txt')
+          fetch(url+"/"+key+'.txt')
           .then(response => response.text())
           .then((data) => {
 
