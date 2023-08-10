@@ -50,12 +50,14 @@
                 match = stmt.match(new RegExp(`^(${rows[key].c})(.+)`,"i"));
               }
 
+              const symbol = String.fromCharCode(19904+(idx-1));
+              
               var prefix      = match?match[1]:"";
               var stmtContent = match?match[2]:stmt;
 
               if(match){
                 if(n==0){
-                  prefix = `<strong class='line-prefix' >${prefix}</strong>`
+                  prefix = `<strong class='line-prefix' >${symbol}${prefix}</strong>`
                 }else{
                   replaces.map((re,n)=>{
                   prefix = prefix.replace(new RegExp(`^(${re})`,"i"),`<strong class='line-prefix' class='markLine' id='line${n+1}' mark-data-id='line${n+1}'>$1</strong>`);
