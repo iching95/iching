@@ -117,9 +117,17 @@
                   line = "／" +line
                 }
 
+                if(n == 1){
+                  line  = replaceIfMatch(line, rows[key].c, "～");  
+                }
+
                 if(n == 2){
                   line = "／" +line
                 }
+                if(n == 2){
+                  line  = replaceFirstOccurrence(line, rows[key].c, "～");  
+                }
+                
               }
 
 
