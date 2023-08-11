@@ -95,16 +95,20 @@
                 */
               });
 
-              if(n >= 3 && (n % 2 == 0)){
-                line = replaceToken(content[n-1], line, "～")
-              }
+              const skip = false
 
-              if(n == 1){
-                line  = replaceIfMatch(line, rows[key].c, "⬤");  
-              }
+              if(skip){
+                if(n >= 3 && (n % 2 == 0)){
+                  line = replaceToken(content[n-1], line, "～")
+                }
 
-              if(n == 2){
-                line  = replaceFirstOccurrence(line, rows[key].c, "⬤");  
+                if(n == 1){
+                  line  = replaceIfMatch(line, rows[key].c, "⬤");  
+                }
+
+                if(n == 2){
+                  line  = replaceFirstOccurrence(line, rows[key].c, "⬤");  
+                }
               }
 
               line = ((key>1 && n==0)?"<br>":"")+prefix + "" + line + "";
