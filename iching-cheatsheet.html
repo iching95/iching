@@ -1,6 +1,8 @@
 <script>
 
-      let replaceIfMatch = (str, seq, replacement) => str.startsWith(seq) ? replacement + str.slice(seq.length) : str;    function replaceToken(firstInput, secondInput, replacement) {
+      let replaceIfMatch = (str, seq, replacement) => str.startsWith(seq) ? replacement + str.slice(seq.length) : str;   
+      
+      function replaceToken(firstInput, secondInput, replacement) {
       // Extract the token right after "："
 
      if (!firstInput.includes("：")) {
