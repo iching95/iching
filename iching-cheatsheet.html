@@ -79,9 +79,9 @@
               if(match){
                 if( n==0 ){
                   if(headers.includes(prefix)){
-                    prefix = `<br><strong class='line-prefix-header' style="color:#8b0000;font-size:14px">${symbol}${rows[key].d.length==1?"":(rows[key].d+" ")}${prefix}</strong>`
+                    prefix = `<br><strong class='line-prefix-header' style="color:#8b0000;font-size:14pt">${symbol}${rows[key].d.length==1?"":(rows[key].d+" ")}${prefix}</strong>`
                   }else{
-                    prefix = `<strong class='line-prefix-first' style="color:#8b0000;font-size:8.5px'">${symbol}${rows[key].d.length==1?"":(rows[key].d+"　")}${prefix}</strong>`
+                    prefix = `<strong class='line-prefix-first' style="color:#8b0000;font-size:8.5pt'">${symbol}${rows[key].d.length==1?"":(rows[key].d+"　")}${prefix}</strong>`
                   }
                 }else{
                   replaces.map((re,n)=>{
@@ -138,7 +138,7 @@
 
               line = ((key>1 && n==0)?"<br>":"")+prefix + "" + line + "";
               
-              out = out + `<span style='font-size:8.5px'>${line}</span>`;
+              out = out + `<span style='font-size:8.5pt'>${line}</span>`;
               
             })
 
