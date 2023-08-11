@@ -96,11 +96,13 @@
               });
 
               const skip = false
+              const intro = true
+
+              if(n >= 3 && (n % 2 == 0)){
+                  line = replaceToken(content[n-1], line, "～")
+              }
 
               if(skip){
-                if(n >= 3 && (n % 2 == 0)){
-                  line = replaceToken(content[n-1], line, "～")
-                }
 
                 if(n == 1){
                   line  = replaceIfMatch(line, rows[key].c, "⬤");  
@@ -110,6 +112,19 @@
                   line  = replaceFirstOccurrence(line, rows[key].c, "⬤");  
                 }
               }
+
+              if(skip){
+
+                if(n == 1){
+                  line = "／" +line
+                }
+
+                if(n == 2){
+                  line = "／" +line
+                }
+              }
+
+
 
               line = ((key>1 && n==0)?"<br>":"")+prefix + "" + line + "";
               
