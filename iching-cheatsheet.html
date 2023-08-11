@@ -5,6 +5,17 @@
   
 </style>
 <script>
+
+    function replaceToken(firstInput, secondInput, replacement) {
+      // Extract the token right after "："
+      const targetToken = firstInput.split("：")[1].split(/[,，]/)[0].trim();
+
+      // Replace this token in the second input
+      const replacedSecondInput = secondInput.replace(targetToken, replacement);
+
+      return replacedSecondInput;
+    }
+
     var url = "content";
     var dict = [];
     var loaded = 0
@@ -81,6 +92,10 @@
                 }
                 */
               });
+
+              if(n > 1 && (n % 2 == 1)){
+                line = replaceToken(content[n-1], line, "---")
+              }
 
               line = ((key>1 && n==0)?"<br>":"")+prefix + "" + line + "";
               
