@@ -8,6 +8,10 @@
 
     function replaceToken(firstInput, secondInput, replacement) {
       // Extract the token right after "："
+
+     if (!firstInput.includes("：")) {
+      return secondInput;
+     }      
       const targetToken = firstInput.split("：")[1].split(/[,。、，]/)[0].trim();
 
       // Replace this token in the second input
