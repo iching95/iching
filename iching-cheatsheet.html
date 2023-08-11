@@ -1,6 +1,7 @@
 <script>
 
       let replaceIfMatch = (str, seq, replacement) => str.startsWith(seq) ? replacement + str.slice(seq.length) : str;   
+      let replaceFirstOccurrence = (str, seq, replacement) => str.replace(seq, replacement);
       
       function replaceToken(firstInput, secondInput, replacement) {
       // Extract the token right after "："
@@ -99,11 +100,11 @@
               }
 
               if(n == 1){
-                line  = replaceIfMatch(line, rows[key].c, "⭘");  
+                line  = replaceIfMatch(line, rows[key].c, "⬤");  
               }
 
               if(n == 2){
-                line  = replaceIfMatch(line, rows[key].c, "⭗");  
+                line  = replaceFirstOccurrence(line, rows[key].c, "⭗");  
               }
 
               line = ((key>1 && n==0)?"<br>":"")+prefix + "" + line + "";
