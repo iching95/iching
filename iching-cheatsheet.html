@@ -2,7 +2,9 @@
 
       let replaceIfMatch = (str, seq, replacement) => str.startsWith(seq) ? replacement + str.slice(seq.length) : str;   
       let replaceFirstOccurrence = (str, seq, replacement) => str.replace(seq, replacement);
-      
+
+      const headers = "乾 比 同人 蠱 剝 大過 咸 晉 蹇 升 艮 兌 小過".split(" ");
+
       function replaceToken(firstInput, secondInput, replacement) {
       // Extract the token right after "："
 
@@ -76,7 +78,11 @@
 
               if(match){
                 if( n==0 ){
-                  prefix = `<strong class='line-prefix-first' style="color:#8b0000">${symbol}${rows[key].d.length==1?"":(rows[key].d+"　")}${prefix}</strong>`
+                  if(headers.includes(prefix)){
+                    prefix = `<br><strong class='line-prefix-header' style="color:#8b0000;font-size:14px'">${symbol}${rows[key].d.length==1?"":(rows[key].d+"　")}${prefix}</strong>`
+                  }else{
+                    prefix = `<strong class='line-prefix-first' style="color:#8b0000;font-size:8.5px'">${symbol}${rows[key].d.length==1?"":(rows[key].d+"　")}${prefix}</strong>`
+                  }
                 }else{
                   replaces.map((re,n)=>{
                   prefix = prefix.replace(new RegExp(`^(${re})`,"i"),`<strong class='line-prefix' class='markLine' id='line${n+1}' mark-data-id='line${n+1}'>$1</strong>`);
@@ -132,7 +138,7 @@
 
               line = ((key>1 && n==0)?"<br>":"")+prefix + "" + line + "";
               
-              out = out + line;
+              out = out + `<span style='font-size:8.5px'>${line}</span>`;
               
             })
 
