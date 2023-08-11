@@ -81,7 +81,7 @@
                   if(headers.includes(prefix)){
                     prefix = `<br><strong class='line-prefix-header' style="color:#8b0000;font-size:14pt">${symbol}${rows[key].d.length==1?"":(rows[key].d+" ")}${prefix}</strong>`
                   }else{
-                    prefix = `<strong class='line-prefix-first' style="color:#8b0000;font-size:8.5pt'">${symbol}${rows[key].d.length==1?"":(rows[key].d+"　")}${prefix}</strong>`
+                    prefix = `<span style="font-size:4pt'><br></span><strong class='line-prefix-first' style="color:#8b0000;font-size:8.5pt'">${symbol}${rows[key].d.length==1?"":(rows[key].d+"　")}${prefix}</strong>`
                   }
                 }else{
                   replaces.map((re,n)=>{
