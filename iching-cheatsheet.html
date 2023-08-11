@@ -1,7 +1,6 @@
 <script>
 
-    let replaceIfMatch = (str, char, replacement) => str.startsWith(char) ? replacement + str.slice(1) : str;
-    function replaceToken(firstInput, secondInput, replacement) {
+      let replaceIfMatch = (str, seq, replacement) => str.startsWith(seq) ? replacement + str.slice(seq.length) : str;    function replaceToken(firstInput, secondInput, replacement) {
       // Extract the token right after "："
 
      if (!firstInput.includes("：")) {
@@ -94,7 +93,7 @@
               });
 
               if(n >= 3 && (n % 2 == 0)){
-                line = replaceToken(content[n-1], line, "〜")
+                line = replaceToken(content[n-1], line, "～")
               }
 
               if(n == 1){
