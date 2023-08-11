@@ -1,7 +1,6 @@
-
-
 <script>
 
+    let replaceIfMatch = (str, char, replacement) => str.startsWith(char) ? replacement + str.slice(1) : str;
     function replaceToken(firstInput, secondInput, replacement) {
       // Extract the token right after "："
 
@@ -95,8 +94,15 @@
               });
 
               if(n >= 3 && (n % 2 == 0)){
-                console.log(content[n-1])
-                line = replaceToken(content[n-1], line, "～")
+                line = replaceToken(content[n-1], line, "〜")
+              }
+
+              if(n == 1){
+                line  = replaceIfMatch(line, rows[key].c, "〜");  
+              }
+
+              if(n == 2){
+                line  = replaceIfMatch(line, rows[key].c, "〰");  
               }
 
               line = ((key>1 && n==0)?"<br>":"")+prefix + "" + line + "";
@@ -127,3 +133,4 @@
     font-size: 8.5px;
   }
   </style>
+  <body/>
