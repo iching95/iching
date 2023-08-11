@@ -113,12 +113,13 @@
                 }
               }else{
 
-                if(n == 1){
-                  line = "／" +line
-                }
 
                 if(n == 1){
                   line  = replaceIfMatch(line, rows[key].c, "～");  
+                }
+
+                if(n == 1){
+                  line = "／" +line
                 }
 
                 if(n == 2){
