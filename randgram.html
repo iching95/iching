@@ -82,71 +82,8 @@
 
     const BASE_URL = "https://ctext.org/book-of-changes/";
 
-    const hexagrams = {
-        "000000": { n: 02, p: "kun", s: "䷁" },
-        "100001": { n: 27, p: "yi", s: "䷚" },
-        "010001": { n: 03, p: "zhun", s: "䷂" },
-        "110001": { n: 42, p: "yi", s: "䷩" },
-        "001001": { n: 51, p: "zhen", s: "䷲" },
-        "101001": { n: 21, p: "shi-ke", s: "䷔" },
-        "011001": { n: 17, p: "sui", s: "䷐" },
-        "111001": { n: 25, p: "wu-wang", s: "䷘" },
-        "000101": { n: 36, p: "ming-yi", s: "䷣" },
-        "100101": { n: 22, p: "bi", s: "䷕" },
-        "010101": { n: 63, p: "ji-ji", s: "䷾" },
-        "110101": { n: 37, p: "jia-ren", s: "䷤" },
-        "001101": { n: 55, p: "feng", s: "䷶" },
-        "101101": { n: 30, p: "li", s: "䷝" },
-        "011101": { n: 49, p: "ge", s: "䷰" },
-        "111101": { n: 13, p: "tong-ren", s: "䷌" },
-        "000011": { n: 19, p: "lin", s: "䷒" },
-        "100011": { n: 41, p: "sun", s: "䷨" },
-        "010011": { n: 60, p: "jie", s: "䷻" },
-        "110011": { n: 61, p: "zhong-fu", s: "䷼" },
-        "001011": { n: 54, p: "gui-mei", s: "䷵" },
-        "101011": { n: 38, p: "kui", s: "䷥" },
-        "011011": { n: 58, p: "joyful", s: "䷹" },
-        "111011": { n: 10, p: "lu", s: "䷉" },
-        "000111": { n: 11, p: "tai", s: "䷊" },
-        "100111": { n: 26, p: "da-chu", s: "䷙" },
-        "010111": { n: 05, p: "xu", s: "䷄" },
-        "110111": { n: 09, p: "xiao-chu", s: "䷈" },
-        "001111": { n: 34, p: "da-zhuang", s: "䷡" },
-        "101111": { n: 14, p: "da-you", s: "䷍" },
-        "011111": { n: 43, p: "guai", s: "䷪" },
-        "111111": { n: 01, p: "qian", s: "䷀" },
-        "111110": { n: 44, p: "gou", s: "䷫" },
-        "011110": { n: 28, p: "da-guo", s: "䷛" },
-        "101110": { n: 50, p: "ding", s: "䷱" },
-        "001110": { n: 32, p: "heng", s: "䷟" },
-        "110110": { n: 57, p: "xun", s: "䷸" },
-        "010110": { n: 48, p: "jing", s: "䷯" },
-        "100110": { n: 18, p: "gu", s: "䷑" },
-        "000110": { n: 46, p: "sheng", s: "䷭" },
-        "111010": { n: 06, p: "song", s: "䷅" },
-        "011010": { n: 47, p: "kun", s: "䷮" },
-        "101010": { n: 64, p: "wei-ji", s: "䷿" },
-        "001010": { n: 40, p: "xie", s: "䷧" },
-        "110010": { n: 59, p: "huan", s: "䷺" },
-        "010010": { n: 29, p: "kan", s: "䷜" },
-        "100010": { n: 04, p: "meng", s: "䷃" },
-        "000010": { n: 07, p: "shi", s: "䷆" },
-        "111100": { n: 33, p: "dun", s: "䷠" },
-        "011100": { n: 31, p: "xian", s: "䷞" },
-        "101100": { n: 56, p: "lv", s: "䷷" },
-        "001100": { n: 62, p: "xiao-guo", s: "䷽" },
-        "110100": { n: 53, p: "jian", s: "䷴" },
-        "010100": { n: 39, p: "gu", s: "䷦" },
-        "100100": { n: 52, p: "gen", s: "䷳" },
-        "000100": { n: 15, p: "qian", s: "䷎" },
-        "111000": { n: 12, p: "pi", s: "䷋" },
-        "011000": { n: 45, p: "cui", s: "䷬" },
-        "101000": { n: 35, p: "jin", s: "䷢" },
-        "001000": { n: 16, p: "yu", s: "䷏" },
-        "110000": { n: 20, p: "guan", s: "䷓" },
-        "010000": { n: 08, p: "bi", s: "䷇" },
-        "100000": { n: 23, p: "bo", s: "䷖" }
-    };
+    const hexagrams = { "000000":{ "n":2, "p":"kun", "s":"䷁", "u":"book-of-changes/kun/zh", "c":"坤" }, "100001":{ "n":27, "p":"yi", "s":"䷚", "u":"book-of-changes/yi/zh", "c":"頤" }, "010001":{ "n":3, "p":"zhun", "s":"䷂", "u":"book-of-changes/zhun/zh", "c":"屯" }, "110001":{ "n":42, "p":"yi", "s":"䷩", "u":"book-of-changes/yi1/zh", "c":"益" }, "001001":{ "n":51, "p":"zhen", "s":"䷲", "u":"book-of-changes/zhen/zh", "c":"震" }, "101001":{ "n":21, "p":"shi-ke", "s":"䷔", "u":"book-of-changes/shi-he/zh", "c":"噬嗑" }, "011001":{ "n":17, "p":"sui", "s":"䷐", "u":"book-of-changes/sui/zh", "c":"隨" }, "111001":{ "n":25, "p":"wu-wang", "s":"䷘", "u":"book-of-changes/wu-wang/zh", "c":"無妄" }, "000101":{ "n":36, "p":"ming-yi", "s":"䷣", "u":"book-of-changes/ming-yi/zh", "c":"明夷" }, "100101":{ "n":22, "p":"bi", "s":"䷕", "u":"book-of-changes/bi1/zh", "c":"賁" }, "010101":{ "n":63, "p":"ji-ji", "s":"䷾", "u":"book-of-changes/ji-ji/zh", "c":"既濟" }, "110101":{ "n":37, "p":"jia-ren", "s":"䷤", "u":"book-of-changes/jia-ren/zh", "c":"家人" }, "001101":{ "n":55, "p":"feng", "s":"䷶", "u":"book-of-changes/feng/zh", "c":"豐" }, "101101":{ "n":30, "p":"li", "s":"䷝", "u":"book-of-changes/li/zh", "c":"離" }, "011101":{ "n":49, "p":"ge", "s":"䷰", "u":"book-of-changes/ge/zh", "c":"革" }, "111101":{ "n":13, "p":"tong-ren", "s":"䷌", "u":"book-of-changes/tong-ren/zh", "c":"同人" }, "000011":{ "n":19, "p":"lin", "s":"䷒", "u":"book-of-changes/lin/zh", "c":"臨" }, "100011":{ "n":41, "p":"sun", "s":"䷨", "u":"book-of-changes/sun/zh", "c":"損" }, "010011":{ "n":60, "p":"jie", "s":"䷻", "u":"book-of-changes/jie/zh", "c":"解" }, "110011":{ "n":61, "p":"zhong-fu", "s":"䷼", "u":"book-of-changes/zhong-fu/zh", "c":"中孚" }, "001011":{ "n":54, "p":"gui-mei", "s":"䷵", "u":"book-of-changes/gui-mei/zh", "c":"歸妹" }, "101011":{ "n":38, "p":"kui", "s":"䷥", "u":"book-of-changes/kui/zh", "c":"睽" }, "011011":{ "n":58, "p":"joyful", "s":"䷹", "u":"book-of-changes/dui/zh", "c":"兌" }, "111011":{ "n":10, "p":"lu", "s":"䷉", "u":"book-of-changes/lu1/zh", "c":"旅" }, "000111":{ "n":11, "p":"tai", "s":"䷊", "u":"book-of-changes/tai/zh", "c":"泰" }, "100111":{ "n":26, "p":"da-chu", "s":"䷙", "u":"book-of-changes/da-xu/zh", "c":"大畜" }, "010111":{ "n":5, "p":"xu", "s":"䷄", "u":"book-of-changes/xu/zh", "c":"需" }, "110111":{ "n":9, "p":"xiao-chu", "s":"䷈", "u":"book-of-changes/xiao-xu/zh", "c":"小畜" }, "001111":{ "n":34, "p":"da-zhuang", "s":"䷡", "u":"book-of-changes/da-zhuang/zh", "c":"大壯" }, "101111":{ "n":14, "p":"da-you", "s":"䷍", "u":"book-of-changes/da-you/zh", "c":"大有" }, "011111":{ "n":43, "p":"guai", "s":"䷪", "u":"book-of-changes/guai/zh", "c":"夬" }, "111111":{ "n":1, "p":"qian", "s":"䷀", "u":"book-of-changes/qian1/zh", "c":"謙" }, "111110":{ "n":44, "p":"gou", "s":"䷫", "u":"book-of-changes/gou/zh", "c":"姤" }, "011110":{ "n":28, "p":"da-guo", "s":"䷛", "u":"book-of-changes/da-guo/zh", "c":"大過" }, "101110":{ "n":50, "p":"ding", "s":"䷱", "u":"book-of-changes/ding/zh", "c":"鼎" }, "001110":{ "n":32, "p":"heng", "s":"䷟", "u":"book-of-changes/heng/zh", "c":"恆" }, "110110":{ "n":57, "p":"xun", "s":"䷸", "u":"book-of-changes/xun/zh", "c":"巽" }, "010110":{ "n":48, "p":"jing", "s":"䷯", "u":"book-of-changes/jing/zh", "c":"井" }, "100110":{ "n":18, "p":"gu", "s":"䷑", "u":"book-of-changes/gu/zh", "c":"蠱" }, "000110":{ "n":46, "p":"sheng", "s":"䷭", "u":"book-of-changes/sheng/zh", "c":"升" }, "111010":{ "n":6, "p":"song", "s":"䷅", "u":"book-of-changes/song/zh", "c":"訟" }, "011010":{ "n":47, "p":"kun", "s":"䷮", "u":"book-of-changes/kun1/zh", "c":"困" }, "101010":{ "n":64, "p":"wei-ji", "s":"䷿", "u":"book-of-changes/wei-ji/zh", "c":"未濟" }, "001010":{ "n":40, "p":"xie", "s":"䷧", "u":"book-of-changes/xie/zh", "c":"解" }, "110010":{ "n":59, "p":"huan", "s":"䷺", "u":"book-of-changes/huan/zh", "c":"渙" }, "010010":{ "n":29, "p":"kan", "s":"䷜", "u":"book-of-changes/kan/zh", "c":"坎" }, "100010":{ "n":4, "p":"meng", "s":"䷃", "u":"book-of-changes/meng/zh", "c":"蒙" }, "000010":{ "n":7, "p":"shi", "s":"䷆", "u":"book-of-changes/shi/zh", "c":"師" }, "111100":{ "n":33, "p":"dun", "s":"䷠", "u":"book-of-changes/dun/zh", "c":"遯" }, "011100":{ "n":31, "p":"xian", "s":"䷞", "u":"book-of-changes/xian/zh", "c":"咸" }, "101100":{ "n":56, "p":"lv", "s":"䷷", "u":"book-of-changes/lu1/zh", "c":"旅" }, "001100":{ "n":62, "p":"xiao-guo", "s":"䷽", "u":"book-of-changes/xiao-guo/zh", "c":"小過" }, "110100":{ "n":53, "p":"jian", "s":"䷴", "u":"book-of-changes/jian1/zh", "c":"漸" }, "010100":{ "n":39, "p":"gu", "s":"䷦", "u":"book-of-changes/gu/zh", "c":"艮" }, "100100":{ "n":52, "p":"gen", "s":"䷳", "u":"book-of-changes/gen/zh", "c":"艮" }, "000100":{ "n":15, "p":"qian", "s":"䷎", "u":"book-of-changes/qian1/zh", "c":"謙" }, "111000":{ "n":12, "p":"pi", "s":"䷋", "u":"book-of-changes/pi/zh", "c":"否" }, "011000":{ "n":45, "p":"cui", "s":"䷬", "u":"book-of-changes/cui/zh", "c":"萃" }, "101000":{ "n":35, "p":"jin", "s":"䷢", "u":"book-of-changes/jin/zh", "c":"晉" }, "001000":{ "n":16, "p":"yu", "s":"䷏", "u":"book-of-changes/yu/zh", "c":"豫" }, "110000":{ "n":20, "p":"guan", "s":"䷓", "u":"book-of-changes/guan/zh", "c":"觀" }, "010000":{ "n":8, "p":"bi", "s":"䷇", "u":"book-of-changes/bi/zh", "c":"比" }, "100000":{ "n":23, "p":"bo", "s":"䷖", "u":"book-of-changes/bo/zh", "c":"剝" } }; 
+
     let sideA = [];
     let sideB = [];
     let backupSideA = [];
@@ -221,8 +158,8 @@
         console.log(binaryA);
         console.log(binaryB);
 
-        document.getElementById("hexagramNameA").innerHTML = `<a href="${hexagrams[binaryA].url}" target="_blank">${hexagrams[binaryA].p}</a>`;
-        document.getElementById("hexagramNameB").innerHTML = `<a href="${hexagrams[binaryB].url}" target="_blank">${hexagrams[binaryB].p}</a>`;
+        document.getElementById("hexagramNameA").innerHTML = `<a href="${BASE_URL}/${hexagrams[binaryA].u}" target="_blank">${hexagrams[binaryA].p}</a>`;
+        document.getElementById("hexagramNameB").innerHTML = `<a href="${BASE_URL}/${hexagrams[binaryB].u}" target="_blank">${hexagrams[binaryB].p}</a>`;
 
     }
 
