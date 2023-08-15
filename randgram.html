@@ -223,8 +223,9 @@
         console.log(binaryA);
         console.log(binaryB);
 
-        document.getElementById("hexagramNameA").innerHTML = `<a href="${hexagrams[binaryA].url}">${hexagrams[binaryA].name}</a>`;
-        document.getElementById("hexagramNameB").innerHTML = `<a href="${hexagrams[binaryB].url}">${hexagrams[binaryB].name}</a>`;
+        document.getElementById("hexagramNameA").innerHTML = `<a href="${hexagrams[binaryA].url}" target="_blank">${hexagrams[binaryA].name}</a>`;
+        document.getElementById("hexagramNameB").innerHTML = `<a href="${hexagrams[binaryB].url}" target="_blank">${hexagrams[binaryB].name}</a>`;
+        
     }
 
     function updateTable() {
