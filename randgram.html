@@ -86,6 +86,8 @@
         sideB = Array.from({ length: 6 }, generateRandomNumber);
         backupSideA = [...sideA];
         backupSideB = [...sideB];
+        document.getElementById("hexagramNameA").innerText = "";
+        document.getElementById("hexagramNameB").innerText = "";
         updateTable();
     }
 
