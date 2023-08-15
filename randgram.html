@@ -6,7 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Side A & B Generator</title>
     <style>
-        
+
+        .matrix {
+            position: relative;
+        }
+
+        .matrix:before, .matrix:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            border: 1px solid #000;
+            width: 6px;
+            height: 100%;
+        }
+        .matrix:before {
+            left: -6px;
+            border-right: 0px;
+        }
+        .matrix:after {
+            right: -6px;
+            border-left: 0px;
+        }
+        .matrix td {
+            padding: 5px;    
+            text-align: center;
+        }
+
         table {
             border-collapse: collapse;
             max-width: 400px;
@@ -40,7 +65,7 @@
 <button onclick="convertSides()">Convert Sides A & B (4>2, 1>3)</button>
 <button onclick="getHexagramNames()">Get Names</button>
 
-<table>
+<table class="matrix">
     <thead>
         <tr>
             <th>A</th>
