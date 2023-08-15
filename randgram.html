@@ -80,15 +80,74 @@
 
 <script>
 
-    const hexagrams = {"111111": "hin", "000000": "kun", "000001": "fuk", "100001": "ji", "010001": "jun", "110001": "jik", "001001": "jan", "101001": "sathak", "011001": "choi", "111001": "maumung", "000101": "mingji", "100101": "bei", "010101": "geijai", "110101": "gaajan", "001101": "fung", "101101": "lei", "011101": "gok", "111101": "tungjan", "000011": "lam", "100011": "sun", "010011": "kit", "110011": "jungfu", "001011": "guaimui", "101011": "kwaai", "011011": "doi", "111011": "loi", "000111": "toi", "100111": "daichuk", "010111": "sui", "110111": "siuchuk", "001111": "daizung", "101111": "daizau", "011111": "gwaai", "111110": "gau", "011110": "daigwo", "101110": "ding", "001110": "hang", "110110": "tin", "010110": "jeng", "100110": "gu", "000110": "sing", "111010": "jung", "011010": "kun", "101010": "meijai", "001010": "gaai", "110010": "fun", "010010": "ham", "100010": "mung", "000010": "si", "111100": "din", "011100": "ham", "101100": "loi", "001100": "siugwo", "110100": "jim", "010100": "gan", "100100": "gan", "000100": "him", "111000": "pui", "011000": "choi", "101000": "jun", "001000": "jyu", "110000": "kwan", "010000": "bei", "100000": "mok"};
+    const BASE_URL = "book-of-changes/";
 
-    function sideToHexagramName(side) {
-        const binary = side.map(num => {
-            if (num === 1 || num === 3) return '0';
-            else return '1';
-        }).join('');
-        return hexagrams[binary];
-    }
+    const hexagrams = {
+        "111111": {name: "qian", url: `${BASE_URL}qian/zh`},
+        "000000": {name: "kun", url: `${BASE_URL}kun/zh`},
+        "010001": {name: "zhun", url: `${BASE_URL}zhun/zh`},
+        "100001": {name: "meng", url: `${BASE_URL}meng/zh`},
+        "010101": {name: "xu", url: `${BASE_URL}xu/zh`},
+        "110101": {name: "song", url: `${BASE_URL}song/zh`},
+        "010010": {name: "shi", url: `${BASE_URL}shi/zh`},
+        "110010": {name: "bi", url: `${BASE_URL}bi/zh`},
+        "010011": {name: "xiao-xu", url: `${BASE_URL}xiao-xu/zh`},
+        "110011": {name: "lu", url: `${BASE_URL}lu/zh`},
+        "011001": {name: "tai", url: `${BASE_URL}tai/zh`},
+        "111001": {name: "pi", url: `${BASE_URL}pi/zh`},
+        "011101": {name: "tong-ren", url: `${BASE_URL}tong-ren/zh`},
+        "111101": {name: "da-you", url: `${BASE_URL}da-you/zh`},
+        "001101": {name: "qian1", url: `${BASE_URL}qian1/zh`},
+        "101101": {name: "yu", url: `${BASE_URL}yu/zh`},
+        "001111": {name: "sui", url: `${BASE_URL}sui/zh`},
+        "101111": {name: "gu", url: `${BASE_URL}gu/zh`},
+        "001011": {name: "lin", url: `${BASE_URL}lin/zh`},
+        "101011": {name: "guan", url: `${BASE_URL}guan/zh`},
+        "001001": {name: "shi-he", url: `${BASE_URL}shi-he/zh`},
+        "101001": {name: "bi1", url: `${BASE_URL}bi1/zh`},
+        "001110": {name: "bo", url: `${BASE_URL}bo/zh`},
+        "101110": {name: "fu", url: `${BASE_URL}fu/zh`},
+        "011110": {name: "wu-wang", url: `${BASE_URL}wu-wang/zh`},
+        "111110": {name: "da-xu", url: `${BASE_URL}da-xu/zh`},
+        "000101": {name: "yi", url: `${BASE_URL}yi/zh`},
+        "100101": {name: "da-guo", url: `${BASE_URL}da-guo/zh`},
+        "000111": {name: "kan", url: `${BASE_URL}kan/zh`},
+        "100111": {name: "li", url: `${BASE_URL}li/zh`},
+        "011011": {name: "xie", url: `${BASE_URL}xie/zh`},
+        "111011": {name: "heng", url: `${BASE_URL}heng/zh`},
+        "011010": {name: "du", url: `${BASE_URL}du/zh`},
+        "111010": {name: "da-zhuang", url: `${BASE_URL}da-zhuang/zh`},
+        "011000": {name: "jian", url: `${BASE_URL}jian/zh`},
+        "111000": {name: "kui", url: `${BASE_URL}kui/zh`},
+        "011111": {name: "jian1", url: `${BASE_URL}jian1/zh`},
+        "111111": {name: "mei", url: `${BASE_URL}mei/zh`},
+        "000010": {name: "feng", url: `${BASE_URL}feng/zh`},
+        "100010": {name: "lv", url: `${BASE_URL}lv/zh`},
+        "000011": {name: "dun", url: `${BASE_URL}dun/zh`},
+        "100011": {name: "cui", url: `${BASE_URL}cui/zh`},
+        "010100": {name: "guan1", url: `${BASE_URL}guan1/zh`},
+        "110100": {name: "jia-ren", url: `${BASE_URL}jia-ren/zh`},
+        "010110": {name: "kui1", url: `${BASE_URL}kui1/zh`},
+        "110110": {name: "zhong-fu", url: `${BASE_URL}zhong-fu/zh`},
+        "011100": {name: "xun", url: `${BASE_URL}xun/zh`},
+        "111100": {name: "dui", url: `${BASE_URL}dui/zh`},
+        "000001": {name: "huan", url: `${BASE_URL}huan/zh`},
+        "100001": {name: "ji-ji", url: `${BASE_URL}ji-ji/zh`},
+        "000100": {name: "wei-ji", url: `${BASE_URL}wei-ji/zh`},
+        "100100": {name: "ge", url: `${BASE_URL}ge/zh`},
+        "011101": {name: "kun1", url: `${BASE_URL}kun1/zh`},
+        "111101": {name: "jing", url: `${BASE_URL}jing/zh`},
+        "000110": {name: "ge1", url: `${BASE_URL}ge1/zh`},
+        "100110": {name: "ding", url: `${BASE_URL}ding/zh`},
+        "010000": {name: "zhen", url: `${BASE_URL}zhen/zh`},
+        "110000": {name: "gen", url: `${BASE_URL}gen/zh`},
+        "001000": {name: "kun2", url: `${BASE_URL}kun2/zh`},
+        "101000": {name: "ming-yi", url: `${BASE_URL}ming-yi/zh`},
+        "001010": {name: "jin", url: `${BASE_URL}jin/zh`},
+        "101010": {name: "ming-xi", url: `${BASE_URL}ming-xi/zh`},
+        "001100": {name: "jie", url: `${BASE_URL}jie/zh`},
+        "101100": {name: "sun", url: `${BASE_URL}sun/zh`},
+    };
 
     let sideA = [];
     let sideB = [];
@@ -164,12 +223,14 @@
         console.log(binaryA);
         console.log(binaryB);
 
-        document.getElementById("hexagramNameA").innerText = hexagrams[binaryA];
-        document.getElementById("hexagramNameB").innerText = hexagrams[binaryB];
+        document.getElementById("hexagramNameA").innerText = hexagrams[binaryA].name;
+        document.getElementById("hexagramNameB").innerText = hexagrams[binaryB].name;
     }
 
     function updateTable() {
+
         let tableRows = "";
+
         for (let i = 0; i < 6; i++) {
             let sideAColor = (sideA[i] !== backupSideA[i]) ? 'red' : 'black';
             let sideBColor = (sideB[i] !== backupSideB[i]) ? 'red' : 'black';
@@ -185,6 +246,7 @@
 
         document.getElementById("tableBody").innerHTML = tableRows;
     }
+
 </script>
 
 </body>
