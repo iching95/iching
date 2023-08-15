@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side A & B Generator</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 20px;
+            width: 200px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th, td {
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+<button onclick="generateTable()">Generate Initial Side A & B</button>
+<button onclick="applyRule3()">Apply Rule 3</button>
+<button onclick="applyRule4a()">Apply Rule 4a</button>
+<button onclick="applyRule4b()">Apply Rule 4b</button>
+<button onclick="convertSides()">Convert Sides A & B (4>2, 1>3)</button>
+<button onclick="getHexagramNames()">Get Names</button>
+
+<table>
+    <thead>
+        <tr>
+            <th>Side A</th>
+            <th>Side B</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+    </tbody>
+    <tfoot>
+        <tr>
+            <td id="hexagramNameA"></td>
+            <td id="hexagramNameB"></td>
+        </tr>
+    </tfoot>
+</table>
+
+<script>
+
+    const hexagrams = {"111111": "hin", "000000": "kun", "000001": "fuk", "100001": "ji", "010001": "jun", "110001": "jik", "001001": "jan", "101001": "sathak", "011001": "choi", "111001": "maumung", "000101": "mingji", "100101": "bei", "010101": "geijai", "110101": "gaajan", "001101": "fung", "101101": "lei", "011101": "gok", "111101": "tungjan", "000011": "lam", "100011": "sun", "010011": "kit", "110011": "jungfu", "001011": "guaimui", "101011": "kwaai", "011011": "doi", "111011": "loi", "000111": "toi", "100111": "daichuk", "010111": "sui", "110111": "siuchuk", "001111": "daizung", "101111": "daizau", "011111": "gwaai", "111110": "gau", "011110": "daigwo", "101110": "ding", "001110": "hang", "110110": "tin", "010110": "jeng", "100110": "gu", "000110": "sing", "111010": "jung", "011010": "kun", "101010": "meijai", "001010": "gaai", "110010": "fun", "010010": "ham", "100010": "mung", "000010": "si", "111100": "din", "011100": "ham", "101100": "loi", "001100": "siugwo", "110100": "jim", "010100": "gan", "100100": "gan", "000100": "him", "111000": "pui", "011000": "choi", "101000": "jun", "001000": "jyu", "110000": "kwan", "010000": "bei", "100000": "mok"};
+
+    function sideToHexagramName(side) {
+        const binary = side.map(num => {
+            if (num === 1 || num === 3) return '0';
+            else return '1';
+        }).join('');
+        return hexagrams[binary];
+    }
+
+    let sideA = [];
+    let sideB = [];
+    let backupSideA = [];
+    let backupSideB = [];
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const showCircles = urlParams.get('c') === '1';
+
+    function generateRandomNumber() {
+        return Math.floor(Math.random() * 4) + 1;
+    }
+
+    function numberToCircles(num) {
+        if (!showCircles) return num;
+
+        const circle = "⭗";
+        return circle.repeat(num);
+    }
+
+    function generateTable() {
+        sideA = Array.from({ length: 6 }, generateRandomNumber);
+        sideB = Array.from({ length: 6 }, generateRandomNumber);
+        backupSideA = [...sideA];
+        backupSideB = [...sideB];
+        updateTable();
+    }
+
+    function applyRule3() {
+        for (let i = 0; i < 6; i++) {
+            if (sideA[i] === 2 || sideA[i] === 3) {
+                sideB[i] = sideA[i];
+            }
+        }
+        updateTable();
+    }
+
+    function applyRule4a() {
+        for (let i = 0; i < 6; i++) {
+            if (sideA[i] === 1 && (sideB[i] === 2 || sideB[i] === 4)) {
+                sideB[i] = 2;
+            }
+        }
+        updateTable();
+    }
+
+    function applyRule4b() {
+        for (let i = 0; i < 6; i++) {
+            if (sideA[i] === 4 && (sideB[i] === 1 || sideB[i] === 3)) {
+                sideB[i] = 3;
+            }
+        }
+        updateTable();
+    }
+
+    function convertSides() {
+        for (let i = 0; i < 6; i++) {
+            if (sideA[i] === 4) sideA[i] = 2;
+            if (sideA[i] === 1) sideA[i] = 3;
+            if (sideB[i] === 4) sideB[i] = 2;
+            if (sideB[i] === 1) sideB[i] = 3;
+        }
+        updateTable();
+    }
+
+    function getHexagramNames() {
+
+      let binaryA = sideA.map(x => (x === 2 || x === 4) ? '0' : '1').join('');
+      let binaryB = sideB.map(x => (x === 2 || x === 4) ? '0' : '1').join('');
+
+        console.log(binaryA);
+        console.log(binaryB);
+
+        document.getElementById("hexagramNameA").innerText = hexagrams[binaryA];
+        document.getElementById("hexagramNameB").innerText = hexagrams[binaryB];
+    }
+
+    function updateTable() {
+        let tableRows = "";
+        for (let i = 0; i < 6; i++) {
+            let sideAColor = (sideA[i] !== backupSideA[i]) ? 'red' : 'black';
+            let sideBColor = (sideB[i] !== backupSideB[i]) ? 'red' : 'black';
+
+            tableRows += `<tr>
+                <td style="color:${sideAColor}">${numberToCircles(sideA[i])}</td>
+                <td style="color:${sideBColor}">${numberToCircles(sideB[i])}</td>
+            </tr>`;
+        }
+
+        backupSideA = [...sideA];
+        backupSideB = [...sideB];
+
+        document.getElementById("tableBody").innerHTML = tableRows;
+    }
+</script>
+
+</body>
+
+</html>
