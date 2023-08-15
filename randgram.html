@@ -9,6 +9,7 @@
 
         .matrix {
             position: relative;
+            margin-left:20px;
         }
 
         .matrix:before, .matrix:after {
@@ -36,7 +37,6 @@
             border-collapse: collapse;
             max-width: 400px;
         }
-
         table, th, td {
             text-align: center;
         }
@@ -66,20 +66,14 @@
 <button onclick="getHexagramNames()">Get Names</button>
 
 <table class="matrix">
-    <thead>
-        <tr>
-            <th>A</th>
-            <th>B</th>
-        </tr>
-    </thead>
     <tbody id="tableBody">
     </tbody>
-    <tfoot>
-        <tr>
-            <td id="hexagramNameA"></td>
-            <td id="hexagramNameB"></td>
-        </tr>
-    </tfoot>
+</table>
+<table>
+    <tr>
+        <td id="hexagramNameA"></td>
+        <td id="hexagramNameB"></td>
+    </tr>
 </table>
 
 <script>
