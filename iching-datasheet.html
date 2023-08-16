@@ -10,22 +10,28 @@
       {"t": "悔", "s": -1},
       {"t": "吝", "s": -1},
       {"t": "厲", "s": -2},
-      {"t": "无咎", "s": -0.5},
       {"t": "眚", "s": -2},
       {"t": "无攸利", "s": -1},
       {"t": "利貞", "s": 2},
-      {"t": "无不利", "s": 1}
+      {"t": "无不利", "s": 1},
+      {"t": "无咎", "s": -0.5}
     ]
 
     function sumScoreFromTokens(inputString, tokenArray) {
 
       let sum = 0;
-      for (let token of tokenArray) {
+      for (let i = 0; i < tokenArray.length; i++) {
+        let token = tokenArray[i];
         if (inputString.includes(token.t)) {
           sum += token.s;
+          if(i==tokenArray.length-1){
+            sum = token.s;
+          }
         }
       }
+      
       return sum;
+
     }
 
     function replaceToken(firstInput, secondInput, replacement) {
