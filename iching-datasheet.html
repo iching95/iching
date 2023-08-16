@@ -5,31 +5,26 @@
 
     const headers = "乾 比 同人 蠱 剝 大過 咸 晉 蹇 升 艮 兌 小過".split(" ");
     const tokens = [
-      {"t": "吉", "s": 0},
-      {"t": "凶", "s": 0},
-      {"t": "悔", "s": 0},
-      {"t": "吝", "s": 0},
-      {"t": "厲", "s": 0},
-      {"t": "无咎", "s": 0},
-      {"t": "眚", "s": 0},
-      {"t": "无攸利", "s": 0},
-      {"t": "利貞", "s": 0},
-      {"t": "无不利", "s": 0}
+      {"t": "吉", "s": 2},
+      {"t": "凶", "s": -2},
+      {"t": "悔", "s": -1},
+      {"t": "吝", "s": -1},
+      {"t": "厲", "s": -2},
+      {"t": "无咎", "s": -0.5},
+      {"t": "眚", "s": -2},
+      {"t": "无攸利", "s": -1},
+      {"t": "利貞", "s": 2},
+      {"t": "无不利", "s": 1}
     ]
 
     function sumScoreFromTokens(inputString, tokenArray) {
 
       let sum = 0;
-      console.log(inputString)
       for (let token of tokenArray) {
-        console.log(token)
         if (inputString.includes(token.t)) {
           sum += token.s;
-          console.log(sum)
         }
       }
-      console.log("sum")
-      console.log(sum)
       return sum;
     }
 
