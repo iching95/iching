@@ -112,7 +112,7 @@
             var out = ""
             content.map((stmt,n) => {
 
-              if(n >= 7){
+              if(n >= 17){
                 return;
               }
               
@@ -176,6 +176,7 @@
               
               const sen = sumScoreFromTokens(line,tokens);
               const pos = (n-3)/2+1;
+
               out = out + `<tr>
                   <td>${k++}</td>
                   <td>${key}</td>
