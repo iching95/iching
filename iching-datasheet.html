@@ -17,6 +17,18 @@
       {"t": "无不利", "s": 0}
     ]
 
+    function sumScoreFromTokens(inputString, tokenArray) {
+
+      let sum = 0;
+
+      for (let token of tokenArray) {
+        if (inputString.includes(token.t)) {
+          sum += token.s;
+        }
+      }
+
+      return sum;
+    }
 
     function replaceToken(firstInput, secondInput, replacement) {
       // Extract the token right after "："
@@ -145,6 +157,7 @@
                   <td>${key}</td>
                   <td>${(n-3)/2+1}</td>
                   <td>${line.replace("：","")}</td>
+                  <td>${sumScoreFromTokens(line,tokens)}</td>
                   ${tkCnt.map(count=>`<td>${count}</td>`)}
                 </tr>
                 `;
@@ -161,6 +174,7 @@
                   <th>N</th>
                   <th>M</th>
                   <th>T</th>
+                  <th>S</th>
                   ${tokens.map(token=>`<td>${token.t}</td>`)}
                 </tr>
                 `)
