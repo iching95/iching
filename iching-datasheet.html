@@ -163,7 +163,7 @@
               let tkCnt = "";
               countOccurrences(line,tokens).map( count=> tkCnt += `<td>${count}</td>` );
 
-              const bin = findHexagramByCValue(rows[key].c);
+              const bin = findKeyByCValue(rows[key].c);
               
               const sen = sumScoreFromTokens(line,tokens);
 
