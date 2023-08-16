@@ -112,9 +112,6 @@
               
               
               out = out + `<tr>
-                  <td>${k++}</td>
-                  <td>${key}</td>
-                  <td>${(n-3)/2+1}</td>
                   <td>${line.replace("：","")}</td>
                 </tr>
                 `;
@@ -126,9 +123,6 @@
             if( ++loaded == 64){
               document.write(`<table>
                 <tr>
-                  <th>K</th>
-                  <th>N</th>
-                  <th>M</th>
                   <th>T</th>
                 </tr>
                 `)
