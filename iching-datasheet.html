@@ -1,0 +1,135 @@
+<script>
+
+      let replaceIfMatch = (str, seq, replacement) => str.startsWith(seq) ? replacement + str.slice(seq.length) : str;   
+      let replaceFirstOccurrence = (str, seq, replacement) => str.replace(seq, replacement);
+
+      const headers = "乾 比 同人 蠱 剝 大過 咸 晉 蹇 升 艮 兌 小過".split(" ");
+
+      function replaceToken(firstInput, secondInput, replacement) {
+      // Extract the token right after "："
+
+     if (!firstInput.includes("：")) {
+      console.log(firstInput)
+      return secondInput;
+     }      
+      const targetToken = firstInput.split("：")[1].split(/[,。、，]/)[0].trim();
+
+      // Replace this token in the second input
+      const replacedSecondInput = secondInput.replace(targetToken, replacement);
+
+      return replacedSecondInput;
+    }
+
+    var url = "content";
+    var dict = [];
+    var loaded = 0
+    
+    const lineOrderNum = {
+      pre:"初上用",
+      post:"二三四五"
+    };
+
+    const ninesix = "九六";
+
+    const replaces = Array(`${lineOrderNum.pre[0]}[${ninesix}]`,
+    `[${ninesix}]${lineOrderNum.post[0]}`,
+    `[${ninesix}]${lineOrderNum.post[1]}`,
+    `[${ninesix}]${lineOrderNum.post[2]}`,
+    `[${ninesix}]${lineOrderNum.post[3]}`,
+    `${lineOrderNum.pre[1]}[${ninesix}]`,
+    `${lineOrderNum.pre[2]}[${ninesix}]`);
+
+
+    fetch('data.txt')
+      .then(response => response.text())
+      .then((data) => {
+        rows = JSON.parse(data);
+        Object.keys(rows).forEach(key => {
+          fetch(url+"/"+key+'.txt')
+          .then(response => response.text())
+          .then((data) => {
+
+            var content = data.split(/\r?\n/)
+            var out = ""
+            content.map((stmt,n) => {
+
+              if((key == 1 || key == 2) && n >= 17){
+                return;
+              }
+
+              var line = "";
+              var linebreak = stmt.search('#np') > 0;
+              stmt = stmt.replace("#np","　");
+
+              let match = stmt.match(new RegExp(`^([${lineOrderNum.pre}]?[${ninesix}][${lineOrderNum.post}]?)(.+)$`,""))
+            
+              if(!match && n==0){
+                match = stmt.match(/^(.+)(：.+)/);
+              }
+              
+              if(!match && n==0){
+                match = stmt.match(new RegExp(`^(${rows[key].c})(.+)`,"i"));
+              }
+
+              const symbol = String.fromCharCode(19904+(key-1));
+              
+              var prefix      = match?match[1]:"";
+              var stmtContent = match?match[2]:stmt;
+
+              if(match){
+                if( n==0 ){
+                  if(headers.includes(prefix)){
+                    prefix = `<br><strong class='line-prefix-header' style="color:#8b0000;font-size:14pt">${symbol}${rows[key].d.length==1?"":(rows[key].d+" ")}${prefix}</strong>`
+                  }else{
+                    prefix = `<span style="font-size:1pt"><br></span><strong class='line-prefix-first' style="color:#8b0000;font-size:8.5pt'">${symbol}${rows[key].d.length==1?"":(rows[key].d+"　")}${prefix}</strong>`
+                  }
+                }else{
+                  replaces.map((re,n)=>{
+                  prefix = prefix.replace(new RegExp(`^(${re})`,"i"),`<strong class='line-prefix' class='markLine' id='line${n+1}' mark-data-id='line${n+1}'>$1</strong>`);
+                  })
+                }
+              }
+
+              stmtContent.split('').forEach(function(char) {
+                line = line + "" + char + ""
+                /*
+                if(!char.match(/[：。，！]/)){
+                  line = line + "<c>" + char + "</c>"
+                }else{
+                  line = line + "" + char + ""
+                }
+                */
+              });
+              
+              out = out + `<tr>
+                <td>${key}</td>
+                <td>${n}</td>
+                <td>${line}</td>
+                `;
+              
+            })
+
+            dict[key] = out.replace(/　$/,"");
+
+            if( ++loaded == 64){
+              for(var j=1; j<=64;j++){
+                document.write(dict[j])
+              }
+            }
+          })
+
+        });
+      })
+
+
+</script>
+<style>
+  .line-prefix-first{
+    font-size: 14px;
+  }
+  
+  body{
+    font-size: 8.5px;
+  }
+  </style>
+  <body/>
