@@ -4,7 +4,19 @@
     let replaceFirstOccurrence = (str, seq, replacement) => str.replace(seq, replacement);
 
     const headers = "乾 比 同人 蠱 剝 大過 咸 晉 蹇 升 艮 兌 小過".split(" ");
-    const tokens = ["吉","凶","悔","吝","厲","无咎"];
+    const tokens = [
+      {"t": "吉", "s": 0},
+      {"t": "凶", "s": 0},
+      {"t": "悔", "s": 0},
+      {"t": "吝", "s": 0},
+      {"t": "厲", "s": 0},
+      {"t": "无咎", "s": 0},
+      {"t": "眚", "s": 0},
+      {"t": "无攸利", "s": 0},
+      {"t": "利貞", "s": 0},
+      {"t": "无不利", "s": 0}
+    ]
+
 
     function replaceToken(firstInput, secondInput, replacement) {
       // Extract the token right after "："
@@ -25,11 +37,11 @@
     function countOccurrences(inputString, tokenArray) {
         return tokenArray.map(token => {
           let count = 0;
-          let position = inputString.indexOf(token);
+          let position = inputString.indexOf(token.t);
 
           while (position !== -1) {
             count++;
-            position = inputString.indexOf(token, position + 1);
+            position = inputString.indexOf(token.t, position + 1);
           }
 
           return count;
@@ -149,7 +161,7 @@
                   <th>N</th>
                   <th>M</th>
                   <th>T</th>
-                  ${tokens.map(token=>`<td>${token}</td>`)}
+                  ${tokens.map(token=>`<td>${token.t}</td>`)}
                 </tr>
                 `)
               for(var j=1; j<=64;j++){
