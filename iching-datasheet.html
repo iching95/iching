@@ -53,7 +53,7 @@
             var out = ""
             content.map((stmt,n) => {
 
-              if((key == 1 || key == 2) && n >= 17){
+              if((n <=2 || n%2 == 0)|| n >= 17 ){
                 return;
               }
 
@@ -101,9 +101,6 @@
                 */
               });
               
-              if((key >=3) && (n <=2 || n%2 == 0)){
-                return;
-              }
               
               out = out + `<tr>
                   <td>${key}</td>
