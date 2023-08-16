@@ -20,13 +20,16 @@
     function sumScoreFromTokens(inputString, tokenArray) {
 
       let sum = 0;
-
+      console.log(inputString)
       for (let token of tokenArray) {
+        
         if (inputString.includes(token.t)) {
           sum += token.s;
+          console.log(sum)
         }
       }
-
+      console.log("sum")
+      console.log(sum)
       return sum;
     }
 
