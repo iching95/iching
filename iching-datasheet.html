@@ -21,14 +21,14 @@
       {"t": "无咎", "s": -0.5}
     ]
 
-    const isCenter = (I) => I === 2 || I === 5;
+    const isCenter = (I) => I === 2 || I === 5   ? 1 : 0;
 
     const isPair = (arr, I) => {
         const pairs = {1: 4, 4: 1, 2: 5, 5: 2, 3: 6, 6: 3};
-        return arr[I-1] !== arr[pairs[I]-1];
+        return arr[I-1] !== arr[pairs[I]-1]  ? 1 : 0;
     };
 
-    const isRight = (I) => (I % 2 === 1 && I <= 5) ? true : false;
+    const isRight = (I) => (I % 2 === 1 && I <= 5) ? 1 : 0;
 
     function sumScoreFromTokens(inputString, tokenArray) {
 
