@@ -28,7 +28,20 @@
         return arr[I-1] !== arr[pairs[I]-1]  ? 1 : 0;
     };
 
-    const isRight = (arr, I) => (I % 2 === 1 && arr[I-1] === 1) || (I % 2 === 0 && arr[I-1] === 0) ? 1 : 0;
+    const isRight = (arr, I) => {
+      console.log(I )
+      console.log(arr)
+
+      console.log(arr[I-1])
+
+      if (I % 2 === 1 && arr[I-1] === 1) {
+          return 1;
+      } else if (I % 2 === 0 && arr[I-1] === 0) {
+          return 1;
+      } else {
+          return 0;
+      }
+    };
 
     function sumScoreFromTokens(inputString, tokenArray) {
 
