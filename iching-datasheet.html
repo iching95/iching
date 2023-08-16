@@ -150,7 +150,9 @@
                 */
               });
               
-              const tkCnt = countOccurrences(line,tokens);
+              let tkCnt = "";
+              countOccurrences(line,tokens).map( count=> tkCnt += `<td>${count}</td>` );
+
               const sen = sumScoreFromTokens(line,tokens);
 
               line = line.replace("：","");
@@ -161,6 +163,7 @@
                   <td>${(n-3)/2+1}</td>
                   <td>${line}</td>
                   <td>${sen}</td>
+                  <td>${tkCnt}</td>
                 </tr>
                 `;
               
@@ -177,6 +180,7 @@
                   <th>M</th>
                   <th>T</th>
                   <th>S</th>
+                  ${tokens.map(token=>`<th>${token.t}</th>`)}
                 </tr>
                 `)
 
