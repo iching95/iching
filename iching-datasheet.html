@@ -178,7 +178,7 @@
               const pos = (n-3)/2+1;
 
               out = out + `<tr>
-                  <td>${k++}</td>
+                  <td>!n</td>
                   <td>${key}</td>
                   <td>${pos}</td>
                   <td>${line}</td>
@@ -199,7 +199,6 @@
 
               let tokenTh = ""
               tokens.map(token=>tokenTh+=`<th>${token.t}</th>`)
-
               document.write(`<table>
                 <tr>
                   <th>K</th>
@@ -214,9 +213,9 @@
                   <th>${tokenTh}</th>
                 </tr>
                 `)
-
-              for(var j=1; j<=64;j++){
-                document.write(dict[j])
+              
+              for(var j=1,k=0; j<=64;j++,k++){
+                document.write(dict[j].replace("!n",k))
               }
 
               document.write("</table>")
