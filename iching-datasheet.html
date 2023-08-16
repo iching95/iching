@@ -173,6 +173,9 @@
 
             if( ++loaded == 64){
 
+              let tokenTh = ""
+              tokens.map(token=>tokenTh+=`<th>${token.t}</th>`)
+
               document.write(`<table>
                 <tr>
                   <th>K</th>
@@ -180,7 +183,7 @@
                   <th>M</th>
                   <th>T</th>
                   <th>S</th>
-                  ${tokens.map(token=>`<th>${token.t}</th>`)}
+                  <td>${tokenTh}</td>
                 </tr>
                 `)
 
