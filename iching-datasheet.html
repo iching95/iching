@@ -193,7 +193,7 @@
               const pos = (n-3)/2+1;
 
               out = out + `<tr>
-                  <td>!n</td>
+                  <td>${key*6+pos+ (key>1?1:0)+ (key>2?1:0)}</td>
                   <td>${key}</td>
                   <td>${pos}</td>
                   <td>${line}</td>
@@ -232,7 +232,7 @@
                 `)
               
               for(var j=1,k=0; j<=64;j++,k++){
-                document.write(dict[j].replaceAll("!n",k))
+                document.write(dict[j])
               }
 
               document.write("</table>")
