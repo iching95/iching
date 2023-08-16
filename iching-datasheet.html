@@ -172,8 +172,10 @@
               let tkCnt = "";
               countOccurrences(line,tokens).map( count=> tkCnt += `<td>${count}</td>` );
 
-              const bin = findKeyByCValue(rows[key].c);
+              const bin = findKeyByCValue(rows[key].c) + (key==1?1:"")+ (key==2?0:"")
               
+              
+
               const sen = sumScoreFromTokens(line,tokens);
               const pos = (n-3)/2+1;
 
@@ -209,6 +211,7 @@
                   <th>C</th>
                   <th>P</th>
                   <th>R</th>
+                  <th>I</th>
                   <th>B</th>
                   <th>S</th>
                   <th>${tokenTh}</th>
