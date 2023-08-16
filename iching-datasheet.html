@@ -21,6 +21,15 @@
       {"t": "无咎", "s": -0.5}
     ]
 
+    const isCenter = (I) => I === 2 || I === 5;
+
+    const isPair = (arr, I) => {
+        const pairs = {1: 4, 4: 1, 2: 5, 5: 2, 3: 6, 6: 3};
+        return arr[I-1] !== arr[pairs[I]-1];
+    };
+
+    const isRight = (I) => (I % 2 === 1 && I <= 5) ? true : false;
+
     function sumScoreFromTokens(inputString, tokenArray) {
 
       let sum = 0;
@@ -166,12 +175,15 @@
               const bin = findKeyByCValue(rows[key].c);
               
               const sen = sumScoreFromTokens(line,tokens);
-
+              const pos = (n-3)/2+1;
               out = out + `<tr>
                   <td>${k++}</td>
                   <td>${key}</td>
-                  <td>${(n-3)/2+1}</td>
+                  <td>${pos}</td>
                   <td>${line}</td>
+                  <td>${isCenter(pos)}</td>
+                  <td>${isPair(pos,bin)}</td>
+                  <td>${isRight(pos)}</td>
                   <td>${bin}</td>
                   <td>${sen}</td>
                   <td>${tkCnt}</td>
@@ -191,7 +203,7 @@
                 <tr>
                   <th>K</th>
                   <th>N</th>
-                  <th>M</th>
+                  <th>P</th>
                   <th>T</th>
                   <th>B</th>
                   <th>S</th>
