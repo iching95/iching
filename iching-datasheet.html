@@ -193,7 +193,7 @@
               const pos = (n-3)/2+1;
 
               out = out + `<tr>
-                  <td>${key*6+pos+ (key>1?1:0)+ (key>2?1:0)}</td>
+                  <td>${(key-1)*6+pos+ (key>1?1:0)+ (key>2?1:0)}</td>
                   <td>${key}</td>
                   <td>${pos}</td>
                   <td>${line}</td>
