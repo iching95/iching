@@ -157,7 +157,6 @@
                   <td>${key}</td>
                   <td>${(n-3)/2+1}</td>
                   <td>${line.replace("：","")}</td>
-                  ${tkCnt.map(count=>`<td>${count}</td>`)}
                 </tr>
                 `;
               
@@ -173,13 +172,15 @@
                   <th>N</th>
                   <th>M</th>
                   <th>T</th>
-                  <th>${tokens.map(token=>`<td>${token.t}</th>`)}
                 </tr>
                 `)
+
               for(var j=1; j<=64;j++){
                 document.write(dict[j])
               }
+
               document.write("</table>")
+
             }
           })
 
