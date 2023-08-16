@@ -1,15 +1,28 @@
 <script>
 
-      let replaceIfMatch = (str, seq, replacement) => str.startsWith(seq) ? replacement + str.slice(seq.length) : str;   
-      let replaceFirstOccurrence = (str, seq, replacement) => str.replace(seq, replacement);
+    let replaceIfMatch = (str, seq, replacement) => str.startsWith(seq) ? replacement + str.slice(seq.length) : str;   
+    let replaceFirstOccurrence = (str, seq, replacement) => str.replace(seq, replacement);
 
-      const headers = "乾 比 同人 蠱 剝 大過 咸 晉 蹇 升 艮 兌 小過".split(" ");
-      const tokens = ["吉","凶","悔","吝","厲","无咎"];
+    const headers = "乾 比 同人 蠱 剝 大過 咸 晉 蹇 升 艮 兌 小過".split(" ");
+    const tokens = ["吉","凶","悔","吝","厲","无咎"];
 
-      function replaceToken(firstInput, secondInput, replacement) {
+    function replaceToken(firstInput, secondInput, replacement) {
       // Extract the token right after "："
 
-      function countOccurrences(inputString, tokenArray) {
+        if (!firstInput.includes("：")) {
+          console.log(firstInput)
+          return secondInput;
+        }      
+        const targetToken = firstInput.split("：")[1].split(/[,。、，]/)[0].trim();
+
+        // Replace this token in the second input
+        const replacedSecondInput = secondInput.replace(targetToken, replacement);
+
+        return replacedSecondInput;
+      
+      }
+
+    function countOccurrences(inputString, tokenArray) {
         return tokenArray.map(token => {
           let count = 0;
           let position = inputString.indexOf(token);
@@ -22,18 +35,6 @@
           return count;
         });
       }
-
-     if (!firstInput.includes("：")) {
-      console.log(firstInput)
-      return secondInput;
-     }      
-      const targetToken = firstInput.split("：")[1].split(/[,。、，]/)[0].trim();
-
-      // Replace this token in the second input
-      const replacedSecondInput = secondInput.replace(targetToken, replacement);
-
-      return replacedSecondInput;
-    }
 
     var url = "content";
     var dict = [];
