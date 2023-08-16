@@ -106,9 +106,9 @@
               }
               
               out = out + `<tr>
-                <td>${key}</td>
-                <td>${n+1}</td>
-                <td>${line}</td>
+                  <td>${key}</td>
+                  <td>${n+1}</td>
+                  <td>${line}</td>
                 </tr>
                 `;
               
@@ -118,11 +118,11 @@
 
             if( ++loaded == 64){
               document.write(`<table>
-                <th>
-                  <td>N</td>
-                  <td>M</td>
-                  <td>W</td>
-                </th>
+                <tr>
+                  <th>N</th>
+                  <th>M</th>
+                  <th>W</th>
+                </tr>
                 `)
               for(var j=1; j<=64;j++){
                 document.write(dict[j])
