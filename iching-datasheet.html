@@ -153,12 +153,12 @@
                 */
               });
               
+              line = line.replace("：","");
+
               let tkCnt = "";
               countOccurrences(line,tokens).map( count=> tkCnt += `<td>${count}</td>` );
-
+              
               const sen = sumScoreFromTokens(line,tokens);
-
-              line = line.replace("：","");
 
               out = out + `<tr>
                   <td>${k++}</td>
