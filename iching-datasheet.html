@@ -101,6 +101,10 @@
                 */
               });
               
+              if((key >=3) && (n <=2 || n%2 == 1)){
+                return;
+              }
+              
               out = out + `<tr>
                 <td>${key}</td>
                 <td>${n+1}</td>
