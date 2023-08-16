@@ -28,7 +28,7 @@
         return arr[I-1] !== arr[pairs[I]-1]  ? 1 : 0;
     };
 
-    const isRight = (I) => (I % 2 === 1 && I <= 5) ? 1 : 0;
+    const isRight = (arr, I) => (I % 2 === 1 && arr[I-1] === 1) || (I % 2 === 0 && arr[I-1] === 0) ? 1 : 0;
 
     function sumScoreFromTokens(inputString, tokenArray) {
 
@@ -184,7 +184,8 @@
                   <td>${line}</td>
                   <td>${isCenter(pos)}</td>
                   <td>${isPair(bin,pos)}</td>
-                  <td>${isRight(pos)}</td>
+                  <td>${isRight(bin,pos)}</td>
+                  <td>${bin[pos-1]}</td>
                   <td>${bin}</td>
                   <td>${sen}</td>
                   <td>${tkCnt}</td>
