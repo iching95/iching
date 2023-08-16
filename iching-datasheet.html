@@ -19,6 +19,9 @@
 
     function sumScoreFromTokens(inputString, tokenArray) {
 
+        console.log(inputString);
+        console.log(tokenArray);
+        
       let sum = 0;
 
       for (let token of tokenArray) {
@@ -152,20 +155,21 @@
               
               const tkCnt = countOccurrences(line,tokens);
               
+              line = line.replace("：","");
+
               out = out + `<tr>
                   <td>${k++}</td>
                   <td>${key}</td>
                   <td>${(n-3)/2+1}</td>
-                  <td>${line.replace("：","")}</td>
+                  <td>${line}</td>
                   <td>${sumScoreFromTokens(line,tokens)}</td>
                   ${tkCnt.map(count=>`<td>${count}</td>`)}
                 </tr>
                 `;
               
             })
-            
 
-            dict[key] = out.replace(/　$/,"");
+            // dict[key] = out.replace(/　$/,"");
 
             if( ++loaded == 64){
               document.write(`<table>
