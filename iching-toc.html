@@ -100,6 +100,8 @@
             { idx: 1, name: "乾為天" }
         ];
 
+        const unitsPerRow = 4;  // Set this to configure how many units you want per row.
+
         fetch('data.txt')
         .then(response => response.json())
         .then(hexagrams => {
@@ -107,35 +109,23 @@
             .then(response => response.json())
             .then(pages => {
                 let tocBody = document.getElementById('tocBody');
+                let row;
                 
-                hexagramOrder.forEach(hex => {
-                    let unit = document.createElement('table');
-                    unit.className = "unit";
-
-                    // Header row
-                    let header = unit.insertRow();
-                    let thHexIndex = header.insertCell();
-                    thHexIndex.className = "hexagram-index";
-                    thHexIndex.innerHTML = hex.idx;
-                    let thHexName = header.insertCell();
-                    thHexName.colSpan = 2;
-                    thHexName.className = "chinese-name";
-                    thHexName.innerHTML = hex.name;
-
-                    for (let book in pages) {
-                        const page = pages[book].page[hex.idx - 1] + pages[book].offset - pages[book].page[0];
-                        let bookRow = unit.insertRow();
-
-                        let bookCell = bookRow.insertCell();
-                        bookCell.className = "book-name";
-                        bookCell.innerHTML = book;
-
-                        let pageCell = bookRow.insertCell();
-                        pageCell.className = "page";
-                        pageCell.innerHTML = page;
+                hexagramOrder.forEach((hex, index) => {
+                    // Check if it's the start of a new set of units
+                    if (index % unitsPerRow === 0) {
+                        row = tocBody.insertRow();
                     }
 
-                    tocBody.appendChild(unit);
+                    // Create a new cell for the unit
+                    let cell = row.insertCell();
+                    
+                    // Use innerHTML to create a mini-table inside the cell for the hexagram and its books
+                    cell.innerHTML = `<strong>${hex.idx}. ${hex.name}</strong><br>`;
+                    for (let book in pages) {
+                        const page = pages[book].page[hex.idx - 1] + pages[book].offset - pages[book].page[0];
+                        cell.innerHTML += `${book}: ${page}<br>`;
+                    }
                 });
 
             })
@@ -146,8 +136,8 @@
         .catch(error => {
             console.error('There was an error reading hexagrams!', error);
         });
-    }
-    
+        }
+
 </script>
 
 </body>
