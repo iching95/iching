@@ -11,9 +11,10 @@
         }
 
         table.unit {
-            width: 24%;  /* adjusted for four tables in a row */
+            width: 24%;  
             display: inline-block;
             vertical-align: top;
+            margin-right: 1%; /* for spacing between tables */
         }
 
         th,
@@ -43,9 +44,6 @@
 
     <script>
         window.onload = function() {
-            // Set this variable to change the number of units per row
-            const unitsPerRow = 4;
-
             fetch('data.txt')
             .then(response => response.json())
             .then(hexagrams => {
@@ -67,14 +65,8 @@
                         thead.appendChild(trHead);
                         let thHexIndex = document.createElement('th');
                         thHexIndex.colSpan = 2;
-                        thHexIndex.className = 'hexagram-index';
-                        thHexIndex.innerHTML = hexIndex;
+                        thHexIndex.innerHTML = hexIndex + ". " + hexChineseName;
                         trHead.appendChild(thHexIndex);
-                        let thHexName = document.createElement('th');
-                        thHexName.colSpan = 2;
-                        thHexName.className = 'chinese-name';
-                        thHexName.innerHTML = hexChineseName;
-                        trHead.appendChild(thHexName);
 
                         let tbody = document.createElement('tbody');
                         unit.appendChild(tbody);
