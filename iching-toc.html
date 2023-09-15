@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOC Viewer</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Table of Contents</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Book Name</th>
+            <th>Number</th>
+            <th>Page</th>
+        </tr>
+    </thead>
+    <tbody id="tocBody"></tbody>
+</table>
+
+<script>
+    window.onload = function() {
+        fetch('page.txt')
+            .then(response => response.json())
+            .then(data => {
+                let tocBody = document.getElementById('tocBody');
+                for (let book in data) {
+                    let offset = data[book].offset;
+                    data[book].page.forEach((page, index) => {
+                        let row = tocBody.insertRow();
+                        row.insertCell(0).innerHTML = book;
+                        row.insertCell(1).innerHTML = index + 1;
+                        row.insertCell(2).innerHTML = page + offset;
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('There was an error!', error);
+            });
+    }
+</script>
+
+</body>
+</html>
