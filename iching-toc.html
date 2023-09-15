@@ -100,49 +100,54 @@
             { idx: 1, name: "乾為天" }
         ];
 
-        fetch('pages.txt')
+        fetch('data.txt')
         .then(response => response.json())
-        .then(pages => {
-            let tocBody = document.getElementById('tocBody');
-            const unitsPerRow = 4;
-            
-            hexagramOrder.forEach((hexagram, index) => {
-                if (index % unitsPerRow === 0) {
-                    var table = document.createElement("table");
-                    tocBody.appendChild(table);
-                    
-                    var thead = document.createElement("thead");
-                    table.appendChild(thead);
-                    var trHead = document.createElement("tr");
-                    thead.appendChild(trHead);
-                    
-                    var thHexIndex = document.createElement("th");
-                    thHexIndex.className = "hexagram-index";
-                    thHexIndex.innerHTML = "Hexagram Index";
-                    trHead.appendChild(thHexIndex);
-                    
-                    var thHexName = document.createElement("th");
-                    thHexName.className = "chinese-name";
-                    thHexName.innerHTML = "Chinese Name";
-                    trHead.appendChild(thHexName);
-                }
-
-                let tr = document.createElement('tr');
-                table.appendChild(tr);
+        .then(hexagrams => {
+            fetch('pages.txt')
+            .then(response => response.json())
+            .then(pages => {
+                let tocBody = document.getElementById('tocBody');
                 
-                let tdIndex = document.createElement('td');
-                tdIndex.innerHTML = hexagram.idx;
-                tr.appendChild(tdIndex);
+                hexagramOrder.forEach(hex => {
+                    let unit = document.createElement('table');
+                    unit.className = "unit";
 
-                let tdName = document.createElement('td');
-                tdName.innerHTML = hexagram.name;
-                tr.appendChild(tdName);
+                    // Header row
+                    let header = unit.insertRow();
+                    let thHexIndex = header.insertCell();
+                    thHexIndex.className = "hexagram-index";
+                    thHexIndex.innerHTML = hex.idx;
+                    let thHexName = header.insertCell();
+                    thHexName.colSpan = 2;
+                    thHexName.className = "chinese-name";
+                    thHexName.innerHTML = hex.name;
+
+                    for (let book in pages) {
+                        const page = pages[book].page[hex.idx - 1] + pages[book].offset - pages[book].page[0];
+                        let bookRow = unit.insertRow();
+
+                        let bookCell = bookRow.insertCell();
+                        bookCell.className = "book-name";
+                        bookCell.innerHTML = book;
+
+                        let pageCell = bookRow.insertCell();
+                        pageCell.className = "page";
+                        pageCell.innerHTML = page;
+                    }
+
+                    tocBody.appendChild(unit);
+                });
+
+            })
+            .catch(error => {
+                console.error('There was an error!', error);
             });
         })
         .catch(error => {
-            console.error('There was an error!', error);
+            console.error('There was an error reading hexagrams!', error);
         });
     }
+    
 </script>
 
 </body>
