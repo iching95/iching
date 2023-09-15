@@ -48,17 +48,19 @@
                 let rows = [];
 
                 for (let book in data) {
-                    let offset = data[book].offset;
                     data[book].page.forEach((page, index) => {
                         let hexIndex = index + 1;
                         let hexChineseName = hexagrams[hexIndex.toString()] ? hexagrams[hexIndex.toString()]["c"] : "";
+
+                        // Updated page calculation
+                        let computedPage = data[book].page[index] + data[book].offset - data[book].page[0];
 
                         rows.push({
                             hexIndex: hexIndex,
                             hexChineseName: hexChineseName,
                             book: book,
                             number: index + 1,
-                            page: page + offset - 1
+                            page: computedPage
                         });
                     });
                 }
@@ -74,7 +76,6 @@
                     newRow.insertCell(3).innerHTML = row.number;
                     newRow.insertCell(4).innerHTML = row.page;
                 });
-
             })
             .catch(error => {
                 console.error('There was an error!', error);
@@ -85,6 +86,7 @@
         });
     }
 </script>
+
 
 </body>
 </html>
