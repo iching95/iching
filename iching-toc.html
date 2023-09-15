@@ -121,13 +121,13 @@
                     let booksData = '';
                     for (let book in pages) {
                         const page = pages[book].page[hex.idx - 1] + pages[book].offset - pages[book].page[0];
-                        booksData += `<tr><td>${book}</td><td>${page}</td></tr>`;
+                        booksData += `<tr><td>${book.slice(0, 5)}</td><td>${page}</td></tr>`;
                     }
 
                     cell.innerHTML = `
                         <table class="unit">
                             <tr>
-                                <td rowspan="${Object.keys(pages).length+1}" class="hexagram-index">${hex.idx}</td>
+                                <td rowspan="${Object.keys(pages).length+1}" class="hexagram-index">${hex.idx.toString().padStart(2, '0')}</td>
                                 <td rowspan="${Object.keys(pages).length+1}" class="chinese-name">${hex.name}</td>
                             </tr>
                             ${booksData}
