@@ -23,6 +23,8 @@
 <table>
     <thead>
         <tr>
+            <th>Hexagram Index</th>
+            <th>Chinese Name</th>
             <th>Book Name</th>
             <th>Number</th>
             <th>Page</th>
@@ -33,23 +35,39 @@
 
 <script>
     window.onload = function() {
-        fetch('pages.txt')
-            .then(response => response.json())
-            .then(data => {
-                let tocBody = document.getElementById('tocBody');
-                for (let book in data) {
-                    let offset = data[book].offset;
-                    data[book].page.forEach((page, index) => {
-                        let row = tocBody.insertRow();
-                        row.insertCell(0).innerHTML = book;
-                        row.insertCell(1).innerHTML = index + 1;
-                        row.insertCell(2).innerHTML = page + offset;
-                    });
-                }
-            })
-            .catch(error => {
-                console.error('There was an error!', error);
-            });
+        // Fetch the content of hexagrams.txt
+        fetch('data.txt')
+        .then(response => response.json())
+        .then(hexagrams => {
+
+            // Fetch the content of page.txt
+            fetch('pages.txt')
+                .then(response => response.json())
+                .then(data => {
+                    let tocBody = document.getElementById('tocBody');
+                    for (let book in data) {
+                        let offset = data[book].offset;
+                        data[book].page.forEach((page, index) => {
+                            let row = tocBody.insertRow();
+                            
+                            let hexIndex = index + 1;
+                            let hexChineseName = hexagrams[hexIndex.toString()] ? hexagrams[hexIndex.toString()]["c"] : "";
+
+                            row.insertCell(0).innerHTML = hexIndex;
+                            row.insertCell(1).innerHTML = hexChineseName;
+                            row.insertCell(2).innerHTML = book;
+                            row.insertCell(3).innerHTML = index + 1;
+                            row.insertCell(4).innerHTML = page + offset -1;
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('There was an error!', error);
+                });
+        })
+        .catch(error => {
+            console.error('There was an error reading hexagrams!', error);
+        });
     }
 </script>
 
