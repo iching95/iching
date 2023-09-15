@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,83 +11,98 @@
             border-collapse: collapse;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid black;
             padding: 8px;
             text-align: left;
         }
     </style>
 </head>
+
 <body>
 
-<h2>Table of Contents</h2>
-<table>
-    <thead>
-        <tr>
-            <th>Hexagram Index</th>
-            <th>Chinese Name</th>
-            <th>Book Name</th>
-            <th>Number</th>
-            <th>Page</th>
-        </tr>
-    </thead>
-    <tbody id="tocBody"></tbody>
-</table>
+    <h2>Table of Contents</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Hexagram Index</th>
+                <th>Chinese Name</th>
+                <th>Book Name</th>
+                <th>Page</th>
+            </tr>
+        </thead>
+        <tbody id="tocBody"></tbody>
+    </table>
 
-<script>
-    window.onload = function() {
-        // Fetch the content of data.txt
-        fetch('data.txt')
-        .then(response => response.json())
-        .then(hexagrams => {
-
-            // Fetch the content of pages.txt
-            fetch('pages.txt')
+    <script>
+        window.onload = function() {
+            fetch('data.txt')
             .then(response => response.json())
-            .then(data => {
-                let tocBody = document.getElementById('tocBody');
-                let rows = [];
+            .then(hexagrams => {
+                fetch('pages.txt')
+                .then(response => response.json())
+                .then(data => {
+                    let tocBody = document.getElementById('tocBody');
+                    let rows = [];
 
-                for (let book in data) {
-                    data[book].page.forEach((page, index) => {
-                        let hexIndex = index + 1;
-                        let hexChineseName = hexagrams[hexIndex.toString()] ? hexagrams[hexIndex.toString()]["c"] : "";
+                    for (let book in data) {
+                        data[book].page.forEach((page, index) => {
+                            let hexIndex = index + 1;
+                            let hexChineseName = hexagrams[hexIndex.toString()] ? hexagrams[hexIndex.toString()]["c"] : "";
 
-                        // Updated page calculation
-                        let computedPage = data[book].page[index] + data[book].offset - data[book].page[0];
+                            let computedPage = data[book].page[index] + data[book].offset - data[book].page[0];
 
-                        rows.push({
-                            hexIndex: hexIndex,
-                            hexChineseName: hexChineseName,
-                            book: book,
-                            number: index + 1,
-                            page: computedPage
+                            rows.push({
+                                hexIndex: hexIndex,
+                                hexChineseName: hexChineseName,
+                                book: book,
+                                page: computedPage
+                            });
                         });
+                    }
+
+                    // Sort rows based on hexagram index
+                    rows.sort((a, b) => a.hexIndex - b.hexIndex);
+
+                    let previousHexIndex = null;
+                    let rowCountForHexIndex = 0;
+                    rows.forEach((row, index) => {
+                        if (previousHexIndex !== row.hexIndex) {
+                            if (rowCountForHexIndex > 0) {
+                                tocBody.rows[tocBody.rows.length - rowCountForHexIndex].cells[0].rowSpan = rowCountForHexIndex;
+                                tocBody.rows[tocBody.rows.length - rowCountForHexIndex].cells[1].rowSpan = rowCountForHexIndex;
+                            }
+                            rowCountForHexIndex = 1;
+                        } else {
+                            rowCountForHexIndex++;
+                        }
+
+                        let newRow = tocBody.insertRow();
+                        if (previousHexIndex !== row.hexIndex) {
+                            newRow.insertCell(0).innerHTML = row.hexIndex;
+                            newRow.insertCell(1).innerHTML = row.hexChineseName;
+                        }
+                        newRow.insertCell(-1).innerHTML = row.book;
+                        newRow.insertCell(-1).innerHTML = row.page;
+                        previousHexIndex = row.hexIndex;
+
+                        if (index === rows.length - 1 && rowCountForHexIndex > 0) {
+                            tocBody.rows[tocBody.rows.length - rowCountForHexIndex].cells[0].rowSpan = rowCountForHexIndex;
+                            tocBody.rows[tocBody.rows.length - rowCountForHexIndex].cells[1].rowSpan = rowCountForHexIndex;
+                        }
                     });
-                }
-
-                // Sort rows based on hexagram index
-                rows.sort((a, b) => a.hexIndex - b.hexIndex);
-
-                rows.forEach(row => {
-                    let newRow = tocBody.insertRow();
-                    newRow.insertCell(0).innerHTML = row.hexIndex;
-                    newRow.insertCell(1).innerHTML = row.hexChineseName;
-                    newRow.insertCell(2).innerHTML = row.book;
-                    newRow.insertCell(3).innerHTML = row.number;
-                    newRow.insertCell(4).innerHTML = row.page;
+                })
+                .catch(error => {
+                    console.error('There was an error!', error);
                 });
             })
             .catch(error => {
-                console.error('There was an error!', error);
+                console.error('There was an error reading hexagrams!', error);
             });
-        })
-        .catch(error => {
-            console.error('There was an error reading hexagrams!', error);
-        });
-    }
-</script>
-
+        }
+    </script>
 
 </body>
+
 </html>
