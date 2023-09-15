@@ -7,80 +7,105 @@
     <title>TOC Viewer</title>
     <style>
         table {
-            width: 100%;
             border-collapse: collapse;
         }
-    
-        th, td {
+
+        table.unit {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        th,
+        td {
             border: 1px solid black;
             padding: 8px;
             text-align: left;
         }
-    
+
         .hexagram-index,
         .chinese-name {
             width: 7.5%;
         }
-    
+
         .book-name,
         .page {
             width: 42.5%;
         }
-    
-        .unit {
-            display: flex;
-            flex-wrap: wrap;
-        }
-    </style>    
+
+    </style>
 </head>
 
 <body>
 
     <h2>Table of Contents</h2>
-    <div id="tocBody" class="unit"></div>
-
+    <div id="mainContainer"></div>
 
     <script>
-window.onload = function() {
-        // Set this variable to change the number of units per row
-        const unitsPerRow = 4;
+        window.onload = function() {
+            const UNIT_COUNT = 4; // Number of units per row
 
-        fetch('data.txt')
-        .then(response => response.json())
-        .then(hexagrams => {
-            fetch('pages.txt')
-            .then(response => response.json())
-            .then(pages => {
-                let tocBody = document.getElementById('tocBody');
-                
-                for (let hexIndex = 1; hexIndex <= 64; hexIndex++) {
-                    // Create the unit container
-                    let unit = document.createElement('div');
-                    unit.style.width = (100 / unitsPerRow) + '%';
-                    unit.className = "unit";
-                    
-                    let hexChineseName = hexagrams[hexIndex.toString()] ? hexagrams[hexIndex.toString()]["c"] : "";
+            fetch('data.txt')
+                .then(response => response.json())
+                .then(hexagrams => {
+                    fetch('pages.txt')
+                        .then(response => response.json())
+                        .then(pages => {
+                            const mainContainer = document.getElementById('mainContainer');
 
-                    unit.innerHTML = `<strong>${hexIndex}. ${hexChineseName}</strong><br>`;
-                    
-                    for (let book in pages) {
-                        const page = pages[book].page[hexIndex - 1] + pages[book].offset - pages[book].page[0];
-                        unit.innerHTML += `${book}: ${page}<br>`;
-                    }
+                            for (let i = 1; i <= 64; i += UNIT_COUNT) {
+                                const rowDiv = document.createElement('div');
+                                rowDiv.style.display = 'flex';
+                                rowDiv.style.justifyContent = 'space-between';
 
-                    tocBody.appendChild(unit);
-                }
+                                for (let j = 0; j < UNIT_COUNT; j++) {
+                                    const idx = i + j;
+                                    if (idx > 64) break;
 
-            })
-            .catch(error => {
-                console.error('There was an error!', error);
-            });
-        })
-        .catch(error => {
-            console.error('There was an error reading hexagrams!', error);
-        });
-    }
+                                    const unitTable = document.createElement('table');
+                                    unitTable.className = 'unit';
+                                    const hexData = hexagrams[idx.toString()];
+
+                                    const headerRow = unitTable.insertRow();
+                                    const indexCell = headerRow.insertCell();
+                                    indexCell.colSpan = 2;
+                                    indexCell.className = 'hexagram-index';
+                                    indexCell.textContent = idx;
+
+                                    const nameCell = headerRow.insertCell();
+                                    nameCell.colSpan = 2;
+                                    nameCell.className = 'chinese-name';
+                                    nameCell.textContent = hexData["c"];
+
+                                    for (let fname in pages) {
+                                        const dataRow = unitTable.insertRow();
+                                        const bookCell = dataRow.insertCell();
+                                        bookCell.colSpan = 2;
+                                        bookCell.className = 'book-name';
+                                        bookCell.textContent = fname;
+
+                                        const pageCell = dataRow.insertCell();
+                                        pageCell.colSpan = 2;
+                                        pageCell.className = 'page';
+                                        pageCell.textContent = pages[fname].page[idx - 1] + pages[fname].offset - pages[fname].page[0];
+                                    }
+
+                                    rowDiv.appendChild(unitTable);
+                                }
+
+                                mainContainer.appendChild(rowDiv);
+                            }
+                        })
+                        .catch(error => {
+                            console.error('There was an error!', error);
+                        });
+                })
+                .catch(error => {
+                    console.error('There was an error reading hexagrams!', error);
+                });
+        }
+
     </script>
 
 </body>
+
 </html>
