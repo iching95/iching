@@ -11,8 +11,9 @@
         }
 
         table.unit {
-            width: 100%;
-            margin-bottom: 10px;
+            width: 24%;  /* adjusted for four tables in a row */
+            display: inline-block;
+            vertical-align: top;
         }
 
         th,
@@ -38,74 +39,73 @@
 <body>
 
     <h2>Table of Contents</h2>
-    <div id="mainContainer"></div>
+    <div id="tocBody"></div>
 
     <script>
         window.onload = function() {
-            const UNIT_COUNT = 4; // Number of units per row
+            // Set this variable to change the number of units per row
+            const unitsPerRow = 4;
 
             fetch('data.txt')
+            .then(response => response.json())
+            .then(hexagrams => {
+                fetch('pages.txt')
                 .then(response => response.json())
-                .then(hexagrams => {
-                    fetch('pages.txt')
-                        .then(response => response.json())
-                        .then(pages => {
-                            const mainContainer = document.getElementById('mainContainer');
+                .then(pages => {
+                    let tocBody = document.getElementById('tocBody');
 
-                            for (let i = 1; i <= 64; i += UNIT_COUNT) {
-                                const rowDiv = document.createElement('div');
-                                rowDiv.style.display = 'flex';
-                                rowDiv.style.justifyContent = 'space-between';
+                    for (let hexIndex = 1; hexIndex <= 64; hexIndex++) {
+                        let hexChineseName = hexagrams[hexIndex.toString()] ? hexagrams[hexIndex.toString()]["c"] : "";
 
-                                for (let j = 0; j < UNIT_COUNT; j++) {
-                                    const idx = i + j;
-                                    if (idx > 64) break;
+                        let unit = document.createElement('table');
+                        unit.className = 'unit';
 
-                                    const unitTable = document.createElement('table');
-                                    unitTable.className = 'unit';
-                                    const hexData = hexagrams[idx.toString()];
+                        // Header for the hexagram
+                        let thead = document.createElement('thead');
+                        unit.appendChild(thead);
+                        let trHead = document.createElement('tr');
+                        thead.appendChild(trHead);
+                        let thHexIndex = document.createElement('th');
+                        thHexIndex.colSpan = 2;
+                        thHexIndex.className = 'hexagram-index';
+                        thHexIndex.innerHTML = hexIndex;
+                        trHead.appendChild(thHexIndex);
+                        let thHexName = document.createElement('th');
+                        thHexName.colSpan = 2;
+                        thHexName.className = 'chinese-name';
+                        thHexName.innerHTML = hexChineseName;
+                        trHead.appendChild(thHexName);
 
-                                    const headerRow = unitTable.insertRow();
-                                    const indexCell = headerRow.insertCell();
-                                    indexCell.colSpan = 2;
-                                    indexCell.className = 'hexagram-index';
-                                    indexCell.textContent = idx;
+                        let tbody = document.createElement('tbody');
+                        unit.appendChild(tbody);
 
-                                    const nameCell = headerRow.insertCell();
-                                    nameCell.colSpan = 2;
-                                    nameCell.className = 'chinese-name';
-                                    nameCell.textContent = hexData["c"];
+                        // Data rows for the books
+                        for (let book in pages) {
+                            const page = pages[book].page[hexIndex - 1] + pages[book].offset - pages[book].page[0];
+                            let trBody = document.createElement('tr');
+                            tbody.appendChild(trBody);
+                            let tdBook = document.createElement('td');
+                            tdBook.className = 'book-name';
+                            tdBook.innerHTML = book;
+                            trBody.appendChild(tdBook);
+                            let tdPage = document.createElement('td');
+                            tdPage.className = 'page';
+                            tdPage.innerHTML = page;
+                            trBody.appendChild(tdPage);
+                        }
 
-                                    for (let fname in pages) {
-                                        const dataRow = unitTable.insertRow();
-                                        const bookCell = dataRow.insertCell();
-                                        bookCell.colSpan = 2;
-                                        bookCell.className = 'book-name';
-                                        bookCell.textContent = fname;
-
-                                        const pageCell = dataRow.insertCell();
-                                        pageCell.colSpan = 2;
-                                        pageCell.className = 'page';
-                                        pageCell.textContent = pages[fname].page[idx - 1] + pages[fname].offset - pages[fname].page[0];
-                                    }
-
-                                    rowDiv.appendChild(unitTable);
-                                }
-
-                                mainContainer.appendChild(rowDiv);
-                            }
-                        })
-                        .catch(error => {
-                            console.error('There was an error!', error);
-                        });
+                        tocBody.appendChild(unit);
+                    }
                 })
                 .catch(error => {
-                    console.error('There was an error reading hexagrams!', error);
+                    console.error('There was an error!', error);
                 });
+            })
+            .catch(error => {
+                console.error('There was an error reading hexagrams!', error);
+            });
         }
-
     </script>
 
 </body>
-
 </html>
