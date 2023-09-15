@@ -118,18 +118,13 @@
                     let cell = row.insertCell();
 
                     // Use innerHTML to create a mini-table inside the cell for the hexagram and its books
-                    let booksData = '';
-                    for (let book in pages) {
+                    let booksData = `<tr><td rowspan="${Object.keys(pages).length}" class="hexagram-index">${hex.idx.toString().padStart(2, '0')}</td><td rowspan="${Object.keys(pages).length}" class="chinese-name">${hex.name}</td></tr>`;
+                    booksData += Object.keys(pages).map(book => {
                         const page = pages[book].page[hex.idx - 1] + pages[book].offset - pages[book].page[0];
-                        booksData += `<tr><td>${book.slice(0, 5)}</td><td>${page}</td></tr>`;
-                    }
-
+                        return `<tr><td>${book.slice(0, 5)}</td><td>${page}</td></tr>`;
+                    }).join('');
                     cell.innerHTML = `
                         <table class="unit">
-                            <tr>
-                                <td rowspan="${Object.keys(pages).length+1}" class="hexagram-index">${hex.idx.toString().padStart(2, '0')}</td>
-                                <td rowspan="${Object.keys(pages).length+1}" class="chinese-name">${hex.name}</td>
-                            </tr>
                             ${booksData}
                         </table>
                     `;
