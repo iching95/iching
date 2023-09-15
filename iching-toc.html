@@ -11,8 +11,7 @@
             border-collapse: collapse;
         }
 
-        th,
-        td {
+        th, td {
             border: 1px solid black;
             padding: 8px;
             text-align: left;
@@ -25,76 +24,59 @@
     <h2>Table of Contents</h2>
     <table>
         <thead>
-            <tr>
-                <th>Hexagram Index</th>
-                <th>Chinese Name</th>
-                <th>Book Name</th>
-                <th>Page</th>
-            </tr>
+            <tr id="tocHeader"></tr>
         </thead>
         <tbody id="tocBody"></tbody>
     </table>
 
     <script>
         window.onload = function() {
+            const n = 4;  // Number of units per row
+            
+            // Dynamically create table headers
+            const header = document.getElementById('tocHeader');
+            for(let i = 0; i < n; i++) {
+                header.insertCell().textContent = "Hexagram Index";
+                header.insertCell().textContent = "Chinese Name";
+                header.insertCell().textContent = "Book Name";
+                header.insertCell().textContent = "Page";
+            }
+
             fetch('data.txt')
             .then(response => response.json())
             .then(hexagrams => {
                 fetch('pages.txt')
                 .then(response => response.json())
-                .then(data => {
+                .then(pages => {
                     let tocBody = document.getElementById('tocBody');
-                    let rows = [];
+                    let previousHexIndex = null;
+                    let rowIndex = -1;
+                    let rowCount = 0;
 
-                    for (let book in data) {
-                        data[book].page.forEach((page, index) => {
-                            let hexIndex = index + 1;
+                    for (let book in pages) {
+                        let offset = pages[book].offset;
+
+                        pages[book].page.forEach((_, index) => {
+                            let hexIndex = (index % 64) + 1; 
                             let hexChineseName = hexagrams[hexIndex.toString()] ? hexagrams[hexIndex.toString()]["c"] : "";
 
-                            let computedPage = data[book].page[index] + data[book].offset - data[book].page[0];
+                            if (rowCount % n === 0) {
+                                rowIndex++;
+                                rowCount = 0;
+                            }
 
-                            rows.push({
-                                hexIndex: hexIndex,
-                                hexChineseName: hexChineseName,
-                                book: book,
-                                page: computedPage
-                            });
+                            let row = tocBody.rows[rowIndex] || tocBody.insertRow(rowIndex);
+                            row.insertCell().textContent = hexIndex;
+                            row.insertCell().textContent = hexChineseName;
+                            row.insertCell().textContent = book;
+                            const page = pages[book].page[index] + offset - pages[book].page[0];
+                            row.insertCell().textContent = page;
+                            rowCount++;
                         });
                     }
-
-                    // Sort rows based on hexagram index
-                    rows.sort((a, b) => a.hexIndex - b.hexIndex);
-
-                    let previousHexIndex = null;
-                    let rowCountForHexIndex = 0;
-                    rows.forEach((row, index) => {
-                        if (previousHexIndex !== row.hexIndex) {
-                            if (rowCountForHexIndex > 0) {
-                                tocBody.rows[tocBody.rows.length - rowCountForHexIndex].cells[0].rowSpan = rowCountForHexIndex;
-                                tocBody.rows[tocBody.rows.length - rowCountForHexIndex].cells[1].rowSpan = rowCountForHexIndex;
-                            }
-                            rowCountForHexIndex = 1;
-                        } else {
-                            rowCountForHexIndex++;
-                        }
-
-                        let newRow = tocBody.insertRow();
-                        if (previousHexIndex !== row.hexIndex) {
-                            newRow.insertCell(0).innerHTML = row.hexIndex;
-                            newRow.insertCell(1).innerHTML = row.hexChineseName;
-                        }
-                        newRow.insertCell(-1).innerHTML = row.book;
-                        newRow.insertCell(-1).innerHTML = row.page;
-                        previousHexIndex = row.hexIndex;
-
-                        if (index === rows.length - 1 && rowCountForHexIndex > 0) {
-                            tocBody.rows[tocBody.rows.length - rowCountForHexIndex].cells[0].rowSpan = rowCountForHexIndex;
-                            tocBody.rows[tocBody.rows.length - rowCountForHexIndex].cells[1].rowSpan = rowCountForHexIndex;
-                        }
-                    });
                 })
                 .catch(error => {
-                    console.error('There was an error!', error);
+                    console.error('There was an error reading pages!', error);
                 });
             })
             .catch(error => {
@@ -104,5 +86,4 @@
     </script>
 
 </body>
-
 </html>
