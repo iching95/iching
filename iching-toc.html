@@ -35,35 +35,50 @@
 
 <script>
     window.onload = function() {
-        // Fetch the content of hexagrams.txt
+        // Fetch the content of data.txt
         fetch('data.txt')
         .then(response => response.json())
         .then(hexagrams => {
 
-            // Fetch the content of page.txt
+            // Fetch the content of pages.txt
             fetch('pages.txt')
-                .then(response => response.json())
-                .then(data => {
-                    let tocBody = document.getElementById('tocBody');
-                    for (let book in data) {
-                        let offset = data[book].offset;
-                        data[book].page.forEach((page, index) => {
-                            let row = tocBody.insertRow();
-                            
-                            let hexIndex = index + 1;
-                            let hexChineseName = hexagrams[hexIndex.toString()] ? hexagrams[hexIndex.toString()]["c"] : "";
+            .then(response => response.json())
+            .then(data => {
+                let tocBody = document.getElementById('tocBody');
+                let rows = [];
 
-                            row.insertCell(0).innerHTML = hexIndex;
-                            row.insertCell(1).innerHTML = hexChineseName;
-                            row.insertCell(2).innerHTML = book;
-                            row.insertCell(3).innerHTML = index + 1;
-                            row.insertCell(4).innerHTML = page + offset -1;
+                for (let book in data) {
+                    let offset = data[book].offset;
+                    data[book].page.forEach((page, index) => {
+                        let hexIndex = index + 1;
+                        let hexChineseName = hexagrams[hexIndex.toString()] ? hexagrams[hexIndex.toString()]["c"] : "";
+
+                        rows.push({
+                            hexIndex: hexIndex,
+                            hexChineseName: hexChineseName,
+                            book: book,
+                            number: index + 1,
+                            page: page + offset - 1
                         });
-                    }
-                })
-                .catch(error => {
-                    console.error('There was an error!', error);
+                    });
+                }
+
+                // Sort rows based on hexagram index
+                rows.sort((a, b) => a.hexIndex - b.hexIndex);
+
+                rows.forEach(row => {
+                    let newRow = tocBody.insertRow();
+                    newRow.insertCell(0).innerHTML = row.hexIndex;
+                    newRow.insertCell(1).innerHTML = row.hexChineseName;
+                    newRow.insertCell(2).innerHTML = row.book;
+                    newRow.insertCell(3).innerHTML = row.number;
+                    newRow.insertCell(4).innerHTML = row.page;
                 });
+
+            })
+            .catch(error => {
+                console.error('There was an error!', error);
+            });
         })
         .catch(error => {
             console.error('There was an error reading hexagrams!', error);
