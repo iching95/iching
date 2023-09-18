@@ -72,9 +72,11 @@
             win.document.title = `${fname} - ${path}`;
             win.document.body.innerHTML = `<a href='${path}'>${path}</a>`;
         } else {
-            alert(path);
-            location.href = path;
-        }
+            fetch("pages.txt?v6")
+            .then(response => response.json())
+            .then((pages) => {
+                location.href = path;
+            }        }
     }
 
     window.onload = function() {
