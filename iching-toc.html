@@ -72,6 +72,7 @@
             win.document.title = `${fname} - ${path}`;
             win.document.body.innerHTML = `<a href='${path}'>${path}</a>`;
         } else {
+            alert(path);
             location.href = path;
         }
     }
