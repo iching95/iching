@@ -71,11 +71,14 @@
             var win = window.open();
             win.document.title = `${fname} - ${path}`;
             win.document.body.innerHTML = `<a href='${path}'>${path}</a>`;
-        } else {
+        }
+        /* else {
             setTimeout(() => {
                 location.href = path;
             }, "5000");
-        }
+        }*/
+
+        return path
     }
 
     window.onload = function() {
@@ -169,7 +172,7 @@
                     // Use innerHTML to create a mini-table inside the cell for the hexagram and its books
                     let booksData = Object.keys(pages).map(book => {
                         const page = pages[book].page[hex.idx - 1] + pages[book].offset - pages[book].page[0];
-                        return `<tr onclick="openBookLink('${book}', ${page}, device)"><td>${book.slice(0, 5)}</td><td>${page}</td></tr>`;
+                        return `<tr onclick="openBookLink('${book}', ${page}, device)"><td><a href="${openBookLink(book, page, device)}">${book.slice(0, 5)}</a></td><td>${page}</td></tr>`;
                     }).join('');
 
                     cell.innerHTML = `
