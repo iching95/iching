@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TOC Viewer</title>
     <style>
         table {
@@ -60,7 +60,6 @@
     }) + "; expires=" + expires + ";path=/;";
 
     isWatch = (device == "watch");
-
 
     function openBookLink(fname, page, device) {
         let path = (device == "desktop") ? `file:///D:/Users/dev/Documents/iching/${fname}.pdf#page=${page}` : `pdfe://iching/${fname}.pdf#${page}`;
@@ -168,7 +167,7 @@
                     // Use innerHTML to create a mini-table inside the cell for the hexagram and its books
                     let booksData = Object.keys(pages).map(book => {
                         const page = pages[book].page[hex.idx - 1] + pages[book].offset - pages[book].page[0];
-                        return `<tr onclick="openBookLink('${book}', ${page}, 'yourDeviceHere')"><td>${book.slice(0, 5)}</td><td>${page}</td></tr>`;
+                        return `<tr onclick="openBookLink('${book}', ${page}, device)"><td>${book.slice(0, 5)}</td><td>${page}</td></tr>`;
                     }).join('');
 
                     cell.innerHTML = `
