@@ -185,7 +185,9 @@
           win.document.title = fname + " - " + path;
           win.document.body.innerHTML = `<a href='${path}'>${path}</a>`;
         }else{
-          location.href = path;
+          setTimeout(() => {
+            location.href = path;
+          }, "2000");
         }
 
       })
