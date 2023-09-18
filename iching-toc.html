@@ -72,11 +72,9 @@
             win.document.title = `${fname} - ${path}`;
             win.document.body.innerHTML = `<a href='${path}'>${path}</a>`;
         } else {
-            fetch("pages.txt?v6")
-            .then(response => response.json())
-            .then((pages) => {
+            setTimeout(() => {
                 location.href = path;
-            })        
+            }, "2000");
         }
     }
 
