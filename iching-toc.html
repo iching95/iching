@@ -29,6 +29,54 @@
     <table id="tocBody"></table>
 
 <script>
+
+    const deviceCookMatch = window.location.search.match(/device=([^&]+)/);
+    const themeCookMatch  = window.location.search.match(/theme=([^&]+)+/);
+
+    let isWatch = false;
+    let theme = "dark";
+    let device = "phone";
+    let last = 0;
+
+    const cookMatch = document.cookie?document.cookie.match(/prefs=(.+)/):false;
+    
+    if(cookMatch){
+    let cookie = JSON.parse(cookMatch[1]);
+    device = cookie.device;
+    theme = cookie.theme;
+    last = cookie.last;
+    isWatch = (cookie.device == "watch");
+    }
+
+    device = deviceCookMatch?deviceCookMatch[1]:device;
+    theme =  themeCookMatch?themeCookMatch[1]:theme;
+
+    var expires = (new Date(Date.now() + 86400 * 1000)).toUTCString();
+
+    document.cookie = "prefs=" +JSON.stringify({
+        device:device,
+        theme :theme,
+        last:last
+    }) + "; expires=" + expires + ";path=/;";
+
+    isWatch = (device == "watch");
+
+
+    function openBookLink(fname, page, device) {
+        let path = (device == "desktop") ? `file:///D:/Users/dev/Documents/iching/${fname}.pdf#page=${page}` : `pdfe://iching/${fname}.pdf#${page}`;
+        
+        path = path.replace("{fname}", fname);
+        path = path.replace("{page}", page);
+
+        if (device == "desktop") {
+            var win = window.open();
+            win.document.title = `${fname} - ${path}`;
+            win.document.body.innerHTML = `<a href='${path}'>${path}</a>`;
+        } else {
+            location.href = path;
+        }
+    }
+
     window.onload = function() {
         const hexagramOrder = [
             { idx: 2, name: "坤為地" },
@@ -120,7 +168,7 @@
                     // Use innerHTML to create a mini-table inside the cell for the hexagram and its books
                     let booksData = Object.keys(pages).map(book => {
                         const page = pages[book].page[hex.idx - 1] + pages[book].offset - pages[book].page[0];
-                        return `<tr><td>${book.slice(0, 5)}</td><td>${page}</td></tr>`;
+                        return `<tr onclick="openBookLink('${book}', ${page}, 'yourDeviceHere')"><td>${book.slice(0, 5)}</td><td>${page}</td></tr>`;
                     }).join('');
 
                     cell.innerHTML = `
