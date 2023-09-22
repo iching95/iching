@@ -89,7 +89,7 @@
         let pdfURL = `${basePath}${fname}.pdf`;
 
         // Construct the URL for pdf.js viewer
-        let viewerURL = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(pdfURL)}.pdf#page=${page}`;
+        let viewerURL = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(pdfURL)}#page=${page}`;
 
         return viewerURL;
     }
