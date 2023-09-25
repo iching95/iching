@@ -191,7 +191,7 @@
                         <table class="unit">
                             <tr>
                                 <td class="hexagram-index">${hex.idx.toString().padStart(2, '0')}</td>
-                                <td class="chinese-name">${hex.name + new Array(4 - hex.name.length + 1).join('&#12288;')}</td>
+                                <td class="chinese-name"><span style='font-size:${hex.name.length>3?'15px':'16px'}'>${hex.name}</span></td>
                             </tr>
                             ${booksData}
                         </table>
