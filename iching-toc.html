@@ -84,12 +84,13 @@
     function createBookLink(fname, page) {
         // Define the base path to your PDFs. 
         // For simplicity, I'm assuming the PDFs are on an S3 bucket or another online source.
-        let basePath = `https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/iching-books/`; // replace 'your-s3-bucket-url' with the actual path to your S3 bucket
-        
+        // let basePath = `https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/iching-books/`; // replace 'your-s3-bucket-url' with the actual path to your S3 bucket
+        let basePath = `/iching-books/`; // replace 'your
+        //https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/iching-books/web/viewer.html?file=%2Fiching-books%2Fli.pdf#page=149&spreadModeOnLoad=2
         let pdfURL = `${basePath}${fname}.pdf`;
 
         // Construct the URL for pdf.js viewer
-        let viewerURL = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(pdfURL)}#page=${page}`;
+        let viewerURL = `https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/iching-books/web/viewer.html?file=${encodeURIComponent(pdfURL)}#page=${page}&spreadModeOnLoad=2`;
 
         return viewerURL;
     }
