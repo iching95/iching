@@ -90,7 +90,7 @@
         let pdfURL = `${basePath}${fname}.pdf`;
 
         // Construct the URL for pdf.js viewer
-        let viewerURL = `https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/iching-books/web/viewer.html?file=${encodeURIComponent(pdfURL)}#page=${page}&spreadModeOnLoad=2`;
+        let viewerURL = `https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/iching-books/web/viewer.html?file=${encodeURIComponent(pdfURL)}#page=${page}`;
 
         return viewerURL;
     }
