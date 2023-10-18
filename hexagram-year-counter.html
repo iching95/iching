@@ -68,11 +68,11 @@ const subPeriodsMapping = {
 
 function yearToBCAD(year) {
     if (year > 0) {
-        return year + " AD";
-    } else if (year < 0) {
-        return Math.abs(year - 1) + " BC";
+        return year.toString(); // Simply return the year for positive values (AD years)
+    } else if (year === 0) {
+        return "1 BC"; // Convert year 0 to 1 BC
     } else {
-        return "1 BC"; // Since there's no 0 AD, considering it as 1 BC
+        return Math.abs(year) + 1 + " BC"; // Convert negative years to BC
     }
 }
 
@@ -273,7 +273,7 @@ function generateTable(yearFromFunction) {
             durationCell.textContent = `${startYearBCAD}-${endYearBCAD}`;
         }
         row.appendChild(durationCell);
-        
+
         // Adding Period Length
         const lengthCell = document.createElement('td');
         lengthCell.textContent = period.length;
