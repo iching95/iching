@@ -250,10 +250,9 @@ function generateTable(yearFromFunction) {
         
         // Adding Period Name
         const periodNameCell = document.createElement('td');
-        const indentLevel = periodKey.split('_').length - 1; // Calculate the indent level
-        periodNameCell.textContent = 'Ｌ'.repeat(indentLevel) + periodKey.replace(/_/g, ' ');
+        periodNameCell.textContent = periodKey.replace('_', ' ');
         row.appendChild(periodNameCell);
-                
+        
         // Adding Sequence
         const sequenceCell = document.createElement('td');
         sequenceCell.textContent = period.sequence;
