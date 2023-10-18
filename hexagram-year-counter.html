@@ -1,0 +1,286 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Period Table</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Enter Year:</h2>
+<input type="number" id="inputYear" placeholder="e.g. 2023" oninput="updateTable()">
+<button onclick="generateTable()">Generate Table</button>
+
+<h2>Period Details:</h2>
+<table id="periodTable">
+    <thead>
+        <tr>
+            <th>Period</th>
+            <th>Sequence</th>
+            <th>Name</th>
+            <th>Duration</th>
+            <th>Period Length</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Rows will be added here by JavaScript -->
+    </tbody>
+</table>
+
+
+<script>
+
+const hexagrams={"000001":{"n":23,"p":"bo","s":"䷖","u":"book-of-changes/bo/zh","c":"剝"},"100001":{"n":27,"p":"yi","s":"䷚","u":"book-of-changes/yi/zh","c":"頤"},"010001":{"n":4,"p":"meng","s":"䷃","u":"book-of-changes/meng/zh","c":"蒙"},"110001":{"n":41,"p":"sun","s":"䷨","u":"book-of-changes/sun/zh","c":"損"},"001001":{"n":52,"p":"gen","s":"䷳","u":"book-of-changes/gen/zh","c":"艮"},"101001":{"n":22,"p":"bi","s":"䷕","u":"book-of-changes/bi1/zh","c":"賁"},"011001":{"n":18,"p":"gu","s":"䷑","u":"book-of-changes/gu/zh","c":"蠱"},"111001":{"n":26,"p":"da-chu","s":"䷙","u":"book-of-changes/da-xu/zh","c":"大畜"},"000101":{"n":35,"p":"jin","s":"䷢","u":"book-of-changes/jin/zh","c":"晉"},"100101":{"n":21,"p":"shi-ke","s":"䷔","u":"book-of-changes/shi-he/zh","c":"噬嗑"},"010101":{"n":64,"p":"wei-ji","s":"䷾","u":"book-of-changes/wei-ji/zh","c":"未濟"},"110101":{"n":38,"p":"kui","s":"䷥","u":"book-of-changes/kui/zh","c":"睽"},"001101":{"n":56,"p":"lv","s":"䷷","u":"book-of-changes/lu1/zh","c":"旅"},"101101":{"n":30,"p":"li","s":"䷝","u":"book-of-changes/li/zh","c":"離"},"011101":{"n":50,"p":"ding","s":"䷱","u":"book-of-changes/ding/zh","c":"鼎"},"111101":{"n":14,"p":"da-you","s":"䷍","u":"book-of-changes/da-you/zh","c":"大有"},"000011":{"n":20,"p":"guan","s":"䷓","u":"book-of-changes/guan/zh","c":"觀"},"100011":{"n":42,"p":"yi","s":"䷩","u":"book-of-changes/yi1/zh","c":"益"},"010011":{"n":59,"p":"huan","s":"䷺","u":"book-of-changes/huan/zh","c":"渙"},"110011":{"n":61,"p":"zhong-fu","s":"䷼","u":"book-of-changes/zhong-fu/zh","c":"中孚"},"001011":{"n":53,"p":"jian","s":"䷴","u":"book-of-changes/jian1/zh","c":"漸"},"101011":{"n":37,"p":"jia-ren","s":"䷤","u":"book-of-changes/jia-ren/zh","c":"家人"},"011011":{"n":57,"p":"xun","s":"䷸","u":"book-of-changes/xun/zh","c":"巽"},"111011":{"n":9,"p":"xiao-chu","s":"䷈","u":"book-of-changes/xiao-xu/zh","c":"小畜"},"000111":{"n":12,"p":"pi","s":"䷋","u":"book-of-changes/pi/zh","c":"否"},"100111":{"n":25,"p":"wu-wang","s":"䷘","u":"book-of-changes/wu-wang/zh","c":"无妄"},"010111":{"n":6,"p":"song","s":"䷅","u":"book-of-changes/song/zh","c":"訟"},"110111":{"n":10,"p":"lu","s":"䷉","u":"book-of-changes/lu/zh","c":"履"},"001111":{"n":33,"p":"dun","s":"䷠","u":"book-of-changes/dun/zh","c":"遯"},"101111":{"n":13,"p":"tong-ren","s":"䷌","u":"book-of-changes/tong-ren/zh","c":"同人"},"011111":{"n":44,"p":"gou","s":"䷫","u":"book-of-changes/gou/zh","c":"姤"},"111111":{"n":1,"p":"qian","s":"䷀","u":"book-of-changes/qian/zh","c":"乾"},"000000":{"n":2,"p":"kun","s":"䷁","u":"book-of-changes/kun/zh","c":"坤"},"100010":{"n":3,"p":"zhun","s":"䷂","u":"book-of-changes/zhun/zh","c":"屯"},"100100":{"n":51,"p":"zhen","s":"䷲","u":"book-of-changes/zhen/zh","c":"震"},"100110":{"n":17,"p":"sui","s":"䷐","u":"book-of-changes/sui/zh","c":"隨"},"101000":{"n":36,"p":"ming-yi","s":"䷣","u":"book-of-changes/ming-yi/zh","c":"明夷"},"101010":{"n":63,"p":"ji-ji","s":"䷾","u":"book-of-changes/ji-ji/zh","c":"既濟"},"101100":{"n":55,"p":"feng","s":"䷶","u":"book-of-changes/feng/zh","c":"豐"},"101110":{"n":49,"p":"ge","s":"䷰","u":"book-of-changes/ge/zh","c":"革"},"110000":{"n":19,"p":"lin","s":"䷒","u":"book-of-changes/lin/zh","c":"臨"},"110010":{"n":60,"p":"jie","s":"䷻","u":"book-of-changes/jie1/zh","c":"節"},"110100":{"n":54,"p":"gui-mei","s":"䷵","u":"book-of-changes/gui-mei/zh","c":"歸妹"},"110110":{"n":58,"p":"joyful","s":"䷹","u":"book-of-changes/dui/zh","c":"兌"},"111000":{"n":11,"p":"tai","s":"䷊","u":"book-of-changes/tai/zh","c":"泰"},"111010":{"n":5,"p":"xu","s":"䷄","u":"book-of-changes/xu/zh","c":"需"},"111100":{"n":34,"p":"da-zhuang","s":"䷡","u":"book-of-changes/da-zhuang/zh","c":"大壯"},"111110":{"n":43,"p":"guai","s":"䷪","u":"book-of-changes/guai/zh","c":"夬"},"011110":{"n":28,"p":"da-guo","s":"䷛","u":"book-of-changes/da-guo/zh","c":"大過"},"011100":{"n":32,"p":"heng","s":"䷟","u":"book-of-changes/heng/zh","c":"恆"},"011010":{"n":48,"p":"jing","s":"䷯","u":"book-of-changes/jing/zh","c":"井"},"011000":{"n":46,"p":"sheng","s":"䷭","u":"book-of-changes/sheng/zh","c":"升"},"010110":{"n":47,"p":"kun","s":"䷮","u":"book-of-changes/kun1/zh","c":"困"},"010100":{"n":40,"p":"xie","s":"䷧","u":"book-of-changes/jie/zh","c":"解"},"010010":{"n":29,"p":"kan","s":"䷜","u":"book-of-changes/kan/zh","c":"坎"},"010000":{"n":7,"p":"shi","s":"䷆","u":"book-of-changes/shi/zh","c":"師"},"001110":{"n":31,"p":"xian","s":"䷞","u":"book-of-changes/xian/zh","c":"咸"},"001100":{"n":62,"p":"xiao-guo","s":"䷽","u":"book-of-changes/xiao-guo/zh","c":"小過"},"001010":{"n":39,"p":"gu","s":"䷦","u":"book-of-changes/jian/zh","c":"蹇"},"001000":{"n":15,"p":"qian","s":"䷎","u":"book-of-changes/qian1/zh","c":"謙"},"000110":{"n":45,"p":"cui","s":"䷬","u":"book-of-changes/cui/zh","c":"萃"},"000100":{"n":16,"p":"yu","s":"䷏","u":"book-of-changes/yu/zh","c":"豫"},"000010":{"n":8,"p":"bi","s":"䷇","u":"book-of-changes/bi/zh","c":"比"},"100000":{"n":24,"p":"fu","s":"䷗","u":"book-of-changes/fu/zh","c":"復"}};
+
+    // Constants for the ordering of the major and minor periods
+    const majorOrder = ["子會", "丑會", "寅會", "卯會", "辰會", "巳會", "午會", "未會", "申會", "酉會", "戌會", "亥會"];
+    const minorPeriods = {
+                    "子會": ["復", "頤", "屯", "益", "震"],
+                    "丑會": ["噬嗑", "隨", "無妄", "明夷", "賁"],
+                    "寅會": ["既濟", "家人", "豐", "革", "同人"],
+                    "卯會": ["臨", "損", "節", "中孚", "歸妹"],
+                    "辰會": ["睽", "兑", "履", "泰", "大畜"],
+                    "巳會": ["需", "小畜", "大壯", "大有", "夬"],
+                    "午會": ["姤", "大過", "鼎", "恒", "巽"],
+                    "未會": ["井", "蠱", "升", "訟", "困"],
+                    "申會": ["未濟", "解", "渙", "蒙", "師"],
+                    "酉會": ["遯", "咸", "旅", "小過", "漸"],
+                    "戌會": ["蹇", "艮", "謙", "否", "萃"],
+                    "亥會": ["晉", "豫", "觀", "比", "剝"]
+        };
+
+const minorPeriodsList = [].concat(...Object.values(minorPeriods));
+
+const subPeriodsMapping = {
+    "鼎": ["晉", "旅", "未濟", "蠱", "升", "恒"]
+    // You can add more mappings here in the future
+};
+
+function getHexagram(binaryStr, sequence) {
+    const binaryArray = Array.from(binaryStr);
+    binaryArray[sequence - 1] = binaryArray[sequence - 1] === "0" ? "1" : "0";
+    const alteredBinary = binaryArray.join("");
+    return {
+        ...hexagrams[alteredBinary],
+        key: alteredBinary
+    };
+}
+
+function getPeriodDetails(year) {
+    // Define lengths for each period type
+    const yearsPerPeriod_H = 2160;
+    const yearsPerMajor_G = 10800;
+    const yearsPerPeriod_L = 360;
+    const yearsPerPeriod_M = yearsPerPeriod_L / 6;
+    const yearsPerPeriod_DS = 10; // Decade within period_M
+    const yearsPerPeriod_Y = 1;
+
+    // Calculate the starting year of the reference major period (午會)
+    const startReferenceMinor = -56;
+    const startReferenceMajor = startReferenceMinor - yearsPerPeriod_H;
+    
+    const majorStarts = {};
+    majorOrder.forEach((major, index) => {
+        majorStarts[major] = startReferenceMajor + (index - majorOrder.indexOf("午會")) * yearsPerMajor_G;
+    });
+
+    let currentMajor, currentMinor, minorIndex;
+    for (const major of majorOrder) {
+        if (year >= majorStarts[major] && year < majorStarts[major] + yearsPerMajor_G) {
+            currentMajor = major;
+
+            for (let i = 0; i < minorPeriods[major].length; i++) {
+                if (year >= majorStarts[major] + i * yearsPerPeriod_H && year < majorStarts[major] + (i + 1) * yearsPerPeriod_H) {
+                    currentMinor = minorPeriods[major][i];
+                    minorIndex = i;
+                    break;
+                }
+            }
+            break;
+        }
+    }
+
+    // Calculate the offset within the current minor period
+    const offsetInCurrentMinor = year - (majorStarts[currentMajor] + minorIndex * yearsPerPeriod_H);
+    const n_L = Math.floor(offsetInCurrentMinor / yearsPerPeriod_L);
+    const n_M = Math.floor((offsetInCurrentMinor % yearsPerPeriod_L) / yearsPerPeriod_M);
+    const n_DS = Math.floor((offsetInCurrentMinor % yearsPerPeriod_M) / yearsPerPeriod_DS);
+    const n_Y = offsetInCurrentMinor % yearsPerPeriod_M;
+
+    let period2HBinary = "";
+    for (const binary in hexagrams) {
+        if (hexagrams[binary].c === currentMinor) {
+            period2HBinary = binary;
+            break;
+        }
+    }
+    console.log(period2HBinary)
+
+    const period3LHexagram = getHexagram(period2HBinary, n_L + 1);
+    console.log(period3LHexagram)
+    const period4MHexagram = getHexagram(period3LHexagram.key, n_M + 1);
+    console.log(period4MHexagram)
+    const period5DSHexagram = getHexagram(period4MHexagram.key, n_DS + 1);
+    console.log(period5DSHexagram)
+
+    const period4MHexagramName = period4MHexagram.c;
+    const baseIndex = minorPeriodsList.indexOf(period4MHexagramName);
+    const period6YName = minorPeriodsList[(baseIndex + n_Y) % minorPeriodsList.length]; 
+       
+    // Construct the return object with period details
+    return {
+        period_1_G: {
+            sequence: `${majorOrder.indexOf(currentMajor) + 1} / 12`,
+            name: currentMajor,
+            start: majorStarts[currentMajor],
+            end: majorStarts[currentMajor] + yearsPerMajor_G - 1,
+            length: yearsPerMajor_G
+        },
+        period_2_H: {
+            sequence: `${minorIndex + 1} / ${minorPeriods[currentMajor].length}`,
+            name: currentMinor,
+            start: majorStarts[currentMajor] + minorIndex * yearsPerPeriod_H,
+            end: majorStarts[currentMajor] + (minorIndex + 1) * yearsPerPeriod_H - 1,
+            length: yearsPerPeriod_H
+        },
+        period_3_L: {
+            sequence: `${n_L + 1} / 6`,
+            name: period3LHexagram.c,
+            start: majorStarts[currentMajor] + minorIndex * yearsPerPeriod_H + n_L * yearsPerPeriod_L,
+            end: majorStarts[currentMajor] + minorIndex * yearsPerPeriod_H + (n_L + 1) * yearsPerPeriod_L - 1,
+            length: yearsPerPeriod_L
+        },
+        period_4_M: {
+            sequence: `${n_M + 1} / 6`,
+            name: period4MHexagram.c,
+            start: majorStarts[currentMajor] + minorIndex * yearsPerPeriod_H + n_L * yearsPerPeriod_L + n_M * yearsPerPeriod_M,
+            end: majorStarts[currentMajor] + minorIndex * yearsPerPeriod_H + n_L * yearsPerPeriod_L + (n_M + 1) * yearsPerPeriod_M - 1,
+            length: yearsPerPeriod_M
+        },
+        period_5_DS: {
+            sequence: `${n_DS + 1} / 6`,
+            name: period5DSHexagram.c,
+            start: majorStarts[currentMajor] + minorIndex * yearsPerPeriod_H + n_L * yearsPerPeriod_L + n_M * yearsPerPeriod_M + n_DS * yearsPerPeriod_DS,
+            end: majorStarts[currentMajor] + minorIndex * yearsPerPeriod_H + n_L * yearsPerPeriod_L + n_M * yearsPerPeriod_M + (n_DS + 1) * yearsPerPeriod_DS - 1,
+            length: yearsPerPeriod_DS
+        },
+        period_6_Y: {
+            sequence: `${n_Y + 1} / ${minorPeriodsList.length}`,
+            name: period6YName,
+            start: majorStarts[currentMajor] + minorIndex * yearsPerPeriod_H + n_L * yearsPerPeriod_L + n_M * yearsPerPeriod_M + n_Y,
+            end: majorStarts[currentMajor] + minorIndex * yearsPerPeriod_H + n_L * yearsPerPeriod_L + n_M * yearsPerPeriod_M + n_Y + yearsPerPeriod_Y - 1,
+            length: yearsPerPeriod_Y
+        }
+    };
+}
+
+
+function updateTable() {
+    const inputYearElement = document.getElementById('inputYear');
+    const inputYear = parseInt(inputYearElement.value, 10);
+    if (!isNaN(inputYear)) {
+        generateTable(inputYear);
+    }
+}
+
+function generateTable(yearFromFunction) {
+
+    const inputYearElement = document.getElementById('inputYear');
+    
+    if (yearFromFunction) {
+        inputYearElement.value = yearFromFunction;
+    } else {
+        yearFromFunction = parseInt(inputYearElement.value, 10);
+    }
+
+    if (isNaN(yearFromFunction)) {
+        // Handle the error, e.g., set a default year or display an error message
+        yearFromFunction = 2023;  // Default year
+    }
+
+    // Remove the previous table if it exists
+    const existingTable = document.getElementById('periodTable');
+    if (existingTable) {
+        existingTable.remove();
+    }
+
+    const periodDetails = getPeriodDetails(yearFromFunction);  // Ensure you're using 'yearFromFunction' here and not 'year'
+
+    const table = document.createElement('table');
+    table.border = '1';
+    table.id = 'periodTable'; // Adding an ID for easy reference
+    
+    // Table header
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+    ["Period Name", "Sequence", "Name", "Duration", "Period Length"].forEach(text => {
+        const th = document.createElement('th');
+        th.textContent = text;
+        headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+    
+    // Table body
+    const tbody = document.createElement('tbody');
+    
+    for (let periodKey in periodDetails) {
+        const period = periodDetails[periodKey];
+        const row = document.createElement('tr');
+        
+        // Adding Period Name
+        const periodNameCell = document.createElement('td');
+        periodNameCell.textContent = periodKey.replace('_', ' ');
+        row.appendChild(periodNameCell);
+        
+        // Adding Sequence
+        const sequenceCell = document.createElement('td');
+        sequenceCell.textContent = period.sequence;
+        row.appendChild(sequenceCell);
+
+        // Adding Name
+        const nameCell = document.createElement('td');
+        nameCell.textContent = period.name || "--"; // Displaying '--' if no name available
+        row.appendChild(nameCell);
+
+        // Adding Duration
+        const durationCell = document.createElement('td');
+        if (period.start === period.end) {
+            durationCell.textContent = `${period.start}`;
+        } else {
+            durationCell.textContent = `${period.start}-${period.end}`;
+        }
+        row.appendChild(durationCell);
+
+        // Adding Period Length
+        const lengthCell = document.createElement('td');
+        lengthCell.textContent = period.length;
+        row.appendChild(lengthCell);
+        
+        tbody.appendChild(row);
+    }
+
+    table.appendChild(tbody);
+    
+    // Append the table to the body or any container you want
+    document.body.appendChild(table);
+}
+
+// Example usage when invoked directly
+generateTable(2023);
+
+
+
+</script>
+</body>
+</html>
