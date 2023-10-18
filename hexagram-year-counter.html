@@ -66,6 +66,16 @@ const subPeriodsMapping = {
     // You can add more mappings here in the future
 };
 
+function yearToBCAD(year) {
+    if (year > 0) {
+        return year + " AD";
+    } else if (year < 0) {
+        return Math.abs(year - 1) + " BC";
+    } else {
+        return "1 BC"; // Since there's no 0 AD, considering it as 1 BC
+    }
+}
+
 function getHexagram(binaryStr, sequence) {
     const binaryArray = Array.from(binaryStr);
     binaryArray[sequence - 1] = binaryArray[sequence - 1] === "0" ? "1" : "0";
@@ -255,13 +265,15 @@ function generateTable(yearFromFunction) {
 
         // Adding Duration
         const durationCell = document.createElement('td');
-        if (period.start === period.end) {
-            durationCell.textContent = `${period.start}`;
+        const startYearBCAD = yearToBCAD(period.start);
+        const endYearBCAD = yearToBCAD(period.end);
+        if (startYearBCAD === endYearBCAD) {
+            durationCell.textContent = startYearBCAD;
         } else {
-            durationCell.textContent = `${period.start}-${period.end}`;
+            durationCell.textContent = `${startYearBCAD}-${endYearBCAD}`;
         }
         row.appendChild(durationCell);
-
+        
         // Adding Period Length
         const lengthCell = document.createElement('td');
         lengthCell.textContent = period.length;
