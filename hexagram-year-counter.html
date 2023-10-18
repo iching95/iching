@@ -276,6 +276,9 @@ function generateTable(yearFromFunction) {
     document.body.appendChild(table);
 }
 
+const inputYearElement = document.getElementById('inputYear');
+inputYearElement.value = new Date().getFullYear();
+
 // Example usage when invoked directly
 generateTable();
 
