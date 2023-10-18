@@ -205,7 +205,7 @@ function generateTable(yearFromFunction) {
 
     if (isNaN(yearFromFunction)) {
         // Handle the error, e.g., set a default year or display an error message
-        yearFromFunction = 2023;  // Default year
+        yearFromFunction = new Date().getFullYear();    // Default year
     }
 
     // Remove the previous table if it exists
