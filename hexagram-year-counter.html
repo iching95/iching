@@ -19,8 +19,11 @@
 
 <h2>Enter Year:</h2>
 <input type="number" id="inputYear" placeholder="e.g. 2023" oninput="updateTable()">
-<button onclick="generateTable()">Generate Table</button>
 
+<!-- Modified buttons -->
+<button onclick="document.getElementById('inputYear').value = isNaN(parseInt(document.getElementById('inputYear').value)) ? 2023 : parseInt(document.getElementById('inputYear').value) - 1; updateTable();">-</button>
+<button onclick="document.getElementById('inputYear').value = isNaN(parseInt(document.getElementById('inputYear').value)) ? 2023 : parseInt(document.getElementById('inputYear').value) + 1; updateTable();">+</button>
+    
 <h2>Period Details:</h2>
 <table id="periodTable">
     <thead>
