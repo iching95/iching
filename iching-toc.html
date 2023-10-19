@@ -169,6 +169,7 @@
         .then(response => response.json())
         .then(hexagrams => {
             fetch('pages.txt')
+            // to find out offset, go to the first hexagram page accroding to the book TOC, and mark the PDF page no. of the 1st hexagram page as the offset
             .then(response => response.json())
             .then(pages => {
                 let tocBody = document.getElementById('tocBody');
