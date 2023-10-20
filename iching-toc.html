@@ -183,7 +183,7 @@
             .then(response => response.json())
             .then(pages => {
                 let tocBody = document.getElementById('tocBody');
-                let currentUnitsInRow = 0; // To keep track of how many units are added in the current row
+                let currentUnitsInRow = 0;  // To keep track of how many units are added in the current row
 
                 // Clone the hexagramOrder and sort it by idx in songMode
                 let displayOrder = [...hexagramOrder];
@@ -200,13 +200,22 @@
 
                     // Handle the standard hexagram content
                     let cell = tocBody.rows[tocBody.rows.length-1].insertCell();
+
+                    // Handle doubled hexagrams in songMode
+                    if (songMode && double.includes(hex.idx)) {
+                        cell.colSpan = 2; // Allow the cell to span two columns
+                        currentUnitsInRow += 2; // Double counts as two units
+                    } else {
+                        currentUnitsInRow++; // Standard hexagram counts as one unit
+                    }
+
                     let booksData = Object.keys(pages).map(book => {
                         const page = pages[book].page[hex.idx - 1] + pages[book].offset - pages[book].page[0];
                         return `<tr><td><a href="${createBookLink(book, page)}" target="_blank">${book.slice(0, 5)}</a></td><td>${page}</td></tr>`;
                     }).join('');
 
                     cell.innerHTML = `
-                        <table class="unit">
+                        <table class="unit" style="width: 100%;">
                             <tr>
                                 <td class="hexagram-index">${hex.idx.toString().padStart(2, '0')}</td>
                                 <td class="chinese-name"><span style='font-size: 12px; display: block; min-height: 20px;font-size:${hex.name.length > 3 ? '12px' : '16px'}'>${hex.name}</span></td>
@@ -214,21 +223,13 @@
                             ${booksData}
                         </table>
                     `;
-                    currentUnitsInRow++; // Added a unit
-
-                    // Handle doubled hexagrams in songMode
-                    if (songMode && double.includes(hex.idx)) {
-                        let doubleCell = tocBody.rows[tocBody.rows.length-1].insertCell();
-                        doubleCell.innerHTML = cell.innerHTML; // Replicate the hexagram content
-                        currentUnitsInRow++; // Double counts as an additional unit
-                    }
 
                     // Handle skipped hexagrams in songMode by adding empty cells based on number of occurrences
                     if (songMode) {
                         let skipCount = skip.filter(val => val === hex.idx).length;
                         for (let i = 0; i < skipCount; i++) {
                             tocBody.rows[tocBody.rows.length-1].insertCell().innerHTML = "<td></td>";
-                            currentUnitsInRow++; // Each skip counts as a unit
+                            currentUnitsInRow++;  // Each skip counts as a unit
                         }
                     }
                 });
