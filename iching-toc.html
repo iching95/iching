@@ -41,11 +41,11 @@
     const cookMatch = document.cookie?document.cookie.match(/prefs=(.+)/):false;
     
     if(cookMatch){
-        let cookie = JSON.parse(cookMatch[1]);
-        device = cookie.device;
-        theme = cookie.theme;
-        last = cookie.last;
-        isWatch = (cookie.device == "watch");
+    let cookie = JSON.parse(cookMatch[1]);
+    device = cookie.device;
+    theme = cookie.theme;
+    last = cookie.last;
+    isWatch = (cookie.device == "watch");
     }
 
     device = deviceCookMatch?deviceCookMatch[1]:device;
@@ -96,7 +96,7 @@
     }
 
     window.onload = function() {
-        let hexagramOrder = [
+        const hexagramOrder = [
             { idx: 2, name: "坤為地" },
             { idx: 23, name: "山地剝" },
             { idx: 8, name: "水地比" },
@@ -163,35 +163,7 @@
             { idx: 1, name: "乾為天" }
         ];
 
-        const skip   = [9, 20, 30, 30, 30, 33, 33, 35, 51, 60, 61, 63];
-        const double = [9, 13, 14, 21, 25, 26, 28];
-
-        let unitsPerRow = isWatch ? 7 : 8; // Default for phone/desktop
-        let songMode = false;
-
-        // Check for #song in the URL
-        if (window.location.hash === "#song") {
-            songMode = true;
-            unitsPerRow = 7; // Set to 7 per row
-        }
-
-        if (songMode) {
-            // Sort hexagramOrder by idx
-            hexagramOrder.sort((a, b) => a.idx - b.idx);
-
-            // Process skipped hexagrams
-            let modifiedHexagramOrder = [];
-            hexagramOrder.forEach((hex) => {
-                if (skip.includes(hex.idx)) {
-                    modifiedHexagramOrder.push({ idx: null, name: null });  // Empty box for skip
-                }
-                modifiedHexagramOrder.push(hex);
-                if (double.includes(hex.idx)) {
-                    modifiedHexagramOrder.push(hex);  // Double box for double
-                }
-            });
-            hexagramOrder = modifiedHexagramOrder;
-        }
+        const unitsPerRow = 8;  // Set this to configure how many units you want per row.
 
         fetch('data.txt')
         .then(response => response.json())
@@ -203,27 +175,20 @@
                 let tocBody = document.getElementById('tocBody');
                 let row;
 
-                hexagramOrder.forEach((hex, index) => {
-                    
-                    // Check for start of a new row or if the current hexagram should be skipped
-                    if (index % unitsPerRow === 0 || (songMode && skip.includes(hex.idx))) {
-                        if (row && row.cells.length < unitsPerRow) {
-                            while (row.cells.length < unitsPerRow) {
-                                row.insertCell().innerHTML = "<td></td>";  // Insert empty cells to fill up the row
-                            }
-                        }
-                        row = tocBody.insertRow();  // Start a new row
+                // Clone the hexagramOrder and sort it by idx in songMode
+                let displayOrder = [...hexagramOrder];
+                if (songMode) {
+                    displayOrder.sort((a, b) => a.idx - b.idx);
+                }
+
+                displayOrder.forEach((hex, index) => {
+                    // Start a new row if required
+                    if (index % unitsPerRow === 0 && (index !== 0 || songMode)) {
+                        row = tocBody.insertRow();
                     }
 
-                    // Create a new cell for the unit
+                    // Handle the standard hexagram content
                     let cell = row.insertCell();
-
-                    if (!hex.idx) {
-                        cell.innerHTML = "<td></td>";
-                        return;
-                    }
-
-                    // Use innerHTML to create a mini-table inside the cell for the hexagram and its books
                     let booksData = Object.keys(pages).map(book => {
                         const page = pages[book].page[hex.idx - 1] + pages[book].offset - pages[book].page[0];
                         return `<tr><td><a href="${createBookLink(book, page)}" target="_blank">${book.slice(0, 5)}</a></td><td>${page}</td></tr>`;
@@ -238,40 +203,33 @@
                         </table>
                     `;
 
-                    // Insert an extra cell if the hexagram should be doubled and we're in song mode
+                    // Handle doubled hexagrams in songMode
                     if (songMode && double.includes(hex.idx)) {
-                        cell = row.insertCell();
-                        cell.innerHTML = `
-                            <table class="unit">
-                                <tr>
-                                    <td class="hexagram-index">${hex.idx.toString().padStart(2, '0')}</td>
-                                    <td class="chinese-name"><span style='font-size: 12px; display: block; min-height: 20px;font-size:${hex.name.length > 3 ? '12px' : '16px'}'>${hex.name}</span></td>
-                                </tr>
-                                ${booksData}
-                            </table>
-                        `;
+                        let doubleCell = row.insertCell();
+                        doubleCell.innerHTML = cell.innerHTML; // Replicate the hexagram content
+                    }
+
+                    // Handle skipped hexagrams in songMode by adding an empty cell after
+                    if (songMode && skip.includes(hex.idx)) {
+                        row.insertCell().innerHTML = "<td></td>";
                     }
                 });
 
-                // Ensure the final row is filled up to the required units per row
+                // Fill up the final row if necessary
                 if (row.cells.length < unitsPerRow) {
                     while (row.cells.length < unitsPerRow) {
-                        row.insertCell().innerHTML = "<td></td>";  // Insert empty cells to fill up the row
+                        row.insertCell().innerHTML = "<td></td>";
                     }
                 }
-
             })
-        .catch(error => {
-            console.error('There was an error!', error);
-        });
+            .catch(error => {
+                console.error('There was an error!', error);
+            });
         })
         .catch(error => {
             console.error('There was an error reading hexagrams!', error);
         });
     }
-
-
-
 
 </script>
 
