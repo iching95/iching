@@ -163,8 +163,18 @@
             { idx: 1, name: "乾為天" }
         ];
 
-        const unitsPerRow = 8;  // Set this to configure how many units you want per row.
+        const skip   = [9, 20, 30, 30, 30, 33, 33, 35, 51, 60, 61, 63];
+        const double = [9, 13, 14, 21, 25, 26, 28];
 
+        let unitsPerRow = isWatch ? 7 : 8; // Default for phone/desktop
+        let songMode = false;
+
+        // Check for #song in the URL
+        if (window.location.hash === "#song") {
+            songMode = true;
+            unitsPerRow = 7; // Set to 7 per row
+        }
+        
         fetch('data.txt')
         .then(response => response.json())
         .then(hexagrams => {
