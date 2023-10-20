@@ -41,11 +41,11 @@
     const cookMatch = document.cookie?document.cookie.match(/prefs=(.+)/):false;
     
     if(cookMatch){
-    let cookie = JSON.parse(cookMatch[1]);
-    device = cookie.device;
-    theme = cookie.theme;
-    last = cookie.last;
-    isWatch = (cookie.device == "watch");
+        let cookie = JSON.parse(cookMatch[1]);
+        device = cookie.device;
+        theme = cookie.theme;
+        last = cookie.last;
+        isWatch = (cookie.device == "watch");
     }
 
     device = deviceCookMatch?deviceCookMatch[1]:device;
@@ -163,8 +163,18 @@
             { idx: 1, name: "乾為天" }
         ];
 
-        const unitsPerRow = 8;  // Set this to configure how many units you want per row.
+        const skip   = [9, 20, 30, 30, 30, 33, 33, 35, 51, 60, 61, 63];
+        const double = [9, 13, 14, 21, 25, 26, 28];
 
+        let unitsPerRow = isWatch ? 7 : 8; // Default for phone/desktop
+        let songMode = false;
+
+        // Check for #song in the URL
+        if (window.location.hash === "#song") {
+            songMode = true;
+            unitsPerRow = 7; // Set to 7 per row
+        }
+        
         fetch('data.txt')
         .then(response => response.json())
         .then(hexagrams => {
@@ -176,9 +186,15 @@
                 let row;
 
                 hexagramOrder.forEach((hex, index) => {
-                    // Check if it's the start of a new set of units
-                    if (index % unitsPerRow === 0) {
-                        row = tocBody.insertRow();
+                    
+                    // Check for start of a new row or if the current hexagram should be skipped
+                    if (index % unitsPerRow === 0 || (songMode && skip.includes(hex.idx))) {
+                        if (row && row.cells.length < unitsPerRow) {
+                            while (row.cells.length < unitsPerRow) {
+                                row.insertCell().innerHTML = "<td></td>";  // Insert empty cells to fill up the row
+                            }
+                        }
+                        row = tocBody.insertRow();  // Start a new row
                     }
 
                     // Create a new cell for the unit
@@ -193,23 +209,46 @@
                         <table class="unit">
                             <tr>
                                 <td class="hexagram-index">${hex.idx.toString().padStart(2, '0')}</td>
-                                <td class="chinese-name"><span style='font-size: 12px; display: block; min-height: 20px;font-size:${hex.name.length>3?'12px':'16px'}'>${hex.name}</span></td>
+                                <td class="chinese-name"><span style='font-size: 12px; display: block; min-height: 20px;font-size:${hex.name.length > 3 ? '12px' : '16px'}'>${hex.name}</span></td>
                             </tr>
                             ${booksData}
                         </table>
                     `;
 
+                    // Insert an extra cell if the hexagram should be doubled and we're in song mode
+                    if (songMode && double.includes(hex.idx)) {
+                        cell = row.insertCell();
+                        cell.innerHTML = `
+                            <table class="unit">
+                                <tr>
+                                    <td class="hexagram-index">${hex.idx.toString().padStart(2, '0')}</td>
+                                    <td class="chinese-name"><span style='font-size: 12px; display: block; min-height: 20px;font-size:${hex.name.length > 3 ? '12px' : '16px'}'>${hex.name}</span></td>
+                                </tr>
+                                ${booksData}
+                            </table>
+                        `;
+                    }
                 });
 
+                // Ensure the final row is filled up to the required units per row
+                if (row.cells.length < unitsPerRow) {
+                    while (row.cells.length < unitsPerRow) {
+                        row.insertCell().innerHTML = "<td></td>";  // Insert empty cells to fill up the row
+                    }
+                }
+
             })
-            .catch(error => {
-                console.error('There was an error!', error);
-            });
+        .catch(error => {
+            console.error('There was an error!', error);
+        });
         })
         .catch(error => {
             console.error('There was an error reading hexagrams!', error);
         });
     }
+
+
+
 
 </script>
 
