@@ -203,15 +203,25 @@
                         currentUnitsInRow = 0;
                     }
 
-                    // Handle the standard hexagram content
                     let cell = tocBody.rows[tocBody.rows.length-1].insertCell();
 
-                    // Handle doubled hexagrams based on the length of hex.name
-                    if (hex.name.length > 3) {
-                        cell.colSpan = 2; // Allow the cell to span two columns
-                        currentUnitsInRow += 2; // This counts as two units
+                    if (songMode) {
+                        // Handle doubled hexagrams based on the length of hex.name
+                        if (hex.name.length > 3) {
+                            cell.colSpan = 2; // Allow the cell to span two columns
+                            currentUnitsInRow += 2; // This counts as two units
+                        } else {
+                            currentUnitsInRow++; // Standard hexagram counts as one unit
+                        }
+
+                        // Handle skipped hexagrams in songMode by adding empty cells based on number of occurrences
+                        let skipCount = skip.filter(val => val === hex.idx).length;
+                        for (let i = 0; i < skipCount; i++) {
+                            tocBody.rows[tocBody.rows.length-1].insertCell().innerHTML = "<td></td>";
+                            currentUnitsInRow++;  // Each skip counts as a unit
+                        }
                     } else {
-                        currentUnitsInRow++; // Standard hexagram counts as one unit
+                        currentUnitsInRow++;
                     }
 
                     let booksData = Object.keys(pages).map(book => {
@@ -223,19 +233,11 @@
                         <table class="unit" style="width: 100%;">
                             <tr>
                                 <td class="hexagram-index">${hex.idx.toString().padStart(2, '0')}</td>
-                                <td class="chinese-name"><span style='font-size: ${songMode ? '16px' : (hex.name.length > 3 ? '12px' : '16px')}; display: block; min-height: 20px;'>${hex.name}</span></td>                            </tr>
+                                <td class="chinese-name"><span style='font-size: ${songMode ? '16px' : (hex.name.length > 3 ? '12px' : '16px')}; display: block; min-height: 20px;'>${hex.name}</span></td>
+                            </tr>
                             ${booksData}
                         </table>
                     `;
-
-                    // Handle skipped hexagrams in songMode by adding empty cells based on number of occurrences
-                    if (songMode) {
-                        let skipCount = skip.filter(val => val === hex.idx).length;
-                        for (let i = 0; i < skipCount; i++) {
-                            tocBody.rows[tocBody.rows.length-1].insertCell().innerHTML = "<td></td>";
-                            currentUnitsInRow++;  // Each skip counts as a unit
-                        }
-                    }
                 });
 
                 // Fill up the final row if necessary
