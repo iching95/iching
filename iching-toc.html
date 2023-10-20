@@ -174,7 +174,7 @@
             songMode = true;
             unitsPerRow = 7; // Set to 7 per row
         }
-        
+
         fetch('data.txt')
         .then(response => response.json())
         .then(hexagrams => {
@@ -183,7 +183,7 @@
             .then(response => response.json())
             .then(pages => {
                 let tocBody = document.getElementById('tocBody');
-                let row;
+                let currentUnitsInRow = 0; // To keep track of how many units are added in the current row
 
                 // Clone the hexagramOrder and sort it by idx in songMode
                 let displayOrder = [...hexagramOrder];
@@ -193,16 +193,18 @@
 
                 displayOrder.forEach((hex, index) => {
                     // Start a new row if required
-                    if (index % unitsPerRow === 0 && (index !== 0 || songMode)) {
-                        row = tocBody.insertRow();
+                    if (currentUnitsInRow === 0 || currentUnitsInRow >= unitsPerRow) {
+                        tocBody.insertRow();
+                        currentUnitsInRow = 0;
                     }
 
                     // Handle the standard hexagram content
-                    let cell = row.insertCell();
+                    let cell = tocBody.rows[tocBody.rows.length-1].insertCell();
                     let booksData = Object.keys(pages).map(book => {
                         const page = pages[book].page[hex.idx - 1] + pages[book].offset - pages[book].page[0];
                         return `<tr><td><a href="${createBookLink(book, page)}" target="_blank">${book.slice(0, 5)}</a></td><td>${page}</td></tr>`;
                     }).join('');
+
                     cell.innerHTML = `
                         <table class="unit">
                             <tr>
@@ -212,24 +214,26 @@
                             ${booksData}
                         </table>
                     `;
+                    currentUnitsInRow++; // Added a unit
 
                     // Handle doubled hexagrams in songMode
                     if (songMode && double.includes(hex.idx)) {
-                        let doubleCell = row.insertCell();
+                        let doubleCell = tocBody.rows[tocBody.rows.length-1].insertCell();
                         doubleCell.innerHTML = cell.innerHTML; // Replicate the hexagram content
+                        currentUnitsInRow++; // Double counts as an additional unit
                     }
 
                     // Handle skipped hexagrams in songMode by adding an empty cell after
                     if (songMode && skip.includes(hex.idx)) {
-                        row.insertCell().innerHTML = "<td></td>";
+                        tocBody.rows[tocBody.rows.length-1].insertCell().innerHTML = "<td></td>";
+                        currentUnitsInRow++; // Skip counts as a unit
                     }
                 });
 
                 // Fill up the final row if necessary
-                if (row.cells.length < unitsPerRow) {
-                    while (row.cells.length < unitsPerRow) {
-                        row.insertCell().innerHTML = "<td></td>";
-                    }
+                while (currentUnitsInRow < unitsPerRow && currentUnitsInRow > 0) {
+                    tocBody.rows[tocBody.rows.length-1].insertCell().innerHTML = "<td></td>";
+                    currentUnitsInRow++;
                 }
             })
             .catch(error => {
