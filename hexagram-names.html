@@ -4,6 +4,121 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Hexagram Names</title>
+<script>
+
+    let isWatch = false;
+    let theme = "dark";
+    let device = "phone";
+    
+    const cookMatch = document.cookie?document.cookie.match(/prefs=(.+)/):false;
+
+    if(cookMatch){
+      let cookie = JSON.parse(cookMatch[1]);
+      device = cookie.device;
+      theme = cookie.theme;
+      isWatch = cookie.device == "watch";
+    }
+
+    var expires = (new Date(Date.now()+ 86400*1000)).toUTCString();
+
+    document.cookie = "prefs=" +JSON.stringify({
+        device:device,
+        theme :theme,
+    }) + "; expires=" + expires + ";path=/;"
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('td').forEach(td => {
+        const parser = new DOMParser();
+        const content = parser.parseFromString('<div>' + td.innerHTML + '</div>', 'text/html').body.firstChild;
+
+        content.childNodes.forEach(node => {
+            // If it's a text node
+            if (node.nodeType === 3) {
+                const newContent = Array.from(node.textContent).map(char => {
+                    // Exclude the specific characters from wrapping
+                    if (['/', '？', '※', ' ', '\n', '\t'].includes(char)) {
+                        return char;
+                    }
+                    return `<c>${char}</c>`;
+                }).join('');
+                td.innerHTML = td.innerHTML.replace(node.textContent, newContent);
+            }
+        });
+    });
+
+    var anchors = document.getElementsByTagName('c');
+    var onclickAction = function(evt) {
+
+      const el    = evt.target.parentElement.querySelector(".markLine");
+      if(el){
+        markLine(el.getAttribute("mark-data-id").match(/line([1-7])/)[1], el);
+      }
+
+      const clickedLetter = evt.target.textContent
+      //range.endOffset - range.startOffset
+      document.getElementById("dic").innerHTML = "Lookup " + "<span id='dic-search-word' contenteditable>" + clickedLetter + "</span>"
+      document.getElementById("dic-ptr").innerHTML = clickedLetter;
+      // document.getElementById("dic-opt-default").selected = 'selected';
+      // document.getElementById("footer-group-dic").style.display = "block";
+
+    }
+
+    for(var i = 0; i < anchors.length; i++) {
+      var anchor = anchors[i];
+      anchor.onclick = onclickAction
+    }
+
+
+});
+
+
+    var dic = {
+          'cuhk':{
+            url:'https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word={w}',
+            watch:true
+          },
+          'ctext':{
+            url:'https://ctext.org/dictionary.pl?if=gb&char={w}',
+            watch:false
+          },
+          'zitools':{
+            url:'https://zi.tools/zi/{w}',
+            watch:true
+          },          
+          'moe':{
+            url:'https://dict.revised.moe.edu.tw/search.jsp?md=1&word={w}',
+            watch:true
+          },
+          "hanziyuan":{
+            url:'https://hanziyuan.net/#{w}',
+            watch:true
+          },
+          "ephhk":{
+            url: null,
+            watch:true
+          }
+    };
+
+    function openMoreDicURL(evt){
+      var e = document.getElementById("dics");
+      if(!e.value){
+        return;
+      }
+      const word = document.getElementById("dic-search-word").innerHTML;
+      if(e.value == "ephhk"){
+        document.getElementById("ephhk-form-input").value = word;
+        document.getElementById("ephhk-form").submit();
+        return;
+      }
+      const path = dic[e.value].url.replace("{w}",encodeURIComponent(word));
+      if(device=="desktop"){
+          var win = window.open(path);
+      }else{
+          location.href = path;
+      }
+    }
+
+</script>
 <style>
 table {
     border-collapse: collapse;
@@ -30,9 +145,38 @@ thead th, tbody th {
     font-size: clamp(8px, 2vw, 16px); 
 }
 
+#dic-ptr{
+    display: none;
+}
+#dic-tool{
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 11;
+}
+#dic{
+    background-color: white;
+}
+#dic-search-word{
+    padding: 8px;
+}
 </style>
 </head>
 <body>
+
+    <div id="dic-tool">
+        <div id="dic"></div>
+        <select onchange="openMoreDicURL()" name="dics" id="dics">
+          <option id='dic-opt-default' value="0">MORE DICT...</option>
+          <option id='dic-opt-ctext' value="ctext">ctext</option>
+          <option id='dic-opt-cuhk' value="cuhk" ${isWatch?"disabled":""}>cuhk</option>
+          <option id='dic-opt-zitools' value="zitools">zitools</option>
+          <option id='dic-opt-moe' value="moe">moe</option>
+          <option id='dic-opt-ephhk' value="ephhk">ephhk</option>
+          <option id='dic-opt-hanziyuan' value="hanziyuan">hanziyuan</option>
+        </select>
+    </div>
+    <a onclick="openDicURL()"><div id='dic-ptr'></div></a>
 <table>
         <thead>
         <tr>
@@ -1453,4 +1597,7 @@ thead th, tbody th {
    </td>
 </tr>
 </tbody>
-</table></body></html>
+</table>
+
+
+</body></html>
