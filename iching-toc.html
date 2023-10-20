@@ -168,8 +168,8 @@
             { idx: 1, name: "乾為天" }
         ];
 
-        let skip   = [9, 20, 30, 30, 30, 33, 33, 35, 51, 60, 61, 63];
-        // const double = [9, 13, 14, 21, 25, 26, 28, 34, 37, 36, 37, 54, 61,62,63,64];
+        const skip   = [9, 20, 30, 30, 30, 33, 33, 35, 51, 60, 61, 63];
+        const double = [9, 13, 14, 21, 25, 26, 28, 34, 37, 36, 37, 54, 61,62,63,64];
 
         let unitsPerRow = isWatch ? 7 : 8; // Default for phone/desktop
         let songMode = false;
@@ -190,19 +190,19 @@
                 let tocBody = document.getElementById('tocBody');
                 let row;
                 let unitsProcessed = 0;
+                const songMode = window.location.hash === "#song";
 
                 hexagramOrder.forEach((hex, index) => {
 
                     // Logic for 'skip' 
-                    let skipsForCurrentHex = skip.filter(item => item === hex.idx);
-                    skipsForCurrentHex.forEach(() => {
+                    while (skip.includes(hex.idx)) {
                         if (unitsProcessed % 7 === 0) {
                             row = tocBody.insertRow();
                         }
-                        row.insertCell();
+                        row.insertCell().classList.add("skipCell");
                         unitsProcessed++;
-                    });
-                    skip = skip.filter(item => item !== hex.idx); // remove used indices
+                        skip = skip.filter(item => item !== hex.idx);
+                    }
 
                     if (unitsProcessed % 7 === 0) {
                         row = tocBody.insertRow();
@@ -211,11 +211,13 @@
                     let cell = row.insertCell();
 
                     // Check if the hexagram name length is more than 3 (replacing double array logic)
-                    if (hex.name.length > 3) {
+                    if (hex.name.length > 3 && songMode) {
                         cell.colSpan = 2;
                         unitsProcessed++;
                     }
                     
+                    let fontSize = songMode ? '16px' : (hex.name.length > 3 ? '12px' : '16px');
+
                     let booksData = Object.keys(pages).map(book => {
                         const page = pages[book].page[hex.idx - 1] + pages[book].offset - pages[book].page[0];
                         return `<tr><td><a href="${createBookLink(book, page)}" target="_blank">${book.slice(0, 5)}</a></td><td>${page}</td></tr>`;
@@ -224,8 +226,8 @@
                     cell.innerHTML = `
                         <table class="unit" style="width: 100%;">
                             <tr>
-                                <td>${hex.idx.toString().padStart(2, '0')}</td>
-                                <td class="chinese-name">${hex.name}</td>
+                                <td style="width: 20%;">${hex.idx.toString().padStart(2, '0')}</td>
+                                <td class="chinese-name" style="font-size: ${fontSize};">${hex.name}</td>
                             </tr>
                             ${booksData}
                         </table>
@@ -234,7 +236,6 @@
                     unitsProcessed++;
                 });
             })
-
         })
         .catch(error => {
             console.error('There was an error reading hexagrams!', error);
