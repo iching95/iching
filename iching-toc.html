@@ -206,10 +206,10 @@
                     // Handle the standard hexagram content
                     let cell = tocBody.rows[tocBody.rows.length-1].insertCell();
 
-                    // Handle doubled hexagrams in songMode
-                    if (songMode && double.includes(hex.idx)) {
+                    // Handle doubled hexagrams based on the length of hex.name
+                    if (hex.name.length > 3) {
                         cell.colSpan = 2; // Allow the cell to span two columns
-                        currentUnitsInRow += 2; // Double counts as two units
+                        currentUnitsInRow += 2; // This counts as two units
                     } else {
                         currentUnitsInRow++; // Standard hexagram counts as one unit
                     }
@@ -223,7 +223,7 @@
                         <table class="unit" style="width: 100%;">
                             <tr>
                                 <td class="hexagram-index">${hex.idx.toString().padStart(2, '0')}</td>
-                                <td class="chinese-name"><span style='font-size: 12px; display: block; min-height: 20px;font-size:${hex.name.length > 3 ? '12px' : '16px'}'>${hex.name}</span></td>
+                                <td class="chinese-name"><span style='font-size: 16px; display: block; min-height: 20px;'>${hex.name}</span></td>
                             </tr>
                             ${booksData}
                         </table>
