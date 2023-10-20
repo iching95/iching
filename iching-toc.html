@@ -192,7 +192,7 @@
             });
             hexagramOrder = modifiedHexagramOrder;
         }
-        
+
         fetch('data.txt')
         .then(response => response.json())
         .then(hexagrams => {
@@ -217,6 +217,11 @@
 
                     // Create a new cell for the unit
                     let cell = row.insertCell();
+
+                    if (!hex.idx) {
+                        cell.innerHTML = "<td></td>";
+                        return;
+                    }
 
                     // Use innerHTML to create a mini-table inside the cell for the hexagram and its books
                     let booksData = Object.keys(pages).map(book => {
