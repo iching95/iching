@@ -223,10 +223,13 @@
                         currentUnitsInRow++; // Double counts as an additional unit
                     }
 
-                    // Handle skipped hexagrams in songMode by adding an empty cell after
-                    if (songMode && skip.includes(hex.idx)) {
-                        tocBody.rows[tocBody.rows.length-1].insertCell().innerHTML = "<td></td>";
-                        currentUnitsInRow++; // Skip counts as a unit
+                    // Handle skipped hexagrams in songMode by adding empty cells based on number of occurrences
+                    if (songMode) {
+                        let skipCount = skip.filter(val => val === hex.idx).length;
+                        for (let i = 0; i < skipCount; i++) {
+                            tocBody.rows[tocBody.rows.length-1].insertCell().innerHTML = "<td></td>";
+                            currentUnitsInRow++; // Each skip counts as a unit
+                        }
                     }
                 });
 
