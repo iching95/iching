@@ -191,23 +191,18 @@
                 let row;
                 let unitsProcessed = 0;
 
-                // Create a counter object for the skip array
-                const skipCounter = skip.reduce((acc, val) => {
-                    acc[val] = (acc[val] || 0) + 1;
-                    return acc;
-                }, {});
-
                 hexagramOrder.forEach((hex, index) => {
 
                     // Logic for 'skip' 
-                    while (skipCounter[hex.idx] && skipCounter[hex.idx] > 0) {
+                    let skipsForCurrentHex = skip.filter(item => item === hex.idx);
+                    skipsForCurrentHex.forEach(() => {
                         if (unitsProcessed % 7 === 0) {
                             row = tocBody.insertRow();
                         }
                         row.insertCell();
                         unitsProcessed++;
-                        skipCounter[hex.idx]--; // decrement the counter
-                    }
+                    });
+                    skip = skip.filter(item => item !== hex.idx); // remove used indices
 
                     if (unitsProcessed % 7 === 0) {
                         row = tocBody.insertRow();
@@ -239,6 +234,7 @@
                     unitsProcessed++;
                 });
             })
+
         })
         .catch(error => {
             console.error('There was an error reading hexagrams!', error);
