@@ -15,49 +15,28 @@
             text-align: center;
         }
         
-        th:last-child, td:last-child {
-            border-right: 1px solid black;
-        }
-
-        /* Set the width for the first column of the inner table */
-        table.unit tr td:first-child {
-            width: 30px; /* or whatever width you prefer */
-        }
-
+thead th, tbody th {
+    position: sticky;
+    top: 0;
+    background-color: white; /* to ensure the header is not transparent when overlaying content */
+    z-index: 10; /* to ensure the header is displayed on top of other content */
+}        
     </style>
 </head>
 <body>
 <table>
+        <thead>
+        <tr>
+            <th>今本《周易》</th>
+            <th>帛書《周易》</th>
+            <th>上博簡《周易》</th>
+            <th>阜陽簡《周易》</th>
+            <th>清華簡（四）</th>
+            <th>秦簡《歸藏》</th>
+            <th>輯本《歸藏》</th>
+        </tr>
+    </thead>
 <tbody>
-<tr>
-<td>
-    今本
-《周易》
-   </td>
-<td>
-    帛書
-《周易》
-   </td>
-<td>
-    上博簡
-《周易》
-   </td>
-<td>
-    阜陽簡
-《周易》
-   </td>
-<td>
-    清華簡（四）
-   </td>
-<td>
-    秦簡
-《歸藏》
-   </td>
-<td>
-    輯本
-《歸藏》
-   </td>
-</tr>
 <tr>
 <td>
     乾
@@ -237,7 +216,7 @@
 <td>
     少
     <img height="13" src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/wAALCAANAA0BAREA/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oACAEBAAA/AO8v5Y7u9uI/Nu0VoZbXKyYw3JY/gF4PvWzo1zHdWokR5S5SMyI7FghKBsDPswrPksHvNWuoJrmRk8sIuQPlDBi+AOMkHGcVLbWx0e8uLe1ZRbOEkSMrkocbSMk8jCDHpX//2Q=="/>
-    /小蓄
+    / 小蓄
    </td>
 <td>
 </td>
