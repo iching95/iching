@@ -26,51 +26,122 @@
         theme :theme,
     }) + "; expires=" + expires + ";path=/;"
 
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('td').forEach(td => {
-        const parser = new DOMParser();
-        const content = parser.parseFromString('<div>' + td.innerHTML + '</div>', 'text/html').body.firstChild;
+    document.addEventListener('DOMContentLoaded', () => {
+        const table = document.getElementById("jsonTable");
+        fetch('iching-titles.json')
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(rowData => {
+                    const row = document.createElement("tr");
+                    rowData.forEach(cellData => {
+                        const cell = document.createElement("td");
+                        if (cellData.type === "string") {
+                            cell.textContent = cellData.content;
+                        } else if (cellData.type === "image") {
+                            const img = document.createElement("img");
+                            img.src = cellData.content;
+                            cell.appendChild(img);
+                        }
+                        row.appendChild(cell);
+                    });
+                    table.appendChild(row);
+                });
 
-        content.childNodes.forEach(node => {
-            // If it's a text node
-            if (node.nodeType === 3) {
-                const newContent = Array.from(node.textContent).map(char => {
-                    // Exclude the specific characters from wrapping
-                    if (['/', '？', '※', ' ', '\n', '\t'].includes(char)) {
-                        return char;
+                // Additional processing and interactivity
+                document.querySelectorAll('td').forEach(td => {
+                    const parser = new DOMParser();
+                    const content = parser.parseFromString('<div>' + td.innerHTML + '</div>', 'text/html').body.firstChild;
+
+                    content.childNodes.forEach(node => {
+                        // If it's a text node
+                        if (node.nodeType === 3) {
+                            const newContent = Array.from(node.textContent).map(char => {
+                                // Exclude the specific characters from wrapping
+                                if (['/', '？', '※', ' ', '\n', '\t'].includes(char)) {
+                                    return char;
+                                }
+                                return `<c>${char}</c>`;
+                            }).join('');
+                            td.innerHTML = td.innerHTML.replace(node.textContent, newContent);
+                        }
+                    });
+                });
+
+                const anchors = document.getElementsByTagName('c');
+                const onclickAction = function(evt) {
+                    const el = evt.target.parentElement.querySelector(".markLine");
+                    if (el) {
+                        markLine(el.getAttribute("mark-data-id").match(/line([1-7])/)[1], el);
                     }
-                    return `<c>${char}</c>`;
-                }).join('');
-                td.innerHTML = td.innerHTML.replace(node.textContent, newContent);
+
+                    const clickedLetter = evt.target.textContent;
+                    document.getElementById("dic").innerHTML = "Lookup " + "<span id='dic-search-word' contenteditable>" + clickedLetter + "</span>";
+                    document.getElementById("dic-ptr").innerHTML = clickedLetter;
+                };
+
+                for (let i = 0; i < anchors.length; i++) {
+                    anchors[i].onclick = onclickAction;
+                }
+            });
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+    const table = document.getElementById("jsonTable");
+    fetch('iching-titles.json')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(rowData => {
+                const row = document.createElement("tr");
+                rowData.forEach(cellData => {
+                    const cell = document.createElement("td");
+                    if (cellData.type === "string") {
+                        cell.textContent = cellData.content;
+                    } else if (cellData.type === "image") {
+                        const img = document.createElement("img");
+                        img.src = cellData.content;
+                        cell.appendChild(img);
+                    }
+                    row.appendChild(cell);
+                });
+                table.appendChild(row);
+            });
+
+            // Additional processing and interactivity
+            document.querySelectorAll('td').forEach(td => {
+                const parser = new DOMParser();
+                const content = parser.parseFromString('<div>' + td.innerHTML + '</div>', 'text/html').body.firstChild;
+
+                content.childNodes.forEach(node => {
+                    // If it's a text node
+                    if (node.nodeType === 3) {
+                        const newContent = Array.from(node.textContent).map(char => {
+                            // Exclude the specific characters from wrapping
+                            if (['/', '？', '※', ' ', '\n', '\t'].includes(char)) {
+                                return char;
+                            }
+                            return `<c>${char}</c>`;
+                        }).join('');
+                        td.innerHTML = td.innerHTML.replace(node.textContent, newContent);
+                    }
+                });
+            });
+
+            const anchors = document.getElementsByTagName('c');
+            const onclickAction = function(evt) {
+                const el = evt.target.parentElement.querySelector(".markLine");
+                if (el) {
+                    markLine(el.getAttribute("mark-data-id").match(/line([1-7])/)[1], el);
+                }
+
+                const clickedLetter = evt.target.textContent;
+                document.getElementById("dic").innerHTML = "Lookup " + "<span id='dic-search-word' contenteditable>" + clickedLetter + "</span>";
+                document.getElementById("dic-ptr").innerHTML = clickedLetter;
+            };
+
+            for (let i = 0; i < anchors.length; i++) {
+                anchors[i].onclick = onclickAction;
             }
         });
-    });
-
-    var anchors = document.getElementsByTagName('c');
-    var onclickAction = function(evt) {
-
-      const el    = evt.target.parentElement.querySelector(".markLine");
-      if(el){
-        markLine(el.getAttribute("mark-data-id").match(/line([1-7])/)[1], el);
-      }
-
-      const clickedLetter = evt.target.textContent
-      //range.endOffset - range.startOffset
-      document.getElementById("dic").innerHTML = "Lookup " + "<span id='dic-search-word' contenteditable>" + clickedLetter + "</span>"
-      document.getElementById("dic-ptr").innerHTML = clickedLetter;
-      // document.getElementById("dic-opt-default").selected = 'selected';
-      // document.getElementById("footer-group-dic").style.display = "block";
-
-    }
-
-    for(var i = 0; i < anchors.length; i++) {
-      var anchor = anchors[i];
-      anchor.onclick = onclickAction
-    }
-
-
 });
-
 
     var dic = {
           'cuhk':{
@@ -177,7 +248,7 @@ thead th, tbody th {
         </select>
     </div>
     <a onclick="openDicURL()"><div id='dic-ptr'></div></a>
-<table>
+<table id="">
         <thead>
         <tr>
             <th>今本《周易》</th>
