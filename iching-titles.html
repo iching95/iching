@@ -89,10 +89,10 @@
     fetch('iching-titles.json')
         .then(response => response.json())
         .then(data => {
-            data.forEach(rowData => {
+            data.forEach((rowData, rowIndex) => {
                 const row = document.createElement("tr");
                 rowData.forEach(cellData => {
-                    const cell = document.createElement("td");
+                    const cell = rowIndex === 0 ? document.createElement("th") : document.createElement("td");
                     if (cellData.type === "string") {
                         cell.textContent = cellData.content;
                     } else if (cellData.type === "image") {
@@ -102,9 +102,15 @@
                     }
                     row.appendChild(cell);
                 });
-                table.appendChild(row);
+                if (rowIndex === 0) {
+                    const thead = document.createElement("thead");
+                    thead.appendChild(row);
+                    table.appendChild(thead);
+                } else {
+                    table.appendChild(row);
+                }
             });
-
+            
             // Additional processing and interactivity
             document.querySelectorAll('td').forEach(td => {
                 const parser = new DOMParser();
@@ -251,13 +257,7 @@ thead th, tbody th {
 <table id="jsonTable">
         <thead>
         <tr>
-            <th>今本《周易》</th>
-            <th>帛書《周易》</th>
-            <th>上博簡《周易》</th>
-            <th>阜陽簡《周易》</th>
-            <th>清華簡（四）</th>
-            <th>秦簡《歸藏》</th>
-            <th>輯本《歸藏》</th>
+            <th>Loading...</th>
         </tr>
     </thead>
 </table>
