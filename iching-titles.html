@@ -31,10 +31,15 @@
         fetch('iching-titles.json')
             .then(response => response.json())
             .then(data => {
-                data.forEach(rowData => {
+                
+                while (table.firstChild) {
+                    table.removeChild(table.firstChild);
+                }
+
+                data.forEach((rowData, rowIndex) => {
                     const row = document.createElement("tr");
                     rowData.forEach(cellData => {
-                        const cell = document.createElement("td");
+                        const cell = rowIndex === 0 ? document.createElement("th") : document.createElement("td");
                         if (cellData.type === "string") {
                             cell.textContent = cellData.content;
                         } else if (cellData.type === "image") {
@@ -44,7 +49,13 @@
                         }
                         row.appendChild(cell);
                     });
-                    table.appendChild(row);
+                    if (rowIndex === 0) {
+                        const thead = document.createElement("thead");
+                        thead.appendChild(row);
+                        table.appendChild(thead);
+                    } else {
+                        table.appendChild(row);
+                    }
                 });
 
                 // Additional processing and interactivity
@@ -255,11 +266,11 @@ thead th, tbody th {
     </div>
     <a onclick="openDicURL()"><div id='dic-ptr'></div></a>
 <table id="jsonTable">
-        <thead>
+    <tbody>
         <tr>
-            <th>Loading...</th>
+            <td>Loading...</td>
         </tr>
-    </thead>
+    </tbody>
 </table>
 
 
