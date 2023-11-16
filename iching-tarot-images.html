@@ -8,61 +8,73 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
+        .container {
+            padding: 20px;
         }
         .card {
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
             margin: 20px;
             display: inline-block;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
         }
         .card img {
             width: 100%;
-            max-width: 300px; /* Adjust this value based on your mobile design preference */
             height: auto;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 5px;
         }
-        .card p {
+        .card .details {
+            padding: 10px;
+            text-align: left;
+        }
+        .card .details p {
             margin: 5px 0;
         }
     </style>
 </head>
 <body>
     <h1>I Ching Tarot Gallery</h1>
-
-    <!-- Gallery of Images -->
-    <div id="gallery"></div>
+    <div class="container" id="gallery"></div>
 
     <script>
-        // JSON data for the images
-        const imageData = [32†data];
+        // Fetch the JSON data from the provided URL
+        fetch('https://iching95.github.io/iching/data.txt')
+            .then(response => response.json())
+            .then(data => displayImages(data));
 
         // Function to display images
         function displayImages(data) {
             const gallery = document.getElementById('gallery');
             Object.keys(data).forEach(key => {
-                const imgContainer = document.createElement('div');
-                imgContainer.className = 'card';
+                const card = document.createElement('div');
+                card.className = 'card';
 
                 const image = new Image();
                 image.src = `https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/tarot-iching-img/iching-tarot-${key}.jpg`;
                 image.alt = `I Ching Tarot ${key}`;
-                
+
+                const details = document.createElement('div');
+                details.className = 'details';
+
                 const chineseChar = document.createElement('p');
                 chineseChar.textContent = `Chinese: ${data[key].c}`;
                 
                 const description = document.createElement('p');
                 description.textContent = `Description: ${data[key].d}`;
                 
-                imgContainer.appendChild(image);
-                imgContainer.appendChild(chineseChar);
-                imgContainer.appendChild(description);
+                details.appendChild(chineseChar);
+                details.appendChild(description);
 
-                gallery.appendChild(imgContainer);
+                card.appendChild(image);
+                card.appendChild(details);
+
+                gallery.appendChild(card);
             });
         }
-
-        // Call the function to display images
-        displayImages(imageData);
     </script>
 </body>
 </html>
