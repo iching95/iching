@@ -11,23 +11,19 @@
             background: #f4f4f4;
             display: flex;
             justify-content: center;
-            padding-bottom: 50px; /* Added padding for scrolling on mobile */
         }
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            grid-gap: 15px;
             padding: 15px;
+            gap: 15px;
             max-width: 100%;
         }
         .card {
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
             background: #fff;
             border-radius: 10px;
             overflow: hidden;
             position: relative;
             cursor: pointer;
-            transition: all 0.3s ease;
         }
         .card img {
             width: 100%;
@@ -40,25 +36,27 @@
             width: 100%;
             left: 0;
             bottom: 0;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.8);
             font-size: 0.8em;
-            transition: background-color 0.3s ease;
         }
-        .card:hover .details {
-            background: rgba(255, 255, 255, 0.6);
-        }
-        /* Media queries */
         @media only screen and (max-width: 767px) {
             .gallery {
-                grid-template-columns: repeat(2, 1fr); /* two images per row */
-            }
-            .card {
-                margin-bottom: 15px;
+                grid-template-columns: repeat(2, 1fr); /* Two images per row on mobile */
             }
             .card img {
-                /* Adjusting image height for mobile */
-                height: 150px; /* Smaller height for mobile view */
-                object-fit: cover; /* Ensure the image covers the area */
+                /* Ensuring full height images are shown */
+                height: 300px; /* Scaling down the height for mobile screens */
+                object-fit: contain; /* Ensures the full image is shown */
+            }
+            .card .details {
+                position: static; /* To allow the text to flow below the image on mobile */
+                background: none;
+                font-size: 0.7em;
+            }
+        }
+        @media only screen and (min-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Adjust number of columns based on screen size */
             }
         }
     </style>
