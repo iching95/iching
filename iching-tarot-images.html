@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Ching Tarot Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .card {
+            margin: 20px;
+            display: inline-block;
+        }
+        .card img {
+            width: 100%;
+            max-width: 300px; /* Adjust this value based on your mobile design preference */
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+        }
+        .card p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>I Ching Tarot Gallery</h1>
+
+    <!-- Gallery of Images -->
+    <div id="gallery"></div>
+
+    <script>
+        // JSON data for the images
+        const imageData = [32†data];
+
+        // Function to display images
+        function displayImages(data) {
+            const gallery = document.getElementById('gallery');
+            Object.keys(data).forEach(key => {
+                const imgContainer = document.createElement('div');
+                imgContainer.className = 'card';
+
+                const image = new Image();
+                image.src = `https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/tarot-iching-img/iching-tarot-${key}.jpg`;
+                image.alt = `I Ching Tarot ${key}`;
+                
+                const chineseChar = document.createElement('p');
+                chineseChar.textContent = `Chinese: ${data[key].c}`;
+                
+                const description = document.createElement('p');
+                description.textContent = `Description: ${data[key].d}`;
+                
+                imgContainer.appendChild(image);
+                imgContainer.appendChild(chineseChar);
+                imgContainer.appendChild(description);
+
+                gallery.appendChild(imgContainer);
+            });
+        }
+
+        // Call the function to display images
+        displayImages(imageData);
+    </script>
+</body>
+</html>
