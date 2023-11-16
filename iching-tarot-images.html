@@ -11,32 +11,27 @@
             background: #f4f4f4;
             display: flex;
             justify-content: center;
+            padding-bottom: 50px; /* Added padding for scrolling on mobile */
         }
         .gallery {
             display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             grid-gap: 15px;
             padding: 15px;
+            max-width: 100%;
         }
         .card {
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
             background: #fff;
             border-radius: 10px;
             overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease;
             position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
         .card img {
             width: 100%;
             height: auto;
-            display: block;
-        }
-        .card.enlarged {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(2);
-            z-index: 1000;
         }
         .card .details {
             padding: 10px;
@@ -45,30 +40,30 @@
             width: 100%;
             left: 0;
             bottom: 0;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.9);
             font-size: 0.8em;
+            transition: background-color 0.3s ease;
         }
-        /* Adjusting for mobile devices */
+        .card:hover .details {
+            background: rgba(255, 255, 255, 0.6);
+        }
+        /* Media queries */
         @media only screen and (max-width: 767px) {
             .gallery {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr); /* two images per row */
+            }
+            .card {
+                margin-bottom: 15px;
             }
             .card img {
-                width: auto; /* Adjust image width to fit two images per row */
-                max-width: none;
-                height: 300px; /* Scale down the image to fit the screen */
-            }
-        }
-        /* Adjusting for tablets and larger mobile devices */
-        @media only screen and (min-width: 768px) {
-            .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+                /* Adjusting image height for mobile */
+                height: 150px; /* Smaller height for mobile view */
+                object-fit: cover; /* Ensure the image covers the area */
             }
         }
     </style>
 </head>
 <body>
-
     <div class="gallery" id="gallery"></div>
 
     <script>
@@ -99,9 +94,6 @@
 
                 card.appendChild(image);
                 card.appendChild(details);
-                card.addEventListener('click', function() {
-                    this.classList.toggle('enlarged');
-                });
 
                 gallery.appendChild(card);
             });
