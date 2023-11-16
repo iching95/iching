@@ -48,15 +48,16 @@
         }
         .card.enlarged .details {
             position: fixed;
-            bottom: 10%; /* Give some space from the bottom */
+            bottom: 0; /* Position the details at the bottom of the viewport */
             left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80vw;
+            transform: translateX(-50%);
+            width: 80vw; /* Match the width of the enlarged image */
             padding: 20px;
-            background: rgba(0, 0, 0, 0.7); /* Dark background for the enlarged details */
-            color: #fff; /* White text for better contrast */
-            font-size: 1em; /* Larger font size for readability */
-            z-index: 1001; /* Above the image */
+            background: rgba(0, 0, 0, 0.7); /* Dark background for readability */
+            color: #fff; /* White text for contrast */
+            font-size: 1em; /* Larger text for readability */
+            z-index: 1001; /* Ensure it's above the overlay */
+            text-align: center; /* Center the text */
         }
         .overlay {
             position: fixed;
