@@ -118,10 +118,10 @@
 
                 const details = document.createElement('div');
                 details.className = 'details';
-                
+
                 let detailsText = data[key].d.length === 1 ? 
-                    `${key} ${data[key].c}為${data[key].d}` : 
-                    `${key}. ${data[key].d} ${data[key].c}`;
+                    `${key}. ${data[key].c}為${data[key].d} ${descriptions[key].L1}` : 
+                    `${key}. ${data[key].d} ${data[key].c} ${descriptions[key].L1}`;
                 details.innerHTML = detailsText;
 
                 card.appendChild(image);
@@ -145,11 +145,13 @@
             overlay.addEventListener('click', function() {
                 document.querySelectorAll('.card').forEach(card => {
                     card.classList.remove('enlarged');
-                    card.querySelector('.details').innerHTML = `${card.querySelector('.details').id}. ${data[card.querySelector('.details').id].d} ${data[card.querySelector('.details').id].c} ${descriptions[card.querySelector('.details').id].L1}`;
+                    const key = card.querySelector('.details').id;
+                    card.querySelector('.details').innerHTML = `${key}. ${data[key].d} ${data[key].c} ${descriptions[key].L1}`;
                 });
                 this.classList.remove('active');
             });
         }
+
     </script>
 </body>
 </html>
