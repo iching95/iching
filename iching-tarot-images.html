@@ -14,10 +14,7 @@
         }
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
             grid-gap: 15px;
-            width: 100%;
-            max-width: 600px;
             padding: 15px;
         }
         .card {
@@ -51,9 +48,21 @@
             background: rgba(255, 255, 255, 0.8);
             font-size: 0.8em;
         }
-        @media (max-width: 768px) {
+        /* Adjusting for mobile devices */
+        @media only screen and (max-width: 767px) {
             .gallery {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .card img {
+                width: auto; /* Adjust image width to fit two images per row */
+                max-width: none;
+                height: 300px; /* Scale down the image to fit the screen */
+            }
+        }
+        /* Adjusting for tablets and larger mobile devices */
+        @media only screen and (min-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
             }
         }
     </style>
