@@ -14,18 +14,29 @@
         }
         .container {
             padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
         }
         .card {
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            margin: 20px;
-            display: inline-block;
+            margin: 10px;
+            width: calc(50% - 20px);
             background: #fff;
             border-radius: 10px;
             overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
         .card img {
             width: 100%;
             height: auto;
+            transition: transform 0.3s ease;
+        }
+        .card.enlarged {
+            transform: scale(2);
+            z-index: 10;
+            position: relative;
         }
         .card .details {
             padding: 10px;
@@ -34,10 +45,14 @@
         .card .details p {
             margin: 5px 0;
         }
+        @media (max-width: 768px) {
+            .card {
+                width: calc(100% - 20px);
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>I Ching Tarot Gallery</h1>
     <div class="container" id="gallery"></div>
 
     <script>
@@ -71,6 +86,9 @@
 
                 card.appendChild(image);
                 card.appendChild(details);
+                card.addEventListener('click', function() {
+                    this.classList.toggle('enlarged');
+                });
 
                 gallery.appendChild(card);
             });
