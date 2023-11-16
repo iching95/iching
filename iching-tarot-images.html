@@ -11,12 +11,15 @@
             background: #f4f4f4;
             display: flex;
             justify-content: center;
+            padding-bottom: 50px;
         }
         .gallery {
             display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            grid-gap: 15px;
             padding: 15px;
-            gap: 15px;
             max-width: 100%;
+            margin: auto;
         }
         .card {
             background: #fff;
@@ -27,7 +30,8 @@
         }
         .card img {
             width: 100%;
-            height: auto;
+            height: 300px; /* fixed height for all images */
+            object-fit: cover; /* cover will ensure the image covers the area */
         }
         .card .details {
             padding: 10px;
@@ -36,27 +40,42 @@
             width: 100%;
             left: 0;
             bottom: 0;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(0, 0, 0, 0.6); /* semi-transparent overlay */
+            color: white;
             font-size: 0.8em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            overflow: hidden;
+        }
+        .card.enlarged img {
+            height: auto;
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+        .card.enlarged .details {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90vw;
+            height: auto;
+            padding: 20px;
+            box-sizing: border-box;
+            background: rgba(0, 0, 0, 0.8); /* darker overlay for enlarged view */
         }
         @media only screen and (max-width: 767px) {
             .gallery {
-                grid-template-columns: repeat(2, 1fr); /* Two images per row on mobile */
-            }
-            .card img {
-                /* Ensuring full height images are shown */
-                height: 300px; /* Scaling down the height for mobile screens */
-                object-fit: contain; /* Ensures the full image is shown */
-            }
-            .card .details {
-                position: static; /* To allow the text to flow below the image on mobile */
-                background: none;
-                font-size: 0.7em;
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         @media only screen and (min-width: 768px) {
             .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Adjust number of columns based on screen size */
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            .card img {
+                height: 400px; /* larger fixed height for larger screens */
             }
         }
     </style>
@@ -76,6 +95,9 @@
             Object.keys(data).forEach(key => {
                 const card = document.createElement('div');
                 card.className = 'card';
+                card.onclick = function() {
+                    this.classList.toggle('enlarged');
+                };
 
                 const image = new Image();
                 image.src = `https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/tarot-iching-img/iching-tarot-${key}.jpg`;
