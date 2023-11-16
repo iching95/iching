@@ -118,7 +118,11 @@
 
                 const details = document.createElement('div');
                 details.className = 'details';
-                details.innerHTML = `${key}. ${data[key].d} ${data[key].c} ${descriptions[key].L1}`;
+                
+                let detailsText = data[key].d.length === 1 ? 
+                    `${key} ${data[key].c}為${data[key].d}` : 
+                    `${key}. ${data[key].d} ${data[key].c}`;
+                details.innerHTML = detailsText;
 
                 card.appendChild(image);
                 card.appendChild(details);
@@ -126,16 +130,12 @@
                     if (this.classList.contains('enlarged')) {
                         this.classList.remove('enlarged');
                         overlay.classList.remove('active');
-                        details.style.background = 'rgba(255, 255, 255, 0.9)';
-                        details.style.color = '#000';
-                        details.innerHTML = `${key}. ${data[key].d} ${data[key].c} ${descriptions[key].L1}`;
+                        details.innerHTML = detailsText;
                     } else {
                         document.querySelectorAll('.card').forEach(card => card.classList.remove('enlarged'));
                         this.classList.add('enlarged');
                         overlay.classList.add('active');
-                        details.style.background = 'rgba(0, 0, 0, 0.7)';
-                        details.style.color = '#fff';
-                        details.innerHTML = `${key}. ${data[key].d} ${data[key].c}<br>${descriptions[key].L2}`;
+                        details.innerHTML = `${detailsText}<br>${descriptions[key].L2}`;
                     }
                 });
 
@@ -145,10 +145,7 @@
             overlay.addEventListener('click', function() {
                 document.querySelectorAll('.card').forEach(card => {
                     card.classList.remove('enlarged');
-                    const key = card.querySelector('.details').id;
-                    card.querySelector('.details').style.background = 'rgba(255, 255, 255, 0.9)';
-                    card.querySelector('.details').style.color = '#000';
-                    card.querySelector('.details').innerHTML = `${key}. ${data[key].d} ${data[key].c} ${descriptions[key].L1}`;
+                    card.querySelector('.details').innerHTML = `${card.querySelector('.details').id}. ${data[card.querySelector('.details').id].d} ${data[card.querySelector('.details').id].c} ${descriptions[card.querySelector('.details').id].L1}`;
                 });
                 this.classList.remove('active');
             });
