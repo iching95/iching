@@ -48,15 +48,15 @@
         }
         .card.enlarged .details {
             position: fixed;
-            bottom: 0;
+            bottom: 10%; /* Give some space from the bottom */
+            left: 50%;
+            transform: translate(-50%, -50%);
             width: 80vw;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            transform: translateX(-50%);
-            left: 50%;
-            text-align: center;
-            font-size: 1em;
-            z-index: 1001;
+            background: rgba(0, 0, 0, 0.7); /* Dark background for the enlarged details */
+            color: #fff; /* White text for better contrast */
+            font-size: 1em; /* Larger font size for readability */
+            z-index: 1001; /* Above the image */
         }
         .overlay {
             position: fixed;
@@ -65,11 +65,17 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.5);
-            z-index: 500;
+            z-index: 500; /* Below the enlarged image and details */
             display: none;
         }
         .overlay.active {
             display: block;
+        }
+        @media (max-width: 600px) {
+            /* Ensure two columns on mobile for 300px wide cards */
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -79,21 +85,24 @@
     <div class="gallery" id="gallery"></div>
 
     <script>
-        // Fetch the JSON data from the I Ching descriptions
+        // Fetch the descriptions text
         fetch('https://iching95.github.io/iching/iching-image-desc.txt')
             .then(response => response.text())
             .then(text => {
                 const lines = text.split('\n');
-                return lines.reduce((acc, line) => {
+                const descriptions = lines.reduce((acc, line) => {
                     const [no, , L1, L2] = line.split(',');
                     acc[no.trim()] = { L1: L1.trim(), L2: L2.trim() };
                     return acc;
                 }, {});
+                return descriptions;
             })
-            .then(descriptions => fetch('https://iching95.github.io/iching/data.txt')
-                .then(response => response.json())
-                .then(data => displayImages(data, descriptions))
-            );
+            .then(descriptions => {
+                // Fetch the I Ching data
+                fetch('https://iching95.github.io/iching/data.txt')
+                    .then(response => response.json())
+                    .then(data => displayImages(data, descriptions));
+            });
 
         // Function to display images with descriptions
         function displayImages(data, descriptions) {
@@ -117,22 +126,29 @@
                     if (this.classList.contains('enlarged')) {
                         this.classList.remove('enlarged');
                         overlay.classList.remove('active');
+                        details.style.background = 'rgba(255, 255, 255, 0.9)';
+                        details.style.color = '#000';
                         details.innerHTML = `${key}. ${data[key].d} ${data[key].c} ${descriptions[key].L1}`;
                     } else {
                         document.querySelectorAll('.card').forEach(card => card.classList.remove('enlarged'));
                         this.classList.add('enlarged');
                         overlay.classList.add('active');
+                        details.style.background = 'rgba(0, 0, 0, 0.7)';
+                        details.style.color = '#fff';
                         details.innerHTML = `${key}. ${data[key].d} ${data[key].c}<br>${descriptions[key].L2}`;
                     }
                 });
 
                 gallery.appendChild(card);
             });
-            
+
             overlay.addEventListener('click', function() {
                 document.querySelectorAll('.card').forEach(card => {
                     card.classList.remove('enlarged');
-                    card.querySelector('.details').innerHTML = `${card.querySelector('.details').id}. ${data[card.querySelector('.details').id].d} ${data[card.querySelector('.details').id].c} ${descriptions[card.querySelector('.details').id].L1}`;
+                    const key = card.querySelector('.details').id;
+                    card.querySelector('.details').style.background = 'rgba(255, 255, 255, 0.9)';
+                    card.querySelector('.details').style.color = '#000';
+                    card.querySelector('.details').innerHTML = `${key}. ${data[key].d} ${data[key].c} ${descriptions[key].L1}`;
                 });
                 this.classList.remove('active');
             });
