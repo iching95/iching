@@ -10,13 +10,18 @@
             padding: 0;
             background: #f4f4f4;
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            grid-gap: 15px;
+            width: 100%;
+            max-width: 600px;
+            padding: 15px;
         }
         .card {
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            margin: 10px;
-            width: calc(50% - 20px);
             background: #fff;
             border-radius: 10px;
             overflow: hidden;
@@ -27,11 +32,14 @@
         .card img {
             width: 100%;
             height: auto;
-            transition: transform 0.3s ease;
+            display: block;
         }
         .card.enlarged {
-            transform: scale(2);
-            z-index: 10;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(2);
+            z-index: 1000;
         }
         .card .details {
             padding: 10px;
@@ -41,17 +49,18 @@
             left: 0;
             bottom: 0;
             background: rgba(255, 255, 255, 0.8);
+            font-size: 0.8em;
         }
         @media (max-width: 768px) {
-            .card {
-                width: calc(100% - 20px);
+            .gallery {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
 
-    <div id="gallery"></div>
+    <div class="gallery" id="gallery"></div>
 
     <script>
         // Fetch the JSON data from the provided URL
