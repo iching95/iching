@@ -11,7 +11,6 @@
             background: #f4f4f4;
             display: flex;
             justify-content: center;
-            padding-bottom: 50px;
         }
         .gallery {
             display: grid;
@@ -49,21 +48,39 @@
             height: 50px;
             overflow: hidden;
         }
-        .card.enlarged img {
-            height: auto;
-            max-width: 90vw;
-            max-height: 90vh;
-        }
-        .card.enlarged .details {
+        /* Enlarged view styles */
+        .enlarged img {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 90vw;
+            width: auto;
+            max-width: 90%;
+            max-height: 90%;
             height: auto;
-            padding: 20px;
-            box-sizing: border-box;
-            background: rgba(0, 0, 0, 0.8); /* darker overlay for enlarged view */
+            z-index: 1001;
+        }
+        .enlarged .details {
+            position: fixed;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            z-index: 1002;
+            font-size: 1em;
+        }
+        .gallery .backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        .gallery .backdrop.show {
+            display: block;
         }
         @media only screen and (max-width: 767px) {
             .gallery {
@@ -81,13 +98,19 @@
     </style>
 </head>
 <body>
-    <div class="gallery" id="gallery"></div>
+    <div id="gallery" class="gallery"></div>
+    <div class="backdrop" onclick="unEnlarge()"></div> <!-- Backdrop for enlarged view -->
 
     <script>
         // Fetch the JSON data from the provided URL
         fetch('https://iching95.github.io/iching/data.txt')
             .then(response => response.json())
             .then(data => displayImages(data));
+
+        function unEnlarge() {
+            document.querySelector('.enlarged').classList.remove('enlarged');
+            document.querySelector('.backdrop').classList.remove('show');
+        }
 
         // Function to display images
         function displayImages(data) {
@@ -96,7 +119,14 @@
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.onclick = function() {
-                    this.classList.toggle('enlarged');
+                    if (!this.classList.contains('enlarged')) {
+                        unEnlarge();
+                        this.classList.add('enlarged');
+                        document.querySelector('.backdrop').classList.add('show');
+                    } else {
+                        this.classList.remove('enlarged');
+                        document.querySelector('.backdrop').classList.remove('show');
+                    }
                 };
 
                 const image = new Image();
