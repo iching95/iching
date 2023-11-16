@@ -40,6 +40,7 @@
             text-align: center;
             background: rgba(255, 255, 255, 0.9); /* Make the details area slightly opaque */
             font-size: 0.8em;
+            transition: background 0.3s ease; /* Transition for the background */
         }
         @media (max-width: 768px) {
             .gallery {
@@ -62,10 +63,13 @@
             width: 80vw;
             padding: 20px;
             box-sizing: border-box; /* Include padding in the width */
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(0, 0, 0, 0.7); /* More opaque background for readability */
+            color: #fff; /* White text for better contrast */
             transform: translateX(-50%);
             left: 50%;
             text-align: center;
+            font-size: 1em; /* Larger font size for readability */
+            z-index: 1001; /* Above the image */
         }
         .overlay {
             position: fixed;
