@@ -106,10 +106,6 @@
             //https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/iching-books/web/viewer.html?file=%2Fiching-books%2Fli.pdf#page=149&spreadModeOnLoad=2
             let pdfURL = `${basePath}${fname}.pdf`;
 
-            path = path.replace("{fname}",fname);
-            path = path.replace("{page}",page);
-
-
             // Construct the URL for pdf.js viewer
             let viewerURL = `https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/iching-books/web/viewer.html?file=${encodeURIComponent(pdfURL)}#page=${page}`;
             let path = (!mobileCheck())?viewerURL:'pdfefile:///iching/{fname}.pdf#{page}'
