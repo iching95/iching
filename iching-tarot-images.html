@@ -86,6 +86,26 @@
     <div class="gallery" id="gallery"></div>
 
     <script>
+
+        const gao2 = {
+            "page":[53, 75, 90, 98, 105, 113, 119, 125, 133, 140, 146, 154, 165, 171, 177, 185, 193, 200, 207, 213, 218, 225, 232, 240, 245, 252, 259, 266, 273,280, 289, 296, 302, 310, 316, 320, 328, 334, 342, 348, 354, 361, 368, 375, 382, 389, 395, 401, 406, 413, 420, 427, 433, 439, 446, 451, 457, 461, 466, 471, 477, 483, 489, 496],
+            "offset": 71
+        }
+
+        function createBookLink(fname, page) {
+            // Define the base path to your PDFs. 
+            // For simplicity, I'm assuming the PDFs are on an S3 bucket or another online source.
+            // let basePath = `https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/iching-books/`; // replace 'your-s3-bucket-url' with the actual path to your S3 bucket
+            let basePath = `/iching-books/`; // replace 'your
+            //https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/iching-books/web/viewer.html?file=%2Fiching-books%2Fli.pdf#page=149&spreadModeOnLoad=2
+            let pdfURL = `${basePath}${fname}.pdf`;
+
+            // Construct the URL for pdf.js viewer
+            let viewerURL = `https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/iching-books/web/viewer.html?file=${encodeURIComponent(pdfURL)}#page=${page}`;
+
+            return viewerURL;
+        }
+
         // Fetch the descriptions text
         fetch('https://iching95.github.io/iching/iching-image-desc.txt')
             .then(response => response.text())
@@ -136,7 +156,9 @@
                         document.querySelectorAll('.card').forEach(card => card.classList.remove('enlarged'));
                         this.classList.add('enlarged');
                         overlay.classList.add('active');
-                        details.innerHTML = `${detailsText}<br>${descriptions[key].L2}`;
+                        const book = "gao2"
+                        const page = pages[book].page[hex.idx - 1] + pages[book].offset - pages[book].page[0];
+                        details.innerHTML = `${detailsText}<br>${descriptions[key].L2}<br><a href="${createBookLink(book, page)}" target="_blank">remark</a>`;
                     }
                 });
 
