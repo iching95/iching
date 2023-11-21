@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Osho Cards Display</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        .container { padding: 20px; text-align: center; }
+        .card { display: inline-block; margin: 10px; }
+        .card img { max-width: 100px; height: auto; border: 1px solid #ddd; border-radius: 4px; padding: 5px; }
+        .card-title { margin-top: 5px; font-size: 14px; }
+        @media (max-width: 600px) {
+            .card { width: 100%; margin-bottom: 20px; }
+            .card img { max-width: 80%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="majors">
+        <h2>Major Arcana</h2>
+        <!-- Major arcana cards will be displayed here -->
+    </div>
+    <div class="container" id="minors">
+        <h2>Minor Arcana</h2>
+        <!-- Minor arcana cards will be displayed here -->
+    </div>
+
+    <script>
+        // Function to create image URL based on suit and card number
+        function createImageUrl(suit, num) {
+            let suitName = suit.toLowerCase();
+            if (suitName === 'rainbow' || suitName === 'cloud') {
+                suitName += 's'; // Add 's' for 'rainbows' and 'clouds'
+            }
+            return 'https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/tarot-osho-img/osho-' + suitName + '-' + num + '.jpg';
+        }
+
+        // Fetch and load tarot cards data
+        fetch('https://iching95.github.io/iching/osho-data.json')
+            .then(response => response.json())
+            .then(tarotCards => {
+                // Load Major Arcana
+                var majorsContainer = document.getElementById('majors');
+                tarotCards.majors.forEach(card => {
+                    var img = document.createElement('img');
+                    img.src = 'https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/tarot-osho-img/osho-major-' + card.num + '.jpg';
+                    var div = document.createElement('div');
+                    div.className = 'card';
+                    div.appendChild(img);
+                    var title = document.createElement('div');
+                    title.className = 'card-title';
+                    title.innerText = card.oz_title + ' / ' + card.rw_title;
+                    div.appendChild(title);
+                    majorsContainer.appendChild(div);
+                });
+
+                // Load Minor Arcana
+                var minorsContainer = document.getElementById('minors');
+                Object.keys(tarotCards.minors).forEach(suit => {
+                    tarotCards.minors[suit].forEach(card => {
+                        var img = document.createElement('img');
+                        img.src = createImageUrl(suit, card.num);
+                        var div = document.createElement('div');
+                        div.className = 'card';
+                        div.appendChild(img);
+                        var title = document.createElement('div');
+                        title.className = 'card-title';
+                        title.innerText = card.title + ' (' + suit + ')';
+                        div.appendChild(title);
+                        minorsContainer.appendChild(div);
+                    });
+                });
+            })
+            .catch(error => console.error('Error loading tarot cards:', error));
+    </script>
+</body>
+</html>
