@@ -1,0 +1,432 @@
+{
+    "majors": [
+        {
+            "num": 0,
+            "oz_title": "The Fool",
+            "rw_title": "The Fool",
+            "sign": "Uranus / Air"
+        },
+        {
+            "num": 1,
+            "oz_title": "Existence",
+            "rw_title": "The Magician",
+            "sign": "Mercury"
+        },
+        {
+            "num": 2,
+            "oz_title": "Inner Voice",
+            "rw_title": "The High Priestess",
+            "sign": "Moon"
+        },
+        {
+            "num": 3,
+            "oz_title": "Creativity",
+            "rw_title": "The Empress",
+            "sign": "Venus"
+        },
+        {
+            "num": 4,
+            "oz_title": "The Rebel",
+            "rw_title": "The Emperor",
+            "sign": "Aries"
+        },
+        {
+            "num": 5,
+            "oz_title": "No-Thingness",
+            "rw_title": "The Hierophant",
+            "sign": "Taurus"
+        },
+        {
+            "num": 6,
+            "oz_title": "The Lovers",
+            "rw_title": "The Lovers",
+            "sign": "Gemini"
+        },
+        {
+            "num": 7,
+            "oz_title": "Awareness",
+            "rw_title": "The Chariot",
+            "sign": "Cancer"
+        },
+        {
+            "num": 8,
+            "oz_title": "Courage",
+            "rw_title": "Strength",
+            "sign": "Leo"
+        },
+        {
+            "num": 9,
+            "oz_title": "Aloneness",
+            "rw_title": "The Hermit",
+            "sign": "Virgo"
+        },
+        {
+            "num": 10,
+            "oz_title": "Change",
+            "rw_title": "Wheel of Fortune",
+            "sign": "Jupiter"
+        },
+        {
+            "num": 11,
+            "oz_title": "Breakthrough",
+            "rw_title": "Justice",
+            "sign": "Libra"
+        },
+        {
+            "num": 12,
+            "oz_title": "New Vision",
+            "rw_title": "The Hanged Man",
+            "sign": "Water / Neptune"
+        },
+        {
+            "num": 13,
+            "oz_title": "Transformation",
+            "rw_title": "Death",
+            "sign": "Scorpio"
+        },
+        {
+            "num": 14,
+            "oz_title": "Integration",
+            "rw_title": "Temperance",
+            "sign": "Sagittarius"
+        },
+        {
+            "num": 15,
+            "oz_title": "Conditioning",
+            "rw_title": "The Devil",
+            "sign": "Capricorn"
+        },
+        {
+            "num": 16,
+            "oz_title": "Thunderbolt",
+            "rw_title": "The Tower",
+            "sign": "Mars"
+        },
+        {
+            "num": 17,
+            "oz_title": "Silence",
+            "rw_title": "The Star",
+            "sign": "Aquarius"
+        },
+        {
+            "num": 18,
+            "oz_title": "Past Lives",
+            "rw_title": "The Moon",
+            "sign": "Pisces"
+        },
+        {
+            "num": 19,
+            "oz_title": "Innocence",
+            "rw_title": "The Sun",
+            "sign": "Sun"
+        },
+        {
+            "num": 20,
+            "oz_title": "Beyond Illusion",
+            "rw_title": "Judgement",
+            "sign": "Pluto"
+        },
+        {
+            "num": 21,
+            "oz_title": "Completion",
+            "rw_title": "The World",
+            "sign": "Saturn / Earth"
+        },
+        {
+            "num": 22,
+            "oz_title": "The Master",
+            "rw_title": "-",
+            "sign": "-"
+        }
+    ],
+    "minors": {
+        "Fire": [
+            {
+                "num": 1,
+                "title": "The Source",
+                "ch_name": "源頭"
+            },
+            {
+                "num": 2,
+                "title": "Possibilities",
+                "ch_name": "可能性"
+            },
+            {
+                "num": 3,
+                "title": "Experiencing",
+                "ch_name": "正在經驗"
+            },
+            {
+                "num": 4,
+                "title": "Participation",
+                "ch_name": "參與"
+            },
+            {
+                "num": 5,
+                "title": "Totality",
+                "ch_name": "全然"
+            },
+            {
+                "num": 6,
+                "title": "Success",
+                "ch_name": "成功"
+            },
+            {
+                "num": 7,
+                "title": "Stress",
+                "ch_name": "壓力"
+            },
+            {
+                "num": 8,
+                "title": "Traveling",
+                "ch_name": "旅行"
+            },
+            {
+                "num": 9,
+                "title": "Exhaustion",
+                "ch_name": "精疲力竭"
+            },
+            {
+                "num": 10,
+                "title": "Suppression",
+                "ch_name": "壓抑"
+            },
+            {
+                "num": 11,
+                "title": "Playfulness",
+                "ch_name": "遊戲的心情"
+            },
+            {
+                "num": 12,
+                "title": "Intensity",
+                "ch_name": "強烈"
+            },
+            {
+                "num": 13,
+                "title": "Sharing",
+                "ch_name": "分享"
+            },
+            {
+                "num": 14,
+                "title": "The Creator",
+                "ch_name": "創造者"
+            }
+        ],
+        "Rainbow": [
+            {
+                "num": 1,
+                "title": "Maturity",
+                "ch_name": "心智圓熟"
+            },
+            {
+                "num": 2,
+                "title": "Moment To Moment",
+                "ch_name": "一個片刻接著一個片刻"
+            },
+            {
+                "num": 3,
+                "title": "Guidance",
+                "ch_name": "引導"
+            },
+            {
+                "num": 4,
+                "title": "The Miser",
+                "ch_name": "守財奴"
+            },
+            {
+                "num": 5,
+                "title": "The Outsider",
+                "ch_name": "局外人"
+            },
+            {
+                "num": 6,
+                "title": "Compromise",
+                "ch_name": "妥協"
+            },
+            {
+                "num": 7,
+                "title": "Patience",
+                "ch_name": "耐心"
+            },
+            {
+                "num": 8,
+                "title": "Ordinariness",
+                "ch_name": "平凡"
+            },
+            {
+                "num": 9,
+                "title": "Ripeness",
+                "ch_name": "時機成熟"
+            },
+            {
+                "num": 10,
+                "title": "We Are The World",
+                "ch_name": "四海一家"
+            },
+            {
+                "num": 11,
+                "title": "Adventure",
+                "ch_name": "冒險"
+            },
+            {
+                "num": 12,
+                "title": "Slowing Down",
+                "ch_name": "慢下來"
+            },
+            {
+                "num": 13,
+                "title": "Flowering",
+                "ch_name": "開花"
+            },
+            {
+                "num": 14,
+                "title": "Abundance",
+                "ch_name": "豐富"
+            }
+        ],
+        "Cloud": [
+            {
+                "num": 1,
+                "title": "Consciousness",
+                "ch_name": "意識"
+            },
+            {
+                "num": 2,
+                "title": "Schizophrenia",
+                "ch_name": "精神分裂"
+            },
+            {
+                "num": 3,
+                "title": "Ice-olation",
+                "ch_name": "封閉"
+            },
+            {
+                "num": 4,
+                "title": "Postponement",
+                "ch_name": "延緩"
+            },
+            {
+                "num": 5,
+                "title": "Comparison",
+                "ch_name": "比較"
+            },
+            {
+                "num": 6,
+                "title": "The Burden",
+                "ch_name": "重擔"
+            },
+            {
+                "num": 7,
+                "title": "Politics",
+                "ch_name": "政治手腕"
+            },
+            {
+                "num": 8,
+                "title": "Guilt",
+                "ch_name": "罪惡感"
+            },
+            {
+                "num": 9,
+                "title": "Sorrow",
+                "ch_name": "憂傷"
+            },
+            {
+                "num": 10,
+                "title": "Rebirth",
+                "ch_name": "再生"
+            },
+            {
+                "num": 11,
+                "title": "Mind",
+                "ch_name": "頭腦"
+            },
+            {
+                "num": 12,
+                "title": "Fighting",
+                "ch_name": "抗爭"
+            },
+            {
+                "num": 13,
+                "title": "Morality",
+                "ch_name": "道德律"
+            },
+            {
+                "num": 14,
+                "title": "Control",
+                "ch_name": "控制"
+            }
+        ],
+        "Water": [
+            {
+                "num": 1,
+                "title": "Going With The Flow",
+                "ch_name": "順著流走"
+            },
+            {
+                "num": 2,
+                "title": "Friendliness",
+                "ch_name": "友誼"
+            },
+            {
+                "num": 3,
+                "title": "Celebration",
+                "ch_name": "慶祝"
+            },
+            {
+                "num": 4,
+                "title": "Turning In",
+                "ch_name": "轉入內在"
+            },
+            {
+                "num": 5,
+                "title": "Clinging to the Past",
+                "ch_name": "執著於過去"
+            },
+            {
+                "num": 6,
+                "title": "The Dream",
+                "ch_name": "愛情夢"
+            },
+            {
+                "num": 7,
+                "title": "Projections",
+                "ch_name": "投射"
+            },
+            {
+                "num": 8,
+                "title": "Letting Go",
+                "ch_name": "放手"
+            },
+            {
+                "num": 9,
+                "title": "Laziness",
+                "ch_name": "懶惰"
+            },
+            {
+                "num": 10,
+                "title": "Harmony",
+                "ch_name": "和諧"
+            },
+            {
+                "num": 11,
+                "title": "Understanding",
+                "ch_name": "了解"
+            },
+            {
+                "num": 12,
+                "title": "Trust",
+                "ch_name": "信任"
+            },
+            {
+                "num": 13,
+                "title": "Receptivity",
+                "ch_name": "接受性"
+            },
+            {
+                "num": 14,
+                "title": "Healing",
+                "ch_name": "治療"
+            }
+        ]
+    }
+}
