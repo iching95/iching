@@ -80,17 +80,17 @@
         }
 
         @media (min-width: 601px) {
-        .card.enlarged img {
-            max-height: 60vh; /* Adjust the max-height for larger screens */
-            max-width: 40vw; /* Adjust the max-width to maintain aspect ratio */
-        }
+            .card.enlarged img {
+                max-height: 60vh; /* Adjust the max-height for larger screens */
+                max-width: 40vw; /* Adjust the max-width to maintain aspect ratio */
+            }
 
-        .card.enlarged .details {
-            width: 40vw; /* Match the width of the enlarged image on larger screens */
-            padding: 20px;
-            font-size: 1.2em; /* Optionally increase the font size for readability */
+            .card.enlarged .details {
+                width: 40vw; /* Match the width of the enlarged image on larger screens */
+                padding: 20px;
+                font-size: 1.2em; /* Optionally increase the font size for readability */
+            }
         }
-    }
 
         .ios-button {
             /* iOS-style button CSS */
@@ -112,8 +112,13 @@
         .ios-button:hover {
             background: linear-gradient(to bottom, #e5e5e5 0%, #ffffff 100%);
         }
-        
-        </style>
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* Adjust gap between buttons */
+        }
+    </style>
 </head>
 <body>
 
@@ -212,8 +217,7 @@
                         const bookChan = "chan";
                         const pageGao2 = pages[bookGao2].page[key - 1] + pages[bookGao2].offset - pages[bookGao2].page[0];
                         const pageChan = pages[bookChan].page[key - 1] + pages[bookChan].offset - pages[bookChan].page[0];
-                        details.innerHTML = `${detailsText}<br>${descriptions[key].L2}<br><a href="${createBookLink(bookGao2, pageGao2)}" target="_blank" class="ios-button">Open Gao2</a><br><a href="${createBookLink(bookChan, pageChan)}" target="_blank" class="ios-button">Open Chan</a>`;
-
+                        details.innerHTML = `${detailsText}<br>${descriptions[key].L2}<div class="button-container"><a href="${createBookLink(bookGao2, pageGao2)}" target="_blank" class="ios-button">Open Gao2</a><a href="${createBookLink(bookChan, pageChan)}" target="_blank" class="ios-button">Open Chan</a></div>`;
                     }
                 });
 
