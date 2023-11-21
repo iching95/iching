@@ -3,71 +3,83 @@
 <head>
     <title>Osho Cards Display</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
         .container { padding: 20px; text-align: center; }
-        .card { display: inline-block; margin: 10px; }
-        .card img { max-width: 100px; height: auto; border: 1px solid #ddd; border-radius: 4px; padding: 5px; }
-        .card-title { margin-top: 5px; font-size: 14px; }
-        @media (max-width: 600px) {
-            .card { width: 100%; margin-bottom: 20px; }
-            .card img { max-width: 80%; }
-        }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); grid-gap: 15px; }
+        .card { box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); background: #fff; border-radius: 10px; overflow: hidden; cursor: pointer; }
+        .card img { width: 100%; display: block; }
+        .card .details { padding: 10px; text-align: center; background: rgba(255, 255, 255, 0.9); font-size: 0.8em; }
+        .card.enlarged img { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); max-height: 80vh; max-width: 80vw; z-index: 1000; }
+        .card.enlarged .details { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 80vw; padding: 20px; background: rgba(0, 0, 0, 0.7); color: #fff; font-size: 1em; z-index: 1001; text-align: center; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 500; display: none; }
+        .overlay.active { display: block; }
+        @media (max-width: 600px) { .gallery { grid-template-columns: repeat(2, 1fr); } } /* Two columns on mobile */
     </style>
 </head>
 <body>
-    <div class="container" id="majors">
-        <h2>Major Arcana</h2>
-        <!-- Major arcana cards will be displayed here -->
-    </div>
-    <div class="container" id="minors">
-        <h2>Minor Arcana</h2>
-        <!-- Minor arcana cards will be displayed here -->
-    </div>
+    <div class="overlay" id="overlay"></div>
+    <div class="gallery" id="gallery"></div>
 
     <script>
-        // Function to create image URL based on suit and card number
         function createImageUrl(suit, num) {
             let suitName = suit.toLowerCase();
             if (suitName === 'rainbow' || suitName === 'cloud') {
-                suitName += 's'; // Add 's' for 'rainbows' and 'clouds'
+                suitName += 's';
             }
             return 'https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/tarot-osho-img/osho-' + suitName + '-' + num + '.jpg';
         }
 
-        // Fetch and load tarot cards data
         fetch('https://iching95.github.io/iching/osho-data.json')
             .then(response => response.json())
             .then(tarotCards => {
+                const gallery = document.getElementById('gallery');
+                const overlay = document.getElementById('overlay');
+
                 // Load Major Arcana
-                var majorsContainer = document.getElementById('majors');
                 tarotCards.majors.forEach(card => {
-                    var img = document.createElement('img');
-                    img.src = 'https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/tarot-osho-img/osho-major-' + card.num + '.jpg';
-                    var div = document.createElement('div');
-                    div.className = 'card';
-                    div.appendChild(img);
-                    var title = document.createElement('div');
-                    title.className = 'card-title';
-                    title.innerText = card.oz_title + ' / ' + card.rw_title;
-                    div.appendChild(title);
-                    majorsContainer.appendChild(div);
+                    const cardDiv = createCardDiv(card.oz_title + ' / ' + card.rw_title, 'https://iching-tarot-asset.s3.ap-east-1.amazonaws.com/tarot-osho-img/osho-major-' + card.num + '.jpg');
+                    gallery.appendChild(cardDiv);
                 });
 
                 // Load Minor Arcana
-                var minorsContainer = document.getElementById('minors');
                 Object.keys(tarotCards.minors).forEach(suit => {
                     tarotCards.minors[suit].forEach(card => {
-                        var img = document.createElement('img');
-                        img.src = createImageUrl(suit, card.num);
-                        var div = document.createElement('div');
-                        div.className = 'card';
-                        div.appendChild(img);
-                        var title = document.createElement('div');
-                        title.className = 'card-title';
-                        title.innerText = card.title + ' (' + suit + ')';
-                        div.appendChild(title);
-                        minorsContainer.appendChild(div);
+                        const cardDiv = createCardDiv(card.title + ' (' + suit + ')', createImageUrl(suit, card.num));
+                        gallery.appendChild(cardDiv);
                     });
+                });
+
+                function createCardDiv(title, imageUrl) {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+
+                    const img = document.createElement('img');
+                    img.src = imageUrl;
+
+                    const details = document.createElement('div');
+                    details.className = 'details';
+                    details.innerText = title;
+
+                    card.appendChild(img);
+                    card.appendChild(details);
+
+                    card.addEventListener('click', function() {
+                        if (this.classList.contains('enlarged')) {
+                            this.classList.remove('enlarged');
+                            overlay.classList.remove('active');
+                        } else {
+                            document.querySelectorAll('.card').forEach(c => c.classList.remove('enlarged'));
+                            this.classList.add('enlarged');
+                            overlay.classList.add('active');
+                        }
+                    });
+
+                    return card;
+                }
+
+                overlay.addEventListener('click', function() {
+                    document.querySelectorAll('.card').forEach(card => card.classList.remove('enlarged'));
+                    this.classList.remove('active');
                 });
             })
             .catch(error => console.error('Error loading tarot cards:', error));
