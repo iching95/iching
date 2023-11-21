@@ -13,7 +13,7 @@
         }
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Smaller card size for desktop */
             grid-gap: 15px;
             padding: 15px;
             margin-top: 50px;
@@ -74,9 +74,8 @@
         }
 
         @media (max-width: 600px) {
-            /* Ensure two columns on mobile for 300px wide cards */
             .gallery {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr); /* Two columns on mobile */
             }
         }
 
