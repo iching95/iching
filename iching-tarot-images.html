@@ -72,12 +72,26 @@
         .overlay.active {
             display: block;
         }
+        
         @media (max-width: 600px) {
             /* Ensure two columns on mobile for 300px wide cards */
             .gallery {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+
+        @media (min-width: 601px) {
+        .card.enlarged img {
+            max-height: 60vh; /* Adjust the max-height for larger screens */
+            max-width: 40vw; /* Adjust the max-width to maintain aspect ratio */
+        }
+
+        .card.enlarged .details {
+            width: 40vw; /* Match the width of the enlarged image on larger screens */
+            padding: 20px;
+            font-size: 1.2em; /* Optionally increase the font size for readability */
+        }
+    }
 
         .ios-button {
             /* iOS-style button CSS */
